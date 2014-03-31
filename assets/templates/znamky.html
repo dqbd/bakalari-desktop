@@ -1,0 +1,21 @@
+<div id="znamky">
+    {{meg}}
+    <div class="subject" ng-repeat="subject in data.znamky">
+        <div class="info" ng-click="toggleItem($index)">
+            <div class="icon">{{shorten(data.predmety[$index])}}</div>
+            <header>
+                <h1>{{data.predmety[$index]}}</h1>
+                <h2>Poslední známka: 5!</h2>
+            </header>
+            <span class="average active" ng-class="getAverageColor(subject)">{{calculateAverage(subject)}}</span>
+        </div>
+        
+        <ul class="marks" ng-class="{visible: isVisible($index)}">
+            <li ng-repeat="mark in subject">
+                <span class="date">{{mark.date}}</span>
+                <span class="mark">{{mark.mark}}</span>
+                <span class="caption" ng-class="{tooltip: mark.note.length > 0}" data-tooltip="{{mark.note}}">{{mark.caption}}</span>
+            </li>
+        </ul>
+    </div>
+</div>

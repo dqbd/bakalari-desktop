@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Školář</title>
+        <link rel="stylesheet" href="./assets/css/main.css">
+    </head>
+    <body ng-app="app">
+        <div class="window"></div>
+        <div class="container">
+            <nav ng-include="'./assets/templates/core/nav.html'"></nav>
+            <div class="rest">
+                <div class="toolbar">
+                    <div class="user">
+                        <div class="avatar">
+                        </div>
+                        <div class="text">
+                            <strong>David Duong</strong><span>Student</span>
+                        </div>
+                    </div>
+                    <ul class="buttons" ng-controller="windowCtrl">
+                        <li><a class="close" ng-click="close()" href="#">Zavřít</a></li>
+                        <li><a ng-class="classes" ng-click="max()" href="#">Max/Obnovit</a></li>
+                        <li><a class="min" ng-click="min()" href="#">Minimalizovat</a></li>
+                    </ul>
+                
+                </div>
+                
+                <div class="content">
+                    <div id="data" ui-view></div>
+                    <span class="loading" ng-show="loading"></span>
+                </div>
+            </div>
+        </div>
+        
+
+            
+        <script src="./assets/components/jquery/dist/jquery.js"></script>
+        <script src="./assets/components/angular/angular.js"></script>
+        <script src="./assets/components/angular-ui-router/release/angular-ui-router.js"></script>
+        
+        <script src="./assets/scripts/main.js"></script>
+        <script src="./assets/scripts/services/Window.js"></script>
+        <script src="./assets/scripts/services/HttpService.js"></script>
+        <script src="./assets/scripts/controllers/znamkyCtrl.js"></script>
+        <script src="./assets/scripts/controllers/rozvrhCtrl.js"></script>
+        <script src="./assets/scripts/controllers/suplovaniCtrl.js"></script>
+        <script src="./assets/scripts/controllers/windowCtrl.js"></script>
+        
+        
+    </body>
+</html>

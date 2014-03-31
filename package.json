@@ -1,0 +1,29 @@
+{
+    "name": "skolar",
+    "description": "Notifikace známek, suplování a dalších věcí ze školy",
+    "version": "0.0.1",
+    "main": "./main.html",
+    "author": {
+        "name": "Delold",
+        "email": "david@duong.cz"
+    },
+    "keywords": ["škola", "bakaláři"],
+    "licenses": {
+        "type": "none"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git://github.com/YOUR_LOGIN/SkolarDesktop.git"
+    },
+    "bugs": {
+        "url": "http://github.com/YOUR_LOGIN/SkolarDesktop/issues"
+    },
+    "window": {
+        "toolbar": true,
+        "frame": false,
+        "height": 550,
+        "width": 800,
+        "min_height": 550,
+        "min_width": 600
+    }
+}
