@@ -8,6 +8,7 @@ app.factory("HttpService", ["$http", "$q", "$rootScope", function($http, $q, $ro
     
     return {
         get: function(url, page, user, pass, arg) {
+            //Pro agilní vývoj, používám pouze lokální kopie, nikoliv přístup na serveru
             // options.path = "/BakaParser/"+page+"?user="+user+"&pass="+pass+"&url="+url;
 
             if(page == "znamky") {
@@ -15,7 +16,9 @@ app.factory("HttpService", ["$http", "$q", "$rootScope", function($http, $q, $ro
             } else if (page == "rozvrh") {
                 options.path = "/BakaParser/"+page+"?file=rozvrh-novy-staly.htm";
             }
-            
+
+
+
             var deferred = $http({method: 'GET', url: options.host+options.path, timeout: $rootScope.canceler.promise});
 
             return deferred;

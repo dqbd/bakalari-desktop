@@ -2,7 +2,7 @@
     {{meg}}
     <div class="subject" ng-repeat="subject in data.znamky">
         <div class="info" ng-click="toggleItem($index)">
-            <div class="icon">{{shorten(data.predmety[$index])}}</div>
+            <div class="icon" ng-style="assignIcon(data.predmety[$index])">{{shorten(data.predmety[$index])}}</div>
             <header>
                 <h1>{{data.predmety[$index]}}</h1>
                 <h2>Poslední známka: 5!</h2>

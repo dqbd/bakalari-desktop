@@ -3,12 +3,12 @@ app.controller("znamkyCtrl", ["$scope", "$rootScope", "HttpService", function($s
     HttpService.get("http://intranet.wigym.cz:6040/bakaweb/", "znamky", "971031r", "dfiypam4").then(function(d) {
         $rootScope.loaded = true;
         $scope.data = d.data.data;
-
-        // console.log(d);
     });
 
 
     $scope.shown = [];
+
+    $scope.colors = ["#9B59B6", "#3498DB", "#E74C3C", "#F39C12", "#27AE60", "#2980B9"];
 
     $scope.toggleItem = function(index) {
     	var key = $scope.shown.indexOf(index);
@@ -17,6 +17,18 @@ app.controller("znamkyCtrl", ["$scope", "$rootScope", "HttpService", function($s
     	} else {
     		$scope.shown.push(index);
     	}
+    }
+
+    $scope.assignIcon = function(name) {
+    	var hash = 0;
+    	for(var x = 0; x < name.length; x++) {
+    		num = name.charCodeAt(x);
+    		hash += ((hash << 10) - hash) + num;
+    		hash = hash & hash;
+
+    		
+    	}
+    	return {"background-color": $scope.colors[(hash % $scope.colors.length)]};
     }
 
     $scope.calculateAverage = function(subject) {
