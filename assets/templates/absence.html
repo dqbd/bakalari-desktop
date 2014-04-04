@@ -1,0 +1,46 @@
+<div id="absence">
+	
+	<div id="table">
+		<table>
+			<thead>
+				<tr>
+					<th></th>
+					<th>Předmět</th>
+					<th>Celkem</th>
+					<th>Absence</th>
+					<th>%</th>
+					
+				</tr>
+			</thead>
+			<tbody>
+				<tr ng-repeat="subject in data.absence">
+					<td><span class="color" ng-style="stringToColor(subject.name)"></span></td>
+					<td>{{subject.name}}</td>
+					<td>{{subject.total}}</td>
+					<td>{{subject.missing}}</td>
+					<td>{{calculatePercentage(subject.missing, subject.total)}}%</td>
+					
+				</tr>
+			</tbody>
+		</table>
+	</div>
+
+	<div id="graphs">
+		
+		<div class="graph">
+			<h2>Poměr absence</h2>
+			<canvas ng-if="charts && charts.missing" doughnutchart data="charts.missing" width="300" height="300"></canvas>
+		</div>
+		<div class="graph">
+			<h2>Poměr hodin</h2>
+			<canvas ng-if="charts && charts.total" doughnutchart data="charts.total" width="300" height="300"></canvas>
+		</div>
+		<div class="graph">
+			<h2>Poměr absence ku hodinám</h2>
+			<canvas ng-if="charts && charts.whole" doughnutchart data="charts.whole" width="300" height="300"></canvas>
+		</div>
+		
+	</div>
+
+
+</div>

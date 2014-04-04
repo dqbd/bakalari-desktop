@@ -1,0 +1,9 @@
+<div id="suplovani">
+	<div class="day" ng-repeat="day in data.suplovani">
+		<h2>{{formatDate(day.date)}}</h2>
+		<ul>
+			<li ng-repeat="change in day.changes">{{change}}</li>
+		</ul>
+	</div>
+	
+</div>

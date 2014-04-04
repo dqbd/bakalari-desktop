@@ -1,0 +1,17 @@
+<div id="predmety">
+	
+	<div class="subject" ng-repeat="subject in data.predmety">
+        <div class="info" ng-click="toggleItem($index)">
+            <div class="icon" ng-style="assignIcon(subject[0])">{{shorten(subject[0])}}</div>
+            <header>
+                <h1>{{subject[0]}}</h1>
+                <h2>Vyučující: {{subject[1]}}</h2>
+            </header>
+            
+        </div>
+        
+        <ul class="detail" ng-class="{visible: isVisible($index)}">
+            <li ng-repeat="index in [2, data.hlavicka.length-1] | range"><strong>{{data.hlavicka[index]}}: </strong>{{subject[index]}}</li>
+        </ul>
+    </div>
+</div>

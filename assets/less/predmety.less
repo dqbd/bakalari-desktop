@@ -1,0 +1,68 @@
+#predmety {
+	.subject {
+		.card;
+	}
+
+	.subject .info {
+        box-sizing: border-box;
+        padding: 10px;
+        display: flex;
+        align-items: center;
+        
+        h1, h2 {
+            margin: 0;
+            display: block;
+            font-weight: normal;
+        }
+        
+        h1 {
+            font-size: 17px;
+            font-family: "Roboto Medium";
+            margin-bottom: 2px;
+        }
+        
+        h2 {
+            font-size: 12px;
+            font-family: "Roboto";
+        }
+        
+        header {
+            margin-left: 18px;
+        }
+        
+        .icon {
+            height: 60px;
+            width: 60px;
+            line-height: 60px;
+            display: block;
+            background: green;
+            
+            font-family: "Roboto Light";
+            font-size: 30px;            
+            text-align: center;            
+            color: white;
+        }
+		
+    }
+	
+    .subject .detail {
+		display: none;
+
+
+        background: darken(#F7F7F7, 2%);
+        
+        padding: 10px;
+
+        border-radius: 0px 3px 3px 0px;
+
+        font-size: 14px;
+        margin: 0;
+        
+        list-style: none;
+
+        li { margin-left: 78px; margin-bottom: 5px; }
+        li:last-child { margin-bottom: 0; }
+        
+		&.visible { display: block; }
+    }
+}

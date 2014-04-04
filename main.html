@@ -5,7 +5,7 @@
         <title>Školář</title>
         <link rel="stylesheet" href="./assets/css/main.css">
     </head>
-    <body ng-app="app">
+    <body ng-app="app" ng-class="{loading: !loaded}">
         <div class="window"></div>
         <div class="container">
             <nav ng-include="'./assets/templates/core/nav.html'"></nav>
@@ -19,16 +19,22 @@
                         </div>
                     </div>
                     <ul class="buttons" ng-controller="windowCtrl">
-                        <li><a class="close" ng-click="close()" href="#">Zavřít</a></li>
-                        <li><a ng-class="classes" ng-click="max()" href="#">Max/Obnovit</a></li>
-                        <li><a class="min" ng-click="min()" href="#">Minimalizovat</a></li>
+                        <li><a class="close" ng-click="close()">Zavřít</a></li>
+                        <li><a ng-class="classes" ng-click="max()">Max/Obnovit</a></li>
+                        <li><a class="min" ng-click="min()">Minimalizovat</a></li>
                     </ul>
                 
                 </div>
                 
                 <div class="content">
-                    <div id="data" ui-view></div>
-                    <span class="loading" ng-show="loading"></span>
+                    <div id="data" ng-show="loaded" ui-view></div>
+                    <div class="loading" ng-show="!loaded">
+                        <div class="bouncer">
+                            <div class="bounce1"></div>
+                            <div class="bounce2"></div>
+                            <div class="bounce3"></div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -38,15 +44,24 @@
         <script src="./assets/components/jquery/dist/jquery.js"></script>
         <script src="./assets/components/angular/angular.js"></script>
         <script src="./assets/components/angular-ui-router/release/angular-ui-router.js"></script>
+
+        <script src="./assets/components/chartjs/Chart.min.js"></script>
+        <script src="./assets/components/angles/angles.js"></script>
         
         <script src="./assets/scripts/main.js"></script>
         <script src="./assets/scripts/services/Window.js"></script>
         <script src="./assets/scripts/services/HttpService.js"></script>
-        <script src="./assets/scripts/controllers/znamkyCtrl.js"></script>
-        <script src="./assets/scripts/controllers/rozvrhCtrl.js"></script>
-        <script src="./assets/scripts/controllers/suplovaniCtrl.js"></script>
         <script src="./assets/scripts/controllers/windowCtrl.js"></script>
-        
+
+        <script src="./assets/scripts/controllers/states/znamkyCtrl.js"></script>
+        <script src="./assets/scripts/controllers/states/rozvrhCtrl.js"></script>
+        <script src="./assets/scripts/controllers/states/suplovaniCtrl.js"></script>
+        <script src="./assets/scripts/controllers/states/planCtrl.js"></script>
+        <script src="./assets/scripts/controllers/states/vyukaCtrl.js"></script>
+        <script src="./assets/scripts/controllers/states/predmetyCtrl.js"></script>
+        <script src="./assets/scripts/controllers/states/absenceCtrl.js"></script>
+        <script src="./assets/scripts/controllers/states/ukolyCtrl.js"></script>
+        <script src="./assets/scripts/controllers/states/vysvedceniCtrl.js"></script>
         
     </body>
 </html>

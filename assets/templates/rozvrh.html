@@ -1,3 +1,28 @@
 <div id="rozvrh">
-	div.row.days
+	<div class="row casy">
+		<div class="cell day"></div>
+		<div class="cell" ng-repeat="time in data.casy">
+			<span class="number">{{time.label}}</span>
+			<span class="time">{{time.time.join(" - ")}}</span>
+		</div>
+	</div>
+	<div class="row lessons" ng-repeat="(key, row) in data.rozvrh">
+		<div class="cell day">
+			<span class="name">{{row.day.label}}</span>
+			<span class="date" ng-show="row.day.time">{{row.day.time}}</span>
+		</div>
+
+		<div class="cell" ng-repeat="n in [data.casy.length] | range">
+			<div class="lesson" ng-if="isDefined(key, n)" ng-repeat="lesson in getNumber(key, n).content">
+				<span class="name">{{lesson.name.short}}</span>
+				<span class="teacher">{{lesson.teacher.short}}</span>
+
+				<div class="doubled">
+					<span class="room">{{lesson.place.short}}</span>
+					<span class="group">{{lesson.group.short}}</span>
+				</div>
+				
+			</div>
+		</div>
+	</div>
 </div>

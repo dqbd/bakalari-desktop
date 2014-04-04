@@ -1,0 +1,75 @@
+#rozvrh {
+	
+	.card;
+	
+	overflow: auto;
+
+	.row {
+		min-height: 55px;
+		width: 100%;
+
+		display: flex;
+	}
+
+	.cell {
+		min-width: 70px;
+		flex: 1;
+		box-sizing: border-box;
+
+		background: darken(#F7F7F7, 2%);
+		
+		&.day {
+			min-width: 45px;
+			max-width: 45px;
+		}
+	}
+
+	.row.casy {
+		min-height: 0px;
+		text-align: center;
+	
+		.cell { padding: 8px 0px 5px; background: #F7F7F7; }
+
+		.cell > * { display: block; }
+		span.time { font-size: 10px; }
+		span.number { font-size: 14px; }
+	}
+
+	.row.lessons {
+		.lesson {
+			padding: 10px;
+			position: relative;
+			text-align: center;
+		}
+		.lesson > * { display: block; }
+
+		.lesson .name {
+			font-size: 21px;
+			margin-bottom: 4px;
+		}
+
+		.lesson .teacher, .lesson .room, .lesson .group {
+			font-size: 11px;
+		}
+
+		.lesson .doubled { display: flex; margin-top: 2px; }
+
+		.lesson .room, .lesson .group { flex: 1; }
+
+		.lesson .group:empty, .lesson.room:empty { display: none; }
+		
+		.day {
+			font-size: 15px;
+
+			padding-left: 10px;
+
+			.date { font-size: 12px; }
+
+			display: flex;
+			flex-direction: column;
+			align-items: strech;
+
+			justify-content: center;
+		}
+	}
+}

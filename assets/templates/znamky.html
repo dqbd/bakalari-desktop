@@ -1,11 +1,12 @@
 <div id="znamky">
-    {{meg}}
     <div class="subject" ng-repeat="subject in data.znamky">
         <div class="info" ng-click="toggleItem($index)">
             <div class="icon" ng-style="assignIcon(data.predmety[$index])">{{shorten(data.predmety[$index])}}</div>
             <header>
                 <h1>{{data.predmety[$index]}}</h1>
-                <h2>Poslední známka: 5!</h2>
+                <h2>Poslední známka ({{subject[subject.length - 1].date}}):
+                    <strong ng-if="subject[subject.length - 1].caption.length > 0">{{subject[subject.length - 1].caption}} - </strong>
+                    <span class="mark">{{subject[subject.length - 1].mark}}</span></h2>
             </header>
             <span class="average active" ng-class="getAverageColor(subject)">{{calculateAverage(subject)}}</span>
         </div>

@@ -21,9 +21,9 @@
     "window": {
         "toolbar": true,
         "frame": false,
-        "height": 550,
-        "width": 800,
-        "min_height": 550,
-        "min_width": 600
+        "height": 600,
+        "width": 1200,
+        "min_height": 600,
+        "min_width": 1200
     }
 }
