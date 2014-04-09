@@ -146,21 +146,53 @@ nav {
         z-index: 2;
     }
 
+    
+
+    .userlist {
+        display: none;
+        position: absolute;
+        top: 100%;
+        left: 0;
+
+        background: lighten(@background, 3%);
+
+        width: 100%;
+
+        box-sizing: border-box;
+
+        box-shadow: 2px 2px 2px fadeout(lighten(black, 80%), 50%);
+
+        &:after {
+            display: block;
+            position: absolute;
+            content: "";
+            top: 0; left: 0; right: 0;
+            height: 20px;
+            
+            background-image: -webkit-linear-gradient(fadeout(@background, 40%), transparent);
+ 
+        }
+    }
+
     .user {
-        padding: 0px 20px 0px 20px;
-        -webkit-app-region: no-drag;
-        -webkit-user-select: none;
+        padding: 15px 20px;
+        white-space: nowrap;
         display: flex;
         align-items: center;
         transition: background 0.4s;
         cursor: pointer;
 
+
+
         .avatar {
             width: 35px;
             height: 35px;
+            min-width: 35px;
+            min-height: 35px;
+
             border-radius: 999px;
             overflow: hidden;
-            background: #3498DB;
+            // background: #3498DB;
             margin-right: 8px;
         }
         
@@ -177,6 +209,16 @@ nav {
 
         &:hover {
             background: lighten(@background, 6%);
+        }
+    }
+
+    > .user {
+        padding: 0px 20px 0px 20px;
+        -webkit-app-region: no-drag;
+        -webkit-user-select: none;
+
+        &:hover > .userlist {
+            display: block;
         }
     }
 
@@ -309,3 +351,4 @@ nav {
 @import "predmety.less";
 @import "ukoly.less";
 @import "vyuka.less";
+@import "ukoly.less";

@@ -12,8 +12,8 @@
 			<span class="date" ng-show="row.day.time">{{row.day.time}}</span>
 		</div>
 
-		<div class="cell" ng-repeat="n in [data.casy.length] | range">
-			<div class="lesson" ng-if="isDefined(key, n)" ng-repeat="lesson in getNumber(key, n).content">
+		<div class="cell" ng-repeat="n in [getRange(key)] | range">
+			<div class="lesson" ng-if="isDefined(key, n)" ng-repeat="lesson in getNumber(key, n).content" ng-class="getLessonClass(getNumber(key, n))" title="{{lesson.changes}}">
 				<span class="name">{{lesson.name.short}}</span>
 				<span class="teacher">{{lesson.teacher.short}}</span>
 

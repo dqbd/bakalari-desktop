@@ -1,16 +1,30 @@
 <div id="vyuka">
-	<div class="subject">
-		<div class="icon"></div>
-		<header>
-
-		</header>
+	<div class="subject" ng-if="data">
+		<div class="icon" ng-style="assignIcon(subjects[currentSubject].long)">{{subjects[currentSubject]["short"]}}</div>
+		<h2>{{subjects[currentSubject].long}}</h2>
 	</div>
 
-	<table>
-		<thead>
-			<tr>
-				<th></th>
-			</tr>
-		</thead>
-	</table>
+	<div class="data">
+		<table>
+			<thead>
+				<tr>
+					<th>Č.</th>
+					<th>Datum</th>
+					<th>Hodina</th>
+					<th>Téma</th>
+					<th>Poznámky</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr ng-repeat="lecture in data.vyuka">
+					<td>{{lecture.number}}</td>
+					<td>{{lecture.date}}</td>
+					<td>{{lecture.lesson}}. hodina</td>
+					<td>{{lecture.topic}}</td>
+					<td>{{lecture.detail}}</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+
 </div>

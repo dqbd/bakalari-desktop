@@ -11,11 +11,21 @@
             <nav ng-include="'./assets/templates/core/nav.html'"></nav>
             <div class="rest">
                 <div class="toolbar">
-                    <div class="user">
-                        <div class="avatar">
-                        </div>
+                    <div class="user" ng-controller="userCtrl">
+                        <div class="avatar" ng-if="currentUser" ng-style="color(currentUser.name)"></div>
                         <div class="text">
-                            <strong>David Duong</strong><span>Student</span>
+                            <strong>{{currentUser.name}}</strong><span>{{currentUser.title}}</span>
+                        </div>
+                        <div class="userlist">
+                            
+                            <div class="user" ng-repeat="user in users" ng-click="changeUser(user.id)">
+                                <div class="avatar" ng-style="color(user.name)"></div>
+                                <div class="text">
+                                    <strong>{{user.name}}</strong>
+                                    <span>{{user.title}}</span>
+                                </div>
+                            </div>
+                            
                         </div>
                     </div>
                     <ul class="buttons" ng-controller="windowCtrl">
@@ -38,10 +48,10 @@
                 </div>
             </div>
         </div>
-        
 
             
         <script src="./assets/components/jquery/dist/jquery.js"></script>
+        <script src='./assets/components/underscore/underscore-min.js'></script>
         <script src="./assets/components/angular/angular.js"></script>
         <script src="./assets/components/angular-ui-router/release/angular-ui-router.js"></script>
 
@@ -49,8 +59,15 @@
         <script src="./assets/components/angles/angles.js"></script>
         
         <script src="./assets/scripts/main.js"></script>
+        <script src="./assets/scripts/services/Database.js"></script>
+        <script src="./assets/scripts/services/Users.js"></script>
         <script src="./assets/scripts/services/Window.js"></script>
-        <script src="./assets/scripts/services/HttpService.js"></script>
+        <script src="./assets/scripts/services/Http.js"></script>
+        <script src="./assets/scripts/services/Parser.js"></script>
+        
+        <script src="./assets/scripts/services/Utils.js"></script>
+        
+        <script src="./assets/scripts/controllers/userCtrl.js"></script>
         <script src="./assets/scripts/controllers/windowCtrl.js"></script>
 
         <script src="./assets/scripts/controllers/states/znamkyCtrl.js"></script>
@@ -61,7 +78,7 @@
         <script src="./assets/scripts/controllers/states/predmetyCtrl.js"></script>
         <script src="./assets/scripts/controllers/states/absenceCtrl.js"></script>
         <script src="./assets/scripts/controllers/states/ukolyCtrl.js"></script>
-        <script src="./assets/scripts/controllers/states/vysvedceniCtrl.js"></script>
+        <!-- <script src="./assets/scripts/controllers/states/vysvedceniCtrl.js"></script> -->
         
     </body>
 </html>

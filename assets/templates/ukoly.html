@@ -1,17 +1,15 @@
 <div id="ukoly">
 	
-	<div class="subject" ng-repeat="subject in data.predmety">
-        <div class="info" ng-click="toggleItem($index)">
-            <div class="icon" ng-style="assignIcon(subject[0])">{{shorten(subject[0])}}</div>
-            <header>
-                <h1>{{subject[0]}}</h1>
-                <h2>Vyučující: {{subject[1]}}</h2>
-            </header>
-            
+    <div class="day" ng-repeat="(date, value) in data">
+        <h2>{{formatDate(date)}}</h2>
+        <div class="subjects">
+          <div class="subject" ng-repeat="(subject, array) in value">
+            <h3><span class="icon" ng-style="assignIcon(subject)"></span>{{subject}}</h3>
+            <ul>
+              <li ng-repeat="topic in array">{{topic}}</li>
+            </ul>
+          </div>
         </div>
-        
-        <ul class="detail" ng-class="{visible: isVisible($index)}">
-            <li ng-repeat="index in [2, data.hlavicka.length-1] | range"><strong>{{data.hlavicka[index]}}: </strong>{{subject[index]}}</li>
-        </ul>
     </div>
+
 </div>

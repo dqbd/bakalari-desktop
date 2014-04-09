@@ -289,10 +289,29 @@ nav ul li a.active:after {
   position: relative;
   z-index: 2;
 }
+.toolbar .userlist {
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background: #f0f0f0;
+  width: 100%;
+  box-sizing: border-box;
+  box-shadow: 2px 2px 2px rgba(204, 204, 204, 0.5);
+}
+.toolbar .userlist:after {
+  display: block;
+  position: absolute;
+  content: "";
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 20px;
+  background-image: -webkit-linear-gradient(rgba(232, 232, 232, 0.6), transparent);
+}
 .toolbar .user {
-  padding: 0px 20px 0px 20px;
-  -webkit-app-region: no-drag;
-  -webkit-user-select: none;
+  padding: 15px 20px;
+  white-space: nowrap;
   display: flex;
   align-items: center;
   transition: background 0.4s;
@@ -301,9 +320,10 @@ nav ul li a.active:after {
 .toolbar .user .avatar {
   width: 35px;
   height: 35px;
+  min-width: 35px;
+  min-height: 35px;
   border-radius: 999px;
   overflow: hidden;
-  background: #3498DB;
   margin-right: 8px;
 }
 .toolbar .user .text {
@@ -318,6 +338,14 @@ nav ul li a.active:after {
 }
 .toolbar .user:hover {
   background: #f7f7f7;
+}
+.toolbar > .user {
+  padding: 0px 20px 0px 20px;
+  -webkit-app-region: no-drag;
+  -webkit-user-select: none;
+}
+.toolbar > .user:hover > .userlist {
+  display: block;
 }
 .toolbar .buttons {
   -webkit-app-region: no-drag;
@@ -507,11 +535,13 @@ nav ul li a.active:after {
 #znamky .subject .marks {
   display: none;
   background: #f2f2f2;
+  border-radius: 0px 0px 3px 3px;
+  list-style: none;
+}
+#znamky .subject .marks ul {
   padding: 10px;
-  border-radius: 0px 3px 3px 0px;
   font-size: 14px;
   margin: 0;
-  list-style: none;
 }
 #znamky .subject .marks li {
   display: flex;
@@ -591,12 +621,16 @@ nav ul li a.active:after {
 }
 #rozvrh .cell {
   min-width: 70px;
+  min-height: 55px;
   flex: 1;
   box-sizing: border-box;
+  position: relative;
   background: #f2f2f2;
+  display: flex;
+  flex-direction: column;
 }
 #rozvrh .cell.day {
-  min-width: 45px;
+  min-width: 52px;
   max-width: 45px;
 }
 #rozvrh .row.casy {
@@ -604,8 +638,9 @@ nav ul li a.active:after {
   text-align: center;
 }
 #rozvrh .row.casy .cell {
-  padding: 8px 0px 5px;
+  padding: 8px 5px 5px 0;
   background: #F7F7F7;
+  min-height: 0;
 }
 #rozvrh .row.casy .cell > * {
   display: block;
@@ -620,6 +655,9 @@ nav ul li a.active:after {
   padding: 10px;
   position: relative;
   text-align: center;
+  box-sizing: border-box;
+  flex: 1;
+  min-height: 55px;
 }
 #rozvrh .row.lessons .lesson > * {
   display: block;
@@ -655,6 +693,24 @@ nav ul li a.active:after {
 }
 #rozvrh .row.lessons .day .date {
   font-size: 12px;
+}
+#rozvrh .row.lessons .lesson.changed {
+  background-color: rgba(192, 57, 43, 0.30000000000000004);
+}
+#rozvrh .row.lessons .lesson.free {
+  background-color: rgba(46, 204, 113, 0.30000000000000004);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+#rozvrh .row.lessons .lesson.free > * {
+  display: none;
+}
+#rozvrh .row.lessons .lesson.free .name {
+  display: block;
+}
+#rozvrh .row.lessons .cell.day + .cell:last-child .lesson.free {
+  justify-content: flex-start;
 }
 #suplovani .day {
   border-radius: 3px;
@@ -752,11 +808,6 @@ nav ul li a.active:after {
   display: flex;
   flex-wrap: wrap;
 }
-#plan .events:after {
-  content: "";
-  display: block;
-  clear: both;
-}
 #plan .event {
   border-radius: 3px;
   background-color: #F7F7F7;
@@ -767,6 +818,7 @@ nav ul li a.active:after {
   max-width: 33%;
   margin-right: 10px;
   padding: 15px;
+  font-size: 14px;
   box-sizing: border-box;
 }
 #plan .event h3 {
@@ -778,14 +830,19 @@ nav ul li a.active:after {
 #plan .event p {
   margin-bottom: 0px;
 }
+#plan .event div {
+  margin-bottom: 5px;
+}
+#plan .event div:last-of-type {
+  margin-bottom: 0px;
+}
 #plan .day {
   margin-bottom: 20px;
 }
 #plan .day h2 {
   width: 100%;
   margin-top: 0px;
-  font-size: 30px;
-  font-family: "Roboto Light";
+  font-size: 24px;
   font-weight: normal;
   margin-bottom: 10px;
 }
@@ -851,4 +908,111 @@ nav ul li a.active:after {
 }
 #predmety .subject .detail.visible {
   display: block;
+}
+#ukoly .day {
+  margin-bottom: 20px;
+}
+#ukoly .day h2 {
+  width: 100%;
+  margin-top: 0px;
+  font-size: 24px;
+  font-weight: normal;
+  margin-bottom: 10px;
+}
+#ukoly .day:last-child {
+  margin-bottom: 0;
+}
+#ukoly .subjects {
+  display: flex;
+  flex-wrap: wrap;
+}
+#ukoly .subject {
+  border-radius: 3px;
+  background-color: #F7F7F7;
+  box-shadow: 0px 2px 0px #dbdbdb;
+  margin-bottom: 18px;
+  flex: 1;
+  min-width: 30%;
+  max-width: 33%;
+  margin-right: 10px;
+  padding: 15px;
+  font-size: 14px;
+  box-sizing: border-box;
+}
+#ukoly .subject h3 {
+  margin: 0;
+  line-height: 26px;
+}
+#ukoly .subject ul {
+  margin: 10px 0px 0px;
+  padding: 0px;
+  padding-left: 20px;
+}
+#ukoly .subject h3 .icon {
+  width: 25px;
+  height: 25px;
+  display: inline-block;
+  vertical-align: middle;
+  margin: -2px 7px 0 0;
+}
+#vyuka .subject .icon {
+  width: 50px;
+  height: 50px;
+  font-size: 24px;
+  color: white;
+  display: inline-block;
+  font-family: "Roboto Light";
+  text-align: center;
+  line-height: 50px;
+}
+#vyuka .subject h2 {
+  font-weight: normal;
+  font-size: 24px;
+  display: inline-block;
+  margin: 0 0 30px 10px;
+}
+#vyuka .data {
+  border-radius: 3px;
+  background-color: #F7F7F7;
+  box-shadow: 0px 2px 0px #dbdbdb;
+  margin-bottom: 18px;
+  padding: 15px 0px;
+  box-sizing: border-box;
+}
+#vyuka .data table {
+  width: 100%;
+  border-collapse: collapse;
+}
+#vyuka .data tr {
+  border-bottom: 1px solid #e8e8e8;
+}
+#vyuka .data td,
+#vyuka .data th {
+  font-size: 14px;
+  padding: 8px 5px;
+  vertical-align: top;
+}
+#vyuka .data tbody tr:nth-child(2n+1) {
+  background-color: rgba(232, 232, 232, 0.4);
+}
+#vyuka .data thead tr {
+  border-bottom: 1.5px solid #e8e8e8;
+  text-align: left;
+}
+#vyuka .data thead tr th {
+  padding: 5px 5px 8px;
+}
+#vyuka .data tbody tr:last-child {
+  border: none;
+}
+#vyuka .data td:nth-child(4) {
+  width: 50%;
+}
+#vyuka .data td:first-child,
+#vyuka .data th:first-child {
+  padding-left: 15px;
+}
+#vyuka .data td:last-child,
+#vyuka .data th:last-child {
+  padding-right: 15px;
 }

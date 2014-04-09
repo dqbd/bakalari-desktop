@@ -1,12 +1,24 @@
 app.factory("Window", ["$rootScope", function($rootScope) {   
-    var nw = require("nw.gui"), window = nw.Window.get();
+    var nw = require("nw.gui");
     
     return {
         nw: nw,
-        window: window,
-        listen: function(event, callback) {
+        getWindow: function(url, arg) {
+            if(url) { 
+                arg = (!arg) ? {} : arg;
+                return nw.Window.open("app://skolar/"+url, arg); 
+            }
+            
+            return nw.Window.get();
+        },
+        listen: function(event, callback, window) {
+            if(!window) { window = nw.Window.get(); }
+
             window.on(event, function() {
-               $rootScope.$apply(function() { callback(); });
+                $rootScope.$apply(function() {
+
+                    callback(window); 
+                });
             });
         }
     };

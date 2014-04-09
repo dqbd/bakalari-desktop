@@ -1,3 +1,49 @@
 #ukoly {
-	
+	.day {
+		margin-bottom: 20px;
+		
+		h2 { 
+			width: 100%; 
+			margin-top: 0px; 
+			font-size: 24px;
+			font-weight: normal;
+			margin-bottom: 10px;
+		}
+
+		&:last-child { margin-bottom: 0; }
+	}
+
+	.subjects {
+		display: flex;
+		flex-wrap: wrap;
+	}
+
+	.subject {
+		.card;
+
+		flex: 1; 
+		min-width: 30%;
+		max-width: 33%;
+
+		margin-right: 10px;
+		padding: 15px;
+		
+		font-size: 14px;
+
+		box-sizing: border-box;
+
+		h3 { margin: 0; line-height: 26px;}
+		ul {
+			margin: 10px 0px 0px;
+			padding: 0px;
+			padding-left: 20px;
+		}
+
+		h3 .icon {
+			width: 25px; height: 25px;
+			display: inline-block;
+			vertical-align:middle;
+			margin: -2px 7px 0 0;
+		}
+	}
 }

@@ -1,13 +1,10 @@
-app.controller("absenceCtrl", ["$scope", "$rootScope", "HttpService", function($scope, $rootScope, HttpService) {
+app.controller("absenceCtrl", ["$scope", "$rootScope", "Parser", "Utils", function($scope, $rootScope, Parser, Utils) {
     //load data;
-    HttpService.get("http://intranet.wigym.cz:6040/bakaweb/", "absence", "971031r", "dfiypam4").then(function(d) {
+    Parser.get("absence").then(function(d) {
         $rootScope.loaded = true;
         $scope.data = $scope.sortByMissing(d.data.data);
 
         $scope.charts = $scope.generateCharts($scope.data);
-
-       console.log( $scope.generateCharts($scope.data));
-
     });
 
 
@@ -45,23 +42,12 @@ app.controller("absenceCtrl", ["$scope", "$rootScope", "HttpService", function($
     	return data;
     }
 
-    $scope.stringToColor = function(string) {
-        hash = 0;
-        for(var x = 0; x < string.length; x++) {
-            hash = string.charCodeAt(x) + ((hash << 5) - hash);
-        }
-
-        var color = ((hash>>24)&0xFF).toString(16) +
-            		((hash>>16)&0xFF).toString(16) +
-            		((hash>>8)&0xFF).toString(16) +
-            		(hash&0xFF).toString(16);
-
-        return {"background-color": "#"+color.substr(0, 6)};
-        
-    }
+    
 
 
     $scope.calculatePercentage = function(missing, total) {
     	return ((missing / total) * 100).toFixed(2);
     }
+
+    $scope.stringToColor = Utils.subjectToColor;
 }]);

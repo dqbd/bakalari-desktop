@@ -3,13 +3,13 @@ app.controller("windowCtrl",
 
     $scope.classes = "max";
     
-    $scope.close = function() { Window.window.close(); };
-    $scope.min = function() { Window.window.minimize(); };
+    $scope.close = function() { Window.getWindow().close(); };
+    $scope.min = function() { Window.getWindow().minimize(); };
     $scope.max = function() { 
         if($scope.classes == "max") {
-            Window.window.maximize(); 
+            Window.getWindow().maximize(); 
         } else {
-            Window.window.restore(); 
+            Window.getWindow().restore(); 
         }
     };
     

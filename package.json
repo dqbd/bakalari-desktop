@@ -2,7 +2,7 @@
     "name": "skolar",
     "description": "Notifikace známek, suplování a dalších věcí ze školy",
     "version": "0.0.1",
-    "main": "./main.html",
+    "main": "app://skolar/main.html",
     "author": {
         "name": "Delold",
         "email": "david@duong.cz"
@@ -19,11 +19,12 @@
         "url": "http://github.com/YOUR_LOGIN/SkolarDesktop/issues"
     },
     "window": {
-        "toolbar": true,
+        "toolbar": false,
         "frame": false,
         "height": 600,
         "width": 1200,
         "min_height": 600,
-        "min_width": 1200
+        "min_width": 1200,
+        "show": false
     }
 }

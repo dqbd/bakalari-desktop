@@ -1,6 +1,6 @@
 var app = angular.module("app", ["ui.router", "angles"]);
 
-app.config(["$urlRouterProvider", "$stateProvider", function($urlRouterProvider, $stateProvider) {
+app.config(["$urlRouterProvider", "$stateProvider", "$httpProvider", function($urlRouterProvider, $stateProvider, $httpProvider) {
     $urlRouterProvider.otherwise("/");
 
 
@@ -51,22 +51,116 @@ app.config(["$urlRouterProvider", "$stateProvider", function($urlRouterProvider,
         controller: "ukolyCtrl"
     }); 
 
-    $stateProvider.state("vysvedceni", {
-        url: "/vysvedceni",
-        templateUrl: "assets/templates/vysvedceni.html",
-        controller: "vysvedceniCtrl"
-    }); 
+    // $stateProvider.state("vysvedceni", {
+    //     url: "/vysvedceni",
+    //     templateUrl: "assets/templates/vysvedceni.html",
+    //     controller: "vysvedceniCtrl"
+    // }); 
+    
+    $httpProvider.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded;charset=utf-8';
+    
+    var param = function(obj) {
+        var query = '', name, value, fullSubName, subName, subValue, innerObj, i;
+        
+        for(name in obj) {
+            value = obj[name];
+        
+            if(value instanceof Array) {
+                for(i=0; i<value.length; ++i) {
+                    subValue = value[i];
+                    fullSubName = name + '[' + i + ']';
+                    innerObj = {};
+                    innerObj[fullSubName] = subValue;
+                    query += param(innerObj) + '&';
+                }
+            } else if(value instanceof Object) {
+                for(subName in value) {
+                    subValue = value[subName];
+                    fullSubName = name + '[' + subName + ']';
+                    innerObj = {};
+                    innerObj[fullSubName] = subValue;
+                    query += param(innerObj) + '&';
+                }
+            } else if (value !== undefined && value !== null) {
+                query += encodeURIComponent(name) + '=' + encodeURIComponent(value) + '&';
+            }
+        }
+        return query.length ? query.substr(0, query.length - 1) : query;
+    };
+ 
+    
+    $httpProvider.defaults.transformRequest = [function(data) {
+        return angular.isObject(data) && String(data) !== '[object File]' ? param(data) : data;
+    }];
 }]);
 
-app.run(["$rootScope", "$q", function($rootScope, $q) {
-    $rootScope.$on("$stateChangeStart", function(event, toState, toParams, fromState, fromParams) {
+app.run(["$rootScope", "$q", "Users", "Window", function($rootScope, $q, Users, Window) {
+
+
+    $rootScope.$on("reload", function() {
         if(typeof $rootScope.canceler !== "undefined") {
             $rootScope.canceler.resolve();
         }
         $rootScope.canceler = $q.defer();
         $rootScope.loaded = false;
-        
-    });  
+    }); 
+
+    $rootScope.$on("$stateChangeStart", function(event, toState, toParams, fromState, fromParams) {
+        $rootScope.$broadcast("reload", false);
+    }); 
+
+
+
+    Users.getUsers().then(function(d) {
+        if(d.length <= 0) {
+            Window.getWindow().hide();
+            Window.listen("closed", function(window) {
+                
+
+                //už je tam nějaký účet?
+                Users.getUsers().then(function(d) {
+                    if(d.length <= 0) { //ne, boo.
+                        Window.getWindow().close(true);
+                    } else {
+                        Users.getFirstID().then(function(d) {
+                            localStorage.currentUser = d.min;
+                             $rootScope.$broadcast("reload", true);
+
+                            Window.getWindow().show();
+                        });
+
+
+                    }
+                });
+
+                
+            }, Window.getWindow("newuser.html", {
+                "frame":true, "toolbar":false, "width": 800, "height": 500, "min_width": 800, "min_height": 500, "max_width": 800, "max_height": 500, "focus": true, "show": false
+            }));
+            
+            
+        } else {
+            
+            var loadFirstId = function() {
+                Users.getFirstID().then(function(d) {
+                    localStorage.currentUser = d.min;
+                    $rootScope.$broadcast("reload", true);
+                });
+            }
+
+            if(localStorage.currentUser) {
+                Users.getUser(localStorage.currentUser).then(function(d) {
+                    if(d == null) { loadFirstId(); }
+                });
+            } else {
+                loadFirstId();
+            }
+
+            Window.getWindow().show();
+
+            $rootScope.$broadcast("reload", false);
+        }
+    });
 }]);
 
 app.filter('range', function() {
@@ -88,8 +182,6 @@ app.filter('range', function() {
         for (var i = lowBound; i <= highBound; i++) {
             result.push(i);
         }
-
-        
 
         return result;
     };
