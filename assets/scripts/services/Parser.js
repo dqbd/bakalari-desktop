@@ -3,14 +3,14 @@ app.factory("Parser", ["$http", "$rootScope", "$q", "Database", "Users", functio
     var host = "http://localhost";
     var caches = {
         "znamky": "klasifikace-pokrocily.html",
-        "rozvrh": "rozvrh-novy-volno.htm",
-        "suplovani": "suplovani-zaklad.htm",
+        "rozvrh": "rozvrh-novy-volno.html",
+        "suplovani": "suplovani-zaklad.html",
         "akce": "plan.html",
         "predmety": "predmety.html",
         "absence": "absence.html",
-        "vyuka": "vyuka.htm",
+        "vyuka": "vyuka.html",
         "ukoly": "domaci-ukoly.html",
-        "vysvedceni": "vysvedceni-znamky.htm"
+        "vysvedceni": "vysvedceni-znamky.html"
     };
 
     var accessServer = function(page, args) { 
@@ -31,14 +31,15 @@ app.factory("Parser", ["$http", "$rootScope", "$q", "Database", "Users", functio
 
     var get = function(page, arg) {
         var deferred = $q.defer();
+        var time = Date.getMili
 
-    Database.perform(function(db) {
+        Database.perform(function(db) {
 
-    });
+        });
         
         Users.getCurrentUser().then(function(user) {
-            //return deferred.resolve(getDebug(page));
-            return deferred.resolve(getOnline(page, user.user, user.pass, user.url, arg));
+            return deferred.resolve(getDebug(page));
+            //return deferred.resolve(getOnline(page, user.user, user.pass, user.url, arg));
         });
  
         return deferred.promise;

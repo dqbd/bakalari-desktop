@@ -1,11 +1,19 @@
 app.controller("absenceCtrl", ["$scope", "$rootScope", "Parser", "Utils", function($scope, $rootScope, Parser, Utils) {
-    //load data;
-    Parser.get("absence").then(function(d) {
-        $rootScope.loaded = true;
-        $scope.data = $scope.sortByMissing(d.data.data);
-
-        $scope.charts = $scope.generateCharts($scope.data);
+    $rootScope.$on("reload", function() {
+        $rootScope.loaded = false;
+        $scope.load();
     });
+
+    
+    
+    $scope.load = function() {
+        Parser.get("absence").then(function(d) {
+            $rootScope.loaded = true;
+            $scope.data = $scope.sortByMissing(d.data.data);
+
+            $scope.charts = $scope.generateCharts($scope.data);
+        });
+    }
 
 
     $scope.generateCharts = function(data) {
@@ -50,4 +58,6 @@ app.controller("absenceCtrl", ["$scope", "$rootScope", "Parser", "Utils", functi
     }
 
     $scope.stringToColor = Utils.subjectToColor;
+
+    $scope.load();
 }]);

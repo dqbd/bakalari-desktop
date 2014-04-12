@@ -1,9 +1,18 @@
 app.controller("predmetyCtrl", ["$scope", "$rootScope", "Parser", "Utils", function($scope, $rootScope, Parser, Utils) {
-    //load data;
-    Parser.get("predmety").then(function(d) {
-        $rootScope.loaded = true;
-        $scope.data = d.data.data;
+    
+    $rootScope.$on("reload", function() {
+        $rootScope.loaded = false;
+        $scope.load();
     });
+
+    
+    
+    $scope.load = function() {
+        Parser.get("predmety").then(function(d) {
+            $rootScope.loaded = true;
+            $scope.data = d.data.data;
+        });
+    }
 
     $scope.shown = [];
     
@@ -23,5 +32,7 @@ app.controller("predmetyCtrl", ["$scope", "$rootScope", "Parser", "Utils", funct
     $scope.isVisible = function(index) {
     	return ($scope.shown.indexOf(index) > -1) && ($scope.data.hlavicka.length > 2);
     }
+
+    $scope.load();
 
 }]);

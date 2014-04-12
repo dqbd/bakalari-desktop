@@ -1,7 +1,6 @@
 app.controller("userCtrl", ["$scope", "$rootScope", "$q", "Utils", "Users", function($scope, $rootScope, $q, Utils, Users) {
 
 	$rootScope.$on("reload", function(event, arg) {
-		
 		if(arg == true) {
 			console.log("triggers?");
 			

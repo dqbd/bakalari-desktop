@@ -97,16 +97,13 @@ app.config(["$urlRouterProvider", "$stateProvider", "$httpProvider", function($u
 app.run(["$rootScope", "$q", "Users", "Window", function($rootScope, $q, Users, Window) {
 
 
-    $rootScope.$on("reload", function() {
+
+    $rootScope.$on("$stateChangeStart", function(event, toState, toParams, fromState, fromParams) {
         if(typeof $rootScope.canceler !== "undefined") {
             $rootScope.canceler.resolve();
         }
         $rootScope.canceler = $q.defer();
         $rootScope.loaded = false;
-    }); 
-
-    $rootScope.$on("$stateChangeStart", function(event, toState, toParams, fromState, fromParams) {
-        $rootScope.$broadcast("reload", false);
     }); 
 
 
@@ -150,15 +147,19 @@ app.run(["$rootScope", "$q", "Users", "Window", function($rootScope, $q, Users, 
 
             if(localStorage.currentUser) {
                 Users.getUser(localStorage.currentUser).then(function(d) {
-                    if(d == null) { loadFirstId(); }
+                    if(d == null) { 
+                        loadFirstId(); 
+                    }
+
+                    Window.getWindow().show();
                 });
             } else {
                 loadFirstId();
+                Window.getWindow().show();
             }
 
-            Window.getWindow().show();
-
-            $rootScope.$broadcast("reload", false);
+           
+            
         }
     });
 }]);

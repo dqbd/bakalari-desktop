@@ -1,11 +1,17 @@
 app.controller("planCtrl", ["$scope", "$rootScope", "Parser", "Utils", function($scope, $rootScope, Parser, Utils) {
     
-    Parser.get("akce").then(function(d) {
-        $rootScope.loaded = true;
-        $scope.data = $scope.sortToDay(d.data.data);
-
-        
+    $rootScope.$on("reload", function() {
+        $rootScope.loaded = false;
+        $scope.load();
     });
+
+    
+    $scope.load = function() {
+        Parser.get("akce").then(function(d) {
+            $rootScope.loaded = true;
+            $scope.data = $scope.sortToDay(d.data.data);
+        });
+    }
 
     $scope.sortToDay = function(data) {
     	var result = {};
@@ -20,5 +26,7 @@ app.controller("planCtrl", ["$scope", "$rootScope", "Parser", "Utils", function(
     }
 
     $scope.formatDate = Utils.formatDate;
-
+    
+    $scope.load();
+    
 }]);

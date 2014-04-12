@@ -1,15 +1,20 @@
-app.controller("znamkyCtrl", ["$scope", "$rootScope", "Parser", "Utils", function($scope, $rootScope, Parser, Utils) {
+app.controller("znamkyCtrl", ["$scope", "$rootScope", "$state", "Parser", "Utils", function($scope, $rootScope, $state, Parser, Utils) {
     // "980306r", "7dm3q2cu"
     
-
     $rootScope.$on("reload", function() {
-        Parser.get("znamky").then(function(d) {
-            $rootScope.loaded = true;
-            $scope.data = d.data.data;
-        });
+        $rootScope.loaded = false;
+        $scope.load();
     });
 
+    $scope.load = function() {
+        Parser.get("znamky").then(function(d) {
+            $rootScope.loaded = true;
+            $scope.data = d.data.data;            
+        });
+    };
 
+    
+    $scope.load();
 
     $scope.shown = [];
     
