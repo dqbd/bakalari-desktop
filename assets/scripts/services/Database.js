@@ -9,6 +9,7 @@ app.factory('Database', ['$rootScope', '$q', function($rootScope, $q) {
 		},
 		perform: function(func) {
 			db.serialize(func(db));
+			this.closeDatabase();
 		},
 		closeDatabase: function() {
 			db.close;

@@ -1,13 +1,14 @@
 app.controller("znamkyCtrl", ["$scope", "$rootScope", "$state", "Parser", "Utils", function($scope, $rootScope, $state, Parser, Utils) {
     // "980306r", "7dm3q2cu"
     
-    $rootScope.$on("reload", function() {
-        $rootScope.loaded = false;
-        $scope.load();
+    $rootScope.reload_listener = $rootScope.$on("reload", function(event, arg) {
+        $scope.load(arg.force);
     });
 
-    $scope.load = function() {
-        Parser.get("znamky").then(function(d) {
+    $scope.load = function(force) {
+        $rootScope.loaded = false;
+        
+        Parser.get("znamky", {}, force).then(function(d) {
             $rootScope.loaded = true;
             $scope.data = d.data.data;            
         });

@@ -92,7 +92,8 @@ app.controller('editorCtrl', ['$scope', "$rootScope", "$http", "$timeout", "$q",
 				"bottomright": $scope.map.bounds.southwest.latitude + "," + $scope.map.bounds.southwest.longitude
 			}).then(function(response) {	
 
-				if(response.data.data != null) {
+				if(response.data.data != null && response.data.status != "error") {
+
 					response.data.data.sort(function(x, y) {
 						var x = parseFloat(x.distance), y = parseFloat(y.distance);
 						return (x != y) ? ((x > y) ? -1 : 1) : 0;
@@ -198,10 +199,10 @@ app.controller('userCtrl', ["$scope", "$rootScope", "$location", "Parser", "User
 	$scope.send = function() {
 		$scope.loading = true;
 		Parser.getOnline("login", $scope.user, $scope.pass, $scope.url, null).then(function(data) {
-			console.log(data);
+			
 			if(data.data.status == "ok") {
-
-				Users.insertUser(Users.createObject($scope.user, $scope.pass, $scope.url, data.data.data.name, data.data.data.type)).then(function() {
+				console.log(Users.createObject(null, $scope.user, $scope.pass, $scope.url, data.data.data.name, data.data.data.type));
+				Users.insertUser(Users.createObject(null, $scope.user, $scope.pass, $scope.url, data.data.data.name, data.data.data.type)).then(function() {
 					Window.getWindow().close();
 				});
 				

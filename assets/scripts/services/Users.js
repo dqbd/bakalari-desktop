@@ -23,7 +23,7 @@ app.factory('Users', ['Database', '$q', '$rootScope', function(Database, $q, $ro
 			var deferred = $q.defer();
 
 			Database.perform(function(db) {
-				db.get("SELECT user, pass, url, name, title FROM 'users' WHERE id = ?", id, function(err, result) {
+				db.get("SELECT id, user, pass, url, name, title FROM 'users' WHERE id = ?", id, function(err, result) {
 					deferred.resolve(result);
 				});
 			});	
@@ -33,9 +33,15 @@ app.factory('Users', ['Database', '$q', '$rootScope', function(Database, $q, $ro
 		insertUser: function(user, callback) {
 			var deferred = $q.defer();
 
+			var query = user.user + "', '" + user.pass + "', '" + user.url + "', '" + user.name + "', '" +user.title;
+
+			console.log(query);
+
 			Database.perform(function(db) {
-                db.run("INSERT INTO 'users' (user, pass, url, name, title) VALUES ('"+_.values(user).join("', '")+"')", function(err) {
+
+                db.run("INSERT INTO 'users' (user, pass, url, name, title) VALUES ('"+query+"')", function(err) {
                 	$rootScope.$apply(function() {
+
 	            		if(err != null) {
 	            			deferred.reject(err);
 	            		} else {
@@ -64,8 +70,11 @@ app.factory('Users', ['Database', '$q', '$rootScope', function(Database, $q, $ro
 
 			return deferred.promise;
 		},
-		createObject: function(user, pass, url, name, title) {
+		createObject: function(id, user, pass, url, name, title) {
+
+
 			return {
+				"id": id,
 				"user": user,
 				"pass": pass,
 				"url": url,

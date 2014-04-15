@@ -1,13 +1,14 @@
 app.controller("planCtrl", ["$scope", "$rootScope", "Parser", "Utils", function($scope, $rootScope, Parser, Utils) {
     
-    $rootScope.$on("reload", function() {
-        $rootScope.loaded = false;
-        $scope.load();
+    $rootScope.reload_listener = $rootScope.$on("reload", function(event, arg) {
+        
+        $scope.load(arg.force);
     });
 
     
-    $scope.load = function() {
-        Parser.get("akce").then(function(d) {
+    $scope.load = function(force) {
+        $rootScope.loaded = false;
+        Parser.get("akce", {}, force).then(function(d) {
             $rootScope.loaded = true;
             $scope.data = $scope.sortToDay(d.data.data);
         });
@@ -28,5 +29,4 @@ app.controller("planCtrl", ["$scope", "$rootScope", "Parser", "Utils", function(
     $scope.formatDate = Utils.formatDate;
     
     $scope.load();
-    
 }]);

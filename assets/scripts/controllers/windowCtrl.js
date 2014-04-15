@@ -1,5 +1,5 @@
 app.controller("windowCtrl", 
-    ["$scope", "Window", function($scope, Window) {
+    ["$scope", "$rootScope", "Window", function($scope, $rootScope, Window) {
 
     $scope.classes = "max";
     
@@ -11,6 +11,11 @@ app.controller("windowCtrl",
         } else {
             Window.getWindow().restore(); 
         }
+    };
+
+    $scope.refresh = function() {
+        console.log("broadcast from refresh_button");
+        $rootScope.$broadcast("reload", {force: true});
     };
     
     Window.listen("maximize", function() { $scope.classes = "restore"; });

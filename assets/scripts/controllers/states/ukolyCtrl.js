@@ -1,16 +1,12 @@
 app.controller("ukolyCtrl", ["$scope", "$rootScope", "Parser", "Utils", function($scope, $rootScope, Parser, Utils) {
-    //load data;
-    //
-    $rootScope.$on("reload", function() {
-        $rootScope.loaded = false;
-        $scope.load();
+
+    $rootScope.reload_listener = $rootScope.$on("reload", function(event, arg) {
+        $scope.load(arg.force);
     });
 
-    
-    
-    $scope.load = function() {
-
-	    Parser.get("ukoly").then(function(d) {
+    $scope.load = function(force) {
+    	$rootScope.loaded = false;
+        Parser.get("ukoly", {}, force).then(function(d) {
 	        $rootScope.loaded = true;
 	        $scope.data = $scope.sortData(d.data.data);
 	    });

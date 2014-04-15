@@ -1,5 +1,18 @@
 var app = angular.module("app", ["ui.router", "angles"]);
 
+var new_win = {
+    "frame":true,
+    "toolbar":false,
+    "width": 800,
+    "height": 500,
+    "min_width": 800,
+    "min_height": 500,
+    "max_width": 800,
+    "max_height": 500,
+    "focus": true,
+    "show": false
+};
+
 app.config(["$urlRouterProvider", "$stateProvider", "$httpProvider", function($urlRouterProvider, $stateProvider, $httpProvider) {
     $urlRouterProvider.otherwise("/");
 
@@ -102,6 +115,12 @@ app.run(["$rootScope", "$q", "Users", "Window", function($rootScope, $q, Users, 
         if(typeof $rootScope.canceler !== "undefined") {
             $rootScope.canceler.resolve();
         }
+
+        //jelikož angularjs 
+        if(typeof $rootScope.reload_listener !== "undefined") {
+            $rootScope.reload_listener();
+        }
+        
         $rootScope.canceler = $q.defer();
         $rootScope.loaded = false;
     }); 
@@ -121,7 +140,7 @@ app.run(["$rootScope", "$q", "Users", "Window", function($rootScope, $q, Users, 
                     } else {
                         Users.getFirstID().then(function(d) {
                             localStorage.currentUser = d.min;
-                             $rootScope.$broadcast("reload", true);
+                            $rootScope.$broadcast("reload", {user: true});
 
                             Window.getWindow().show();
                         });
@@ -130,10 +149,7 @@ app.run(["$rootScope", "$q", "Users", "Window", function($rootScope, $q, Users, 
                     }
                 });
 
-                
-            }, Window.getWindow("newuser.html", {
-                "frame":true, "toolbar":false, "width": 800, "height": 500, "min_width": 800, "min_height": 500, "max_width": 800, "max_height": 500, "focus": true, "show": false
-            }));
+            }, Window.getWindow("newuser.html", new_win));
             
             
         } else {
@@ -141,7 +157,7 @@ app.run(["$rootScope", "$q", "Users", "Window", function($rootScope, $q, Users, 
             var loadFirstId = function() {
                 Users.getFirstID().then(function(d) {
                     localStorage.currentUser = d.min;
-                    $rootScope.$broadcast("reload", true);
+                    $rootScope.$broadcast("reload", {user: true});
                 });
             }
 

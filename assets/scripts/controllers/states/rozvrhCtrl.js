@@ -1,27 +1,22 @@
 app.controller("rozvrhCtrl", ["$scope", "$rootScope", "Parser", function($scope, $rootScope, Parser) {
     
-    
-    $scope.load = function() {
-        Parser.get("rozvrh").then(function(d) {
+    $rootScope.reload_listener = $rootScope.$on("reload", function(event, arg) {
+        $rootScope.loaded = false;
+        $scope.load(arg.force);
+    });
+
+    $scope.load = function(force) {
+        $rootScope.loaded = false;
+
+        Parser.get("rozvrh", {}, force).then(function(d) {
             $rootScope.loaded = true;
             $scope.data = d.data.data;
 
         });
     }
 
-    $rootScope.$on("reload", function() {
-        $rootScope.loaded = false;
-        $scope.load();
-    });
-
-    
-    
-
-
     $scope.isDefined = function(day, n) {
-    	
     	return isNaN($scope.getNumber(day,n));
-    	
     }
 
     $scope.getNumber = function(day, n) {

@@ -347,6 +347,13 @@ nav ul li a.active:after {
 .toolbar > .user:hover > .userlist {
   display: block;
 }
+.toolbar .adduser {
+  font-size: 12px;
+  padding: 10px 20px;
+  display: block;
+  background: #e5e5e5;
+  color: #aaa;
+}
 .toolbar .buttons {
   -webkit-app-region: no-drag;
   -webkit-user-select: none;
@@ -394,6 +401,13 @@ nav ul li a.active:after {
 }
 .toolbar .buttons li a.min:before {
   background-position: 0px -51px;
+}
+.toolbar .buttons li:last-child {
+  margin-right: 12px;
+  display: block;
+}
+.toolbar .buttons li a.refresh:before {
+  background-position: 0px -68px;
 }
 .toolbar .buttons li a.close:hover:before,
 .toolbar .buttons li a.min:hover:before,

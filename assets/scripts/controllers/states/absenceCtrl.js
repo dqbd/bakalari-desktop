@@ -1,16 +1,16 @@
 app.controller("absenceCtrl", ["$scope", "$rootScope", "Parser", "Utils", function($scope, $rootScope, Parser, Utils) {
-    $rootScope.$on("reload", function() {
-        $rootScope.loaded = false;
-        $scope.load();
+    
+    $rootScope.reload_listener = $rootScope.$on("reload", function(event, arg) {
+        $scope.load(arg.force);
     });
+    
+    $scope.load = function(force) {
+        $rootScope.loaded = false;
 
-    
-    
-    $scope.load = function() {
-        Parser.get("absence").then(function(d) {
+        Parser.get("absence", {}, force).then(function(d) {
             $rootScope.loaded = true;
-            $scope.data = $scope.sortByMissing(d.data.data);
 
+            $scope.data = $scope.sortByMissing(d.data.data);
             $scope.charts = $scope.generateCharts($scope.data);
         });
     }
@@ -49,8 +49,6 @@ app.controller("absenceCtrl", ["$scope", "$rootScope", "Parser", "Utils", functi
     	
     	return data;
     }
-
-    
 
 
     $scope.calculatePercentage = function(missing, total) {
