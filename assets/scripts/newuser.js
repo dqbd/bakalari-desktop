@@ -182,7 +182,6 @@ app.controller('userCtrl', ["$scope", "$rootScope", "$location", "Parser", "User
 			var search = $location.search();
 
 			if(Object.keys(search).length > 0 && search.url) {
-				console.log(search.url);
 				$scope.url = search.url;
 			}
 
@@ -201,7 +200,6 @@ app.controller('userCtrl', ["$scope", "$rootScope", "$location", "Parser", "User
 		Parser.getOnline("login", $scope.user, $scope.pass, $scope.url, null).then(function(data) {
 			
 			if(data.data.status == "ok") {
-				console.log(Users.createObject(null, $scope.user, $scope.pass, $scope.url, data.data.data.name, data.data.data.type));
 				Users.insertUser(Users.createObject(null, $scope.user, $scope.pass, $scope.url, data.data.data.name, data.data.data.type)).then(function() {
 					Window.getWindow().close();
 				});

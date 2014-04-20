@@ -7,6 +7,10 @@ app.controller("windowCtrl",
     $scope.min = function() { Window.getWindow().minimize(); };
     $scope.max = function() { 
         if($scope.classes == "max") {
+
+            //workaround: https://github.com/rogerwang/node-webkit/issues/1021#issuecomment-34358536
+            
+
             Window.getWindow().maximize(); 
         } else {
             Window.getWindow().restore(); 
@@ -14,7 +18,6 @@ app.controller("windowCtrl",
     };
 
     $scope.refresh = function() {
-        console.log("broadcast from refresh_button");
         $rootScope.$broadcast("reload", {force: true});
     };
     

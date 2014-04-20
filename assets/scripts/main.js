@@ -2,6 +2,7 @@ var app = angular.module("app", ["ui.router", "angles"]);
 
 var new_win = {
     "frame":true,
+    "icon": "./assets/img/logo_hat.png",
     "toolbar":false,
     "width": 800,
     "height": 500,
@@ -13,7 +14,7 @@ var new_win = {
     "show": false
 };
 
-app.config(["$urlRouterProvider", "$stateProvider", "$httpProvider", function($urlRouterProvider, $stateProvider, $httpProvider) {
+app.config(["$urlRouterProvider", "$stateProvider", "$httpProvider", "$sceProvider", function($urlRouterProvider, $stateProvider, $httpProvider, $sceProvider) {
     $urlRouterProvider.otherwise("/");
 
 
@@ -69,6 +70,11 @@ app.config(["$urlRouterProvider", "$stateProvider", "$httpProvider", function($u
     //     templateUrl: "assets/templates/vysvedceni.html",
     //     controller: "vysvedceniCtrl"
     // }); 
+    // 
+    // 
+    
+    
+
     
     $httpProvider.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded;charset=utf-8';
     
@@ -105,6 +111,8 @@ app.config(["$urlRouterProvider", "$stateProvider", "$httpProvider", function($u
     $httpProvider.defaults.transformRequest = [function(data) {
         return angular.isObject(data) && String(data) !== '[object File]' ? param(data) : data;
     }];
+
+    $sceProvider.enabled(false);
 }]);
 
 app.run(["$rootScope", "$q", "Users", "Window", function($rootScope, $q, Users, Window) {
@@ -123,8 +131,13 @@ app.run(["$rootScope", "$q", "Users", "Window", function($rootScope, $q, Users, 
         
         $rootScope.canceler = $q.defer();
         $rootScope.loaded = false;
+
+        //$rootScope.error = {};
     }); 
 
+    if(process.platform === 'win32' && parseFloat(require('os').release(), 10) > 6.1) {
+        Window.getWindow().setMaximumSize(screen.availWidth + 15, screen.availHeight + 14);
+    }
 
 
     Users.getUsers().then(function(d) {

@@ -1,7 +1,7 @@
 @import "fonts.less";
 
 @background: #E8E8E8;
-@sidebar-bg: #34495e;
+@sidebar-bg: #3C3F41;
 
 @sidebar-height: 55px;
 @sidebar-width: 200px;
@@ -156,7 +156,7 @@ nav {
 
         background: lighten(@background, 3%);
 
-        width: 100%;
+        width: auto;
 
         box-sizing: border-box;
 
@@ -310,14 +310,34 @@ nav {
     padding: 20px;
 }
 
-.loading {
+.loading, .error {
     align-items: center;
     justify-content: center;
-    
+    flex-direction: column;
+
     display: flex;
     height: 100%;
     width: 100%;
+}
 
+.error {
+    font-size: 24pt;
+    color: darken(#D8D8D8, 20%);
+
+    h1 { 
+        font-size: 20pt; 
+        font-weight: 400;
+        margin-top: 30px;
+        margin-bottom: 0px; 
+    }
+    p {
+        margin: 0px;
+        margin-top: 10px;
+        font-size: 14pt;
+    }
+}
+
+.loading {
     .bouncer {
         width: 70px;
     }

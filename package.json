@@ -20,6 +20,7 @@
     },
     "window": {
         "toolbar": false,
+        "icon": "./assets/img/logo_hat.png",
         "frame": false,
         "height": 600,
         "width": 1200,

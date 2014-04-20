@@ -34,6 +34,8 @@ app.controller("absenceCtrl", ["$scope", "$rootScope", "Parser", "Utils", functi
         
         var whole = [{value: (missingNum / totalNum), color: "#e74c3c"}, {value: 1 -(missingNum/totalNum), color: "#27ae60"}];
 
+        
+
         return {"missing": missing, "total": total, "whole": whole};
     }
 

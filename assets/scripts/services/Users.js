@@ -32,10 +32,8 @@ app.factory('Users', ['Database', '$q', '$rootScope', function(Database, $q, $ro
 		},
 		insertUser: function(user, callback) {
 			var deferred = $q.defer();
-
 			var query = user.user + "', '" + user.pass + "', '" + user.url + "', '" + user.name + "', '" +user.title;
 
-			console.log(query);
 
 			Database.perform(function(db) {
 
