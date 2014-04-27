@@ -4,24 +4,27 @@
             <div class="icon" ng-style="assignIcon(data.predmety[$index])">{{shorten(data.predmety[$index])}}</div>
             <header>
                 <h1>{{data.predmety[$index]}}</h1>
-                <h2>Poslední známka ({{subject[subject.length - 1].date}}):
-                    <strong ng-if="subject[subject.length - 1].caption.length > 0">{{subject[subject.length - 1].caption}} - </strong>
-                    <span class="mark">{{subject[subject.length - 1].mark}}</span></h2>
+                <h2>Poslední známka ({{subject[0].date}}):
+                    <strong ng-if="subject[0].caption.length > 0">{{subject[0].caption}}: </strong>
+                    <span class="mark">{{subject[0].mark}}</span></h2>
             </header>
             <span class="average active" ng-class="getAverageColor(subject)">{{calculateAverage(subject)}}</span>
         </div>
         
-        <div class="marks" ng-class="{visible: isVisible($index)}">
+        <div class="marks" ng-class="{visible: isVisible($index), point: isPointSystem(subject)}">
             <ul>
                 <li ng-repeat="mark in subject">
                     <span class="date">{{mark.date}}</span>
-                    <span class="mark">{{mark.mark}}</span>
+                    <div class="mark">
+                        <span ng-if="!isPoint(mark.mark)">{{mark.mark}}</span>
+                        <div ng-if="isPoint(mark.mark)">
+                            <span>{{mark.mark.gain}}</span>/<span class="max">{{mark.mark.max}}</span>
+                        </div>
+                    </div>
+                    <span class="weight">váha {{mark.weight}}</span>
                     <span class="caption" ng-class="{tooltip: mark.note.length > 0}" data-tooltip="{{mark.note}}">{{mark.caption}}</span>
                 </li>
             </ul>
-            <div class="chart">
-
-            </div>
         </div>
     </div>
 </div>

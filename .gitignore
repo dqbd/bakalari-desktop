@@ -1,0 +1,8 @@
+nw.exe
+nw.pak
+project.sublime-project
+project.sublime-workspace
+/*.s3db
+.bowerrc
+/*.dll
+/*.log

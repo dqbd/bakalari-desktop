@@ -69,11 +69,12 @@
         display: none;
         background: darken(#F7F7F7, 2%);
         
-        
+        position: relative;
 
         border-radius: 0px 0px 3px 3px;
 
-        
+        width: 100%;
+
         
         list-style: none;
 
@@ -97,8 +98,23 @@
             margin-left: 18px;
             margin-right: 9px;
             font-weight: bold;
+            width: 12px;
+        }
+
+        &.point .mark, &.point .mark span.max {
+            width: 40px;
+            font-weight: 400;
+        }
+
+        &.point .mark span {
+            font-weight: 600;
+        }
 
 
+        .weight {
+            width: 50px;
+            margin-right: 10px;
+            font-style: italic;
         }
 
         .caption {
@@ -148,6 +164,10 @@
 
         &.visible {
             display: block;
+        }
+
+        &:after {
+            .clear;
         }
     }
 

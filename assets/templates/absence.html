@@ -25,16 +25,16 @@
 	</div>
 
 	<div id="graphs">
-		
-		<div class="graph" ng-if="chats.whole[0] > 0">
+		<div class="graph" ng-show="charts.whole[0].value > 0">
 			<h2>Poměr absence</h2>
 			<canvas ng-if="charts && charts.missing" doughnutchart data="charts.missing" width="300" height="300"></canvas>
 		</div>
-		<div class="graph">
+		<div class="graph" ng-show="charts.whole[1].value > 0">
 			<h2>Poměr hodin</h2>
 			<canvas ng-if="charts && charts.total" doughnutchart data="charts.total" width="300" height="300"></canvas>
 		</div>
-		<div class="graph" ng-if="chats.whole[0] > 0">
+
+		<div class="graph" ng-show="charts.whole[0].value > 0">
 			<h2>Poměr absence ku hodinám</h2>
 			<canvas ng-if="charts && charts.whole" doughnutchart data="charts.whole" width="300" height="300"></canvas>
 		</div>

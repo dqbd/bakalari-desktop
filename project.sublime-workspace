@@ -4,6 +4,70 @@
 		"selected_items":
 		[
 			[
+				"backg",
+				"background"
+			],
+			[
+				"$com",
+				"$compileProvider	AngularJS"
+			],
+			[
+				"res",
+				"result"
+			],
+			[
+				"backgr",
+				"background-position"
+			],
+			[
+				"sidebar-",
+				"sidebar-bg"
+			],
+			[
+				"get",
+				"getCurrentUserID"
+			],
+			[
+				"fo",
+				"forEach"
+			],
+			[
+				"is",
+				"isPointSystem"
+			],
+			[
+				"isPoi",
+				"isPointSystem"
+			],
+			[
+				"font-s",
+				"font-style"
+			],
+			[
+				"isN",
+				"isNumericMark"
+			],
+			[
+				"parse",
+				"parseFloat"
+			],
+			[
+				"to",
+				"toUpperCase"
+			],
+			[
+				"getDatabase",
+				"getDatabaseVersion"
+			],
+			[
+				"re",
+				"require"
+			],
+			[
+				"event",
+				"events"
+			],
+			[
 				"$sc",
 				"$sceProvider	AngularJS(DI)"
 			],
@@ -18,10 +82,6 @@
 			[
 				"c",
 				"connected"
-			],
-			[
-				"res",
-				"resolve"
 			],
 			[
 				"de",
@@ -50,10 +110,6 @@
 			[
 				"cons",
 				"constructHash"
-			],
-			[
-				"re",
-				"resolve"
 			],
 			[
 				"fun",
@@ -180,10 +236,6 @@
 				"margin-bottom"
 			],
 			[
-				"get",
-				"getMonth()"
-			],
-			[
 				"inl",
 				"inline-block"
 			],
@@ -236,26 +288,26 @@
 	"buffers":
 	[
 		{
-			"file": "assets/scripts/services/Parser.js",
+			"file": "assets/scripts/services/Progress.js",
 			"settings":
 			{
-				"buffer_size": 5472,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "assets/less/main.less",
-			"settings":
-			{
-				"buffer_size": 7894,
+				"buffer_size": 673,
 				"line_ending": "Windows"
 			}
 		},
 		{
-			"file": "assets/scripts/main.js",
+			"file": "assets/scripts/services/Options.js",
 			"settings":
 			{
-				"buffer_size": 6398,
+				"buffer_size": 724,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "assets/scripts/controllers/states/optionsCtrl.js",
+			"settings":
+			{
+				"buffer_size": 149,
 				"line_ending": "Windows"
 			}
 		},
@@ -263,31 +315,65 @@
 			"file": "main.html",
 			"settings":
 			{
-				"buffer_size": 4703,
+				"buffer_size": 4891,
 				"line_ending": "Windows"
 			}
 		},
 		{
-			"file": "assets/scripts/controllers/windowCtrl.js",
+			"contents": "Searching 30 files for \"broadcast\" (case sensitive)\n\nC:\\Xampp\\htdocs\\Skolar\\SkolarDesktop\\SkolarDesktop\\assets\\scripts\\main.js:\n  112                          Users.getFirstID().then(function(d) {\n  113                              Users.setCurrentUser(d.min);\n  114:                             $rootScope.$broadcast(\"reload\", {user: true});\n  115  \n  116                              Window.getWindow().show();\n  ...\n  129                  Users.getFirstID().then(function(d) {\n  130                      localStorage.currentUser = d.min;\n  131:                     $rootScope.$broadcast(\"reload\", {user: true});\n  132                  });\n  133              }\n\nC:\\Xampp\\htdocs\\Skolar\\SkolarDesktop\\SkolarDesktop\\assets\\scripts\\newuser.js:\n   53          $rootScope.canceler = $q.defer();\n   54  \n   55: 		$rootScope.$broadcast(\"url\", $location.path());\n   56  \n   57  		\n   58: 		//$rootScope.$broadcast(\"url\", \"/adduser\");\n   59      });\n   60  \n\nC:\\Xampp\\htdocs\\Skolar\\SkolarDesktop\\SkolarDesktop\\assets\\scripts\\controllers\\sidebarCtrl.js:\n    3  	$scope.refresh = function() {\n    4  		console.log(\"click\");\n    5:         $rootScope.$broadcast(\"reload\", {force: true});\n    6      };\n    7  \n\nC:\\Xampp\\htdocs\\Skolar\\SkolarDesktop\\SkolarDesktop\\assets\\scripts\\controllers\\userCtrl.js:\n   22  		Users.setCurrentUser(id);\n   23  \n   24: 		$rootScope.$broadcast(\"reload\", {user: true});		\n   25  	};\n   26  \n   ..\n   45  					if(data.min != null) {\n   46  						Users.setCurrentUser(data.min);\n   47: 						$rootScope.$broadcast(\"reload\", {user: true});	\n   48  					} else {\n   49  						//TODO: upravit tady tohle\n   ..\n   53  \n   54  			} else {\n   55: 				$rootScope.$broadcast(\"reload\", {user: true});	\n   56  			}\n   57  \n   ..\n   67  		Users.getCurrentUser().then(function(user) {\n   68  			Window.listen(\"closed\", function(window) {\n   69: 	            $rootScope.$broadcast(\"reload\", {user: true});\n   70  	        }, Window.getWindow(\"newuser.html#/adduser?url=\"+user.url, new_win))\n   71  		})\n\nC:\\Xampp\\htdocs\\Skolar\\SkolarDesktop\\SkolarDesktop\\assets\\scripts\\min\\main.min.js:\n    1: var app=angular.module(\"app\",[\"ui.router\",\"angles\"]),new_win={frame:!0,icon:\"./assets/img/logo_hat.png\",toolbar:!1,width:800,height:500,min_width:800,min_height:500,max_width:800,max_height:500,focus:!0,show:!1},pages=[{name:\"znamky\",title:\"Známky\",show:!0},{name:\"rozvrh\",title:\"Rozvrh\",show:!0},{name:\"suplovani\",title:\"Suplování\",show:!0},{name:\"plan\",title:\"Plán akcí\",show:!0},{name:\"predmety\",title:\"Předměty\",show:!0},{name:\"vyuka\",title:\"Výuka\",show:!0},{name:\"absence\",title:\"Absence\",show:!0},{name:\"ukoly\",title:\"Domácí úkoly\",show:!0},{name:\"options\",title:\"Nastavení\",show:!1}];app.config([\"$urlRouterProvider\",\"$stateProvider\",\"$httpProvider\",\"$compileProvider\",function(e,t,n,o){e.otherwise(\"/znamky\"),pages.forEach(function(e){t.state(e.name,{url:\"/\"+e.name,templateUrl:\"assets/templates/\"+e.name+\".html\",controller:e.name+\"Ctrl\"})}),n.defaults.headers.post[\"Content-Type\"]=\"application/x-www-form-urlencoded;charset=utf-8\";var r=function(e){var t,n,o,a,i,s,l,c=\"\";for(t in e)if(n=e[t],n instanceof Array)for(l=0;l<n.length;++l)i=n[l],o=t+\"[\"+l+\"]\",s={},s[o]=i,c+=r(s)+\"&\";else if(n instanceof Object)for(a in n)i=n[a],o=t+\"[\"+a+\"]\",s={},s[o]=i,c+=r(s)+\"&\";else void 0!==n&&null!==n&&(c+=encodeURIComponent(t)+\"=\"+encodeURIComponent(n)+\"&\");return c.length?c.substr(0,c.length-1):c};n.defaults.transformRequest=[function(e){return angular.isObject(e)&&\"[object File]\"!==String(e)?r(e):e}],o.imgSrcSanitizationWhitelist(/^\\s*(https?|ftp|mailto|app):/)}]),app.run([\"$rootScope\",\"$q\",\"Users\",\"Window\",\"Progress\",function(e,t,n,o,r){o.getWindow().hide(),e.pages=pages,e.$on(\"$stateChangeStart\",function(){\"undefined\"!=typeof e.canceler&&e.canceler.resolve(),\"undefined\"!=typeof e.reload_listener&&e.reload_listener(),e.canceler=t.defer(),r.showLoading()}),\"win32\"===process.platform&&parseFloat(require(\"os\").release(),10)>6.1&&o.getWindow().setMaximumSize(screen.availWidth+15,screen.availHeight+14),n.getUsers().then(function(t){if(t.length<=0)o.getWindow().hide(),o.listen(\"closed\",function(){n.getUsers().then(function(t){t.length<=0?o.getWindow().close(!0):n.getFirstID().then(function(t){n.setCurrentUser(t.min),e.$broadcast(\"reload\",{user:!0}),o.getWindow().show()})})},o.getWindow(\"newuser.html\",new_win));else{var r=function(){n.getFirstID().then(function(t){localStorage.currentUser=t.min,e.$broadcast(\"reload\",{user:!0})})};localStorage.currentUser?n.getUser(localStorage.currentUser).then(function(e){null==e&&r(),o.getWindow().show()}):(r(),o.getWindow().show())}})}]),app.filter(\"range\",function(){return function(e){var t,n;switch(e.length){case 1:t=0,n=parseInt(e[0])-1;break;case 2:t=parseInt(e[0]),n=parseInt(e[1]);break;default:return e}for(var o=[],r=t;n>=r;r++)o.push(r);return o}}),app.directive(\"ngRightClick\",function(e){return function(t,n,o){var r=e(o.ngRightClick);n.bind(\"contextmenu\",function(e){t.$apply(function(){e.preventDefault(),r(t,{$event:e})})})}});\n\n11 matches across 5 files\n\n\nSearching 30 files for \"broadcast\" (case sensitive)\n\nC:\\Xampp\\htdocs\\Skolar\\SkolarDesktop\\SkolarDesktop\\assets\\scripts\\main.js:\n  112                          Users.getFirstID().then(function(d) {\n  113                              Users.setCurrentUser(d.min);\n  114:                             $rootScope.$broadcast(\"reload\", {user: true});\n  115  \n  116                              Window.getWindow().show();\n  ...\n  129                  Users.getFirstID().then(function(d) {\n  130                      localStorage.currentUser = d.min;\n  131:                     $rootScope.$broadcast(\"reload\", {user: true});\n  132                  });\n  133              }\n\nC:\\Xampp\\htdocs\\Skolar\\SkolarDesktop\\SkolarDesktop\\assets\\scripts\\newuser.js:\n   53          $rootScope.canceler = $q.defer();\n   54  \n   55: 		$rootScope.$broadcast(\"url\", $location.path());\n   56  \n   57  		\n   58: 		//$rootScope.$broadcast(\"url\", \"/adduser\");\n   59      });\n   60  \n\nC:\\Xampp\\htdocs\\Skolar\\SkolarDesktop\\SkolarDesktop\\assets\\scripts\\controllers\\sidebarCtrl.js:\n    3  	$scope.refresh = function() {\n    4  		console.log(\"click\");\n    5:         $rootScope.$broadcast(\"reload\", {force: true});\n    6      };\n    7  \n\nC:\\Xampp\\htdocs\\Skolar\\SkolarDesktop\\SkolarDesktop\\assets\\scripts\\controllers\\userCtrl.js:\n   22  		Users.setCurrentUser(id);\n   23  \n   24: 		$rootScope.$broadcast(\"reload\", {user: true});		\n   25  	};\n   26  \n   ..\n   45  					if(data.min != null) {\n   46  						Users.setCurrentUser(data.min);\n   47: 						$rootScope.$broadcast(\"reload\", {user: true});	\n   48  					} else {\n   49  						//TODO: upravit tady tohle\n   ..\n   53  \n   54  			} else {\n   55: 				$rootScope.$broadcast(\"reload\", {user: true});	\n   56  			}\n   57  \n   ..\n   67  		Users.getCurrentUser().then(function(user) {\n   68  			Window.listen(\"closed\", function(window) {\n   69: 	            $rootScope.$broadcast(\"reload\", {user: true});\n   70  	        }, Window.getWindow(\"newuser.html#/adduser?url=\"+user.url, new_win))\n   71  		})\n\nC:\\Xampp\\htdocs\\Skolar\\SkolarDesktop\\SkolarDesktop\\assets\\scripts\\min\\main.min.js:\n    1: var app=angular.module(\"app\",[\"ui.router\",\"angles\"]),new_win={frame:!0,icon:\"./assets/img/logo_hat.png\",toolbar:!1,width:800,height:500,min_width:800,min_height:500,max_width:800,max_height:500,focus:!0,show:!1},pages=[{name:\"znamky\",title:\"Známky\",show:!0},{name:\"rozvrh\",title:\"Rozvrh\",show:!0},{name:\"suplovani\",title:\"Suplování\",show:!0},{name:\"plan\",title:\"Plán akcí\",show:!0},{name:\"predmety\",title:\"Předměty\",show:!0},{name:\"vyuka\",title:\"Výuka\",show:!0},{name:\"absence\",title:\"Absence\",show:!0},{name:\"ukoly\",title:\"Domácí úkoly\",show:!0},{name:\"options\",title:\"Nastavení\",show:!1}];app.config([\"$urlRouterProvider\",\"$stateProvider\",\"$httpProvider\",\"$compileProvider\",function(e,t,n,o){e.otherwise(\"/znamky\"),pages.forEach(function(e){t.state(e.name,{url:\"/\"+e.name,templateUrl:\"assets/templates/\"+e.name+\".html\",controller:e.name+\"Ctrl\"})}),n.defaults.headers.post[\"Content-Type\"]=\"application/x-www-form-urlencoded;charset=utf-8\";var r=function(e){var t,n,o,a,i,s,l,c=\"\";for(t in e)if(n=e[t],n instanceof Array)for(l=0;l<n.length;++l)i=n[l],o=t+\"[\"+l+\"]\",s={},s[o]=i,c+=r(s)+\"&\";else if(n instanceof Object)for(a in n)i=n[a],o=t+\"[\"+a+\"]\",s={},s[o]=i,c+=r(s)+\"&\";else void 0!==n&&null!==n&&(c+=encodeURIComponent(t)+\"=\"+encodeURIComponent(n)+\"&\");return c.length?c.substr(0,c.length-1):c};n.defaults.transformRequest=[function(e){return angular.isObject(e)&&\"[object File]\"!==String(e)?r(e):e}],o.imgSrcSanitizationWhitelist(/^\\s*(https?|ftp|mailto|app):/)}]),app.run([\"$rootScope\",\"$q\",\"Users\",\"Window\",\"Progress\",function(e,t,n,o,r){o.getWindow().hide(),e.pages=pages,e.$on(\"$stateChangeStart\",function(){\"undefined\"!=typeof e.canceler&&e.canceler.resolve(),\"undefined\"!=typeof e.reload_listener&&e.reload_listener(),e.canceler=t.defer(),r.showLoading()}),\"win32\"===process.platform&&parseFloat(require(\"os\").release(),10)>6.1&&o.getWindow().setMaximumSize(screen.availWidth+15,screen.availHeight+14),n.getUsers().then(function(t){if(t.length<=0)o.getWindow().hide(),o.listen(\"closed\",function(){n.getUsers().then(function(t){t.length<=0?o.getWindow().close(!0):n.getFirstID().then(function(t){n.setCurrentUser(t.min),e.$broadcast(\"reload\",{user:!0}),o.getWindow().show()})})},o.getWindow(\"newuser.html\",new_win));else{var r=function(){n.getFirstID().then(function(t){localStorage.currentUser=t.min,e.$broadcast(\"reload\",{user:!0})})};localStorage.currentUser?n.getUser(localStorage.currentUser).then(function(e){null==e&&r(),o.getWindow().show()}):(r(),o.getWindow().show())}})}]),app.filter(\"range\",function(){return function(e){var t,n;switch(e.length){case 1:t=0,n=parseInt(e[0])-1;break;case 2:t=parseInt(e[0]),n=parseInt(e[1]);break;default:return e}for(var o=[],r=t;n>=r;r++)o.push(r);return o}}),app.directive(\"ngRightClick\",function(e){return function(t,n,o){var r=e(o.ngRightClick);n.bind(\"contextmenu\",function(e){t.$apply(function(){e.preventDefault(),r(t,{$event:e})})})}});\n\n11 matches across 5 files\n",
 			"settings":
 			{
-				"buffer_size": 830,
+				"buffer_size": 10054,
+				"line_ending": "Windows",
+				"name": "Find Results",
+				"scratch": true
+			}
+		},
+		{
+			"file": "assets/scripts/controllers/userCtrl.js",
+			"settings":
+			{
+				"buffer_size": 1885,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "assets/scripts/controllers/sidebarCtrl.js",
+			"settings":
+			{
+				"buffer_size": 257,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "assets/scripts/newuser.js",
+			"settings":
+			{
+				"buffer_size": 6028,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "assets/scripts/main.js",
+			"settings":
+			{
+				"buffer_size": 6163,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "assets/scripts/controllers/states/rozvrhCtrl.js",
+			"settings":
+			{
+				"buffer_size": 1696,
 				"line_ending": "Unix"
 			}
 		},
 		{
-			"file": "assets/less/znamky.less",
+			"file": "assets/scripts/services/Parser.js",
 			"settings":
 			{
-				"buffer_size": 3327,
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "package.json",
-			"settings":
-			{
-				"buffer_size": 773,
+				"buffer_size": 6297,
 				"line_ending": "Unix"
 			}
 		}
@@ -299,8 +385,48 @@
 		"selected_items":
 		[
 			[
+				"re",
+				"File: Rename"
+			],
+			[
+				"move",
+				"File: Move"
+			],
+			[
+				"new",
+				"File: New File Relative to Current View"
+			],
+			[
 				"rename",
 				"File: Rename"
+			],
+			[
+				"new ",
+				"File: New File Relative to Current View"
+			],
+			[
+				"git com",
+				"Git: Commit"
+			],
+			[
+				"git",
+				"Git: Commit"
+			],
+			[
+				"git commit",
+				"Git: Commit"
+			],
+			[
+				"git c",
+				"Git: Commit"
+			],
+			[
+				"git status",
+				"Git: Status"
+			],
+			[
+				"git add",
+				"Git: Add..."
 			],
 			[
 				"packa",
@@ -311,16 +437,8 @@
 				"Git: Commit"
 			],
 			[
-				"git add",
-				"Git: Add..."
-			],
-			[
 				"git sta",
 				"Git: Status"
-			],
-			[
-				"git",
-				"Git: Commit"
 			],
 			[
 				"package",
@@ -359,14 +477,6 @@
 				"Git: Push"
 			],
 			[
-				"git commit",
-				"Git: Commit"
-			],
-			[
-				"git status",
-				"Git: Status"
-			],
-			[
 				"GIT status",
 				"Git: Status"
 			],
@@ -381,10 +491,6 @@
 			[
 				"newfi",
 				"File: New File Relative to Current View"
-			],
-			[
-				"new",
-				"File: New View into File"
 			],
 			[
 				"new fi",
@@ -451,7 +557,7 @@
 				"Set Syntax: PHP"
 			]
 		],
-		"width": 472.0
+		"width": 512.0
 	},
 	"console":
 	{
@@ -472,63 +578,90 @@
 	},
 	"file_history":
 	[
-		"/C/Xampp/htdocs/Skolar/SkolarDesktop/SkolarDesktop/debug.log",
-		"/C/Xampp/htdocs/Skolar/SkolarDesktop/SkolarDesktop/.bowerrc",
-		"/C/Xampp/htdocs/Skolar/SkolarDesktop/SkolarDesktop/assets/fonts/Roboto/Roboto-MediumItalic-webfont.svg",
-		"/C/Xampp/htdocs/Skolar/SkolarDesktop/SkolarDesktop/assets/less/suplovani.less",
-		"/C/Xampp/htdocs/Skolar/SkolarDesktop/SkolarDesktop/node_modules/sqlite3/lib/trace.js",
-		"/C/Xampp/htdocs/Skolar/SkolarDesktop/SkolarDesktop/node_modules/sqlite3/.travis.yml",
-		"/C/Xampp/htdocs/Skolar/SkolarDesktop/SkolarDesktop/main.html",
-		"/C/Xampp/htdocs/Skolar/SkolarDesktop/SkolarDesktop/assets/scripts/controllers/userCtrl.js",
-		"/C/Xampp/htdocs/Skolar/SkolarDesktop/SkolarDesktop/package.json",
-		"/C/Xampp/htdocs/Skolar/SkolarDesktop/SkolarDesktop/assets/scripts/services/Error.js",
-		"/C/Xampp/htdocs/Skolar/SkolarDesktop/SkolarDesktop/newuser.html",
-		"/C/Xampp/htdocs/Skolar/SkolarDesktop/SkolarDesktop/assets/scripts/controllers/windowCtrl.js",
+		"/C/Xampp/htdocs/Skolar/SkolarDesktop/SkolarDesktop/assets/templates/rozvrh.html",
+		"/C/Xampp/htdocs/Skolar/SkolarDesktop/SkolarDesktop/assets/templates/znamky.html",
+		"/C/Xampp/htdocs/Skolar/SkolarDesktop/SkolarDesktop/assets/templates/sidebar.html",
+		"/C/Xampp/htdocs/Skolar/SkolarDesktop/SkolarDesktop/assets/css/main.css",
 		"/C/Xampp/htdocs/Skolar/SkolarDesktop/SkolarDesktop/assets/less/main.less",
+		"/C/Xampp/htdocs/Skolar/SkolarDesktop/SkolarDesktop/assets/scripts/services/Error.js",
+		"/C/Xampp/htdocs/Skolar/SkolarDesktop/SkolarDesktop/main.html",
+		"/C/Xampp/htdocs/Skolar/SkolarDesktop/SkolarDesktop/assets/scripts/services/Options.js",
+		"/C/Xampp/htdocs/Skolar/SkolarDesktop/SkolarDesktop/assets/templates/options.html",
+		"/C/Xampp/htdocs/Skolar/SkolarDesktop/SkolarDesktop/assets/less/options.less",
+		"/C/Xampp/htdocs/Skolar/SkolarDesktop/SkolarDesktop/assets/scripts/controllers/states/optionsCtrl.js",
+		"/C/Xampp/htdocs/Skolar/SkolarDesktop/SkolarDesktop/assets/scripts/controllers/sidebarCtrl.js",
+		"/C/Xampp/htdocs/Skolar/SkolarDesktop/SkolarDesktop/assets/templates/core/nav.html",
 		"/C/Xampp/htdocs/Skolar/SkolarDesktop/SkolarDesktop/assets/scripts/main.js",
-		"/C/Xampp/htdocs/Skolar/SkolarDesktop/SkolarDesktop/assets/scripts/services/Window.js",
+		"/C/Xampp/htdocs/Skolar/SkolarDesktop/SkolarDesktop/assets/scripts/services/Users.js",
+		"/C/Xampp/htdocs/Skolar/SkolarDesktop/SkolarDesktop/package.json",
+		"/C/Xampp/htdocs/Skolar/SkolarDesktop/SkolarDesktop/node_modules/sqlite3/lib/index.js",
+		"/C/Xampp/htdocs/Skolar/SkolarDesktop/SkolarDesktop/assets/scripts/services/Parser.js",
+		"/C/Xampp/htdocs/Skolar/SkolarDesktop/SkolarDesktop/assets/less/znamky.less",
+		"/C/Xampp/htdocs/Skolar/SkolarDesktop/SkolarDesktop/assets/img/svg/znamky.svg",
+		"/C/Xampp/htdocs/Skolar/SkolarDesktop/SkolarDesktop/assets/scripts/controllers/states/znamkyCtrl.js",
+		"/C/Xampp/htdocs/Skolar/SkolarDesktop/SkolarDesktop/assets/fonts/Roboto/Roboto-MediumItalic-webfont.svg",
+		"/C/Xampp/htdocs/Skolar/SkolarDesktop/SkolarDesktop/assets/scripts/controllers/userCtrl.js",
+		"/C/Xampp/htdocs/Skolar/SkolarDesktop/SkolarDesktop/assets/scripts/services/Utils.js",
+		"/C/Xampp/htdocs/Skolar/SkolarDesktop/SkolarDesktop/data.1.s3db",
+		"/C/Xampp/htdocs/Skolar/SkolarDesktop/SkolarDesktop/debug.log",
+		"/C/Xampp/htdocs/Skolar/SkolarDesktop/SkolarDesktop/node_modules/sqlite3/LICENSE",
 		"/C/Xampp/htdocs/Skolar/SkolarDesktop/SkolarDesktop/bower.json",
+		"/C/Xampp/htdocs/Skolar/SkolarDesktop/SkolarDesktop/project.sublime-project",
+		"/C/Xampp/htdocs/Skolar/SkolarDesktop/SkolarDesktop/assets/scripts/controllers/windowCtrl.js",
+		"/C/Xampp/htdocs/Skolar/SkolarDesktop/SkolarDesktop/assets/less/suplovani.less",
+		"/C/Xampp/htdocs/Skolar/SkolarDesktop/SkolarDesktop/assets/components/angular/min/angular.min.js",
+		"/C/Xampp/htdocs/Skolar/SkolarDesktop/SkolarDesktop/newuser.html",
+		"/C/Xampp/htdocs/Skolar/SkolarDesktop/SkolarDesktop/assets/scripts/newuser.js",
+		"/C/Xampp/htdocs/Skolar/SkolarDesktop/SkolarDesktop/assets/less/newuser.less",
+		"/C/Xampp/htdocs/Skolar/SkolarDesktop/SkolarDesktop/assets/css/newuser.css",
+		"/C/Xampp/htdocs/Skolar/SkolarDesktop/SkolarDesktop/assets/img/svg/logo.svg",
+		"/C/Xampp/htdocs/Skolar/SkolarDesktop/SkolarDesktop/assets/components/angular-ui-router/release/angular-ui-router.js",
+		"/C/Xampp/htdocs/Skolar/SkolarDesktop/SkolarDesktop/assets/scripts/services/Window.js",
+		"/C/Xampp/htdocs/Skolar/SkolarDesktop/SkolarDesktop/assets/scripts/controllers/states/planCtrl.js",
+		"/C/Xampp/htdocs/Skolar/SkolarDesktop/SkolarDesktop/assets/img/svg/plan.svg",
+		"/C/Xampp/htdocs/Skolar/SkolarDesktop/SkolarDesktop/assets/templates/plan.html",
+		"/C/Xampp/htdocs/Skolar/SkolarDesktop/SkolarDesktop/assets/less/plan.less",
+		"/C/Xampp/htdocs/Skolar/SkolarDesktop/SkolarDesktop/assets/templates/absence.html",
+		"/C/Xampp/htdocs/Skolar/SkolarDesktop/SkolarDesktop/assets/scripts/controllers/states/predmetyCtrl.js",
+		"/C/Xampp/htdocs/Skolar/SkolarDesktop/SkolarDesktop/assets/scripts/controllers/states/absenceCtrl.js",
+		"/C/Xampp/htdocs/Skolar/SkolarDesktop/SkolarDesktop/assets/img/svg/predmety.svg",
+		"/C/Xampp/htdocs/Skolar/SkolarDesktop/SkolarDesktop/assets/templates/predmety.html",
+		"/C/Xampp/htdocs/Skolar/SkolarDesktop/SkolarDesktop/assets/scripts/controllers/states/suplovaniCtrl.js",
+		"/C/Xampp/htdocs/Skolar/Testers/nguye33zu3",
+		"/C/Xampp/htdocs/Skolar/SkolarDesktop/SkolarDesktop/assets/components/angular/README.html",
+		"/C/Xampp/htdocs/Skolar/SkolarDesktop/SkolarDesktop/assets/templates/suplovani.html",
+		"/C/Xampp/htdocs/Skolar/SkolarDesktop/SkolarDesktop/assets/scripts/services/Database.js",
+		"/C/Xampp/htdocs/Skolar/SkolarDesktop/SkolarDesktop/assets/img/svg/suplovani.svg",
+		"/C/Xampp/htdocs/Skolar/SkolarDesktop/SkolarDesktop/node_modules/sqlite3/lib/trace.js",
+		"/C/Xampp/htdocs/Skolar/SkolarDesktop/SkolarDesktop/data.s3db",
+		"/C/Xampp/htdocs/Skolar/SkolarDesktop/SkolarDesktop/assets/css/plan.css",
+		"/C/Xampp/htdocs/Skolar/SkolarDesktop/SkolarDesktop/assets/less/vyuka.less",
+		"/C/Xampp/htdocs/Skolar/SkolarDesktop/SkolarDesktop/assets/scripts/controllers/states/rozvrhCtrl.js",
+		"/C/Xampp/htdocs/Skolar/SkolarDesktop/SkolarDesktop/assets/img/svg/rozvrh.svg",
+		"/C/Xampp/htdocs/Skolar/SkolarDesktop/SkolarDesktop/assets/less/rozvrh.less",
+		"/C/Xampp/htdocs/Skolar/SkolarDesktop/SkolarDesktop/assets/components/underscore/Rakefile",
+		"/C/Xampp/htdocs/Skolar/SkolarDesktop/SkolarDesktop/assets/scripts/controllers/states/ukolyCtrl.js",
+		"/C/Xampp/htdocs/Skolar/SkolarDesktop/SkolarDesktop/assets/img/svg/komens.svg",
+		"/C/Xampp/htdocs/Skolar/SkolarDesktop/SkolarDesktop/assets/scripts/controllers/states/vysvedceniCtrl.js",
+		"/C/Xampp/htdocs/Skolar/SkolarDesktop/SkolarDesktop/assets/less/absence.less",
+		"/C/Xampp/htdocs/Skolar/SkolarDesktop/SkolarDesktop/.bowerrc",
+		"/C/Xampp/htdocs/Skolar/SkolarDesktop/SkolarDesktop/node_modules/sqlite3/.travis.yml",
 		"/C/Xampp/htdocs/Skolar/SkolarDesktop/SkolarDesktop/node_modules/sqlite3/node_modules/node-pre-gyp/node_modules/tar/lib/buffer-entry.js",
 		"/C/Xampp/htdocs/Skolar/SkolarDesktop/SkolarDesktop/assets/components/mustache/test/_files/bug_11_eating_whitespace.js",
 		"/C/Xampp/htdocs/Skolar/SkolarDesktop/SkolarDesktop/assets/scripts/services/Environment.js",
-		"/C/Xampp/htdocs/Skolar/SkolarDesktop/SkolarDesktop/assets/scripts/newuser.js",
-		"/C/Xampp/htdocs/Skolar/SkolarDesktop/SkolarDesktop/assets/less/newuser.less",
 		"/C/Xampp/htdocs/Skolar/SkolarDesktop/SkolarDesktop/assets/components/mustache/test/_files/reuse_of_enumerables.js",
-		"/C/Xampp/htdocs/Skolar/SkolarDesktop/SkolarDesktop/assets/less/rozvrh.less",
-		"/C/Xampp/htdocs/Skolar/SkolarDesktop/SkolarDesktop/assets/less/znamky.less",
-		"/C/Xampp/htdocs/Skolar/SkolarDesktop/SkolarDesktop/assets/scripts/services/Parser.js",
 		"/C/Xampp/htdocs/Skolar/SkolarDesktop/SkolarDesktop/assets/scripts/services/Http.js",
-		"/C/Xampp/htdocs/Skolar/SkolarDesktop/SkolarDesktop/assets/templates/absence.html",
-		"/C/Xampp/htdocs/Skolar/SkolarDesktop/SkolarDesktop/assets/scripts/controllers/states/absenceCtrl.js",
 		"/C/Xampp/htdocs/Skolar/SkolarDesktop/SkolarDesktop/assets/img/svg/absence.svg",
-		"/C/Xampp/htdocs/Skolar/SkolarDesktop/SkolarDesktop/assets/less/absence.less",
-		"/C/Xampp/htdocs/Skolar/SkolarDesktop/SkolarDesktop/assets/scripts/controllers/states/znamkyCtrl.js",
 		"/C/node-webkit/nw-sublime.bat",
-		"/C/Xampp/htdocs/Skolar/SkolarDesktop/SkolarDesktop/assets/scripts/controllers/states/rozvrhCtrl.js",
-		"/C/Xampp/htdocs/Skolar/SkolarDesktop/SkolarDesktop/assets/scripts/controllers/states/suplovaniCtrl.js",
-		"/C/Xampp/htdocs/Skolar/SkolarDesktop/SkolarDesktop/assets/scripts/controllers/states/ukolyCtrl.js",
-		"/C/Xampp/htdocs/Skolar/SkolarDesktop/SkolarDesktop/assets/scripts/services/Users.js",
-		"/C/Xampp/htdocs/Skolar/SkolarDesktop/SkolarDesktop/assets/scripts/controllers/states/vysvedceniCtrl.js",
 		"/C/Xampp/htdocs/Skolar/SkolarDesktop/SkolarDesktop/assets/scripts/controllers/states/vyukaCtrl.js",
-		"/C/Xampp/htdocs/Skolar/SkolarDesktop/SkolarDesktop/assets/scripts/controllers/states/planCtrl.js",
-		"/C/Xampp/htdocs/Skolar/SkolarDesktop/SkolarDesktop/assets/scripts/controllers/states/predmetyCtrl.js",
-		"/C/Xampp/htdocs/Skolar/SkolarDesktop/SkolarDesktop/assets/scripts/services/Database.js",
-		"/C/Xampp/htdocs/Skolar/SkolarDesktop/SkolarDesktop/assets/img/svg/rozvrh.svg",
-		"/C/Xampp/htdocs/Skolar/SkolarDesktop/SkolarDesktop/assets/templates/rozvrh.html",
-		"/C/Xampp/htdocs/Skolar/SkolarDesktop/SkolarDesktop/assets/img/svg/znamky.svg",
-		"/C/Xampp/htdocs/Skolar/SkolarDesktop/SkolarDesktop/assets/templates/znamky.html",
-		"/C/Xampp/htdocs/Skolar/SkolarDesktop/SkolarDesktop/assets/scripts/services/Utils.js",
 		"/C/Xampp/htdocs/Skolar/SkolarDesktop/SkolarDesktop/assets/components/jquery/src/offset.js",
 		"/C/Xampp/htdocs/Skolar/SkolarDesktop/SkolarDesktop/node_modules/sqlite3/build/Release/obj/global_intermediate/sqlite-autoconf-3080200/aclocal.m4",
-		"/C/Xampp/htdocs/Skolar/SkolarDesktop/SkolarDesktop/assets/templates/plan.html",
-		"/C/Xampp/htdocs/Skolar/SkolarDesktop/SkolarDesktop/assets/less/plan.less",
 		"/C/Xampp/htdocs/Skolar/SkolarDesktop/SkolarDesktop/assets/components/angular-google-maps/Gruntfile.coffee",
 		"/C/Xampp/htdocs/Skolar/SkolarDesktop/SkolarDesktop/assets/components/jquery/src/css/addGetHookIf.js",
 		"/C/Xampp/htdocs/Skolar/SkolarDesktop/SkolarDesktop/assets/components/angular-google-maps/.gitignore",
 		"/C/Xampp/htdocs/Skolar/SkolarDesktop/SkolarDesktop/node_modules/sqlite3/build/Release/obj/global_intermediate/sqlite-autoconf-3080200/tea/pkgIndex.tcl.in",
 		"/C/Xampp/htdocs/Skolar/SkolarDesktop/SkolarDesktop/assets/components/jquery/src/css/hiddenVisibleSelectors.js",
 		"/C/Xampp/htdocs/Skolar/SkolarDesktop/SkolarDesktop/node_modules/sqlite3/node_modules/node-pre-gyp/node_modules/tar/lib/entry.js",
-		"/C/Xampp/htdocs/Skolar/SkolarDesktop/SkolarDesktop/node_modules/sqlite3/LICENSE",
 		"/C/Xampp/htdocs/Skolar/SkolarDesktop/SkolarDesktop/assets/components/angular-google-maps/lib/markerclusterer.js",
 		"/C/Xampp/htdocs/Skolar/SkolarDesktop/SkolarDesktop/assets/less/2e0d7855-c7be-4323-b42e-4582fc1b3dca.dmp",
 		"/C/Xampp/htdocs/Skolar/SkolarDesktop/SkolarDesktop/914c5471-6a7a-4a2d-8958-9d82e63bbc9c.dmp",
@@ -539,15 +672,11 @@
 		"/C/Xampp/htdocs/Skolar/SkolarDesktop/SkolarDesktop/node_modules/sqlite3/node_modules/node-pre-gyp/node_modules/aws-sdk/node_modules/xml2js/node_modules/sax/test/trailing-attribute-no-value.js",
 		"/C/Xampp/htdocs/Skolar/SkolarDesktop/SkolarDesktop/assets/components/jquery/src/attributes/val.js",
 		"/C/Xampp/htdocs/Skolar/SkolarDesktop/SkolarDesktop/build/config.gypi",
-		"/C/Xampp/htdocs/Skolar/SkolarDesktop/SkolarDesktop/assets/css/newuser.css",
 		"/C/Xampp/htdocs/Skolar/SkolarDesktop/SkolarDesktop/node_modules/sqlite3/node_modules/node-pre-gyp/node_modules/aws-sdk/lib/credentials/web_identity_credentials.js",
-		"/C/Xampp/htdocs/Skolar/SkolarDesktop/SkolarDesktop/assets/css/main.css",
-		"/C/Xampp/htdocs/Skolar/SkolarDesktop/SkolarDesktop/assets/img/svg/komens.svg",
 		"/C/Xampp/htdocs/Skolar/SkolarDesktop/SkolarDesktop/node_modules/sqlite3/test/null_error.test.js",
 		"/C/Xampp/htdocs/Skolar/SkolarDesktop/SkolarDesktop/node_modules/sqlite3/node_modules/node-pre-gyp/node_modules/mkdirp/test/umask_sync.js",
 		"/C/Xampp/htdocs/Skolar/SkolarDesktop/SkolarDesktop/node_modules/sqlite3/node_modules/node-pre-gyp/node_modules/aws-sdk/test/util.spec.coffee",
 		"/C/Xampp/htdocs/Skolar/SkolarDesktop/SkolarDesktop/assets/less/ukoly.less",
-		"/C/Xampp/htdocs/Skolar/SkolarDesktop/SkolarDesktop/assets/components/angular-ui-router/release/angular-ui-router.js",
 		"/C/Xampp/htdocs/Skolar/SkolarDesktop/SkolarDesktop/assets/templates/vyuka.html",
 		"/C/Xampp/htdocs/Skolar/SkolarDesktop/SkolarDesktop/assets/components/mustache/test/_files/keys_with_questionmarks.js",
 		"/C/Xampp/htdocs/Skolar/SkolarDesktop/SkolarDesktop/assets/components/mustache/test/context-test.js",
@@ -563,43 +692,20 @@
 		"/C/Xampp/htdocs/Skolar/SkolarDesktop/SkolarDesktop/assets/components/chartjs/samples/polarArea.html",
 		"/C/Xampp/htdocs/Skolar/SkolarDesktop/SkolarDesktop/node_modules/request/LICENSE",
 		"/C/Xampp/htdocs/Skolar/SkolarDesktop/SkolarDesktop/node_modules/request/node_modules/hawk/node_modules/hoek/lib/escape.js",
-		"/C/Xampp/htdocs/Skolar/SkolarDesktop/SkolarDesktop/project.sublime-project",
 		"/C/Xampp/htdocs/Skolar/SkolarDesktop/SkolarDesktop/assets/templates/ukoly.html",
 		"/C/Xampp/htdocs/Skolar/SkolarDesktop/SkolarDesktop/assets/components/mustache/test/helper.js",
 		"/C/Xampp/htdocs/Skolar/SkolarDesktop/SkolarDesktop/node_modules/request/index.js",
 		"/C/Xampp/htdocs/Skolar/SkolarDesktop/SkolarDesktop/assets/components/chartjs/docs/index.html",
 		"/C/Xampp/htdocs/Skolar/SkolarDesktop/SkolarDesktop/assets/scripts/controllers/states/Utils",
-		"/C/Xampp/htdocs/Skolar/SkolarDesktop/SkolarDesktop/assets/css/plan.css",
 		"/C/Xampp/htdocs/Skolar/SkolarDesktop/SkolarDesktop/assets/templates/vysvedceni.html",
-		"/C/Xampp/htdocs/Skolar/SkolarDesktop/SkolarDesktop/assets/templates/core/nav.html",
 		"/C/Xampp/htdocs/Skolar/SkolarDesktop/SkolarDesktop/assets/img/svg/vysvedceni.svg",
-		"/C/Xampp/htdocs/Skolar/SkolarDesktop/SkolarDesktop/assets/less/vyuka.less",
 		"/C/Xampp/htdocs/Skolar/SkolarDesktop/SkolarDesktop/assets/components/mustache/CHANGES",
 		"/C/Xampp/htdocs/Skolar/SkolarDesktop/SkolarDesktop/assets/img/svg/vyuka.svg",
 		"/C/Xampp/htdocs/Skolar/SkolarDesktop/SkolarDesktop/node_modules/request/lib/getSafe.js",
 		"/C/Xampp/htdocs/Skolar/SkolarDesktop/SkolarDesktop/assets/components/chartjs/.gitignore",
 		"/C/Xampp/htdocs/Skolar/SkolarDesktop/SkolarDesktop/node_modules/request/node_modules/form-data/node_modules/combined-stream/node_modules/delayed-stream/test/integration/test-pipe-resumes.js",
 		"/C/Xampp/htdocs/Skolar/SkolarDesktop/SkolarDesktop/node_modules/request/node_modules/tough-cookie/generate-pubsuffix.js",
-		"/C/Xampp/htdocs/Skolar/SkolarDesktop/SkolarDesktop/node_modules/request/node_modules/form-data/node_modules/combined-stream/test/integration/test-unpaused-streams.js",
-		"/C/Xampp/htdocs/Skolar/SkolarDesktop/SkolarDesktop/assets/components/mustache/test/_files/disappearing_whitespace.mustache",
-		"/C/Xampp/htdocs/Skolar/SkolarDesktop/SkolarDesktop/assets/components/mustache/test/_files/disappearing_whitespace.js",
-		"/C/Xampp/htdocs/Skolar/SkolarDesktop/SkolarDesktop/node_modules/request/node_modules/hawk/Makefile",
-		"/C/Xampp/htdocs/Skolar/SkolarDesktop/SkolarDesktop/assets/components/jquery/src/effects.js",
-		"/C/Xampp/htdocs/Skolar/SkolarDesktop/SkolarDesktop/node_modules/request/dns-request.js",
-		"/C/Xampp/htdocs/Skolar/SkolarDesktop/SkolarDesktop/node_modules/request/lib/debug.js",
-		"/C/Xampp/htdocs/Skolar/SkolarDesktop/SkolarDesktop/node_modules/request/lib/optional.js",
-		"/C/Xampp/htdocs/Skolar/SkolarDesktop/SkolarDesktop/assets/templates/predmety.html",
-		"/C/Xampp/htdocs/Skolar/SkolarDesktop/SkolarDesktop/assets/less/predmety.less",
-		"/C/Xampp/htdocs/Skolar/SkolarDesktop/SkolarDesktop/assets/components/mustache/Rakefile",
-		"/C/Xampp/htdocs/Skolar/SkolarDesktop/SkolarDesktop/assets/scripts/controllers/min/znamkyCtrl.min.js",
-		"/C/Xampp/htdocs/Skolar/SkolarDesktop/SkolarDesktop/assets/templates/predmety.css",
-		"/C/Xampp/htdocs/BakaParser/BakaParser/Modules/Bakalari/AkceModule.php",
-		"/C/Xampp/htdocs/Skolar/SkolarDesktop/SkolarDesktop/assets/components/angles/angles.js",
-		"/C/Xampp/htdocs/Skolar/SkolarDesktop/SkolarDesktop/assets/scripts/controllers/ukolyCtrl.js",
-		"/C/Xampp/htdocs/Skolar/SkolarDesktop/SkolarDesktop/assets/scripts/controllers/rozvrhCtrl.js",
-		"/C/Xampp/htdocs/Skolar/SkolarDesktop/SkolarDesktop/assets/scripts/controllers/planCtrl.js",
-		"/C/Xampp/htdocs/Skolar/SkolarDesktop/SkolarDesktop/assets/scripts/controllers/predmetyCtrl.js",
-		"/C/Xampp/htdocs/Skolar/SkolarDesktop/SkolarDesktop/assets/scripts/controllers/vysvedceniCtrl.js"
+		"/C/Xampp/htdocs/Skolar/SkolarDesktop/SkolarDesktop/node_modules/request/node_modules/form-data/node_modules/combined-stream/test/integration/test-unpaused-streams.js"
 	],
 	"find":
 	{
@@ -610,6 +716,7 @@
 		"height": 90.0,
 		"where_history":
 		[
+			"-assets/components/*.*,-node_modules/*.*,*.js",
 			"-assets/components/*.*,-node_modules/*.*",
 			"-assets/components/*.* -node_modules/*.*",
 			"-assets/components/*.*",
@@ -622,6 +729,125 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"$broadcast",
+			"t(\"reload\", {user: true});		\n	};",
+			"$broadcast",
+			"broadcast",
+			"Options",
+			"av",
+			">",
+			"Error",
+			"hideError",
+			"Error",
+			"false",
+			"Error",
+			"Parser",
+			"absenceCtrl",
+			"\"show\"",
+			"show",
+			"\"title\"",
+			"options",
+			"false",
+			"info",
+			"title",
+			"info",
+			"rozvrh",
+			"roazvrh",
+			"rozvrh",
+			"name",
+			"info",
+			"name",
+			"true",
+			"name",
+			"page",
+			"key",
+			"item",
+			"Známky",
+			"\",",
+			", ",
+			"true",
+			"$sceProvider",
+			"znamky",
+			"Známky",
+			"k",
+			"dataset",
+			"()],",
+			"false",
+			"true",
+			"Users",
+			"Error",
+			"user",
+			"lighten",
+			"hover",
+			"options",
+			"block",
+			"layers",
+			"refresh",
+			"false",
+			"windowCtrl",
+			"localhost",
+			"medoify",
+			"removeUser",
+			"event",
+			"gui",
+			".",
+			"date",
+			".",
+			"a",
+			"marks",
+			"data",
+			"names",
+			"ages",
+			"names",
+			"age",
+			"weight",
+			"value",
+			"avg",
+			"gain",
+			"max",
+			"value",
+			"isPoint",
+			"false",
+			"true",
+			"false",
+			"span",
+			"pokrocily",
+			"mark",
+			"auto",
+			"4llyj5gm",
+			"nguye33zu3",
+			"mark",
+			"duong",
+			"arr",
+			"object",
+			"noDiac",
+			"diakritika",
+			"charMapL",
+			"charMapU",
+			": ",
+			"sortBy",
+			"$scope.test",
+			"text",
+			"data",
+			"false",
+			"4llyj5gm",
+			"j5gm",
+			"nguye33zu3",
+			"true",
+			"false",
+			"deferred",
+			"getDatabase",
+			"Database",
+			"LOG",
+			"CONSOLE",
+			"column",
+			"number",
+			"auto",
+			"flex",
+			"content",
+			"4llyj5gm",
+			"nguye33zu3",
+			"Škola",
 			"true",
 			"Database",
 			">\n",
@@ -630,126 +856,7 @@
 			"d",
 			"error",
 			"user",
-			"false",
-			"error",
-			"eee",
-			"resolve",
-			"user",
-			"stacktrace",
-			"Http",
-			"error",
-			"Parser",
-			"status",
-			"user",
-			"status",
-			"user",
-			"err",
-			"result",
-			"err",
-			"resolve",
-			"response",
-			"data",
-			"result",
-			"$q.all",
-			"$q",
-			"result",
-			"google",
-			"host",
-			"return",
-			"rootScope",
-			"data",
-			"true",
-			"e",
-			"promise",
-			"strong",
-			"t",
-			"strong",
-			"horizontal",
-			"vertical",
-			"console.log(",
-			"result",
-			"$rootScope.loaded",
-			"$broadcast",
-			"user",
-			"db",
-			", ",
-			"false",
-			"true",
-			"false",
-			"Window",
-			"div",
-			", ",
-			"$rootScope.$broadcast",
-			"htm",
-			"rozvrh_shortedSubject",
-			"true",
-			"false",
-			"your_field",
-			"your_table",
-			"none",
-			"flex",
-			"block",
-			"loading",
-			"false",
-			"a",
-			"Window",
-			"value",
-			"div",
-			"true",
-			"canceler",
-			"=\"\">",
-			"url",
-			"pass",
-			"user",
-			"text",
-			"name",
-			"url",
-			"school",
-			"false",
-			"$location",
-			"$scope",
-			"712251",
-			"Uživ",
-			"jméno",
-			"<div class=\"column\">\n						<strong class=\"label\">Škola</strong>\n						<div class=\"input\">\n							lol\n						</div>\n					</div>",
-			"div",
-			"span",
-			"p",
-			"o",
-			";\n",
-			"true",
-			"Window",
-			"true",
-			"false",
-			"true",
-			"false",
-			"true",
-			"adduser",
-			"false",
-			"adduser",
-			"u",
-			"true",
-			"map",
-			"darken",
-			"item",
-			"name",
-			"res",
-			"width",
-			"distance",
-			"total",
-			"());\n",
-			"visible('')",
-			"visible",
-			"marker",
-			"self",
-			"this",
-			"t",
-			"argument",
-			"data",
-			"Parser",
-			">\n",
-			"northeast",
-			"$q"
+			"false"
 		],
 		"highlight": true,
 		"in_selection": false,
@@ -771,97 +878,93 @@
 	"groups":
 	[
 		{
-			"selected": 1,
+			"selected": 4,
 			"sheets":
 			[
 				{
 					"buffer": 0,
-					"file": "assets/scripts/services/Parser.js",
+					"file": "assets/scripts/services/Progress.js",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 5472,
+						"buffer_size": 673,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								3220,
-								3220
+								660,
+								660
 							]
 						],
 						"settings":
 						{
 							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true
+							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 1036.0,
+						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 5,
+					"stack_index": 10,
 					"type": "text"
 				},
 				{
 					"buffer": 1,
-					"file": "assets/less/main.less",
+					"file": "assets/scripts/services/Options.js",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 7894,
+						"buffer_size": 724,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								2379,
-								2379
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/LESS/LESS.tmLanguage",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 624.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 0,
-					"type": "text"
-				},
-				{
-					"buffer": 2,
-					"file": "assets/scripts/main.js",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 6398,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								4047,
-								4047
+								715,
+								715
 							]
 						],
 						"settings":
 						{
 							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true
+							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 1482.0,
+						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 4,
+					"stack_index": 7,
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"file": "assets/scripts/controllers/states/optionsCtrl.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 149,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								149,
+								149
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 5,
 					"type": "text"
 				},
 				{
@@ -870,15 +973,15 @@
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 4703,
+						"buffer_size": 4891,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								0,
-								0
+								1872,
+								502
 							]
 						],
 						"settings":
@@ -888,27 +991,272 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 702.0,
+						"translation.y": 169.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 3,
+					"stack_index": 1,
 					"type": "text"
 				},
 				{
 					"buffer": 4,
-					"file": "assets/scripts/controllers/windowCtrl.js",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 830,
+						"buffer_size": 10054,
+						"regions":
+						{
+							"match":
+							{
+								"flags": 112,
+								"regions":
+								[
+									[
+										308,
+										317
+									],
+									[
+										580,
+										589
+									],
+									[
+										820,
+										829
+									],
+									[
+										897,
+										906
+									],
+									[
+										1141,
+										1150
+									],
+									[
+										1355,
+										1364
+									],
+									[
+										1522,
+										1531
+									],
+									[
+										1675,
+										1684
+									],
+									[
+										1876,
+										1885
+									],
+									[
+										4232,
+										4241
+									],
+									[
+										4413,
+										4422
+									],
+									[
+										5336,
+										5345
+									],
+									[
+										5608,
+										5617
+									],
+									[
+										5848,
+										5857
+									],
+									[
+										5925,
+										5934
+									],
+									[
+										6169,
+										6178
+									],
+									[
+										6383,
+										6392
+									],
+									[
+										6550,
+										6559
+									],
+									[
+										6703,
+										6712
+									],
+									[
+										6904,
+										6913
+									],
+									[
+										9260,
+										9269
+									],
+									[
+										9441,
+										9450
+									]
+								],
+								"scope": ""
+							}
+						},
+						"selection":
+						[
+							[
+								6554,
+								6554
+							]
+						],
+						"settings":
+						{
+							"detect_indentation": false,
+							"line_numbers": false,
+							"output_tag": 2,
+							"result_base_dir": "",
+							"result_file_regex": "^([A-Za-z\\\\/<].*):$",
+							"result_line_regex": "^ +([0-9]+):",
+							"scroll_past_end": true,
+							"syntax": "Packages/Default/Find Results.hidden-tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 1248.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 0,
+					"type": "text"
+				},
+				{
+					"buffer": 5,
+					"file": "assets/scripts/controllers/userCtrl.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 1885,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								452,
-								452
+								797,
+								799
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 307.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 2,
+					"type": "text"
+				},
+				{
+					"buffer": 6,
+					"file": "assets/scripts/controllers/sidebarCtrl.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 257,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								167,
+								167
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 3,
+					"type": "text"
+				},
+				{
+					"buffer": 7,
+					"file": "assets/scripts/newuser.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 6028,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								2111,
+								2111
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 316.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 4,
+					"type": "text"
+				},
+				{
+					"buffer": 8,
+					"file": "assets/scripts/main.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 6163,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								4702,
+								4702
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 1382.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 6,
+					"type": "text"
+				},
+				{
+					"buffer": 9,
+					"file": "assets/scripts/controllers/states/rozvrhCtrl.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 1696,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								627,
+								627
 							]
 						],
 						"settings":
@@ -921,29 +1269,29 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 2,
+					"stack_index": 8,
 					"type": "text"
 				},
 				{
-					"buffer": 5,
-					"file": "assets/less/znamky.less",
-					"semi_transient": true,
+					"buffer": 10,
+					"file": "assets/scripts/services/Parser.js",
+					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 3327,
+						"buffer_size": 6297,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								0,
-								0
+								580,
+								580
 							]
 						],
 						"settings":
 						{
-							"syntax": "Packages/LESS/LESS.tmLanguage",
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
 							"tab_size": 4,
 							"translate_tabs_to_spaces": true
 						},
@@ -951,37 +1299,7 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 1,
-					"type": "text"
-				},
-				{
-					"buffer": 6,
-					"file": "package.json",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 773,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								547,
-								547
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/JavaScript/JSON.tmLanguage",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": -0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 6,
+					"stack_index": 9,
 					"type": "text"
 				}
 			]
@@ -1020,7 +1338,7 @@
 	"menu_visible": true,
 	"output.exec":
 	{
-		"height": 111.0
+		"height": 177.0
 	},
 	"output.find_results":
 	{
@@ -1033,7 +1351,7 @@
 	"project": "project.sublime-project",
 	"replace":
 	{
-		"height": 38.0
+		"height": 62.0
 	},
 	"save_all_on_build": true,
 	"select_file":
@@ -1042,40 +1360,196 @@
 		"selected_items":
 		[
 			[
-				".less",
-				"assets\\less\\main.less"
-			],
-			[
-				"main",
-				"main.html"
+				"rozvrh",
+				"assets\\scripts\\controllers\\states\\rozvrhCtrl.js"
 			],
 			[
 				"main.js",
 				"assets\\scripts\\main.js"
 			],
 			[
-				"wind",
-				"assets\\scripts\\controllers\\windowCtrl.js"
+				"main",
+				"main.html"
+			],
+			[
+				"main.",
+				"main.html"
+			],
+			[
+				"option",
+				"assets\\scripts\\controllers\\states\\optionsCtrl.js"
+			],
+			[
+				"er",
+				"assets\\scripts\\services\\Error.js"
+			],
+			[
+				"opti",
+				"assets\\scripts\\controllers\\states\\optionsCtrl.js"
+			],
+			[
+				"mai",
+				"main.html"
 			],
 			[
 				"pack",
 				"package.json"
 			],
 			[
-				"window",
-				"assets\\scripts\\controllers\\windowCtrl.js"
+				"error",
+				"assets\\scripts\\services\\Error.js"
+			],
+			[
+				"znamk",
+				"assets\\templates\\znamky.html"
+			],
+			[
+				"parser",
+				"assets\\scripts\\services\\Parser.js"
+			],
+			[
+				"users",
+				"assets\\scripts\\services\\Users.js"
 			],
 			[
 				"main.less",
 				"assets\\less\\main.less"
 			],
 			[
+				"ma",
+				"main.html"
+			],
+			[
+				"wind",
+				"assets\\scripts\\controllers\\windowCtrl.js"
+			],
+			[
+				"nav.",
+				"assets\\templates\\core\\nav.html"
+			],
+			[
 				"packa",
 				"package.json"
 			],
 			[
-				"main.",
-				"main.html"
+				"newuser",
+				"assets\\scripts\\newuser.js"
+			],
+			[
+				"newus",
+				"newuser.html"
+			],
+			[
+				"znamky",
+				"assets\\scripts\\controllers\\states\\znamkyCtrl.js"
+			],
+			[
+				"utils",
+				"assets\\scripts\\services\\Utils.js"
+			],
+			[
+				"nav",
+				"assets\\templates\\core\\nav.html"
+			],
+			[
+				"window",
+				"assets\\scripts\\controllers\\windowCtrl.js"
+			],
+			[
+				"parse",
+				"assets\\scripts\\services\\Parser.js"
+			],
+			[
+				"plan",
+				"assets\\scripts\\controllers\\states\\planCtrl.js"
+			],
+			[
+				"windo",
+				"assets\\scripts\\services\\Window.js"
+			],
+			[
+				"user",
+				"assets\\scripts\\controllers\\userCtrl.js"
+			],
+			[
+				"windw",
+				"assets\\scripts\\controllers\\windowCtrl.js"
+			],
+			[
+				"abse",
+				"assets\\scripts\\controllers\\states\\absenceCtrl.js"
+			],
+			[
+				"absence",
+				"assets\\templates\\absence.html"
+			],
+			[
+				"uti",
+				"assets\\scripts\\services\\Utils.js"
+			],
+			[
+				"predme",
+				"assets\\scripts\\controllers\\states\\predmetyCtrl.js"
+			],
+			[
+				"znamky.les",
+				"assets\\less\\znamky.less"
+			],
+			[
+				"zna",
+				"assets\\templates\\znamky.html"
+			],
+			[
+				"znam",
+				"assets\\scripts\\controllers\\states\\znamkyCtrl.js"
+			],
+			[
+				"pac",
+				"package.json"
+			],
+			[
+				"err",
+				"assets\\scripts\\services\\Error.js"
+			],
+			[
+				"pars",
+				"assets\\scripts\\services\\Parser.js"
+			],
+			[
+				"suplov",
+				"assets\\scripts\\controllers\\states\\suplovaniCtrl.js"
+			],
+			[
+				"su",
+				"assets\\less\\suplovani.less"
+			],
+			[
+				"sup",
+				"assets\\img\\svg\\suplovani.svg"
+			],
+			[
+				"planctr",
+				"assets\\scripts\\controllers\\states\\planCtrl.js"
+			],
+			[
+				"rozvr",
+				"assets\\templates\\rozvrh.html"
+			],
+			[
+				"plan.ht",
+				"assets\\templates\\plan.html"
+			],
+			[
+				"plan.less",
+				"assets\\less\\plan.less"
+			],
+			[
+				"vyuka.less",
+				"assets\\less\\vyuka.less"
+			],
+			[
+				".less",
+				"assets\\less\\main.less"
 			],
 			[
 				"new",
@@ -1094,26 +1568,6 @@
 				"assets\\scripts\\controllers\\states\\absenceCtrl.js"
 			],
 			[
-				"absence",
-				"assets\\templates\\absence.html"
-			],
-			[
-				"parser",
-				"assets\\scripts\\services\\Parser.js"
-			],
-			[
-				"parse",
-				"assets\\scripts\\services\\Parser.js"
-			],
-			[
-				"rozvr",
-				"assets\\scripts\\controllers\\states\\rozvrhCtrl.js"
-			],
-			[
-				"abse",
-				"assets\\scripts\\controllers\\states\\absenceCtrl.js"
-			],
-			[
 				"zn",
 				"assets\\scripts\\controllers\\states\\znamkyCtrl.js"
 			],
@@ -1122,24 +1576,8 @@
 				"assets\\less\\main.less"
 			],
 			[
-				"users",
-				"assets\\scripts\\services\\Users.js"
-			],
-			[
 				"znamky.c",
 				"assets\\scripts\\controllers\\states\\znamkyCtrl.js"
-			],
-			[
-				"zna",
-				"assets\\less\\znamky.less"
-			],
-			[
-				"plan",
-				"assets\\templates\\plan.html"
-			],
-			[
-				"znamky",
-				"assets\\less\\znamky.less"
 			],
 			[
 				"main.ht",
@@ -1150,32 +1588,12 @@
 				"assets\\scripts\\controllers\\states\\planCtrl.js"
 			],
 			[
-				"znam",
-				"assets\\templates\\znamky.html"
-			],
-			[
 				"znamkyc",
 				"assets\\scripts\\controllers\\states\\znamkyCtrl.js"
 			],
 			[
-				"pac",
-				"package.json"
-			],
-			[
-				"newuser",
-				"newuser.html"
-			],
-			[
-				"utils",
-				"assets\\scripts\\services\\Utils.js"
-			],
-			[
 				"utis",
 				"node_modules\\sqlite3\\node_modules\\node-pre-gyp\\node_modules\\aws-sdk\\test\\util.spec.coffee"
-			],
-			[
-				"uti",
-				"assets\\scripts\\services\\Utils.js"
 			],
 			[
 				"znamkyctrl",
@@ -1190,16 +1608,8 @@
 				"assets\\scripts\\services\\HttpService.js"
 			],
 			[
-				"rozvrh",
-				"assets\\less\\rozvrh.less"
-			],
-			[
 				"ukolyct",
 				"assets\\scripts\\controllers\\states\\ukolyCtrl.js"
-			],
-			[
-				"plan.less",
-				"assets\\less\\plan.less"
 			],
 			[
 				"uko",
@@ -1287,7 +1697,7 @@
 	"show_open_files": false,
 	"show_tabs": true,
 	"side_bar_visible": true,
-	"side_bar_width": 247.0,
+	"side_bar_width": 199.0,
 	"status_bar_visible": true,
 	"template_settings":
 	{

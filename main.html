@@ -8,7 +8,7 @@
     <body ng-app="app" ng-class="{loading: !loaded}">
         <div class="window"></div>
         <div class="container">
-            <nav ng-include="'./assets/templates/core/nav.html'"></nav>
+            <nav ng-include="'./assets/templates/sidebar.html'"></nav>
             <div class="rest">
                 <div class="toolbar">
                     <div class="user" ng-controller="userCtrl">
@@ -17,7 +17,7 @@
                             <strong>{{currentUser.name}}</strong><span>{{currentUser.title}}</span>
                         </div>
                         <div class="userlist">
-                            <div class="user" ng-repeat="user in users" ng-click="changeUser(user.id)">
+                            <div class="user" ng-repeat="user in users" ng-click="changeUser(user.id)" ng-right-click="showMenu($event, user.id)">
                                 <div class="avatar" ng-style="color(user.name)"></div>
                                 <div class="text">
                                     <strong>{{user.name}}</strong>
@@ -31,7 +31,6 @@
                         <li><a class="close" ng-click="close()">Zavřít</a></li>
                         <li><a ng-class="classes" ng-click="max()">Max/Obnovit</a></li>
                         <li><a class="min" ng-click="min()">Minimalizovat</a></li>
-                        <li><a class="refresh" ng-click="refresh()">Obnovit</a></li>
                     </ul>
                 
                 </div>
@@ -46,8 +45,7 @@
                         </div>
                     </div>
                     <div class="error" ng-show="error.show">
-                        <img src="./assets/img/sad.png" ng-if="error.type == 'sad'">
-                        <img src="./assets/img/error.png" ng-if="error.type != 'sad'">
+                        <img src="./assets/img/{{error.type}}.png">
                         <h1>{{error.text}}</h1>
                         <p>{{error.stacktrace}}</p>
                     </div>
@@ -68,13 +66,15 @@
         <script src="./assets/scripts/services/Database.js"></script>
         <script src="./assets/scripts/services/Users.js"></script>
         <script src="./assets/scripts/services/Window.js"></script>
-        <script src="./assets/scripts/services/Error.js"></script>
+        <script src="./assets/scripts/services/Options.js"></script>
+        <script src="./assets/scripts/services/Progress.js"></script>
         <script src="./assets/scripts/services/Parser.js"></script>
         
         <script src="./assets/scripts/services/Utils.js"></script>
         
         <script src="./assets/scripts/controllers/userCtrl.js"></script>
         <script src="./assets/scripts/controllers/windowCtrl.js"></script>
+        <script src="./assets/scripts/controllers/sidebarCtrl.js"></script>
 
         <script src="./assets/scripts/controllers/states/znamkyCtrl.js"></script>
         <script src="./assets/scripts/controllers/states/rozvrhCtrl.js"></script>
@@ -84,6 +84,7 @@
         <script src="./assets/scripts/controllers/states/predmetyCtrl.js"></script>
         <script src="./assets/scripts/controllers/states/absenceCtrl.js"></script>
         <script src="./assets/scripts/controllers/states/ukolyCtrl.js"></script>
+        <script src="./assets/scripts/controllers/states/optionsCtrl.js"></script>
         <!-- <script src="./assets/scripts/controllers/states/vysvedceniCtrl.js"></script> -->
         
     </body>

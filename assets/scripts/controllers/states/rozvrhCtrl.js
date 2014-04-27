@@ -8,10 +8,9 @@ app.controller("rozvrhCtrl", ["$scope", "$rootScope", "Parser", function($scope,
     $scope.load = function(force) {
         $rootScope.loaded = false;
 
-        Parser.get("rozvrh", {}, force).then(function(d) {
+        Parser.get("rozvrh", {"arg": 3}, force).then(function(d) {
             $rootScope.loaded = true;
             $scope.data = d.data.data;
-
         });
     }
 
@@ -24,11 +23,7 @@ app.controller("rozvrhCtrl", ["$scope", "$rootScope", "Parser", function($scope,
     	for(var x = 0; x < $scope.data.rozvrh[day]["lessons"].length; x++) {
     		var item = $scope.data.rozvrh[day]["lessons"][x];
 
-            if(
-                (typeof item.lesson == "object" && n >= item.lesson.begin && n <= (item.lesson.begin + item.lesson.length - 1))
-
-
-                 || parseInt(item["lesson"]) == n) {
+            if((typeof item.lesson == "object" && n >= item.lesson.begin && n <= (item.lesson.begin + item.lesson.length - 1)) || parseInt(item["lesson"]) == n) {
                 return item;
             }
     		

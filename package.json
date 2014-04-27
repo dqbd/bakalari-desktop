@@ -1,13 +1,14 @@
 {
     "name": "skolar",
     "description": "Notifikace známek, suplování a dalších věcí ze školy",
-    "version": "0.0.1",
+    "version": "0.1.4",
     "main": "app://skolar/main.html",
     "author": {
         "name": "Delold",
         "email": "david@duong.cz"
     },
     "keywords": ["škola", "bakaláři"],
+    "database-version": 1,
     "licenses": {
         "type": "none"
     },

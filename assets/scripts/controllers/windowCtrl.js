@@ -17,9 +17,7 @@ app.controller("windowCtrl",
         }
     };
 
-    $scope.refresh = function() {
-        $rootScope.$broadcast("reload", {force: true});
-    };
+    
     
     Window.listen("maximize", function() { $scope.classes = "restore"; });
     Window.listen("unmaximize", function() { $scope.classes = "max"; });

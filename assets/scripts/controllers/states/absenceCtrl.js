@@ -32,7 +32,7 @@ app.controller("absenceCtrl", ["$scope", "$rootScope", "Parser", "Utils", functi
             total.push({value: parseInt(item.total), color: color});
         });
         
-        var whole = [{value: (missingNum / totalNum), color: "#e74c3c"}, {value: 1 -(missingNum/totalNum), color: "#27ae60"}];
+        var whole = [{value: (missingNum / totalNum), color: "#e74c3c"}, {value: 1-(missingNum/totalNum), color: "#27ae60"}];
 
         
 

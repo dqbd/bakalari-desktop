@@ -1,0 +1,14 @@
+<div id="options">
+	<h1>Nastavení</h1>
+	<h2>Obecné</h2>
+	<label for="refresh-delay">Jak dlouho mám čekat na obnovení dat?</label>
+	<input type="number" placeholder="60"> minut
+
+	<h2>Zobrazení kategorií</h2>
+	<div class="pages">
+		<div ng-repeat="(id, page) in pages | filter:{show: true}" class="page" ng-class="{hidden: isVisible(page.name) == false}" ng-click="setVisibility(page.name)">
+			<img src="./assets/img/{{page.name}}.png" alt="">
+			<span>{{page.title}}</span>
+		</div>
+	</div>
+</div>
