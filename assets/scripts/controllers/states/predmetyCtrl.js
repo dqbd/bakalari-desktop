@@ -10,11 +10,13 @@ app.controller("predmetyCtrl", ["$scope", "$rootScope", "Parser", "Utils", funct
         Parser.get("predmety", {}, force).then(function(d) {
             $rootScope.loaded = true;
             $scope.data = d.data.data;
+
+            $scope.data["predmety"] = Utils.sortCzech($scope.data["predmety"], 0);
         });
     }
 
     $scope.shown = [];
-    
+
     $scope.toggleItem = function(index) {
     	var key = $scope.shown.indexOf(index);
     	if(key > -1) {

@@ -70,8 +70,8 @@
 					<div class="column">
 						<strong class="label">Škola</strong>
 						<div class="input">
-							<input type="text" ng-model="url" ng-if="school == null" required>
-							<div class="school" ng-if="school != null">
+							<input type="text" ng-model="url" ng-show="school == null" required>
+							<div class="school" ng-show="school != null" ng-click="remove()">
 								<span class="name">{{school.name}}</span>
 								<span class="address">{{school.address}}</span>
 

@@ -1,5 +1,6 @@
 app.factory("Window", ["$rootScope", function($rootScope) {   
     var nw = require("nw.gui");
+
     
     return {
         nw: nw,

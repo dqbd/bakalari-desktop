@@ -1,9 +1,9 @@
-app.factory("Parser", ["$http", "$rootScope", "$q", "Database", "Users", "Error", function($http, $rootScope, $q, Database, Users, Error) {    
+app.factory("Parser", ["$http", "$rootScope", "$q", "Database", "Users", "Progress", function($http, $rootScope, $q, Database, Users, Progress) {    
 
-    var host = "duong.cz";
+    var host = "localhost";
     var domain = "http://"+host;
     var caches = {
-        "znamky": "klasifikace-pokrocily.html",
+        "znamky": "klasifikace-body.html",
         "rozvrh": "rozvrh-novy-zmena.html",
         "suplovani": "suplovani-zaklad.html",
         "akce": "plan.html",
@@ -14,36 +14,41 @@ app.factory("Parser", ["$http", "$rootScope", "$q", "Database", "Users", "Error"
         "vysvedceni": "vysvedceni-znamky.html"
     };
 
-    var accessServer = function(page, args) { 
+    var parent = this;
+
+    this.accessServer = function(page, args) { 
        return $http.post(domain+"/BakaParser/"+page, args, {timeout: $rootScope.canceler.promise});
     };
 
-    var getOnline = function(page, user, pass, url, arg) {
+    this.getOnline = function(page, user, pass, url, arg) {
         var obj = {"url": url, "user": user, "pass":pass};
 
-        return accessServer(page, _.extend(obj, arg));
+        return this.accessServer(page, _.extend(obj, arg));
     };
-    var getDebug = function(page) {
+    this.getDebug = function(page) {
         var file = caches[page];
-        return (file == null) ? null : accessServer(page, {"file": file});
+        return (file == null) ? null : this.accessServer(page, {"file": file});
     };
 
-    var constructHash = function(page, user, arg) {
+    this.constructHash = function(page, user, arg) {
         return page + JSON.stringify(_.sortBy(_.values(_.extend(user, arg)), "length").join(""));
     }
 
-    var writeIntoCache = function(page, user, arg, data) {
+    this.writeIntoCache = function(page, user, arg, data) {
+        
+
         Database.perform(function(db) {
             //remove previous references
-            db.run("DELETE FROM 'data' WHERE uid = ? AND request = ?", [user.id, constructHash(page,user,arg)]);
+            //TODO: Update by bylo lepší
+            db.run("DELETE FROM 'data' WHERE uid = ? AND request = ?", [user.id, parent.constructHash(page,user,arg)]);
 
             db.run("INSERT INTO 'data' (uid, request, response, updated) VALUES (?, ?, ?, ?)",
-                [user.id, constructHash(page,user,arg), JSON.stringify(data.data), new Date().getTime()]
+                [user.id, parent.constructHash(page,user,arg), JSON.stringify(data.data), new Date().getTime()]
             );
         });
     }
 
-    var isConnected = function(revert) {
+    this.isConnected = function(revert) {
         var deferred = $q.defer();
         require('dns').lookup("www.google.com", function(err) {
             
@@ -53,7 +58,7 @@ app.factory("Parser", ["$http", "$rootScope", "$q", "Database", "Users", "Error"
         return deferred.promise;
     }
 
-    var hasCache = function(page, user, arg, force) {
+    this.hasCache = function(page, user, arg, force) {
         var deferred = $q.defer();
 
         var callback = function(err, result) {
@@ -64,19 +69,17 @@ app.factory("Parser", ["$http", "$rootScope", "$q", "Database", "Users", "Error"
             }
         }
 
-        isConnected().then(function(connected) {
-            
+        this.isConnected().then(function(connected) {
             if(user == null) {
-
                 deferred.reject(false);
             } else {
                 Database.perform(function(db) {
                     if(connected == true) {
                         db.get("SELECT * FROM 'data' WHERE request = ? AND uid = ? AND updated >= ?", 
-                            [constructHash(page, user, arg), user.id, new Date().getTime() - (60 * 60 * 1000)], callback);
+                            [parent.constructHash(page, user, arg), user.id, new Date().getTime() - (60 * 60 * 1000)], callback);
                     } else {
                         db.get("SELECT * FROM 'data' WHERE request = ? AND uid = ?", 
-                            [constructHash(page, user, arg), user.id], callback);
+                            [parent.constructHash(page, user, arg), user.id], callback);
                     }
                 });
             }
@@ -84,41 +87,38 @@ app.factory("Parser", ["$http", "$rootScope", "$q", "Database", "Users", "Error"
 
         return deferred.promise;
     }
-
     
-
-
-    var get = function(page, arg, force) {
+    this.get = function(page, arg, force) {
         var deferred = $q.defer();
 
         var result = $q.defer();
         
-        Error.hideError();
+        Progress.hideError();
 
-        $q.all({"user": Users.getCurrentUser(), "connected": isConnected()}).then(function(status) {
+        //return getDebug(page);
+
+        $q.all({"user": Users.getCurrentUser(), "connected": this.isConnected()}).then(function(status) {
             var user = status.user;
-            hasCache(page, user, arg, force).then(
+            parent.hasCache(page, user, arg, force).then(
                 function(data) { //máme cache 
-                    Error.hideError();
+                    Progress.hideError();
                     deferred.resolve({"data" : JSON.parse(data.response)});
                 }, function(data) { //nemáme cache 
                     if(data != false) {
                         if(status.connected == false) { //nemá smysl stahovat, vyhoď rovnou chybu
-                            Error.showError("Nejsme připojeni", "sad");
+                            Progress.showError("Nejsme připojeni", "sad");
 
                             deferred.reject(null);
-                            console.log("error");
                         } else { //hm... zkusme to stáhnout
-                            console.log("dling");
-                            var promise = getOnline(page, user.user, user.pass, user.url, arg).then(function(data) {
-                                writeIntoCache(page, user, arg, data);
+                            var promise = parent.getOnline(page, user.user, user.pass, user.url, arg).then(function(data) {
+                                parent.writeIntoCache(page, user, arg, data);
                                 return data;
                             });
 
                             promise.then(function(data) { //data
                                 deferred.resolve(data);
                             }, function(error) { //serverová chyba
-                                Error.showError("Chyba na straně serveru!");
+                                Progress.showError("Chyba na straně serveru!");
                                 deferred.reject(data);
                             });
                         }
@@ -130,14 +130,26 @@ app.factory("Parser", ["$http", "$rootScope", "$q", "Database", "Users", "Error"
         });
 
         deferred.promise.then(function(data) {
-            if(_.isEmpty(data) || _.isEmpty(data.data) || _.isEmpty(data.data.data[page])) {
-                Error.showError("Nemáme k dispozici žádné data", "sad");
+            if(_.isEmpty(data) || _.isEmpty(data.data)) {
+                Progress.showError("Nemáme k dispozici žádné data", "sad");
                 result.reject(data);
             } else {
-                Error.hideError();
-                result.resolve(data);
+                if(data.data.status != "ok") {
+                    if(data.data.message == "Neexistující požadavek") {
+                        Progress.showError("Tato stránka neexistuje na Bakalářích (nebo nefunguje)", "sad", "Pokud to tam má být, zkus aktualizovat");
+                        result.reject(data);
+                    } else {
+                        Progress.showError("Chyba na straně serveru", "error", data.data.message);
+                        result.reject(data);
+                    }
+                } else if (data.data.data == null || _.isEmpty(data.data.data[page])) {
+                    Progress.showError("Nemáme k dispozici žádné data", "sad", "Je možné, že nic není nového :)");
+                    result.reject(data);
+                } else {
+                    Progress.hideError();
+                    result.resolve(data);
+                }
             }
-            
         }, function(error) {
             result.reject(error);
         });
@@ -145,10 +157,5 @@ app.factory("Parser", ["$http", "$rootScope", "$q", "Database", "Users", "Error"
         return result.promise;
     };
    
-    return {
-        "accessServer": accessServer,
-        "getOnline": getOnline,
-        "getDebug": getDebug,
-        "get": get
-    };
+    return this;
 }]);

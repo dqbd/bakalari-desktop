@@ -208,9 +208,13 @@ body.loading {
   box-shadow: 0px 2px 0px #dbdbdb;
   margin-bottom: 18px;
 }
+.card:last-of-type {
+  margin-bottom: 0;
+}
 nav {
   display: block;
   background: #3c3f41;
+  position: relative;
   min-width: 200px;
 }
 nav h1 {
@@ -272,6 +276,47 @@ nav ul li a:after {
 }
 nav ul li a.active:after {
   right: -14px;
+}
+nav .control {
+  position: absolute;
+  bottom: 0;
+  box-sizing: border-box;
+  padding: 22.5px 25px 25px;
+  background: #373a3c;
+  width: 100%;
+}
+nav .control > a {
+  display: inline-block;
+  font-size: 0px;
+  color: transparent;
+  height: 20px;
+  background-image: url("../img/additional_buttons.png");
+  float: left;
+  opacity: 0.4;
+  -webkit-transition: opacity 0.2s;
+  cursor: pointer;
+}
+nav .control a.refresh {
+  width: 20px;
+}
+nav .control a.settings {
+  width: 22px;
+  background-position: -20px 0px;
+  margin: 0px 12px;
+}
+nav .control a.layers {
+  width: 22px;
+  background-position: -42px 0px;
+  float: right;
+}
+nav .control a:hover,
+nav .control a.active {
+  opacity: 0.8;
+}
+nav .control:after {
+  content: "";
+  display: block;
+  clear: both;
 }
 .rest {
   width: 100%;
@@ -353,6 +398,13 @@ nav ul li a.active:after {
   display: block;
   background: #e5e5e5;
   color: #aaa;
+  -webkit-transition: background 0.2s;
+}
+.toolbar .adduser:hover {
+  background: #eaeaea;
+}
+.toolbar .adduser:active {
+  background: #e0e0e0;
 }
 .toolbar .buttons {
   -webkit-app-region: no-drag;
@@ -401,13 +453,6 @@ nav ul li a.active:after {
 }
 .toolbar .buttons li a.min:before {
   background-position: 0px -51px;
-}
-.toolbar .buttons li:last-child {
-  margin-right: 12px;
-  display: block;
-}
-.toolbar .buttons li a.refresh:before {
-  background-position: 0px -68px;
 }
 .toolbar .buttons li a.close:hover:before,
 .toolbar .buttons li a.min:hover:before,
@@ -503,6 +548,9 @@ nav ul li a.active:after {
   box-shadow: 0px 2px 0px #dbdbdb;
   margin-bottom: 18px;
 }
+#znamky .subject:last-of-type {
+  margin-bottom: 0;
+}
 #znamky .subject .info {
   box-sizing: border-box;
   padding: 10px;
@@ -566,7 +614,9 @@ nav ul li a.active:after {
 #znamky .subject .marks {
   display: none;
   background: #f2f2f2;
+  position: relative;
   border-radius: 0px 0px 3px 3px;
+  width: 100%;
   list-style: none;
 }
 #znamky .subject .marks ul {
@@ -594,6 +644,20 @@ nav ul li a.active:after {
   margin-left: 18px;
   margin-right: 9px;
   font-weight: bold;
+  width: 12px;
+}
+#znamky .subject .marks.point .mark,
+#znamky .subject .marks.point .mark span.max {
+  width: 40px;
+  font-weight: 400;
+}
+#znamky .subject .marks.point .mark span {
+  font-weight: 600;
+}
+#znamky .subject .marks .weight {
+  width: 50px;
+  margin-right: 10px;
+  font-style: italic;
 }
 #znamky .subject .marks .caption {
   position: relative;
@@ -633,6 +697,11 @@ nav ul li a.active:after {
 #znamky .subject .marks.visible {
   display: block;
 }
+#znamky .subject .marks:after {
+  content: "";
+  display: block;
+  clear: both;
+}
 #znamky .subject:after {
   content: "";
   display: block;
@@ -644,6 +713,9 @@ nav ul li a.active:after {
   box-shadow: 0px 2px 0px #dbdbdb;
   margin-bottom: 18px;
   overflow: auto;
+}
+#rozvrh:last-of-type {
+  margin-bottom: 0;
 }
 #rozvrh .row {
   min-height: 55px;
@@ -743,13 +815,6 @@ nav ul li a.active:after {
 #rozvrh .row.lessons .cell.day + .cell:last-child .lesson.free {
   justify-content: flex-start;
 }
-#suplovani .day {
-  border-radius: 3px;
-  background-color: #F7F7F7;
-  box-shadow: 0px 2px 0px #dbdbdb;
-  margin-bottom: 18px;
-  padding: 10px;
-}
 #suplovani .day h2 {
   font-size: 24px;
   font-weight: normal;
@@ -757,8 +822,19 @@ nav ul li a.active:after {
   padding: 0px;
 }
 #suplovani .day ul {
+  border-radius: 3px;
+  background-color: #F7F7F7;
+  box-shadow: 0px 2px 0px #dbdbdb;
+  margin-bottom: 18px;
   margin: 0;
-  padding-left: 20px;
+  padding: 15px;
+  list-style-position: inside;
+}
+#suplovani .day ul:last-of-type {
+  margin-bottom: 0;
+}
+#suplovani .day ul:last-of-type {
+  margin-bottom: 18px;
 }
 #suplovani .day li {
   padding-bottom: 5px;
@@ -779,6 +855,9 @@ nav ul li a.active:after {
   background-color: #F7F7F7;
   box-shadow: 0px 2px 0px #dbdbdb;
   margin-bottom: 18px;
+}
+#absence #table:last-of-type {
+  margin-bottom: 0;
 }
 #absence #table table {
   width: 100%;
@@ -832,12 +911,17 @@ nav ul li a.active:after {
   margin: 0px 0px 12px;
   font-size: 24px;
 }
+#absence #graphs .graph:last-of-type {
+  margin-bottom: 0;
+}
 #plan .events {
   margin: 0;
   padding: 0;
   width: 100%;
+}
+#plan .events .row {
+  width: 100%;
   display: flex;
-  flex-wrap: wrap;
 }
 #plan .event {
   border-radius: 3px;
@@ -845,12 +929,15 @@ nav ul li a.active:after {
   box-shadow: 0px 2px 0px #dbdbdb;
   margin-bottom: 18px;
   flex: 1;
-  min-width: 30%;
+  min-width: 33%;
   max-width: 33%;
   margin-right: 10px;
   padding: 15px;
   font-size: 14px;
   box-sizing: border-box;
+}
+#plan .event:last-of-type {
+  margin-bottom: 0;
 }
 #plan .event h3 {
   margin-top: 0px;
@@ -866,6 +953,9 @@ nav ul li a.active:after {
 }
 #plan .event div:last-of-type {
   margin-bottom: 0px;
+}
+#plan .event:last-of-type {
+  margin-bottom: 18px;
 }
 #plan .day {
   margin-bottom: 20px;
@@ -885,6 +975,9 @@ nav ul li a.active:after {
   background-color: #F7F7F7;
   box-shadow: 0px 2px 0px #dbdbdb;
   margin-bottom: 18px;
+}
+#predmety .subject:last-of-type {
+  margin-bottom: 0;
 }
 #predmety .subject .info {
   box-sizing: border-box;
@@ -970,6 +1063,9 @@ nav ul li a.active:after {
   font-size: 14px;
   box-sizing: border-box;
 }
+#ukoly .subject:last-of-type {
+  margin-bottom: 0;
+}
 #ukoly .subject h3 {
   margin: 0;
   line-height: 26px;
@@ -1010,6 +1106,9 @@ nav ul li a.active:after {
   padding: 15px 0px;
   box-sizing: border-box;
 }
+#vyuka .data:last-of-type {
+  margin-bottom: 0;
+}
 #vyuka .data table {
   width: 100%;
   border-collapse: collapse;
@@ -1039,6 +1138,9 @@ nav ul li a.active:after {
 #vyuka .data td:nth-child(4) {
   width: 50%;
 }
+#vyuka .data td:nth-child(3) {
+  min-width: 75px;
+}
 #vyuka .data td:first-child,
 #vyuka .data th:first-child {
   padding-left: 15px;
@@ -1046,4 +1148,57 @@ nav ul li a.active:after {
 #vyuka .data td:last-child,
 #vyuka .data th:last-child {
   padding-right: 15px;
+}
+#options h1 {
+  font-weight: 400;
+  font-size: 18pt;
+  font-family: "Roboto Regular";
+  margin-top: 0px;
+  padding-top: 0px;
+  text-transform: uppercase;
+  font-variant: small-caps;
+}
+#options h2 {
+  font-family: "Roboto Regular";
+  font-size: 16pt;
+  font-weight: 400;
+}
+#options .page {
+  border-radius: 3px;
+  background-color: #F7F7F7;
+  box-shadow: 0px 2px 0px #dbdbdb;
+  margin-bottom: 18px;
+  display: flex;
+  width: 32%;
+  margin-right: 1%;
+  margin-bottom: 10px;
+  float: left;
+  -webkit-transition: all 0.3s;
+  cursor: pointer;
+  align-items: center;
+  padding: 12px;
+  box-sizing: border-box;
+  border-radius: 4px;
+}
+#options .page:last-of-type {
+  margin-bottom: 0;
+}
+#options .page.hidden {
+  opacity: 0.2;
+}
+#options .page:nth-child(3n) {
+  margin-right: 0;
+}
+#options .page img {
+  -webkit-filter: invert(40%);
+  height: 60px;
+}
+#options .page span {
+  margin-left: 15px;
+}
+#options .page:last-of-type {
+  margin-bottom: 10px;
+}
+#options .page:hover {
+  background-color: #fcfcfc;
 }

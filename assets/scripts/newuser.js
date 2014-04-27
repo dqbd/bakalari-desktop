@@ -52,10 +52,7 @@ app.controller('pageCtrl', ["$scope", "$location", "$rootScope", "Window", "$q",
         }
         $rootScope.canceler = $q.defer();
 
-		$rootScope.$broadcast("url", $location.path());
-
-		
-		//$rootScope.$broadcast("url", "/adduser");
+		$rootScope.$emit("url", $location.path());
     });
 
 
@@ -194,9 +191,15 @@ app.controller('userCtrl', ["$scope", "$rootScope", "$location", "Parser", "User
 	});
 	$scope.loading = false;
 
+	$scope.remove = function() {
+		$scope.school = $rootScope.school = null;
+	}
 
 	$scope.send = function() {
 		$scope.loading = true;
+
+		console.log($scope.user + $scope.pass + $scope.url);
+
 		Parser.getOnline("login", $scope.user, $scope.pass, $scope.url, null).then(function(data) {
 			
 			if(data.data.status == "ok") {
@@ -205,9 +208,7 @@ app.controller('userCtrl', ["$scope", "$rootScope", "$location", "Parser", "User
 				});
 				
 			} else {
-				if(data.data.data.short) {
-					$scope.error = data.data.message;
-				}
+				$scope.error = (data.data.data.short) ? data.data.data.short : data.data.error;
 				
 				$scope.loading = false;
 			}

@@ -9,6 +9,7 @@ app.controller("suplovaniCtrl", ["$scope", "$rootScope", "Parser", "Utils", func
     	$rootScope.loaded = false;
         Parser.get("suplovani", {}, force).then(function(d) {
 	        $rootScope.loaded = true;
+	        console.log($scope.data);
 	        $scope.data = d.data.data;
 	    });
 	}

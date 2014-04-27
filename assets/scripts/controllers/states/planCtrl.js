@@ -23,7 +23,17 @@ app.controller("planCtrl", ["$scope", "$rootScope", "Parser", "Utils", function(
 
 			result[item["time"]["date"]].push(item);
     	});
+        
     	return result;
+    }
+
+    $scope.getRowNumber = function(number) {
+        return Math.ceil(number / 3);
+    }
+
+    $scope.getRowItems = function(events, row) {
+        console.log(events);
+        return events.slice(row*3, (row+1)*3);
     }
 
     $scope.formatDate = Utils.formatDate;

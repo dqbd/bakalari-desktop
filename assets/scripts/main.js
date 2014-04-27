@@ -14,68 +14,29 @@ var new_win = {
     "show": false
 };
 
-app.config(["$urlRouterProvider", "$stateProvider", "$httpProvider", "$sceProvider", function($urlRouterProvider, $stateProvider, $httpProvider, $sceProvider) {
-    $urlRouterProvider.otherwise("/");
+var pages = [
+    { "name": "znamky", "title": "Známky", "show": true }, 
+    { "name": "rozvrh","title": "Rozvrh", "show": true }, 
+    { "name": "suplovani","title": "Suplování", "show": true }, 
+    { "name": "plan","title": "Plán akcí", "show": true }, 
+    { "name": "predmety","title": "Předměty", "show": true }, 
+    { "name": "vyuka","title": "Výuka", "show": true }, 
+    { "name": "absence","title": "Absence", "show": true }, 
+    { "name": "ukoly","title": "Domácí úkoly", "show": true },
+    { "name": "options", "title": "Nastavení", "show": false }
+];
 
+app.config(["$urlRouterProvider", "$stateProvider", "$httpProvider", "$compileProvider", function($urlRouterProvider, $stateProvider, $httpProvider, $compileProvider) {
+    // $urlRouterProvider.otherwise("/znamky");
 
-    $stateProvider.state("znamky", {
-        url: "/",
-        templateUrl: "assets/templates/znamky.html",
-        controller: "znamkyCtrl"
+    pages.forEach(function(item) {
+        $stateProvider.state(item.name, {
+            url: "/"+item.name,
+            templateUrl: "assets/templates/"+item.name+".html",
+            controller: item.name+"Ctrl"
+        });
     });
 
-    $stateProvider.state("rozvrh", {
-        url: "/rozvrh",
-        templateUrl: "assets/templates/rozvrh.html",
-        controller: "rozvrhCtrl"
-    });
-    $stateProvider.state("suplovani", {
-        url: "/suplovani",
-        templateUrl: "assets/templates/suplovani.html",
-        controller: "suplovaniCtrl"
-    }); 
-
-    $stateProvider.state("plan", {
-        url: "/plan",
-        templateUrl: "assets/templates/plan.html",
-        controller: "planCtrl"
-    }); 
-
-    $stateProvider.state("predmety", {
-        url: "/predmety",
-        templateUrl: "assets/templates/predmety.html",
-        controller: "predmetyCtrl"
-    }); 
-
-    $stateProvider.state("vyuka", {
-        url: "/vyuka",
-        templateUrl: "assets/templates/vyuka.html",
-        controller: "vyukaCtrl"
-    }); 
-
-    $stateProvider.state("absence", {
-        url: "/absence",
-        templateUrl: "assets/templates/absence.html",
-        controller: "absenceCtrl"
-    }); 
-
-    $stateProvider.state("ukoly", {
-        url: "/ukoly",
-        templateUrl: "assets/templates/ukoly.html",
-        controller: "ukolyCtrl"
-    }); 
-
-    // $stateProvider.state("vysvedceni", {
-    //     url: "/vysvedceni",
-    //     templateUrl: "assets/templates/vysvedceni.html",
-    //     controller: "vysvedceniCtrl"
-    // }); 
-    // 
-    // 
-    
-    
-
-    
     $httpProvider.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded;charset=utf-8';
     
     var param = function(obj) {
@@ -112,12 +73,13 @@ app.config(["$urlRouterProvider", "$stateProvider", "$httpProvider", "$sceProvid
         return angular.isObject(data) && String(data) !== '[object File]' ? param(data) : data;
     }];
 
-    $sceProvider.enabled(false);
+    $compileProvider.imgSrcSanitizationWhitelist(/^\s*(https?|ftp|mailto|app):/);
 }]);
 
-app.run(["$rootScope", "$q", "Users", "Window", function($rootScope, $q, Users, Window) {
+app.run(["$rootScope", "$q", "Users", "Window", "Progress", function($rootScope, $q, Users, Window, Progress) {
+    Window.getWindow().hide();
 
-
+  
 
     $rootScope.$on("$stateChangeStart", function(event, toState, toParams, fromState, fromParams) {
         if(typeof $rootScope.canceler !== "undefined") {
@@ -130,30 +92,26 @@ app.run(["$rootScope", "$q", "Users", "Window", function($rootScope, $q, Users, 
         }
         
         $rootScope.canceler = $q.defer();
-        $rootScope.loaded = false;
-
-        //$rootScope.error = {};
+        
+        Progress.showLoading();
     }); 
 
     if(process.platform === 'win32' && parseFloat(require('os').release(), 10) > 6.1) {
         Window.getWindow().setMaximumSize(screen.availWidth + 15, screen.availHeight + 14);
     }
 
-
     Users.getUsers().then(function(d) {
         if(d.length <= 0) {
             Window.getWindow().hide();
             Window.listen("closed", function(window) {
-                
-
                 //už je tam nějaký účet?
                 Users.getUsers().then(function(d) {
                     if(d.length <= 0) { //ne, boo.
                         Window.getWindow().close(true);
                     } else {
                         Users.getFirstID().then(function(d) {
-                            localStorage.currentUser = d.min;
-                            $rootScope.$broadcast("reload", {user: true});
+                            Users.setCurrentUser(d.min);
+                            $rootScope.$emit("reload", {user: true});
 
                             Window.getWindow().show();
                         });
@@ -170,7 +128,7 @@ app.run(["$rootScope", "$q", "Users", "Window", function($rootScope, $q, Users, 
             var loadFirstId = function() {
                 Users.getFirstID().then(function(d) {
                     localStorage.currentUser = d.min;
-                    $rootScope.$broadcast("reload", {user: true});
+                    $rootScope.$emit("reload", {user: true});
                 });
             }
 
@@ -214,5 +172,17 @@ app.filter('range', function() {
         }
 
         return result;
+    };
+});
+
+app.directive('ngRightClick', function($parse) {
+    return function(scope, element, attrs) {
+        var fn = $parse(attrs.ngRightClick);
+        element.bind('contextmenu', function(event) {
+            scope.$apply(function() {
+                event.preventDefault();
+                fn(scope, {$event:event});
+            });
+        });
     };
 });
