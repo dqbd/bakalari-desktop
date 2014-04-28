@@ -1,4 +1,4 @@
-app.factory("Parser", ["$http", "$rootScope", "$q", "Database", "Users", "Progress", function($http, $rootScope, $q, Database, Users, Progress) {    
+app.factory("Parser", ["$http", "$rootScope", "$q", "Database", "Users", "Progress", "Options", function($http, $rootScope, $q, Database, Users, Progress, Options) {    
 
     var host = "localhost";
     var domain = "http://"+host;

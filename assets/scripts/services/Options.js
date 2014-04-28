@@ -4,6 +4,7 @@ app.factory('Options', ['Database', 'Users', '$q', '$rootScope', function(Databa
 	var callbacks = [];
 
 	this.sidebarHiddenTag = "sidebarHidden";
+	this.sidebarBackgroundTag = "sidebarBackground";
 
 	this.registerObserver = function(callback) {
 		callbacks.push(callback);

@@ -8,7 +8,7 @@
     <body ng-app="app" ng-class="{loading: !loaded}">
         <div class="window"></div>
         <div class="container">
-            <nav ng-include="'./assets/templates/sidebar.html'"></nav>
+            <nav ng-include="'./assets/templates/sidebar.html'" ng-controller="sidebarCtrl" ng-class="bg_class"></nav>
             <div class="rest">
                 <div class="toolbar">
                     <div class="user" ng-controller="userCtrl">
@@ -58,9 +58,10 @@
         <script src='./assets/components/underscore/underscore-min.js'></script>
         <script src="./assets/components/angular/angular.js"></script>
         <script src="./assets/components/angular-ui-router/release/angular-ui-router.js"></script>
-
         <script src="./assets/components/chartjs/Chart.min.js"></script>
         <script src="./assets/components/angles/angles.js"></script>
+
+        <script src="./assets/scripts/defaults.js"></script>
         
         <script src="./assets/scripts/main.js"></script>
         <script src="./assets/scripts/services/Database.js"></script>
