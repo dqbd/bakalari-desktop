@@ -6,3 +6,4 @@ project.sublime-workspace
 .bowerrc
 /*.dll
 /*.log
+*.ai

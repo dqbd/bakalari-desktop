@@ -1,0 +1,31 @@
+@color-labels: "default", "blue", "green", "red", "purple", "gray", "yellow", "night";
+@colors: #3C3F41, #2980B9, #27AE60, #C0392B, #8E44AD, #7F8C8D, #E67E22, #2C3E50;
+
+.loopingClass (@index) when (@index > 0) {
+	@name: extract(@color-labels, @index);
+
+	@class: ~"@{name}";
+
+	@color : extract(@colors, @index);
+
+	nav.@{class} { 
+		background-color: @color; 
+
+		h1 { background-color: lighten(@color, 5%); }
+
+		ul li a:after { border-left-color: @color; }
+
+		.control { background: darken(@color, 2%); }
+	}
+
+	#options .colors .color.@{class} {
+		background: @color; 
+	}
+	
+
+	.loopingClass(@index - 1);
+}
+
+.loopingClass (0) {}
+
+.loopingClass (length(@colors));

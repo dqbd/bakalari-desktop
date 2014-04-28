@@ -1,7 +1,9 @@
 app.controller("sidebarCtrl", ["$scope", "$rootScope", "$state", "Options", function($scope, $rootScope, $state, Options) {
- 	$rootScope.pages = pages;
+	$rootScope.pages = pages;
+    $rootScope.colors = colors;
 
  	$scope.hidden = [];
+    $scope.bg_class = "default";
 
 	$scope.refresh = function() {
         $rootScope.$emit("reload", {force: true});
@@ -34,12 +36,22 @@ app.controller("sidebarCtrl", ["$scope", "$rootScope", "$state", "Options", func
 	    	$scope.hidden = (data) ? data : [];
 
 	    	$scope.init();
-	    })
+	    });
+
+        Options.getOption(Options.sidebarBackgroundTag).then(function(data) {
+            $scope.bg_class = (data) ? data : "default";
+        });
     }
 
     
     Options.registerObserver(function(data) {
-    	$scope.hidden = data[Options.sidebarHiddenTag];
+        if(data[Options.sidebarHiddenTag]) {
+    	   $scope.hidden = data[Options.sidebarHiddenTag];
+        }
+
+        if(data[Options.sidebarBackgroundTag]) {
+            $scope.bg_class = data[Options.sidebarBackgroundTag];
+        }
     });
 
     $scope.receiveOptions();

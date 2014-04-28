@@ -40,7 +40,7 @@
 
 		img {
 			-webkit-filter: invert(40%); 
-			height: 60px;
+			height: 42px;
 		}		
 
 		span {
@@ -56,5 +56,70 @@
 	    &:hover {
 	    	background-color: lighten(#F7F7F7, 2%);
 	    }
+	}
+
+	.colors {
+		.color {
+			display: inline-block;
+			width: 100px; height: 100px; border-radius: 100%;
+			background: red;
+
+			margin-right: 10px;
+
+			position: relative;
+			cursor: pointer;
+		}
+
+		.color:after {
+			position: absolute;
+			content: "";
+			top: 0; left: 0; right: 0; bottom: 0;
+
+			width: 100%; height: 100%;
+
+			border-radius: 100%;
+
+			box-sizing: border-box;
+
+			-webkit-transition: border 0.4s;
+
+			border: 0px solid rgba(255,255,255,0.3);
+		}
+
+		.color.tick { cursor: auto; }
+
+		.color.tick:before {
+			display: block;
+			content: "";
+			position: absolute;
+			top: 50%; left: 50%;
+			
+			margin-left: 47px / -2;
+			margin-top: 37px / -2;
+
+
+
+			width: 47px; height: 37px;
+
+			opacity: 0.3;
+			
+			background-image: url("../img/tick.png") !important;
+			background-repeat: no-repeat !important;
+			background-position: center !important;
+		}
+
+		.color.tick:after {
+			
+
+			border: 8px solid rgba(255,255,255,0.3);
+		}
+
+		.color:hover:after {
+			border: 8px solid rgba(255,255,255,0.3);
+		}
+
+		&:after {
+			.clear;
+		}
 	}
 }

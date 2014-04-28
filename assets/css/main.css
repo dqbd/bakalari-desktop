@@ -214,6 +214,7 @@ body.loading {
 nav {
   display: block;
   background: #3c3f41;
+  -webkit-transition: background 0.2s;
   position: relative;
   min-width: 200px;
 }
@@ -229,6 +230,7 @@ nav h1 {
   background-position: 22px 18px;
   background-size: 90px auto;
   background-color: #484c4e;
+  -webkit-transition: background-color 0.2s;
 }
 nav ul {
   list-style: none;
@@ -247,10 +249,11 @@ nav ul li a {
   position: relative;
 }
 nav ul li a img {
-  width: 45px;
-  height: 45px;
+  width: 42px;
+  height: 42px;
   vertical-align: middle;
   margin: 0px 10px 0px 15px;
+  opacity: 0.7;
 }
 nav ul li a span {
   white-space: nowrap;
@@ -272,7 +275,7 @@ nav ul li a:after {
   margin: 0;
   margin-top: -10px;
   border-left-color: #3c3f41;
-  -webkit-transition: right 0.4s;
+  -webkit-transition: right 0.4s, border-left-color 0.2s;
 }
 nav ul li a.active:after {
   right: -14px;
@@ -283,6 +286,7 @@ nav .control {
   box-sizing: border-box;
   padding: 22.5px 25px 25px;
   background: #373a3c;
+  -webkit-transition: background 0.2s;
   width: 100%;
 }
 nav .control > a {
@@ -1191,7 +1195,7 @@ nav .control:after {
 }
 #options .page img {
   -webkit-filter: invert(40%);
-  height: 60px;
+  height: 42px;
 }
 #options .page span {
   margin-left: 15px;
@@ -1201,4 +1205,177 @@ nav .control:after {
 }
 #options .page:hover {
   background-color: #fcfcfc;
+}
+#options .colors .color {
+  display: inline-block;
+  width: 100px;
+  height: 100px;
+  border-radius: 100%;
+  background: red;
+  margin-right: 10px;
+  position: relative;
+  cursor: pointer;
+}
+#options .colors .color:after {
+  position: absolute;
+  content: "";
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  width: 100%;
+  height: 100%;
+  border-radius: 100%;
+  box-sizing: border-box;
+  -webkit-transition: border 0.4s;
+  border: 0px solid rgba(255, 255, 255, 0.3);
+}
+#options .colors .color.tick {
+  cursor: auto;
+}
+#options .colors .color.tick:before {
+  display: block;
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  margin-left: -23.5px;
+  margin-top: -18.5px;
+  width: 47px;
+  height: 37px;
+  opacity: 0.3;
+  background-image: url("../img/tick.png") !important;
+  background-repeat: no-repeat !important;
+  background-position: center !important;
+}
+#options .colors .color.tick:after {
+  border: 8px solid rgba(255, 255, 255, 0.3);
+}
+#options .colors .color:hover:after {
+  border: 8px solid rgba(255, 255, 255, 0.3);
+}
+#options .colors:after {
+  content: "";
+  display: block;
+  clear: both;
+}
+nav.night {
+  background-color: #2c3e50;
+}
+nav.night h1 {
+  background-color: #354b60;
+}
+nav.night ul li a:after {
+  border-left-color: #2c3e50;
+}
+nav.night .control {
+  background: #283949;
+}
+#options .colors .color.night {
+  background: #2c3e50;
+}
+nav.yellow {
+  background-color: #e67e22;
+}
+nav.yellow h1 {
+  background-color: #e98b39;
+}
+nav.yellow ul li a:after {
+  border-left-color: #e67e22;
+}
+nav.yellow .control {
+  background: #e4791a;
+}
+#options .colors .color.yellow {
+  background: #e67e22;
+}
+nav.gray {
+  background-color: #7f8c8d;
+}
+nav.gray h1 {
+  background-color: #8c9899;
+}
+nav.gray ul li a:after {
+  border-left-color: #7f8c8d;
+}
+nav.gray .control {
+  background: #7a8788;
+}
+#options .colors .color.gray {
+  background: #7f8c8d;
+}
+nav.purple {
+  background-color: #8e44ad;
+}
+nav.purple h1 {
+  background-color: #9b50ba;
+}
+nav.purple ul li a:after {
+  border-left-color: #8e44ad;
+}
+nav.purple .control {
+  background: #8841a6;
+}
+#options .colors .color.purple {
+  background: #8e44ad;
+}
+nav.red {
+  background-color: #c0392b;
+}
+nav.red h1 {
+  background-color: #d14233;
+}
+nav.red ul li a:after {
+  border-left-color: #c0392b;
+}
+nav.red .control {
+  background: #b83729;
+}
+#options .colors .color.red {
+  background: #c0392b;
+}
+nav.green {
+  background-color: #27ae60;
+}
+nav.green h1 {
+  background-color: #2cc36b;
+}
+nav.green ul li a:after {
+  border-left-color: #27ae60;
+}
+nav.green .control {
+  background: #25a65b;
+}
+#options .colors .color.green {
+  background: #27ae60;
+}
+nav.blue {
+  background-color: #2980b9;
+}
+nav.blue h1 {
+  background-color: #2e8ece;
+}
+nav.blue ul li a:after {
+  border-left-color: #2980b9;
+}
+nav.blue .control {
+  background: #277ab1;
+}
+#options .colors .color.blue {
+  background: #2980b9;
+}
+nav.default {
+  background-color: #3c3f41;
+}
+nav.default h1 {
+  background-color: #484c4e;
+}
+nav.default ul li a:after {
+  border-left-color: #3c3f41;
+}
+nav.default .control {
+  background: #373a3c;
+}
+#options .colors .color.default {
+  background: #3c3f41;
 }
