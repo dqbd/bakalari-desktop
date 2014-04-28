@@ -1,15 +1,15 @@
-app.controller("rozvrhCtrl", ["$scope", "$rootScope", "Parser", function($scope, $rootScope, Parser) {
+app.controller("rozvrhCtrl", ["$scope", "$rootScope", "Parser", "Progress", function($scope, $rootScope, Parser, Progress) {
     
     $rootScope.reload_listener = $rootScope.$on("reload", function(event, arg) {
-        $rootScope.loaded = false;
+        Progress.showLoading();
         $scope.load(arg.force);
     });
 
     $scope.load = function(force) {
-        $rootScope.loaded = false;
+        Progress.showLoading();
 
         Parser.get("rozvrh", {"arg": 3}, force).then(function(d) {
-            $rootScope.loaded = true;
+            Progress.hideLoading();
             $scope.data = d.data.data;
         });
     }

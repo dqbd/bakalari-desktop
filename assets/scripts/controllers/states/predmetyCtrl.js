@@ -1,4 +1,4 @@
-app.controller("predmetyCtrl", ["$scope", "$rootScope", "Parser", "Utils", function($scope, $rootScope, Parser, Utils) {
+app.controller("predmetyCtrl", ["$scope", "$rootScope", "Parser", "Utils", "Progress", function($scope, $rootScope, Parser, Utils, Progress) {
     
     $rootScope.reload_listener = $rootScope.$on("reload", function(event, arg) {
         $scope.load(arg.force);
@@ -6,9 +6,9 @@ app.controller("predmetyCtrl", ["$scope", "$rootScope", "Parser", "Utils", funct
     
     
     $scope.load = function(force) {
-        $rootScope.loaded = false;
+        Progress.showLoading();
         Parser.get("predmety", {}, force).then(function(d) {
-            $rootScope.loaded = true;
+            Progress.hideLoading();
             $scope.data = d.data.data;
 
             $scope.data["predmety"] = Utils.sortCzech($scope.data["predmety"], 0);

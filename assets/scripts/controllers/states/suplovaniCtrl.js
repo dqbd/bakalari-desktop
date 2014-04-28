@@ -1,4 +1,4 @@
-app.controller("suplovaniCtrl", ["$scope", "$rootScope", "Parser", "Utils", function($scope, $rootScope, Parser, Utils) {
+app.controller("suplovaniCtrl", ["$scope", "$rootScope", "Parser", "Utils", "Progress", function($scope, $rootScope, Parser, Utils, Progress) {
 
 	$rootScope.reload_listener = $rootScope.$on("reload", function(event, arg) {
         $scope.load(arg.force);
@@ -6,10 +6,10 @@ app.controller("suplovaniCtrl", ["$scope", "$rootScope", "Parser", "Utils", func
     
     
     $scope.load = function(force) {
-    	$rootScope.loaded = false;
+    	Progress.showLoading();
+    	
         Parser.get("suplovani", {}, force).then(function(d) {
-	        $rootScope.loaded = true;
-	        console.log($scope.data);
+	        Progress.hideLoading();
 	        $scope.data = d.data.data;
 	    });
 	}

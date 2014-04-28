@@ -53,8 +53,6 @@ app.config(["$urlRouterProvider", "$stateProvider", "$httpProvider", "$compilePr
 app.run(["$rootScope", "$q", "Users", "Window", "Progress", function($rootScope, $q, Users, Window, Progress) {
     Window.getWindow().hide();
 
-  
-
     $rootScope.$on("$stateChangeStart", function(event, toState, toParams, fromState, fromParams) {
         if(typeof $rootScope.canceler !== "undefined") {
             $rootScope.canceler.resolve();
@@ -64,6 +62,8 @@ app.run(["$rootScope", "$q", "Users", "Window", "Progress", function($rootScope,
         if(typeof $rootScope.reload_listener !== "undefined") {
             $rootScope.reload_listener();
         }
+
+        console.log("changing");
         
         $rootScope.canceler = $q.defer();
         

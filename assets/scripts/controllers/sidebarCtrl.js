@@ -25,6 +25,7 @@ app.controller("sidebarCtrl", ["$scope", "$rootScope", "$state", "Options", func
     	} else {
     		$state.go("options");
     	}
+        console.log("init");
     }
 
     $rootScope.$on("reload", function(event, arg) {

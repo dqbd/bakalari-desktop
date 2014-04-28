@@ -1,4 +1,4 @@
-app.controller("znamkyCtrl", ["$scope", "$rootScope", "$state", "Parser", "Utils", function($scope, $rootScope, $state, Parser, Utils) {
+app.controller("znamkyCtrl", ["$scope", "$rootScope", "$state", "Parser", "Utils", "Progress", function($scope, $rootScope, $state, Parser, Utils, Progress) {
     // "980306r", "7dm3q2cu"
     
     $rootScope.reload_listener = $rootScope.$on("reload", function(event, arg) {
@@ -6,10 +6,10 @@ app.controller("znamkyCtrl", ["$scope", "$rootScope", "$state", "Parser", "Utils
     });
 
     $scope.load = function(force) {
-        $rootScope.loaded = false;
+        Progress.showLoading();
         
         Parser.get("znamky", {}, force).then(function(d) {
-            $rootScope.loaded = true;
+            Progress.hideLoading();
 
             $scope.shown = [];
 

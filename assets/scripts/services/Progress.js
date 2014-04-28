@@ -2,14 +2,16 @@ app.factory("Progress", ["$rootScope", function($rootScope) {
 
 	this.showLoading = function() {
 		$rootScope.loaded = false;
+		console.log("showing " + arguments.callee.caller.name);
 	}
 	
 	this.hideLoading = function() {
 		$rootScope.loaded = true;
+		console.log("hiding " + arguments.callee.caller.toString());
 	}
 
 	this.hideError = function() {
-		$rootScope.error =  {show: false};
+		$rootScope.error = {show: false};
 	}
 
 	this.showError = function(string, type, stacktrace) {

@@ -1,4 +1,4 @@
-app.controller("planCtrl", ["$scope", "$rootScope", "Parser", "Utils", function($scope, $rootScope, Parser, Utils) {
+app.controller("planCtrl", ["$scope", "$rootScope", "Parser", "Utils", "Progress", function($scope, $rootScope, Parser, Utils, Progress) {
     
     $rootScope.reload_listener = $rootScope.$on("reload", function(event, arg) {
         
@@ -7,9 +7,9 @@ app.controller("planCtrl", ["$scope", "$rootScope", "Parser", "Utils", function(
 
     
     $scope.load = function(force) {
-        $rootScope.loaded = false;
+        Progress.showLoading();
         Parser.get("akce", {}, force).then(function(d) {
-            $rootScope.loaded = true;
+            Progress.hideLoading();
             $scope.data = $scope.sortToDay(d.data.data);
         });
     }
@@ -32,7 +32,6 @@ app.controller("planCtrl", ["$scope", "$rootScope", "Parser", "Utils", function(
     }
 
     $scope.getRowItems = function(events, row) {
-        console.log(events);
         return events.slice(row*3, (row+1)*3);
     }
 

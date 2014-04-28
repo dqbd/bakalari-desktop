@@ -101,7 +101,6 @@ app.factory("Parser", ["$http", "$rootScope", "$q", "Database", "Users", "Progre
             var user = status.user;
             parent.hasCache(page, user, arg, force).then(
                 function(data) { //máme cache 
-                    Progress.hideError();
                     deferred.resolve({"data" : JSON.parse(data.response)});
                 }, function(data) { //nemáme cache 
                     if(data != false) {

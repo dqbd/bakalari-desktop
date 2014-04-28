@@ -1,14 +1,14 @@
-app.controller("absenceCtrl", ["$scope", "$rootScope", "Parser", "Utils", function($scope, $rootScope, Parser, Utils) {
+app.controller("absenceCtrl", ["$scope", "$rootScope", "Parser", "Utils", "Progress", function($scope, $rootScope, Parser, Utils, Progress) {
     
     $rootScope.reload_listener = $rootScope.$on("reload", function(event, arg) {
         $scope.load(arg.force);
     });
     
     $scope.load = function(force) {
-        $rootScope.loaded = false;
+        Progress.showLoading();
 
         Parser.get("absence", {}, force).then(function(d) {
-            $rootScope.loaded = true;
+            Progress.hideLoading();
 
             $scope.data = $scope.sortByMissing(d.data.data);
             $scope.charts = $scope.generateCharts($scope.data);

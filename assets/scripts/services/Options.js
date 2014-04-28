@@ -26,7 +26,7 @@ app.factory('Options', ['Database', 'Users', '$q', '$rootScope', function(Databa
 
 					deferred.reject(error);
 				} else {
-					deferred.resolve(result.response);
+					deferred.resolve(JSON.parse(result.response));
 				}
 			});
 			
@@ -77,7 +77,6 @@ app.factory('Options', ['Database', 'Users', '$q', '$rootScope', function(Databa
 		var deferred = $q.defer();
 
 		this.getOptions().then(function(data) {
-			data = JSON.parse(data);
 
 			if(data[tag] != null) {
 				deferred.resolve(data[tag]);
@@ -96,12 +95,10 @@ app.factory('Options', ['Database', 'Users', '$q', '$rootScope', function(Databa
 		var parent = this;
 		
 		var func = function(data) {
-
 			data = (data && typeof data === "object") ? data : {};
 			data[tag] = change;
 
 			parent.setOptions(data).then(function() {
-
 				deferred.resolve(true);
 			}, function(error) {
 				deferred.reject(error);
