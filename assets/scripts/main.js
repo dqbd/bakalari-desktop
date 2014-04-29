@@ -57,15 +57,10 @@ app.run(["$rootScope", "$q", "Users", "Window", "Progress", function($rootScope,
         if(typeof $rootScope.canceler !== "undefined") {
             $rootScope.canceler.resolve();
         }
-
-        //jelikož angularjs 
-        if(typeof $rootScope.reload_listener !== "undefined") {
-            $rootScope.reload_listener();
-        }
-
-        console.log("changing");
         
         $rootScope.canceler = $q.defer();
+
+        $rootScope.$emit("sidebar-views", []);
         
         Progress.showLoading();
     }); 

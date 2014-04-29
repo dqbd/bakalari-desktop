@@ -16,7 +16,6 @@ app.controller("optionsCtrl", ["$scope", "$rootScope", "Utils", "Progress", "Opt
 	}
 
 	$scope.setVisibility = function(name) {
-
 		if(!$scope.isVisible(name)) {
 			$scope.hidden.splice($scope.hidden.indexOf(name), 1);
 		} else {
@@ -26,15 +25,11 @@ app.controller("optionsCtrl", ["$scope", "$rootScope", "Utils", "Progress", "Opt
 		Options.setOption(Options.sidebarHiddenTag, $scope.hidden);
 	}
 
+	Options.getOption(Options.sidebarHiddenTag, Options.sidebarBackgroundTag).then(function(data) {
+		$scope.hidden = (data[Options.sidebarHiddenTag]) ? data[Options.sidebarHiddenTag] : [];
+		$scope.bg_class = (data[Options.sidebarBackgroundTag]) ? data[Options.sidebarBackgroundTag] : "default";
 
-	Options.getOption(Options.sidebarHiddenTag).then(function(data) {
-    	$scope.hidden = (data) ? data : [];
+		Progress.hideAll();
 
-    	Progress.hideAll();
-    });
-
-    Options.getOption(Options.sidebarBackgroundTag).then(function(data) {
-        $scope.bg_class = (data) ? data : "default";
-    });
-
+	});
 }]);

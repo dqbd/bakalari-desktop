@@ -1,13 +1,9 @@
 <div id="options">
 	<h1>Nastavení</h1>
-	<h2>Obecné</h2>
-	<label for="refresh-delay">Jak dlouho mám čekat na obnovení dat?</label>
-	<input type="number" placeholder="60"> minut
 
 	<h2>Barva rozhraní</h2>
 	<div class="colors">
-		<div class="color" ng-repeat="color in colors" ng-class="[color, isSelectedBg(color)]" ng-click="setBg(color)">
-		</div>
+		<div class="color" ng-repeat="color in colors" ng-class="[color, isSelectedBg(color)]" ng-click="setBg(color)"></div>
 	</div>
 
 	<h2>Zobrazení kategorií</h2>

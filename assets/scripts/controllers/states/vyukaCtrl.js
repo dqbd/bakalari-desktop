@@ -1,15 +1,14 @@
-app.controller("vyukaCtrl", ["$scope", "$rootScope", "Parser", "Utils", "Progress", function($scope, $rootScope, Parser, Utils, Progress) {
+app.controller("vyukaCtrl", ["$scope", "$rootScope", "Page", "Utils", function($scope, $rootScope, Page, Utils) {
     
-    $rootScope.reload_listener = $rootScope.$on("reload", function(event, arg) {
-        $scope.load(arg.force);
+    var reload_listener = $rootScope.$on("reload", function(event, arg) {
+        $scope.load(arg.force, (arg.view) ? {"view" : arg.view} : {});
     });
 
-    $scope.load = function(force) {
-        Progress.showLoading();
+    $scope.$on('$destroy', function() { reload_listener(); });
 
-        Parser.get("vyuka", {}, force).then(function(d) {
-            Progress.hideLoading();
-            $scope.data = d.data.data;
+    $scope.load = function(force, arg) {
+        Page.get("vyuka", force, arg).then(function(data) {
+            $scope.data = data;
 
             if($scope.currentSubject < 0) {
                 $scope.subjects = $scope.data.predmety;
@@ -19,15 +18,13 @@ app.controller("vyukaCtrl", ["$scope", "$rootScope", "Parser", "Utils", "Progres
             }
         });
     }
-
-    $scope.load();
     
     $scope.subjects = [];
     $scope.pages = [];
     $scope.currentSubject = -1;
 
-    
-
     $scope.assignIcon = Utils.subjectToColor;
+
+    $scope.load();
 
 }]);

@@ -1,9 +1,11 @@
-app.controller("sidebarCtrl", ["$scope", "$rootScope", "$state", "Options", function($scope, $rootScope, $state, Options) {
+app.controller("sidebarCtrl", ["$scope", "$rootScope", "$state", "Options", "Utils", function($scope, $rootScope, $state, Options, Utils) {
 	$rootScope.pages = pages;
     $rootScope.colors = colors;
 
  	$scope.hidden = [];
     $scope.bg_class = "default";
+
+    $scope.views = [];
 
 	$scope.refresh = function() {
         $rootScope.$emit("reload", {force: true});
@@ -25,12 +27,8 @@ app.controller("sidebarCtrl", ["$scope", "$rootScope", "$state", "Options", func
     	} else {
     		$state.go("options");
     	}
-        console.log("init");
     }
 
-    $rootScope.$on("reload", function(event, arg) {
-        $scope.receiveOptions();
-    });
 
     $scope.receiveOptions = function() {
 		Options.getOption(Options.sidebarHiddenTag).then(function(data) {
@@ -44,6 +42,24 @@ app.controller("sidebarCtrl", ["$scope", "$rootScope", "$state", "Options", func
         });
     }
 
+    $scope.capitalize = function(txt) {
+        return Utils.capitalize(txt, false, true);
+    };
+
+    $scope.viewClick = function(name) {
+        $rootScope.$emit("reload", {"view": name});
+    }
+
+    
+    $rootScope.$on("reload", function(event, arg) {
+        if(arg.user == true) {
+            $scope.receiveOptions();
+        }
+    });
+
+    $rootScope.$on("sidebar-views", function(event, pages) {
+        $scope.views = pages;
+    });
     
     Options.registerObserver(function(data) {
         if(data[Options.sidebarHiddenTag]) {
@@ -56,4 +72,5 @@ app.controller("sidebarCtrl", ["$scope", "$rootScope", "$state", "Options", func
     });
 
     $scope.receiveOptions();
+
 }]);

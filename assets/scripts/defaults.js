@@ -25,4 +25,4 @@ var pages = [
     { "name": "options", "title": "Nastavení", "show": false }
 ];
 
-var colors = ["default", "blue", "green", "red", "purple", "gray", "yellow", "night"];
+var colors = ["default", "night", "blue",  "green", "gray", "yellow", "red", "pink", "purple"];

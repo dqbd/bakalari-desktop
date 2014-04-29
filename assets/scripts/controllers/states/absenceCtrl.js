@@ -1,20 +1,17 @@
-app.controller("absenceCtrl", ["$scope", "$rootScope", "Parser", "Utils", "Progress", function($scope, $rootScope, Parser, Utils, Progress) {
-    
-    $rootScope.reload_listener = $rootScope.$on("reload", function(event, arg) {
-        $scope.load(arg.force);
+app.controller("absenceCtrl", ["$scope", "$rootScope", "Page", "Utils", function($scope, $rootScope, Page, Utils) {
+
+    var reload_listener = $rootScope.$on("reload", function(event, arg) {
+        $scope.load(arg.force, (arg.view) ? {"view" : arg.view} : {});
     });
-    
-    $scope.load = function(force) {
-        Progress.showLoading();
 
-        Parser.get("absence", {}, force).then(function(d) {
-            Progress.hideLoading();
+    $scope.$on('$destroy', function() { reload_listener(); });
 
-            $scope.data = $scope.sortByMissing(d.data.data);
+    $scope.load = function(force, arg) {
+        Page.get("absence", force, arg).then(function(data) {
+            $scope.data = $scope.sortByMissing(data);
             $scope.charts = $scope.generateCharts($scope.data);
         });
     }
-
 
     $scope.generateCharts = function(data) {
         var missing = [];

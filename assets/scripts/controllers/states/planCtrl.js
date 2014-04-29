@@ -1,18 +1,17 @@
-app.controller("planCtrl", ["$scope", "$rootScope", "Parser", "Utils", "Progress", function($scope, $rootScope, Parser, Utils, Progress) {
+app.controller("planCtrl", ["$scope", "$rootScope", "Page", "Utils", function($scope, $rootScope, Page, Utils) {
     
-    $rootScope.reload_listener = $rootScope.$on("reload", function(event, arg) {
-        
-        $scope.load(arg.force);
+    var reload_listener = $rootScope.$on("reload", function(event, arg) {
+        $scope.load(arg.force, (arg.view) ? {"view" : arg.view} : {});
     });
 
-    
-    $scope.load = function(force) {
-        Progress.showLoading();
-        Parser.get("akce", {}, force).then(function(d) {
-            Progress.hideLoading();
-            $scope.data = $scope.sortToDay(d.data.data);
+    $scope.$on('$destroy', function() { reload_listener(); });
+
+    $scope.load = function(force, arg) {
+        Page.get("akce", force, arg).then(function(data) {
+            $scope.data = $scope.sortToDay(data);
         });
     }
+    
 
     $scope.sortToDay = function(data) {
     	var result = {};

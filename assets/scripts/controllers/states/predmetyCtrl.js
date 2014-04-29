@@ -1,16 +1,14 @@
-app.controller("predmetyCtrl", ["$scope", "$rootScope", "Parser", "Utils", "Progress", function($scope, $rootScope, Parser, Utils, Progress) {
+app.controller("predmetyCtrl", ["$scope", "$rootScope", "Page", "Utils", function($scope, $rootScope, Page, Utils) {
     
-    $rootScope.reload_listener = $rootScope.$on("reload", function(event, arg) {
-        $scope.load(arg.force);
+    var reload_listener = $rootScope.$on("reload", function(event, arg) {
+        $scope.load(arg.force, (arg.view) ? {"view" : arg.view} : {});
     });
-    
-    
-    $scope.load = function(force) {
-        Progress.showLoading();
-        Parser.get("predmety", {}, force).then(function(d) {
-            Progress.hideLoading();
-            $scope.data = d.data.data;
 
+    $scope.$on('$destroy', function() { reload_listener(); });
+
+    $scope.load = function(force, arg) {
+        Page.get("predmety", force, arg).then(function(data) {
+            $scope.data = data;
             $scope.data["predmety"] = Utils.sortCzech($scope.data["predmety"], 0);
         });
     }

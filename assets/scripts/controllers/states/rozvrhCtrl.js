@@ -1,16 +1,14 @@
-app.controller("rozvrhCtrl", ["$scope", "$rootScope", "Parser", "Progress", function($scope, $rootScope, Parser, Progress) {
+app.controller("rozvrhCtrl", ["$scope", "$rootScope", "Page", function($scope, $rootScope, Page) {
     
-    $rootScope.reload_listener = $rootScope.$on("reload", function(event, arg) {
-        Progress.showLoading();
-        $scope.load(arg.force);
+    var reload_listener = $rootScope.$on("reload", function(event, arg) {
+        $scope.load(arg.force, (arg.view) ? {"view" : arg.view} : {});
     });
 
-    $scope.load = function(force) {
-        Progress.showLoading();
+    $scope.$on('$destroy', function() { reload_listener(); });
 
-        Parser.get("rozvrh", {"arg": 3}, force).then(function(d) {
-            Progress.hideLoading();
-            $scope.data = d.data.data;
+    $scope.load = function(force, arg) {
+        Page.get("rozvrh", force, arg).then(function(data) {
+            $scope.data = data;
         });
     }
 

@@ -11,5 +11,10 @@
 <div class="control">
 	<a class="refresh" ng-click="refresh()">Načíst znova</a>
 	<a ui-sref="options" ui-sref-active="active" class="settings">Nastavení</a>
-	<a class="layers">Možnosti zobrazení</a>
+	<div class="layers" ng-show="views.length > 0">
+		<span>Možnosti zobrazení</span>
+		<div class="views">
+			<div class="inside"><a ng-repeat="view in views" ng-click="viewClick(view)">{{capitalize(view)}}</a></div>
+		</div>
+	</div>
 </div>

@@ -1,0 +1,156 @@
+.toolbar {
+    height: @sidebar-height;
+    background: lighten(@background, 3%);
+    flex-wrap: nowrap;
+    align-content: stretch;
+    display: flex;
+    justify-content: space-between;
+
+    > * {
+        position: relative;
+        z-index: 2;
+    }
+
+    
+
+    .userlist {
+        display: none;
+        position: absolute;
+        top: 100%;
+        left: 0;
+
+        background: lighten(@background, 3%);
+
+        width: auto;
+
+        box-sizing: border-box;
+
+        box-shadow: 2px 2px 2px fadeout(lighten(black, 80%), 50%);
+
+        &:after {
+            display: block;
+            position: absolute;
+            content: "";
+            top: 0; left: 0; right: 0;
+            height: 20px;
+            
+            background-image: -webkit-linear-gradient(fadeout(@background, 40%), transparent);
+ 
+        }
+    }
+
+    .user {
+        padding: 15px 20px;
+        white-space: nowrap;
+        display: flex;
+        align-items: center;
+        transition: background 0.4s;
+        cursor: pointer;
+
+
+
+        .avatar {
+            width: 35px;
+            height: 35px;
+            min-width: 35px;
+            min-height: 35px;
+
+            border-radius: 999px;
+            overflow: hidden;
+            // background: #3498DB;
+            margin-right: 8px;
+        }
+        
+        .text {
+            color: #808080;
+            font-size: 12px;
+            > * {
+                display: block;
+            }
+            span {
+                font-size: 9px;
+            }
+        }
+
+        &:hover {
+            background: lighten(@background, 6%);
+        }
+    }
+
+    > .user {
+        padding: 0px 20px 0px 20px;
+        -webkit-app-region: no-drag;
+        -webkit-user-select: none;
+
+        &:hover > .userlist {
+            display: block;
+        }
+    }
+
+    .adduser {
+        font-size: 12px;
+        padding: 10px 20px;
+        display: block;
+        background: #e5e5e5;
+        color: #aaa;
+
+        -webkit-transition: background 0.2s;
+
+        &:hover { background: lighten(#e5e5e5, 2%); }
+        &:active { background: darken(#e5e5e5, 2%); }
+    }
+
+    .buttons {
+        -webkit-app-region: no-drag;
+        -webkit-user-select: none;
+        display: block;
+        margin: 0;
+        list-style: none;
+
+        li {
+            float: right;
+            height: 55px;
+            display: block;
+        }
+
+        li a {
+            display: block;
+            height: 100%;
+            font-size: 0;
+            color: transparent;
+            min-width: 35px;
+            position: relative;
+
+            cursor: pointer;
+        }
+
+        li a:before {
+            content: "";
+            position: absolute;
+            left: 9px;
+            top: 19px;
+            width: 17px;
+            height: 17px;
+            background: url("../img/buttons.png");
+            background-repeat: no-repeat;
+            opacity: 0.5;
+            -webkit-transition: opacity 0.2s;
+        }
+
+        li a:hover:before { opacity: 1; }
+
+        li a.close { padding-right: 10px; }
+        li a.restore:before { background-position: 0px -17px; }
+        li a.max:before { background-position: 0px -34px; }
+        li a.min:before { background-position: 0px -51px; }
+
+        li a.close:hover:before,
+            li a.min:hover:before,
+            li a.max:hover:before,
+            li a.restore:hover:before {
+            background-position-x: -17px;
+        }
+
+        &:after { .clear; }
+    }
+}

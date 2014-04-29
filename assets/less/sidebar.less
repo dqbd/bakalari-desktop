@@ -1,0 +1,221 @@
+nav {
+    display: block;
+    background: @sidebar-bg;
+
+    position: relative;
+
+    min-width: @sidebar-width;
+
+    h1 {
+        width: 100%;
+        height: @sidebar-height;
+        margin: 0;
+        text-transform: uppercase;
+        background: url("../img/logo.png");
+        font-size: 0;
+        color: transparent;
+        background-repeat: no-repeat;
+        background-position: 22px 18px;
+        background-size: 90px auto;
+        
+        background-color: lighten(@sidebar-bg, 5%);
+    }
+
+    ul {
+        list-style: none;
+        margin: 10px 0px 0px;
+        padding: 0;
+        width: 100%;
+
+        li a {
+            color: #e6e6e6;
+            text-decoration: none;
+            display: block;
+            padding: 3px;
+            font-size: 14px;
+            opacity: 0.5;
+            -webkit-transition: opacity 0.2s;
+            position: relative;
+        }
+
+        li a img {
+            width: 42px;
+            height: 42px;
+            vertical-align: middle;
+            margin: 0px 10px 0px 15px;
+            opacity: 0.7;
+        }
+
+        li a span {
+            white-space: nowrap;
+        }
+
+        li a:hover {
+            opacity: 0.7;
+        }
+        li a.active {
+            opacity: 1;
+        }
+        
+        li a:after {
+            content: "";
+            position: absolute;
+            display: block;
+            right: 0;
+            top: 50%;
+            border: 7px solid transparent;
+            padding: 0;
+            margin: 0;
+            margin-top: -10px;
+            border-left-color: @sidebar-bg;
+
+            -webkit-transition: right 0.4s;
+        }
+
+        li a.active:after {
+            right: -14px;
+        }
+    }
+
+    .control {
+        position: absolute;
+        bottom: 0;
+        box-sizing: border-box;
+
+        padding: 22.5px 25px 25px;
+
+        background: darken(@sidebar-bg, 2%);
+
+        width: 100%;
+
+        > a, > * > span { 
+            display: inline-block; 
+            font-size: 0px;
+            color: transparent;
+
+            height: 20px;
+
+            
+            float: left;
+            background-image: url("../img/additional_buttons.png");
+            opacity: 0.4;
+            cursor: pointer;
+            
+            -webkit-transition: opacity 0.2s;
+            
+        }
+
+
+        a.refresh {
+            width: 20px;
+        }
+
+        a.settings {
+            width: 22px;
+            background-position: -20px 0px;
+            margin: 0px 12px;
+        }
+
+        div.layers {
+            float: right;
+            position: relative;
+        }
+
+        div.layers > span {
+            display: block;
+            width: 22px;
+           
+            background-image: url("../img/additional_buttons.png");
+            background-position: -42px 0px;
+        }
+
+        div.layers > .views {
+            opacity: 1;
+            position: absolute;
+            bottom: 100%;
+            left: 0px - 5px; 
+            height: auto;
+            width: auto;
+            font-size: 14px;
+            color: black;
+
+
+            padding-bottom: 10px;
+            z-index: 99;
+
+            display: none;
+
+            
+        }
+
+        div.layers > .views a {
+            display: block;
+            white-space: nowrap;
+            padding: 10px 10px 5px;
+
+            cursor: pointer;
+
+            &:last-child {padding-bottom: 10px;}
+        }
+
+        div.layers > .views .inside:after {
+            display: block;
+            content: "";
+            position: absolute;
+            top: 100%;
+            left: 10px;
+
+            border: 5px solid transparent;
+            border-top-color: #F2F2F2;
+
+            z-index: 9999;
+        }
+
+        div.layers > .views .inside:before {
+            content: "Možné zobrazení";
+            font-weight: 600;
+            white-space: nowrap;
+            background: #FEFEFE;
+            border-radius: 4px 4px 0px 0px;
+            padding: 10px;
+            border-bottom: 1px solid darken(#F2F2F2, 3%);
+
+            // position: absolute;
+            // top: 0;
+            // 
+            display: block;
+
+            box-sizing: border-box;
+
+            width: 100%;
+        }
+
+        div.layers > .views .inside {
+            background: #F2F2F2;
+            box-sizing: border-box;
+            position: relative;
+            border-radius: 4px;
+            -webkit-filter: drop-shadow(0px 0px 3px rgba(0,0,0,0.2));
+
+        }
+
+        > div.layers:hover > .views,  div.layers:hover:after {
+            display: block;
+
+        }
+
+        > div.layers:hover > span {
+            opacity: 0.8;
+        }
+
+        a:hover, a.active {
+            opacity: 0.8;
+        }
+
+
+
+        &:after {
+            .clear;
+        }
+    }
+}

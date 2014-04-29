@@ -1,18 +1,16 @@
-app.controller("ukolyCtrl", ["$scope", "$rootScope", "Parser", "Utils", "Progress", function($scope, $rootScope, Parser, Utils, Progress) {
+app.controller("ukolyCtrl", ["$scope", "$rootScope", "Page", "Utils", function($scope, $rootScope, Page, Utils) {
 
-    $rootScope.reload_listener = $rootScope.$on("reload", function(event, arg) {
-        $scope.load(arg.force);
+    var reload_listener = $rootScope.$on("reload", function(event, arg) {
+        $scope.load(arg.force, (arg.view) ? {"view" : arg.view} : {});
     });
 
-    $scope.load = function(force) {
-    	Progress.showLoading();
-        Parser.get("ukoly", {}, force).then(function(d) {
-	        Progress.hideLoading();
-	        $scope.data = $scope.sortData(d.data.data);
+    $scope.$on('$destroy', function() { reload_listener(); });
+
+    $scope.load = function(force, arg) {
+        Page.get("ukoly", force, arg).then(function(data) {
+	        $scope.data = $scope.sortData(data);
 	    });
 	};
-
-	$scope.load();
 
     $scope.sortData = function(data) {
 		var result = {};
@@ -34,5 +32,7 @@ app.controller("ukolyCtrl", ["$scope", "$rootScope", "Parser", "Utils", "Progres
 
     $scope.formatDate = Utils.formatDate;
     $scope.assignIcon = Utils.subjectToColor;
+
+    $scope.load();
     
 }]);

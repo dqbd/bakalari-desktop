@@ -73,16 +73,21 @@ app.factory('Options', ['Database', 'Users', '$q', '$rootScope', function(Databa
 		return deferred.promise;
 	}
 
-	this.getOption = function(tag) {
+	this.getOption = function() {
 		var deferred = $q.defer();
+		var tags = _.values(arguments);
 
 		this.getOptions().then(function(data) {
+			var result = {};
 
-			if(data[tag] != null) {
-				deferred.resolve(data[tag]);
-			} else {
-				deferred.resolve(null);
-			}
+			tags.forEach(function(tag) {
+				result[tag] = data[tag];
+			});
+		
+
+			deferred.resolve(
+				(Object.keys(result).length <= 1) ? result[Object.keys(result)[0]] : result
+			);
 		}, function() {
 			deferred.resolve(null);
 		});

@@ -1,19 +1,17 @@
-app.controller("znamkyCtrl", ["$scope", "$rootScope", "$state", "Parser", "Utils", "Progress", function($scope, $rootScope, $state, Parser, Utils, Progress) {
+app.controller("znamkyCtrl", ["$scope", "$rootScope", "Page", "Utils", function($scope, $rootScope, Page, Utils) {
     // "980306r", "7dm3q2cu"
     
-    $rootScope.reload_listener = $rootScope.$on("reload", function(event, arg) {
-        $scope.load(arg.force);
+    var reload_listener = $rootScope.$on("reload", function(event, arg) {
+        $scope.load(arg.force, (arg.view) ? {"view" : arg.view} : {});
     });
 
-    $scope.load = function(force) {
-        Progress.showLoading();
-        
-        Parser.get("znamky", {}, force).then(function(d) {
-            Progress.hideLoading();
+    $scope.$on('$destroy', function() { reload_listener(); });
 
+    $scope.load = function(force, arg) {
+        Page.get("znamky", force, arg).then(function(data) {
             $scope.shown = [];
 
-            $scope.data = $scope.sortData(d.data.data);      
+            $scope.data = $scope.sortData(data);      
         });
     };
 

@@ -1,4 +1,4 @@
-app.factory("Parser", ["$http", "$rootScope", "$q", "Database", "Users", "Progress", "Options", function($http, $rootScope, $q, Database, Users, Progress, Options) {    
+app.factory("Parser", ["$http", "$rootScope", "$q", "Database", "Users", "Progress", function($http, $rootScope, $q, Database, Users, Progress) {    
 
     var host = "localhost";
     var domain = "http://"+host;
@@ -15,6 +15,8 @@ app.factory("Parser", ["$http", "$rootScope", "$q", "Database", "Users", "Progre
     };
 
     var parent = this;
+
+
 
     this.accessServer = function(page, args) { 
        return $http.post(domain+"/BakaParser/"+page, args, {timeout: $rootScope.canceler.promise});
@@ -43,7 +45,7 @@ app.factory("Parser", ["$http", "$rootScope", "$q", "Database", "Users", "Progre
             db.run("DELETE FROM 'data' WHERE uid = ? AND request = ?", [user.id, parent.constructHash(page,user,arg)]);
 
             db.run("INSERT INTO 'data' (uid, request, response, updated) VALUES (?, ?, ?, ?)",
-                [user.id, parent.constructHash(page,user,arg), JSON.stringify(data.data), new Date().getTime()]
+                [user.id, parent.constructHash(page,user,arg), JSON.stringify(data), new Date().getTime()]
             );
         });
     }
@@ -62,10 +64,10 @@ app.factory("Parser", ["$http", "$rootScope", "$q", "Database", "Users", "Progre
         var deferred = $q.defer();
 
         var callback = function(err, result) {
-            if(result == null || force == true) {
+            if(result == null || result.response == null || result.response.length <= 0 || force == true) {
                 deferred.reject(result);
             } else {
-                deferred.resolve(result);
+                deferred.resolve(JSON.parse(result.response));
             }
         }
 
@@ -89,71 +91,93 @@ app.factory("Parser", ["$http", "$rootScope", "$q", "Database", "Users", "Progre
     }
     
     this.get = function(page, arg, force) {
-        var deferred = $q.defer();
 
-        var result = $q.defer();
-        
         Progress.hideError();
 
-        //return getDebug(page);
+        return $q.all({"user": Users.getCurrentUser(), "connected": this.isConnected()}).then(function(status) {
+            var user = status.user, deferred = $q.defer();
 
-        $q.all({"user": Users.getCurrentUser(), "connected": this.isConnected()}).then(function(status) {
-            var user = status.user;
             parent.hasCache(page, user, arg, force).then(
                 function(data) { //máme cache 
-                    deferred.resolve({"data" : JSON.parse(data.response)});
+                    deferred.resolve(_.extend(data, {"cached": true}));
+
                 }, function(data) { //nemáme cache 
                     if(data != false) {
                         if(status.connected == false) { //nemá smysl stahovat, vyhoď rovnou chybu
-                            Progress.showError("Nejsme připojeni", "sad");
-
-                            deferred.reject(null);
+                            deferred.reject({"status":"error", "code": "no-connection"});
                         } else { //hm... zkusme to stáhnout
-                            var promise = parent.getOnline(page, user.user, user.pass, user.url, arg).then(function(data) {
-                                parent.writeIntoCache(page, user, arg, data);
+                            parent.getOnline(page, user.user, user.pass, user.url, arg).then(function(data) {
+                                parent.writeIntoCache(page, user, arg, data.data);
                                 return data;
-                            });
-
-                            promise.then(function(data) { //data
-                                deferred.resolve(data);
+                            }).then(function(data) { //data
+                                deferred.resolve(_.extend(data.data, {"cached": false}));
                             }, function(error) { //serverová chyba
-                                Progress.showError("Chyba na straně serveru!");
-                                deferred.reject(data);
+                                deferred.reject({"status": "error", "code": "server-error", "data": error});
                             });
                         }
                     } else {
-                        deferred.reject(data);
+                        deferred.reject({"status":"error", "code": "not-login"});
                     }
                 }
             );    
+
+            return deferred.promise;
+            
         });
 
-        deferred.promise.then(function(data) {
-            if(_.isEmpty(data) || _.isEmpty(data.data)) {
-                Progress.showError("Nemáme k dispozici žádné data", "sad");
-                result.reject(data);
-            } else {
-                if(data.data.status != "ok") {
-                    if(data.data.message == "Neexistující požadavek") {
-                        Progress.showError("Tato stránka neexistuje na Bakalářích (nebo nefunguje)", "sad", "Pokud to tam má být, zkus aktualizovat");
-                        result.reject(data);
-                    } else {
-                        Progress.showError("Chyba na straně serveru", "error", data.data.message);
-                        result.reject(data);
-                    }
-                } else if (data.data.data == null || _.isEmpty(data.data.data[page])) {
-                    Progress.showError("Nemáme k dispozici žádné data", "sad", "Je možné, že nic není nového :)");
-                    result.reject(data);
-                } else {
-                    Progress.hideError();
-                    result.resolve(data);
-                }
-            }
-        }, function(error) {
-            result.reject(error);
-        });
+// .then(function(response) {
+//             if(_.isEmpty(response) || _.isEmpty(response.data)) {
+//                 Progress.showError("Nemáme k dispozici žádné data", "sad");
+//                 result.reject(response);
+//             } else {
+//                 if(response.data.status != "ok") {
+//                     if(response.data.message == "Neexistující požadavek") {
+//                         Progress.showError("Tato stránka neexistuje na Bakalářích (nebo nefunguje)", "sad", "Pokud to tam má být, zkus aktualizovat");
+//                         result.reject(response);
+//                     } else {
+//                         Progress.showError("Chyba na straně serveru", "error", response.data.message);
+//                         result.reject(response);
+//                     }
+//                 } else if (response.data.data == null || _.isEmpty(response.data.data[page])) {
+//                     Progress.showError("Nemáme k dispozici žádné data", "sad", "Je možné, že nic není nového :)");
+//                     result.reject(response);
+//                 } else {
+//                     Progress.hideError();
+//                     result.resolve(response);
+//                 }
+//             }
+//         }, function(error) {
+//             result.reject(error);
+//         });
+
+        // deferred.promise
+
+        // deferred.promise.then(function(data) {
+        //     if(_.isEmpty(data) || _.isEmpty(data.data)) {
+        //         Progress.showError("Nemáme k dispozici žádné data", "sad");
+        //         result.reject(data);
+        //     } else {
+        //         if(data.data.status != "ok") {
+        //             if(data.data.message == "Neexistující požadavek") {
+        //                 Progress.showError("Tato stránka neexistuje na Bakalářích (nebo nefunguje)", "sad", "Pokud to tam má být, zkus aktualizovat");
+        //                 result.reject(data);
+        //             } else {
+        //                 Progress.showError("Chyba na straně serveru", "error", data.data.message);
+        //                 result.reject(data);
+        //             }
+        //         } else if (data.data.data == null || _.isEmpty(data.data.data[page])) {
+        //             Progress.showError("Nemáme k dispozici žádné data", "sad", "Je možné, že nic není nového :)");
+        //             result.reject(data);
+        //         } else {
+        //             Progress.hideError();
+        //             result.resolve(data);
+        //         }
+        //     }
+        // }, function(error) {
+        //     result.reject(error);
+        // });
  
-        return result.promise;
+        
     };
    
     return this;

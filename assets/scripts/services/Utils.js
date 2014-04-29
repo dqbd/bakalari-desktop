@@ -45,8 +45,14 @@ app.factory("Utils", function() {
         return (exceptions[shortened.toLowerCase()]) ? exceptions[shortened.toLowerCase()] : shortened;
     }
 
-    this.capitalize = function(input, avoid) {
+    this.capitalize = function(input, avoid, firstonly) {
     	avoid = (avoid) ? avoid : ["a", "v", "z", "do", "od", "ve", "na", "i"];
+        firstonly = (typeof firstonly !== "undefined") ? firstonly : false;
+
+        if(firstonly) {
+            return input.charAt(0).toUpperCase() + input.slice(1);
+        }
+
     	input = input.toLowerCase().split(" ");
 
     	input.forEach(function(word, pos) {
