@@ -228,13 +228,13 @@ body > div > div {
   margin-right: 30px;
 }
 .intro .info h1 {
-  margin: 0px 0px 10px;
+  margin: 0px 0px 0px;
 }
 .intro .info p {
   font-size: 16px;
   color: white;
   font-weight: normal;
-  margin: 0px;
+  margin: 0px 0px 10px;
 }
 .intro .info .buttons {
   display: flex;
@@ -256,9 +256,21 @@ body > div > div {
   margin-right: 5px;
   background-color: #29b664;
 }
+.intro .info .buttons a:nth-child(1):hover {
+  background-color: #2bbe69;
+}
+.intro .info .buttons a:nth-child(1):active {
+  background-color: #27ae5f;
+}
 .intro .info .buttons a:nth-child(2) {
   margin-left: 5px;
   background-color: #34495e;
+}
+.intro .info .buttons a:nth-child(2):hover {
+  background-color: #384e65;
+}
+.intro .info .buttons a:nth-child(2):active {
+  background-color: #304457;
 }
 .intro .info:after {
   content: "";

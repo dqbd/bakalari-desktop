@@ -1,10 +1,19 @@
 app.controller("vysvedceniCtrl", ["$scope", "$rootScope", "Page", function($scope, $rootScope, Page) {
 
-    var reload_listener = $rootScope.$on("reload", function(event, arg) {
-        $scope.load(arg.force, (arg.view) ? {"view" : arg.view} : {});
+    var viewstate = {}, reload_listener = $rootScope.$on("reload", function(event, arg) {
+        arg = (arg) ? arg : {};
+
+        viewstate = (arg.view != null) ? 
+            ((arg.view != false) ? {"view": arg.view} : {}) : 
+            ((!_.isEmpty(viewstate)) ? viewstate : {});
+
+        $scope.load(arg.force, viewstate);
     });
 
-    $scope.$on('$destroy', function() { reload_listener(); });
+    $scope.$on('$destroy', function() { 
+        reload_listener(); 
+        viewstate = {};
+    });
 
     $scope.load = function(force, arg) {
         Page.get("vysvedceni", force, arg).then(function(data) {
@@ -12,6 +21,6 @@ app.controller("vysvedceniCtrl", ["$scope", "$rootScope", "Page", function($scop
 	    });
 	}
 
-    $scope.load();
+    $scope.load(false, viewstate);
 
 }]);

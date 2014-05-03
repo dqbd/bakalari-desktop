@@ -14,7 +14,7 @@
 	<div class="layers" ng-show="views.length > 0">
 		<span>Možnosti zobrazení</span>
 		<div class="views">
-			<div class="inside"><a ng-repeat="view in views" ng-click="viewClick(view)">{{capitalize(view)}}</a></div>
+			<div class="inside"><a ng-repeat="(index, view) in views" ng-click="viewClick(index)">{{capitalize(view.label)}}</a></div>
 		</div>
 	</div>
 </div>

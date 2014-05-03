@@ -38,7 +38,6 @@ app.factory('Users', ['Database', '$q', '$rootScope', function(Database, $q, $ro
 
 			Database.perform(function(db) {
 				db.run("DELETE FROM 'users' WHERE id = ?", id, function(err) {
-					console.log(this.changes);
 					deferred.resolve(this.changes);
 				});
 			});	

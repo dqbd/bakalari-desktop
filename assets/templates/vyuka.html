@@ -1,7 +1,7 @@
 <div id="vyuka">
 	<div class="subject" ng-if="data">
-		<div class="icon" ng-style="assignIcon(subjects[currentSubject].long)">{{subjects[currentSubject]["short"]}}</div>
-		<h2>{{subjects[currentSubject].long}}</h2>
+		<div class="icon" ng-style="assignIcon(findLabel().label)">{{shorten(findLabel().label)}}</div>
+		<h2>{{findLabel().label}}</h2>
 	</div>
 
 	<div class="data">
@@ -26,5 +26,7 @@
 			</tbody>
 		</table>
 	</div>
-
+	<div class="paginator">
+		<a ng-repeat="page in pages">{{page}}</a>
+	</div>
 </div>

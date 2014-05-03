@@ -88,14 +88,16 @@ body > div > div {
 
 		margin-right: 30px;
 
-		h1 { margin: 0px 0px 10px; }
+		h1 { margin: 0px 0px 0px; }
 
 		p {
 			font-size: 16px;
 			color: white;
 			font-weight: normal;
 
-			margin: 0px;
+			margin: 0px 0px 10px;
+
+
 		}
 
 		.buttons {
@@ -126,12 +128,16 @@ body > div > div {
 					background-color: #29b664;
 				}
 
+				&:nth-child(1):hover { background-color: lighten(#29b664, 2%); }
+				&:nth-child(1):active { background-color: darken(#29b664, 2%); }
+
 				&:nth-child(2) {
 					margin-left: 5px;
 					background-color: #34495e;
 				}
 
-				
+				&:nth-child(2):hover { background-color: lighten(#34495e, 2%); }
+				&:nth-child(2):active { background-color: darken(#34495e, 2%); }
 			}
 		}
 

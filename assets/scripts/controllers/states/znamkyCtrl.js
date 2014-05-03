@@ -1,16 +1,23 @@
 app.controller("znamkyCtrl", ["$scope", "$rootScope", "Page", "Utils", function($scope, $rootScope, Page, Utils) {
-    // "980306r", "7dm3q2cu"
     
-    var reload_listener = $rootScope.$on("reload", function(event, arg) {
-        $scope.load(arg.force, (arg.view) ? {"view" : arg.view} : {});
+    var viewstate = {}, reload_listener = $rootScope.$on("reload", function(event, arg) {
+        arg = (arg) ? arg : {};
+
+        viewstate = (arg.view != null) ? 
+            ((arg.view != false) ? {"view": arg.view} : {}) : 
+            ((!_.isEmpty(viewstate)) ? viewstate : {});
+
+        $scope.load(arg.force, viewstate);
     });
 
-    $scope.$on('$destroy', function() { reload_listener(); });
+    $scope.$on('$destroy', function() { 
+        viewstate = {};
+        reload_listener(); 
+    });
 
     $scope.load = function(force, arg) {
         Page.get("znamky", force, arg).then(function(data) {
             $scope.shown = [];
-
             $scope.data = $scope.sortData(data);      
         });
     };
@@ -59,7 +66,7 @@ app.controller("znamkyCtrl", ["$scope", "$rootScope", "Page", "Utils", function(
 
     }
     
-    $scope.load();
+    $scope.load(false, viewstate);
 
     $scope.shown = [];
     
@@ -121,7 +128,8 @@ app.controller("znamkyCtrl", ["$scope", "$rootScope", "Page", "Utils", function(
 		})
 
 
-		return (isPointSystem) ? ((avg / sum)*100).toFixed(2)  + "%" : (avg / sum).toFixed(2);
+        var result = (isPointSystem) ? ((avg / sum)*100).toFixed(2)  + "%" : (avg / sum).toFixed(2)
+		return (result.toString().indexOf("NaN") == -1) ? result : "";
     }
 
     $scope.isNumericMark = function(mark) {

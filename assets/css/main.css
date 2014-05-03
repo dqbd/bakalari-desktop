@@ -309,6 +309,7 @@ nav h1 {
   background-repeat: no-repeat;
   background-position: 22px 18px;
   background-size: 90px auto;
+  opacity: 0.9;
   background-color: #484c4e;
 }
 nav ul {
@@ -481,27 +482,46 @@ nav .control:after {
   position: absolute;
   top: 100%;
   left: 0;
-  background: #f0f0f0;
+  padding-top: 10px;
   width: auto;
   box-sizing: border-box;
-  box-shadow: 2px 2px 2px rgba(204, 204, 204, 0.5);
 }
-.toolbar .userlist:after {
+.toolbar .userlist .user {
+  background: transparent;
+  border-bottom: 1px solid #EFEFEF;
+}
+.toolbar .userlist .user:last-of-type {
+  border-bottom: 0px;
+}
+.toolbar .userlist .inside {
+  background: #F4f4f4;
+  border-radius: 4px;
+  z-index: 999;
+  position: relative;
+  -webkit-filter: drop-shadow(0px 2px 3px rgba(0, 0, 0, 0.2));
+}
+.toolbar .userlist .inside:after {
   display: block;
-  position: absolute;
   content: "";
-  top: 0;
-  left: 0;
-  right: 0;
-  height: 20px;
-  background-image: -webkit-linear-gradient(rgba(232, 232, 232, 0.6), transparent);
+  position: absolute;
+  bottom: 100%;
+  left: 32.5px;
+  border: 5px solid transparent;
+  border-bottom-color: #f4f4f4;
+  z-index: 9999;
+}
+.toolbar .userlist .inside > *:last-child {
+  border-radius: 0px 0px 4px 4px;
+}
+.toolbar .userlist .inside > *:first-child {
+  border-radius: 4px 4px 0px 0px;
 }
 .toolbar .user {
   padding: 15px 20px;
   white-space: nowrap;
   display: flex;
   align-items: center;
-  transition: background 0.4s;
+  -webkit-transition: background 0.4s;
   cursor: pointer;
 }
 .toolbar .user .avatar {
@@ -514,7 +534,8 @@ nav .control:after {
   margin-right: 8px;
 }
 .toolbar .user .text {
-  color: #808080;
+  color: #b3b3b3;
+  -webkit-transition: color 0.4s;
   font-size: 12px;
 }
 .toolbar .user .text > * {
@@ -525,6 +546,9 @@ nav .control:after {
 }
 .toolbar .user:hover {
   background: #f7f7f7;
+}
+.toolbar .user:hover .text {
+  color: #666666;
 }
 .toolbar > .user {
   padding: 0px 20px 0px 20px;
@@ -1348,6 +1372,28 @@ nav.default .control {
 #vyuka .data td:last-child,
 #vyuka .data th:last-child {
   padding-right: 15px;
+}
+#vyuka .paginator {
+  float: right;
+  overflow: hidden;
+  border-radius: 3px;
+  background-color: #F7F7F7;
+  box-shadow: 0px 2px 0px #dbdbdb;
+  margin-bottom: 18px;
+}
+#vyuka .paginator:last-of-type {
+  margin-bottom: 0;
+}
+#vyuka .paginator a {
+  padding: 10px 15px;
+  display: inline-block;
+  cursor: pointer;
+}
+#vyuka .paginator a:hover {
+  background: #fcfcfc;
+}
+#vyuka .paginator a:active {
+  background: #f2f2f2;
 }
 #options h1 {
   font-weight: 400;

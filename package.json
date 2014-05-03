@@ -1,32 +1,39 @@
 {
-    "name": "skolar",
-    "description": "Notifikace známek, suplování a dalších věcí ze školy",
-    "version": "0.1.4",
-    "main": "app://skolar/main.html",
-    "author": {
-        "name": "Delold",
-        "email": "david@duong.cz"
-    },
-    "keywords": ["škola", "bakaláři"],
-    "database-version": 1,
-    "licenses": {
-        "type": "none"
-    },
-    "repository": {
-        "type": "git",
-        "url": "git://github.com/YOUR_LOGIN/SkolarDesktop.git"
-    },
-    "bugs": {
-        "url": "http://github.com/YOUR_LOGIN/SkolarDesktop/issues"
-    },
-    "window": {
-        "toolbar": false,
-        "icon": "./assets/img/logo_hat.png",
-        "frame": false,
-        "height": 600,
-        "width": 1200,
-        "min_height": 600,
-        "min_width": 1200,
-        "show": false
-    }
+  "name": "skolar",
+  "description": "Notifikace známek, suplování a dalších věcí ze školy",
+  "version": "0.2.0",
+  "main": "app://skolar/main.html",
+  "author": {
+    "name": "Delold",
+    "email": "david@duong.cz"
+  },
+  "keywords": [
+    "škola",
+    "bakaláři"
+  ],
+  "database-version": 1,
+  "licenses": {
+    "type": "none"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/YOUR_LOGIN/SkolarDesktop.git"
+  },
+  "bugs": {
+    "url": "http://github.com/YOUR_LOGIN/SkolarDesktop/issues"
+  },
+  "window": {
+    "toolbar": true,
+    "icon": "./assets/img/logo-hat.png",
+    "frame": false,
+    "height": 600,
+    "width": 1200,
+    "min_height": 600,
+    "min_width": 1200,
+    "show": true
+  },
+  "devDependencies": {
+    "grunt": "~0.4.4",
+    "grunt-contrib-compress": "~0.8.0"
+  }
 }

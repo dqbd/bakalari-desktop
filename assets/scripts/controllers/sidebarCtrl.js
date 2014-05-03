@@ -22,11 +22,13 @@ app.controller("sidebarCtrl", ["$scope", "$rootScope", "$state", "Options", "Uti
     		return ($scope.hidden.indexOf(item.name) == -1) && item.show == true;
     	});
 
-    	if(data.length > 0) {
-    		$state.go(data[0].name);
-    	} else {
-    		$state.go("options");
-    	}
+        var state = (data.length > 0) ? data[0].name : "options";
+
+        if ($state.current.name == state) {
+            $rootScope.$emit("reload");
+        } else {
+            $state.go(state);
+        }
     }
 
 
@@ -46,15 +48,12 @@ app.controller("sidebarCtrl", ["$scope", "$rootScope", "$state", "Options", "Uti
         return Utils.capitalize(txt, false, true);
     };
 
-    $scope.viewClick = function(name) {
-        $rootScope.$emit("reload", {"view": name});
+    $scope.viewClick = function(index) {
+        $rootScope.$emit("reload", {"view": (index <= 0) ? false : $scope.views[index].value});
     }
-
     
-    $rootScope.$on("reload", function(event, arg) {
-        if(arg.user == true) {
-            $scope.receiveOptions();
-        }
+    $rootScope.$on("user", function(event, arg) {
+        $scope.receiveOptions();
     });
 
     $rootScope.$on("sidebar-views", function(event, pages) {

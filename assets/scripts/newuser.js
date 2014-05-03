@@ -198,8 +198,6 @@ app.controller('userCtrl', ["$scope", "$rootScope", "$location", "Parser", "User
 	$scope.send = function() {
 		$scope.loading = true;
 
-		console.log($scope.user + $scope.pass + $scope.url);
-
 		Parser.getOnline("login", $scope.user, $scope.pass, $scope.url, null).then(function(data) {
 			
 			if(data.data.status == "ok") {
@@ -208,8 +206,10 @@ app.controller('userCtrl', ["$scope", "$rootScope", "$location", "Parser", "User
 				});
 				
 			} else {
-				$scope.error = (data.data.data.short) ? data.data.data.short : data.data.error;
 				
+
+				$scope.error = (data.data.data && data.data.data.short) ? data.data.data.short : data.data.message;
+
 				$scope.loading = false;
 			}
 		});

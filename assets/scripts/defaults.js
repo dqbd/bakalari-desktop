@@ -1,7 +1,7 @@
 /* Nic zde nenajdeš, jen promněné, které jsou docela důležité... */
 var new_win = {
     "frame":true,
-    "icon": "./assets/img/logo_hat.png",
+    "icon": "./assets/img/logo-hat.png",
     "toolbar":false,
     "width": 800,
     "height": 500,

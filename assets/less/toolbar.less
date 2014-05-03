@@ -11,31 +11,56 @@
         z-index: 2;
     }
 
-    
-
     .userlist {
         display: none;
         position: absolute;
+
+
         top: 100%;
         left: 0;
 
-        background: lighten(@background, 3%);
+        padding-top: 10px;
 
         width: auto;
 
         box-sizing: border-box;
 
-        box-shadow: 2px 2px 2px fadeout(lighten(black, 80%), 50%);
+        .user { 
+            background: transparent; 
+            border-bottom: 1px solid #EFEFEF;
+        }
 
-        &:after {
+        .user:last-of-type {
+            border-bottom: 0px;
+        }
+
+        .inside {
+            background: #F4f4f4;
+            border-radius: 4px;            
+            z-index: 999;
+            position: relative;
+            -webkit-filter: drop-shadow(0px 2px 3px rgba(0,0,0,0.2));
+        }
+
+        .inside:after {
             display: block;
-            position: absolute;
             content: "";
-            top: 0; left: 0; right: 0;
-            height: 20px;
-            
-            background-image: -webkit-linear-gradient(fadeout(@background, 40%), transparent);
- 
+            position: absolute;
+            bottom: 100%;
+            left: 20px + 17.5px - 5px;
+
+            border: 5px solid transparent;
+            border-bottom-color: #f4f4f4;
+
+            z-index: 9999;
+        }
+
+        .inside > *:last-child {
+            border-radius: 0px 0px 4px 4px;
+        }
+
+        .inside > *:first-child {
+            border-radius: 4px 4px 0px 0px;
         }
     }
 
@@ -44,10 +69,8 @@
         white-space: nowrap;
         display: flex;
         align-items: center;
-        transition: background 0.4s;
+        -webkit-transition: background 0.4s;
         cursor: pointer;
-
-
 
         .avatar {
             width: 35px;
@@ -62,7 +85,10 @@
         }
         
         .text {
-            color: #808080;
+            color: lighten(black, 70%);
+            
+            -webkit-transition: color 0.4s;
+            
             font-size: 12px;
             > * {
                 display: block;
@@ -74,6 +100,7 @@
 
         &:hover {
             background: lighten(@background, 6%);
+            .text { color: lighten(black, 40%); }
         }
     }
 

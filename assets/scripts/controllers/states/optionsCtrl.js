@@ -8,6 +8,7 @@ app.controller("optionsCtrl", ["$scope", "$rootScope", "Utils", "Progress", "Opt
 
 	$scope.setBg = function(name) {
 		$scope.bg_class = name;
+		
 		Options.setOption(Options.sidebarBackgroundTag, $scope.bg_class);
 	}
 
@@ -26,10 +27,11 @@ app.controller("optionsCtrl", ["$scope", "$rootScope", "Utils", "Progress", "Opt
 	}
 
 	Options.getOption(Options.sidebarHiddenTag, Options.sidebarBackgroundTag).then(function(data) {
-		$scope.hidden = (data[Options.sidebarHiddenTag]) ? data[Options.sidebarHiddenTag] : [];
-		$scope.bg_class = (data[Options.sidebarBackgroundTag]) ? data[Options.sidebarBackgroundTag] : "default";
+		$scope.hidden = (data && data[Options.sidebarHiddenTag]) ? data[Options.sidebarHiddenTag] : [];
+		$scope.bg_class = (data && data[Options.sidebarBackgroundTag]) ? data[Options.sidebarBackgroundTag] : "default";
 
 		Progress.hideAll();
-
 	});
+
+	$rootScope.$emit("sidebar-views", []);
 }]);

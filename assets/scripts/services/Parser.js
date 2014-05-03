@@ -1,6 +1,6 @@
 app.factory("Parser", ["$http", "$rootScope", "$q", "Database", "Users", "Progress", function($http, $rootScope, $q, Database, Users, Progress) {    
 
-    var host = "localhost";
+    var host = "duong.cz";
     var domain = "http://"+host;
     var caches = {
         "znamky": "klasifikace-body.html",
@@ -100,7 +100,6 @@ app.factory("Parser", ["$http", "$rootScope", "$q", "Database", "Users", "Progre
             parent.hasCache(page, user, arg, force).then(
                 function(data) { //máme cache 
                     deferred.resolve(_.extend(data, {"cached": true}));
-
                 }, function(data) { //nemáme cache 
                     if(data != false) {
                         if(status.connected == false) { //nemá smysl stahovat, vyhoď rovnou chybu
@@ -124,60 +123,6 @@ app.factory("Parser", ["$http", "$rootScope", "$q", "Database", "Users", "Progre
             return deferred.promise;
             
         });
-
-// .then(function(response) {
-//             if(_.isEmpty(response) || _.isEmpty(response.data)) {
-//                 Progress.showError("Nemáme k dispozici žádné data", "sad");
-//                 result.reject(response);
-//             } else {
-//                 if(response.data.status != "ok") {
-//                     if(response.data.message == "Neexistující požadavek") {
-//                         Progress.showError("Tato stránka neexistuje na Bakalářích (nebo nefunguje)", "sad", "Pokud to tam má být, zkus aktualizovat");
-//                         result.reject(response);
-//                     } else {
-//                         Progress.showError("Chyba na straně serveru", "error", response.data.message);
-//                         result.reject(response);
-//                     }
-//                 } else if (response.data.data == null || _.isEmpty(response.data.data[page])) {
-//                     Progress.showError("Nemáme k dispozici žádné data", "sad", "Je možné, že nic není nového :)");
-//                     result.reject(response);
-//                 } else {
-//                     Progress.hideError();
-//                     result.resolve(response);
-//                 }
-//             }
-//         }, function(error) {
-//             result.reject(error);
-//         });
-
-        // deferred.promise
-
-        // deferred.promise.then(function(data) {
-        //     if(_.isEmpty(data) || _.isEmpty(data.data)) {
-        //         Progress.showError("Nemáme k dispozici žádné data", "sad");
-        //         result.reject(data);
-        //     } else {
-        //         if(data.data.status != "ok") {
-        //             if(data.data.message == "Neexistující požadavek") {
-        //                 Progress.showError("Tato stránka neexistuje na Bakalářích (nebo nefunguje)", "sad", "Pokud to tam má být, zkus aktualizovat");
-        //                 result.reject(data);
-        //             } else {
-        //                 Progress.showError("Chyba na straně serveru", "error", data.data.message);
-        //                 result.reject(data);
-        //             }
-        //         } else if (data.data.data == null || _.isEmpty(data.data.data[page])) {
-        //             Progress.showError("Nemáme k dispozici žádné data", "sad", "Je možné, že nic není nového :)");
-        //             result.reject(data);
-        //         } else {
-        //             Progress.hideError();
-        //             result.resolve(data);
-        //         }
-        //     }
-        // }, function(error) {
-        //     result.reject(error);
-        // });
- 
-        
     };
    
     return this;

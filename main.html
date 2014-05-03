@@ -17,14 +17,16 @@
                             <strong>{{currentUser.name}}</strong><span>{{currentUser.title}}</span>
                         </div>
                         <div class="userlist">
-                            <div class="user" ng-repeat="user in users" ng-click="changeUser(user.id)" ng-right-click="showMenu($event, user.id)">
-                                <div class="avatar" ng-style="color(user.name)"></div>
-                                <div class="text">
-                                    <strong>{{user.name}}</strong>
-                                    <span>{{user.title}}</span>
+                            <div class="inside">
+                                <div class="user" ng-repeat="user in users" ng-click="changeUser(user.id)" ng-right-click="showMenu($event, user.id)">
+                                    <div class="avatar" ng-style="color(user.name)"></div>
+                                    <div class="text">
+                                        <strong>{{user.name}}</strong>
+                                        <span>{{user.title}}</span>
+                                    </div>
                                 </div>
+                                <a class="adduser" ng-click="showAddUser()">Přidat uživatele</a>
                             </div>
-                            <a class="adduser" ng-click="showAddUser()">Přidat uživatele</a>
                         </div>
                     </div>
                     <ul class="buttons" ng-controller="windowCtrl">

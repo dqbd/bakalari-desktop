@@ -3,12 +3,9 @@ app.controller("userCtrl", ["$scope", "$rootScope", "$q", "Utils", "Users", "Win
 	var menu = new Window.nw.Menu();
 
 	menu.append(new Window.nw.MenuItem({ label: 'Odstranit uživatele' }));
-	menu.append(new Window.nw.MenuItem({ label: 'Upravit uživatele' }));
 
-	$rootScope.$on("reload", function(event, arg) {
-		if(arg.user == true) {			
-			$scope.checkState();	
-		}
+	$rootScope.$on("user", function() {
+		$scope.checkState();
 	})
 			
 	$scope.checkState = function() {
@@ -21,7 +18,7 @@ app.controller("userCtrl", ["$scope", "$rootScope", "$q", "Utils", "Users", "Win
 	$scope.changeUser = function(id) {
 		Users.setCurrentUser(id);
 
-		$rootScope.$emit("reload", {user: true});		
+		$rootScope.$emit("user");		
 	};
 
 	$scope.showMenu = function($event, id) {
@@ -29,9 +26,9 @@ app.controller("userCtrl", ["$scope", "$rootScope", "$q", "Utils", "Users", "Win
 		menu.items[0].click = function() {
 			$scope.removeUser(id);
 		}
-		menu.items[1].click = function() {
-			$scope.modifyUser(id);
-		}
+		// menu.items[1].click = function() {
+		// 	$scope.modifyUser(id);
+		// }
 	}
 
 	$scope.removeUser = function(id) {
@@ -44,7 +41,7 @@ app.controller("userCtrl", ["$scope", "$rootScope", "$q", "Utils", "Users", "Win
 				Users.getFirstID().then(function(data) {
 					if(data.min != null) {
 						Users.setCurrentUser(data.min);
-						$rootScope.$emit("reload", {user: true});	
+						$rootScope.$emit("user");	
 					} else {
 						//TODO: upravit tady tohle
 						Window.getWindow().close(true);
@@ -52,7 +49,7 @@ app.controller("userCtrl", ["$scope", "$rootScope", "$q", "Utils", "Users", "Win
 				});
 
 			} else {
-				$rootScope.$emit("reload", {user: true});	
+				$rootScope.$emit("user");	
 			}
 
 			
@@ -66,7 +63,7 @@ app.controller("userCtrl", ["$scope", "$rootScope", "$q", "Utils", "Users", "Win
 	$scope.showAddUser = function() {
 		Users.getCurrentUser().then(function(user) {
 			Window.listen("closed", function(window) {
-	            $rootScope.$emit("reload", {user: true});
+	            $rootScope.$emit("user");
 	        }, Window.getWindow("newuser.html#/adduser?url="+user.url, new_win))
 		})
 	}

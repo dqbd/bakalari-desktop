@@ -80,12 +80,10 @@ app.run(["$rootScope", "$q", "Users", "Window", "Progress", function($rootScope,
                     } else {
                         Users.getFirstID().then(function(d) {
                             Users.setCurrentUser(d.min);
-                            $rootScope.$emit("reload", {user: true});
+                            $rootScope.$emit("user");
 
                             Window.getWindow().show();
                         });
-
-
                     }
                 });
 
@@ -97,7 +95,7 @@ app.run(["$rootScope", "$q", "Users", "Window", "Progress", function($rootScope,
             var loadFirstId = function() {
                 Users.getFirstID().then(function(d) {
                     localStorage.currentUser = d.min;
-                    $rootScope.$emit("reload", {user: true});
+                    $rootScope.$emit("user");
                 });
             }
 

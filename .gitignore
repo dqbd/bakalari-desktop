@@ -7,3 +7,4 @@ project.sublime-workspace
 /*.dll
 /*.log
 *.ai
+/node_modules/*

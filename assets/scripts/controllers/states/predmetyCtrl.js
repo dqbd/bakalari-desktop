@@ -1,10 +1,19 @@
 app.controller("predmetyCtrl", ["$scope", "$rootScope", "Page", "Utils", function($scope, $rootScope, Page, Utils) {
     
-    var reload_listener = $rootScope.$on("reload", function(event, arg) {
-        $scope.load(arg.force, (arg.view) ? {"view" : arg.view} : {});
+    var viewstate = {}, reload_listener = $rootScope.$on("reload", function(event, arg) {
+        arg = (arg) ? arg : {};
+
+        viewstate = (arg.view != null) ? 
+            ((arg.view != false) ? {"view": arg.view} : {}) : 
+            ((!_.isEmpty(viewstate)) ? viewstate : {});
+
+        $scope.load(arg.force, viewstate);
     });
 
-    $scope.$on('$destroy', function() { reload_listener(); });
+    $scope.$on('$destroy', function() { 
+        reload_listener(); 
+        viewstate = {};
+    });
 
     $scope.load = function(force, arg) {
         Page.get("predmety", force, arg).then(function(data) {
@@ -32,6 +41,6 @@ app.controller("predmetyCtrl", ["$scope", "$rootScope", "Page", "Utils", functio
     	return ($scope.shown.indexOf(index) > -1) && ($scope.data.hlavicka.length > 2);
     }
 
-    $scope.load();
+    $scope.load(false, viewstate);
 
 }]);
