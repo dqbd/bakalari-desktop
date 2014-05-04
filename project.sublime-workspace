@@ -4,6 +4,26 @@
 		"selected_items":
 		[
 			[
+				"$rot",
+				"$rootScope	AngularJS"
+			],
+			[
+				"file",
+				"filename"
+			],
+			[
+				"overfl",
+				"overflow"
+			],
+			[
+				"view",
+				"viewstate"
+			],
+			[
+				"code",
+				"codeString"
+			],
+			[
 				"f",
 				"firstonly"
 			],
@@ -352,98 +372,61 @@
 	"buffers":
 	[
 		{
-			"file": "assets/scripts/controllers/states/rozvrhCtrl.js",
+			"contents": "module.exports = function(grunt) {\n\n	var date = new Date();\n\n	var settings = {\n		filename: (\"0\"+date.getDate()).slice(-2) + \n				  (\"0\"+(date.getMonth()+1)).slice(-2) + \n				  date.getFullYear().toString() + \n				  (\"0\"+date.getHours()).slice(-2) + \n				  (\"0\"+date.getMinutes()).slice(-2) + \n				  (\"0\"+date.getSeconds()).slice(-2)\n	};\n\n	// Project configuration.\n	grunt.initConfig({\n		pkg: grunt.file.readJSON('package.json'),\n		compress: {\n			zip: {\n				options: {\n					archive: './builds/'+settings.filename+'.zip',\n					mode: \"zip\"\n				},\n				files: [\n					{\n						src: [ \"**\", \"!builds/**\", \"!node_modules/**\", \"!bower.json\", \"!*.s3db\", \"!*.sublime-project\", \"!*.sublime-workspace\", \"!*.log\", \"!Gruntfile.js\", \"!assets/less/**\", \"!temp/**\",\n							\"node_modules/sqlite3/LICENSE\", \"node_modules/sqlite3/package.json\", \"node_modules/sqlite3/sqlite3.js\", \"node_modules/sqlite3/lib/**\", \"node_modules/sqlite3/node_modules/**\"\n						]\n					}\n				]\n			}\n		},\n		shell: {\n			install: {\n				command: \"npm install --build-from-source --runtime=node-webkit --target_arch=ia32 --target=0.8.5 --python=C:\\Python27\\python.exe\"\n			}\n		},\n		clean: [\"temp\"],\n		copy: {\n			totemp: {\n				files: [{\n					expand: true,\n					dest: \"temp\",\n					src: [ \"**\", \"!builds/**\", \"!node_modules/**\", \"!bower.json\", \"!*.s3db\", \"!*.sublime-project\", \"!*.sublime-workspace\", \"!*.log\", \"!Gruntfile.js\", \"!assets/less/**\",\n						\"node_modules/sqlite3/LICENSE\", \"node_modules/sqlite3/package.json\", \"node_modules/sqlite3/sqlite3.js\", \"node_modules/sqlite3/lib/**\", \"node_modules/sqlite3/node_modules/**\"]\n				}]\n			}\n		}\n	});\n\n	// Load the plugin that provides the \"uglify\" task.\n	grunt.loadNpmTasks('grunt-contrib-compress');\n	grunt.loadNpmTasks('grunt-shell');\n	grunt.loadNpmTasks('grunt-contrib-clean');\n	grunt.loadNpmTasks('grunt-contrib-copy');\n\n	grunt.registerTask(\"verify-structure\", \"tries, if everything is alright\", function() {\n		var file = grunt.file.read(\"assets/scripts/defaults.js\", {encoding:\"UTF8\"});\n\n		grunt.log.writeln();\n		grunt.log.writeln(\"Verze balíčku: \" + grunt.config.get(\"pkg.version\")[\"green\"]);\n		grunt.log.writeln(\"Název souboru: \" + (settings.filename+\".zip\")[\"green\"]);\n		grunt.log.writeln();\n\n		if(file.match(/var\\s+host\\s*=\\s*\"duong\\.cz\"/) == null) {\n			grunt.fail.warn(\"Není nastaven správě host na server\");\n		}\n	});\n\n	grunt.registerTask(\"install-dep\", [\"shell\"]);\n	grunt.registerTask(\"copy-to-temp\", [\"clean\", \"copy\"]);\n\n	// Default task(s).\n	grunt.registerTask('default', ['verify-structure', 'compress']);\n\n};",
+			"file": "Gruntfile.js",
+			"file_size": 2598,
+			"file_write_time": 130436599717269728,
 			"settings":
 			{
-				"buffer_size": 1742,
+				"buffer_size": 2518,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "package.json",
+			"settings":
+			{
+				"buffer_size": 515,
 				"line_ending": "Unix"
 			}
 		},
 		{
-			"file": "assets/scripts/controllers/states/absenceCtrl.js",
+			"file": ".gitignore",
 			"settings":
 			{
-				"buffer_size": 2038,
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "assets/scripts/controllers/states/planCtrl.js",
-			"settings":
-			{
-				"buffer_size": 1155,
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "assets/scripts/controllers/states/predmetyCtrl.js",
-			"settings":
-			{
-				"buffer_size": 1151,
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "assets/scripts/controllers/states/suplovaniCtrl.js",
-			"settings":
-			{
-				"buffer_size": 643,
+				"buffer_size": 114,
 				"line_ending": "Unix"
 			}
 		},
 		{
-			"file": "assets/scripts/controllers/states/ukolyCtrl.js",
+			"contents": "",
 			"settings":
 			{
-				"buffer_size": 1081,
+				"buffer_size": 0,
 				"line_ending": "Windows"
 			}
 		},
 		{
-			"file": "assets/scripts/controllers/states/vyukaCtrl.js",
+			"file": ".bowerrc",
 			"settings":
 			{
-				"buffer_size": 957,
+				"buffer_size": 39,
 				"line_ending": "Windows"
 			}
 		},
 		{
-			"file": "assets/scripts/controllers/states/vysvedceniCtrl.js",
+			"file": "src/package.json",
 			"settings":
 			{
-				"buffer_size": 594,
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "assets/scripts/controllers/states/znamkyCtrl.js",
-			"settings":
-			{
-				"buffer_size": 4865,
+				"buffer_size": 773,
 				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "assets/scripts/controllers/states/optionsCtrl.js",
-			"settings":
-			{
-				"buffer_size": 1076,
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "assets/scripts/services/Options.js",
-			"settings":
-			{
-				"buffer_size": 2592,
-				"line_ending": "Windows"
 			}
 		}
 	],
 	"build_system": "Packages/User/node-webkit.sublime-build",
 	"command_palette":
 	{
-		"height": 392.0,
+		"height": 382.0,
 		"selected_items":
 		[
 			[
@@ -644,86 +627,98 @@
 	},
 	"file_history":
 	[
-		"/C/Xampp/htdocs/Skolar/SkolarDesktop/SkolarDesktop/assets/less/options.less",
-		"/C/Xampp/htdocs/Skolar/SkolarDesktop/SkolarDesktop/assets/scripts/services/Options.js",
-		"/C/Xampp/htdocs/Skolar/SkolarDesktop/SkolarDesktop/assets/templates/options.html",
+		"/C/Xampp/htdocs/Skolar/SkolarDesktop/SkolarDesktop/node_modules/grunt/node_modules/grunt-legacy-util/index.js",
+		"/C/Xampp/htdocs/Skolar/SkolarDesktop/SkolarDesktop/assets/less/sidebar.less",
+		"/C/Xampp/htdocs/Skolar/SkolarDesktop/SkolarDesktop/newuser.html",
+		"/C/Xampp/htdocs/Skolar/SkolarDesktop/SkolarDesktop/assets/templates/vyuka.html",
+		"/C/Xampp/htdocs/Skolar/SkolarDesktop/SkolarDesktop/assets/less/main.less",
+		"/C/Xampp/htdocs/Skolar/SkolarDesktop/SkolarDesktop/assets/less/vyuka.less",
+		"/C/Xampp/htdocs/Skolar/SkolarDesktop/SkolarDesktop/assets/scripts/defaults.js",
+		"/C/Xampp/htdocs/Skolar/SkolarDesktop/SkolarDesktop/assets/scripts/services/Parser.js",
+		"/C/Xampp/htdocs/Skolar/SkolarDesktop/SkolarDesktop/assets/templates/znamky.html",
+		"/C/Xampp/htdocs/Skolar/SkolarDesktop/SkolarDesktop/assets/scripts/newuser.js",
 		"/C/Xampp/htdocs/Skolar/SkolarDesktop/SkolarDesktop/assets/scripts/controllers/sidebarCtrl.js",
 		"/C/Xampp/htdocs/Skolar/SkolarDesktop/SkolarDesktop/assets/templates/sidebar.html",
-		"/C/Xampp/htdocs/Skolar/SkolarDesktop/SkolarDesktop/assets/scripts/controllers/states/planCtrl.js",
-		"/C/Xampp/htdocs/Skolar/SkolarDesktop/SkolarDesktop/assets/scripts/services/Page.js",
-		"/C/Xampp/htdocs/Skolar/SkolarDesktop/SkolarDesktop/assets/css/main.css",
-		"/C/Xampp/htdocs/Skolar/SkolarDesktop/SkolarDesktop/assets/less/toolbar.less",
 		"/C/Xampp/htdocs/Skolar/SkolarDesktop/SkolarDesktop/package.json",
-		"/C/Xampp/htdocs/Skolar/SkolarDesktop/SkolarDesktop/assets/scripts/main.js",
-		"/C/Xampp/htdocs/Skolar/SkolarDesktop/SkolarDesktop/assets/less/main.less",
+		"/C/Xampp/htdocs/Skolar/SkolarDesktop/SkolarDesktop/.gitignore",
 		"/C/Xampp/htdocs/Skolar/SkolarDesktop/SkolarDesktop/main.html",
-		"/C/Xampp/htdocs/Skolar/SkolarDesktop/SkolarDesktop/assets/less/sidebar.less",
-		"/C/Xampp/htdocs/Skolar/SkolarDesktop/SkolarDesktop/assets/less/plan.less",
-		"/C/Xampp/htdocs/Skolar/SkolarDesktop/SkolarDesktop/assets/scripts/controllers/states/predmetyCtrl.js",
-		"/C/Xampp/htdocs/Skolar/SkolarDesktop/SkolarDesktop/assets/scripts/services/Utils.js",
-		"/C/Xampp/htdocs/Skolar/SkolarDesktop/SkolarDesktop/assets/components/angular-ui-router/LICENSE",
-		"/C/Xampp/htdocs/Skolar/SkolarDesktop/SkolarDesktop/assets/scripts/controllers/states/znamkyCtrl.js",
+		"/C/Xampp/htdocs/Skolar/SkolarDesktop/SkolarDesktop/assets/scripts/services/Options.js",
+		"/C/Xampp/htdocs/Skolar/SkolarDesktop/SkolarDesktop/assets/scripts/main.js",
+		"/C/Xampp/htdocs/Skolar/SkolarDesktop/SkolarDesktop/Gruntfile.js",
+		"/C/Xampp/htdocs/Skolar/Testers/980306r",
+		"/C/Xampp/htdocs/Skolar/SkolarDesktop/SkolarDesktop/assets/scripts/controllers/states/optionsCtrl.js",
+		"/C/Xampp/htdocs/Skolar/SkolarDesktop/SkolarDesktop/assets/less/options.less",
+		"/C/Xampp/htdocs/Skolar/SkolarDesktop/SkolarDesktop/assets/css/newuser.css",
+		"/C/Xampp/htdocs/Skolar/SkolarDesktop/SkolarDesktop/assets/less/newuser.less",
+		"/C/Xampp/htdocs/Skolar/SkolarDesktop/SkolarDesktop/assets/less/toolbar.less",
 		"/C/Xampp/htdocs/Skolar/SkolarDesktop/SkolarDesktop/assets/scripts/controllers/states/vyukaCtrl.js",
+		"/C/Xampp/htdocs/Skolar/SkolarDesktop/SkolarDesktop/assets/scripts/controllers/states/znamkyCtrl.js",
+		"/C/Xampp/htdocs/Skolar/SkolarDesktop/SkolarDesktop/assets/less/znamky.less",
+		"/C/Xampp/htdocs/Skolar/SkolarDesktop/SkolarDesktop/assets/components/angular/README.html",
+		"/C/Xampp/htdocs/Skolar/SkolarDesktop/SkolarDesktop/assets/components/angular-ui-router/release/angular-ui-router.js",
+		"/C/Xampp/htdocs/Skolar/SkolarDesktop/SkolarDesktop/node_modules/grunt/node_modules/.bin/cake",
+		"/C/Xampp/htdocs/Skolar/SkolarDesktop/SkolarDesktop/assets/less/colors.less",
 		"/C/Xampp/htdocs/Skolar/SkolarDesktop/SkolarDesktop/assets/scripts/controllers/states/vysvedceniCtrl.js",
-		"/C/Xampp/htdocs/Skolar/SkolarDesktop/SkolarDesktop/assets/scripts/controllers/states/ukolyCtrl.js",
-		"/C/Xampp/htdocs/Skolar/SkolarDesktop/SkolarDesktop/assets/scripts/controllers/states/rozvrhCtrl.js",
+		"/C/Xampp/htdocs/Skolar/SkolarDesktop/SkolarDesktop/node_modules/grunt/node_modules/js-yaml/lib/js-yaml/require.js",
+		"/C/Xampp/htdocs/Skolar/SkolarDesktop/SkolarDesktop/assets/components/underscore/Rakefile",
+		"/C/Xampp/htdocs/Skolar/SkolarDesktop/SkolarDesktop/assets/scripts/controllers/userCtrl.js",
+		"/C/Xampp/htdocs/Skolar/SkolarDesktop/SkolarDesktop/assets/components/angular-ui-router/LICENSE",
+		"/C/Xampp/htdocs/Skolar/SkolarDesktop/SkolarDesktop/assets/fonts/Roboto/Roboto-MediumItalic-webfont.svg",
+		"/C/Xampp/htdocs/Skolar/SkolarDesktop/SkolarDesktop/assets/scripts/services/Users.js",
+		"/C/Xampp/htdocs/Skolar/SkolarDesktop/SkolarDesktop/assets/scripts/controllers/windowCtrl.js",
 		"/C/Xampp/htdocs/Skolar/SkolarDesktop/SkolarDesktop/assets/scripts/controllers/states/absenceCtrl.js",
+		"/C/Xampp/htdocs/Skolar/SkolarDesktop/SkolarDesktop/assets/scripts/controllers/states/planCtrl.js",
+		"/C/Xampp/htdocs/Skolar/SkolarDesktop/SkolarDesktop/assets/scripts/controllers/states/predmetyCtrl.js",
+		"/C/Xampp/htdocs/Skolar/SkolarDesktop/SkolarDesktop/assets/scripts/controllers/states/rozvrhCtrl.js",
 		"/C/Xampp/htdocs/Skolar/SkolarDesktop/SkolarDesktop/assets/scripts/controllers/states/suplovaniCtrl.js",
-		"/C/Xampp/htdocs/Skolar/SkolarDesktop/SkolarDesktop/assets/scripts/services/Parser.js",
+		"/C/Xampp/htdocs/Skolar/SkolarDesktop/SkolarDesktop/assets/scripts/controllers/states/ukolyCtrl.js",
+		"/C/Xampp/htdocs/Skolar/SkolarDesktop/SkolarDesktop/assets/scripts/services/Page.js",
+		"/C/Xampp/htdocs/Skolar/SkolarDesktop/SkolarDesktop/node_modules/sqlite3/CHANGELOG.md",
+		"/C/Xampp/htdocs/Skolar/SkolarDesktop/SkolarDesktop/assets/img/svg/suplovani.svg",
+		"/C/Xampp/htdocs/Skolar/SkolarDesktop/SkolarDesktop/assets/less/suplovani.less",
+		"/C/Xampp/htdocs/Skolar/SkolarDesktop/SkolarDesktop/assets/templates/suplovani.html",
+		"/C/Xampp/htdocs/Skolar/SkolarDesktop/SkolarDesktop/assets/templates/rozvrh.html",
+		"/C/Xampp/htdocs/Skolar/SkolarDesktop/SkolarDesktop/assets/fonts/Roboto/Roboto-Black-webfont.svg",
+		"/C/Xampp/htdocs/Skolar/SkolarDesktop/SkolarDesktop/assets/fonts/Roboto/Roboto-Thin-webfont.svg",
+		"/C/Xampp/htdocs/Skolar/SkolarDesktop/SkolarDesktop/assets/less/plan.less",
+		"/C/Xampp/htdocs/Skolar/SkolarDesktop/SkolarDesktop/assets/css/plan.css",
+		"/C/Xampp/htdocs/Skolar/SkolarDesktop/SkolarDesktop/assets/scripts/services/Utils.js",
+		"/C/Xampp/htdocs/Skolar/SkolarDesktop/SkolarDesktop/assets/fonts/Roboto/RobotoCondensed-BoldItalic-webfont.svg",
+		"/C/Xampp/htdocs/Skolar/SkolarDesktop/SkolarDesktop/assets/templates/options.html",
+		"/C/Xampp/htdocs/Skolar/SkolarDesktop/SkolarDesktop/assets/css/main.css",
 		"/C/Xampp/htdocs/Skolar/SkolarDesktop/SkolarDesktop/project.sublime-project",
 		"/C/Xampp/htdocs/Skolar/SkolarDesktop/SkolarDesktop/assets/components/angular-google-maps/package.json",
-		"/C/Xampp/htdocs/Skolar/SkolarDesktop/SkolarDesktop/assets/scripts/controllers/states/optionsCtrl.js",
 		"/C/Xampp/htdocs/Skolar/SkolarDesktop/SkolarDesktop/assets/img/svg/ukoly.svg",
 		"/C/Xampp/htdocs/Skolar/SkolarDesktop/SkolarDesktop/assets/templates/ukoly.html",
 		"/C/Xampp/htdocs/Skolar/SkolarDesktop/SkolarDesktop/assets/less/ukoly.less",
 		"/C/Xampp/htdocs/Skolar/SkolarDesktop/SkolarDesktop/assets/scripts/services/Progress.js",
-		"/C/Xampp/htdocs/Skolar/SkolarDesktop/SkolarDesktop/assets/templates/rozvrh.html",
-		"/C/Xampp/htdocs/Skolar/SkolarDesktop/SkolarDesktop/newuser.html",
 		"/C/Xampp/htdocs/Skolar/SkolarDesktop/SkolarDesktop/assets/scripts/controllers/min/rozvrhCtrl.min.js",
 		"/C/Xampp/htdocs/Skolar/SkolarDesktop/SkolarDesktop/assets/img/svg/rozvrh.svg",
-		"/C/Xampp/htdocs/Skolar/SkolarDesktop/SkolarDesktop/assets/less/colors.less",
-		"/C/Xampp/htdocs/Skolar/SkolarDesktop/SkolarDesktop/assets/scripts/defaults.js",
 		"/C/Xampp/htdocs/Skolar/SkolarDesktop/SkolarDesktop/assets/scripts/services/min/HttpService.min.js",
 		"/C/Xampp/htdocs/Skolar/SkolarDesktop/SkolarDesktop/node_modules/sqlite3/configure",
 		"/C/Xampp/htdocs/Skolar/SkolarDesktop/SkolarDesktop/assets/img/icons.ai",
-		"/C/Xampp/htdocs/Skolar/SkolarDesktop/SkolarDesktop/assets/scripts/newuser.js",
-		"/C/Xampp/htdocs/Skolar/SkolarDesktop/SkolarDesktop/assets/scripts/controllers/windowCtrl.js",
 		"/C/Xampp/htdocs/Skolar/SkolarDesktop/SkolarDesktop/assets/components/angular-google-maps/dist/angular-google-maps.js",
 		"/C/Xampp/htdocs/Skolar/SkolarDesktop/SkolarDesktop/assets/components/angular-google-maps/Gruntfile.coffee",
 		"/C/Xampp/htdocs/Skolar/SkolarDesktop/SkolarDesktop/assets/img/svg/znamky.svg",
-		"/C/Xampp/htdocs/Skolar/SkolarDesktop/SkolarDesktop/assets/templates/znamky.html",
-		"/C/Xampp/htdocs/Skolar/SkolarDesktop/SkolarDesktop/assets/less/znamky.less",
-		"/C/Xampp/htdocs/Skolar/SkolarDesktop/SkolarDesktop/assets/scripts/controllers/userCtrl.js",
 		"/C/Xampp/htdocs/Skolar/SkolarDesktop/SkolarDesktop/assets/less/rozvrh.less",
-		"/C/Xampp/htdocs/Skolar/SkolarDesktop/SkolarDesktop/.gitignore",
 		"/C/Xampp/htdocs/Skolar/SkolarDesktop/SkolarDesktop/node_modules/sqlite3/lib/trace.js",
 		"/C/Xampp/htdocs/Skolar/SkolarDesktop/SkolarDesktop/node_modules/sqlite3/.travis.yml",
 		"/C/Xampp/htdocs/Skolar/SkolarDesktop/SkolarDesktop/assets/less/predmety.less",
-		"/C/Xampp/htdocs/Skolar/SkolarDesktop/SkolarDesktop/assets/components/angular-ui-router/release/angular-ui-router.js",
 		"/C/Xampp/htdocs/Skolar/SkolarDesktop/SkolarDesktop/debug.log",
 		"/C/Xampp/htdocs/Skolar/SkolarDesktop/SkolarDesktop/node_modules/sqlite3/lib/index.js",
 		"/C/Xampp/htdocs/Skolar/SkolarDesktop/SkolarDesktop/assets/scripts/services/Window.js",
 		"/C/Xampp/htdocs/Skolar/SkolarDesktop/SkolarDesktop/assets/fonts/Roboto/Roboto-Regular-webfont.svg",
-		"/C/Xampp/htdocs/Skolar/SkolarDesktop/SkolarDesktop/assets/fonts/Roboto/Roboto-Black-webfont.svg",
 		"/C/Xampp/htdocs/Skolar/SkolarDesktop/SkolarDesktop/.bowerrc",
 		"/C/Xampp/htdocs/Skolar/SkolarDesktop/SkolarDesktop/bower.json",
-		"/C/Xampp/htdocs/Skolar/SkolarDesktop/SkolarDesktop/assets/less/suplovani.less",
-		"/C/Xampp/htdocs/Skolar/SkolarDesktop/SkolarDesktop/assets/templates/suplovani.html",
-		"/C/Xampp/htdocs/Skolar/SkolarDesktop/SkolarDesktop/assets/img/svg/suplovani.svg",
 		"/C/Xampp/htdocs/Skolar/SkolarDesktop/SkolarDesktop/assets/img/svg/komens.svg",
-		"/C/Xampp/htdocs/Skolar/SkolarDesktop/SkolarDesktop/assets/scripts/services/Users.js",
 		"/C/Xampp/htdocs/Skolar/SkolarDesktop/SkolarDesktop/assets/templates/plan.html",
 		"/C/Xampp/htdocs/Skolar/SkolarDesktop/SkolarDesktop/assets/img/svg/plan.svg",
 		"/C/Xampp/htdocs/Skolar/SkolarDesktop/SkolarDesktop/assets/components/angles/angles.js",
-		"/C/Xampp/htdocs/Skolar/SkolarDesktop/SkolarDesktop/assets/components/angular/README.html",
 		"/C/Xampp/htdocs/Skolar/SkolarDesktop/SkolarDesktop/node_modules/sqlite3/LICENSE",
 		"/C/Xampp/htdocs/Skolar/SkolarDesktop/SkolarDesktop/assets/scripts/services/Error.js",
 		"/C/Xampp/htdocs/Skolar/SkolarDesktop/SkolarDesktop/assets/templates/core/nav.html",
-		"/C/Xampp/htdocs/Skolar/SkolarDesktop/SkolarDesktop/assets/fonts/Roboto/Roboto-MediumItalic-webfont.svg",
 		"/C/Xampp/htdocs/Skolar/SkolarDesktop/SkolarDesktop/data.1.s3db",
 		"/C/Xampp/htdocs/Skolar/SkolarDesktop/SkolarDesktop/assets/components/angular/min/angular.min.js",
-		"/C/Xampp/htdocs/Skolar/SkolarDesktop/SkolarDesktop/assets/less/newuser.less",
-		"/C/Xampp/htdocs/Skolar/SkolarDesktop/SkolarDesktop/assets/css/newuser.css",
 		"/C/Xampp/htdocs/Skolar/SkolarDesktop/SkolarDesktop/assets/img/svg/logo.svg",
 		"/C/Xampp/htdocs/Skolar/SkolarDesktop/SkolarDesktop/assets/templates/absence.html",
 		"/C/Xampp/htdocs/Skolar/SkolarDesktop/SkolarDesktop/assets/img/svg/predmety.svg",
@@ -731,9 +726,6 @@
 		"/C/Xampp/htdocs/Skolar/Testers/nguye33zu3",
 		"/C/Xampp/htdocs/Skolar/SkolarDesktop/SkolarDesktop/assets/scripts/services/Database.js",
 		"/C/Xampp/htdocs/Skolar/SkolarDesktop/SkolarDesktop/data.s3db",
-		"/C/Xampp/htdocs/Skolar/SkolarDesktop/SkolarDesktop/assets/css/plan.css",
-		"/C/Xampp/htdocs/Skolar/SkolarDesktop/SkolarDesktop/assets/less/vyuka.less",
-		"/C/Xampp/htdocs/Skolar/SkolarDesktop/SkolarDesktop/assets/components/underscore/Rakefile",
 		"/C/Xampp/htdocs/Skolar/SkolarDesktop/SkolarDesktop/assets/less/absence.less",
 		"/C/Xampp/htdocs/Skolar/SkolarDesktop/SkolarDesktop/node_modules/sqlite3/node_modules/node-pre-gyp/node_modules/tar/lib/buffer-entry.js",
 		"/C/Xampp/htdocs/Skolar/SkolarDesktop/SkolarDesktop/assets/components/mustache/test/_files/bug_11_eating_whitespace.js",
@@ -762,20 +754,11 @@
 		"/C/Xampp/htdocs/Skolar/SkolarDesktop/SkolarDesktop/node_modules/sqlite3/node_modules/node-pre-gyp/node_modules/aws-sdk/lib/credentials/web_identity_credentials.js",
 		"/C/Xampp/htdocs/Skolar/SkolarDesktop/SkolarDesktop/node_modules/sqlite3/test/null_error.test.js",
 		"/C/Xampp/htdocs/Skolar/SkolarDesktop/SkolarDesktop/node_modules/sqlite3/node_modules/node-pre-gyp/node_modules/mkdirp/test/umask_sync.js",
-		"/C/Xampp/htdocs/Skolar/SkolarDesktop/SkolarDesktop/node_modules/sqlite3/node_modules/node-pre-gyp/node_modules/aws-sdk/test/util.spec.coffee",
-		"/C/Xampp/htdocs/Skolar/SkolarDesktop/SkolarDesktop/assets/templates/vyuka.html",
-		"/C/Xampp/htdocs/Skolar/SkolarDesktop/SkolarDesktop/assets/components/mustache/test/_files/keys_with_questionmarks.js",
-		"/C/Xampp/htdocs/Skolar/SkolarDesktop/SkolarDesktop/assets/components/mustache/test/context-test.js",
-		"/C/Xampp/htdocs/Skolar/SkolarDesktop/SkolarDesktop/assets/components/mustache/test/_files/recursion_with_same_names.js",
-		"/C/Xampp/htdocs/Skolar/SkolarDesktop/SkolarDesktop/assets/components/mustache/test/render-test.js",
-		"/C/Xampp/htdocs/Skolar/SkolarDesktop/SkolarDesktop/assets/components/angular/angular.js",
-		"/C/Xampp/htdocs/Skolar/SkolarDesktop/SkolarDesktop/assets/scripts/services/Users",
-		"/C/Xampp/htdocs/Skolar/SkolarDesktop/SkolarDesktop/assets/scripts/services/Database",
-		"/C/Users/David/AppData/Roaming/Sublime Text 3/Packages/User/Default (Windows).sublime-keymap"
+		"/C/Xampp/htdocs/Skolar/SkolarDesktop/SkolarDesktop/node_modules/sqlite3/node_modules/node-pre-gyp/node_modules/aws-sdk/test/util.spec.coffee"
 	],
 	"find":
 	{
-		"height": 68.0
+		"height": 34.0
 	},
 	"find_in_files":
 	{
@@ -797,6 +780,59 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"copy",
+			"newuser",
+			"host",
+			"tester",
+			"testing",
+			"tester",
+			"\"!",
+			", ",
+			"/**\",",
+			", ",
+			"false",
+			"s",
+			"false",
+			"underscore",
+			"localhost",
+			"lighten",
+			"hover",
+			"dataset",
+			"views",
+			"subjects",
+			"error",
+			"7dm3q2cu",
+			"980306r",
+			"background",
+			"COLOR",
+			"block",
+			"F2F2F2",
+			"F2f2f2",
+			"10px",
+			"top",
+			"F2F2F2",
+			"none",
+			"console.log",
+			"reload",
+			"29b664",
+			"34495e",
+			"lighten",
+			"hover",
+			"true",
+			"false",
+			"args",
+			"reload",
+			"if(arg.user != true) {\n    $scope.load(arg.force, args);\n}",
+			"$broadcast",
+			"$emit",
+			"$scope.load(arg.force, args);",
+			"views",
+			"data",
+			"a",
+			"args = (arg.view) ? {\"view\": arg.view} : _.isEmpty(args) ? {} : args;",
+			"args = (arg.view != null) ? ( (arg.view != false) ? {\"view\": arg.view} : {}) : ((!_.isEmpty(args)) ? args : {});",
+			"args = (arg.view) ? {\"view\": arg.view} : _.isEmpty(args) ? {} : args;",
+			"name",
 			"    var args = {};\n    var reload_listener = $rootScope.$on(\"reload\", function(event, arg) {\n        $scope.load(arg.force, (arg.view) ? {\"view\" : arg.view} : {});\n    });",
 			"$scope.$on('$destroy', function() { \n    reload_listener(); \n});",
 			"$scope.$on('$destroy', function() { \n        reload_listener(); \n    });",
@@ -871,60 +907,7 @@
 			"purple",
 			"normal",
 			"color",
-			"background",
-			"hidden",
-			"sidebarHiddenTag",
-			"solid",
-			"logo",
-			"tick",
-			"sidebarHiddenTag",
-			"night",
-			"blue",
-			"yellow",
-			"green",
-			"red",
-			"default",
-			"3C3F41",
-			"@sidebar-bg",
-			"pg",
-			"index",
-			"\"",
-			"blue",
-			"@sidebar-bg",
-			"@sidebar",
-			"@sidebar-bg",
-			"Options",
-			"Error",
-			"Progress",
-			"},",
-			": function",
-			": ",
-			"var ",
-			"true",
-			"data",
-			"result",
-			"hidden",
-			"page",
-			"name",
-			"page",
-			"name",
-			"id",
-			"hidden",
-			"Hello",
-			"this",
-			"data",
-			"resolve",
-			"class",
-			"id",
-			"title",
-			"derp",
-			"buttons",
-			"page",
-			"right",
-			"left",
-			"category",
-			"name",
-			"dataset"
+			"background"
 		],
 		"highlight": true,
 		"in_selection": false,
@@ -932,6 +915,9 @@
 		"regex": false,
 		"replace_history":
 		[
+			"    $scope.load(arg.force, args);",
+			"if(arg.user != true) {\n    $scope.load(arg.force, args);\n}",
+			"args = (arg.view != null) ? ( (arg.view != false) ? {\"view\": arg.view} : {}) : ((!_.isEmpty(args)) ? args : {});",
 			"$Scope.load(false, args);",
 			"Progress.hideLoading();",
 			"Progress.showLoading();",
@@ -951,34 +937,32 @@
 	"groups":
 	[
 		{
-			"selected": 8,
+			"selected": 2,
 			"sheets":
 			[
 				{
 					"buffer": 0,
-					"file": "assets/scripts/controllers/states/rozvrhCtrl.js",
+					"file": "Gruntfile.js",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 1742,
+						"buffer_size": 2518,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								409,
-								108
+								1128,
+								1128
 							]
 						],
 						"settings":
 						{
-							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage"
 						},
 						"translation.x": 0.0,
-						"translation.y": 0.0,
+						"translation.y": 351.0,
 						"zoom_level": 1.0
 					},
 					"stack_index": 2,
@@ -986,142 +970,26 @@
 				},
 				{
 					"buffer": 1,
-					"file": "assets/scripts/controllers/states/absenceCtrl.js",
+					"file": "package.json",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 2038,
+						"buffer_size": 515,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								422,
-								422
+								258,
+								258
 							]
 						],
 						"settings":
 						{
-							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
-							"tab_size": 4,
+							"syntax": "Packages/JavaScript/JSON.tmLanguage",
+							"tab_size": 2,
 							"translate_tabs_to_spaces": true
-						},
-						"translation.x": -0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 10,
-					"type": "text"
-				},
-				{
-					"buffer": 2,
-					"file": "assets/scripts/controllers/states/planCtrl.js",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 1155,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								423,
-								423
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 9,
-					"type": "text"
-				},
-				{
-					"buffer": 3,
-					"file": "assets/scripts/controllers/states/predmetyCtrl.js",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 1151,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								427,
-								427
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 8,
-					"type": "text"
-				},
-				{
-					"buffer": 4,
-					"file": "assets/scripts/controllers/states/suplovaniCtrl.js",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 643,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								421,
-								421
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/JavaScript/JavaScript.tmLanguage"
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 7,
-					"type": "text"
-				},
-				{
-					"buffer": 5,
-					"file": "assets/scripts/controllers/states/ukolyCtrl.js",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 1081,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								417,
-								417
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/JavaScript/JavaScript.tmLanguage"
 						},
 						"translation.x": 0.0,
 						"translation.y": 0.0,
@@ -1131,87 +999,25 @@
 					"type": "text"
 				},
 				{
-					"buffer": 6,
-					"file": "assets/scripts/controllers/states/vyukaCtrl.js",
+					"buffer": 2,
+					"file": ".gitignore",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 957,
+						"buffer_size": 114,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								424,
-								424
+								100,
+								100
 							]
 						],
 						"settings":
 						{
-							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 6,
-					"type": "text"
-				},
-				{
-					"buffer": 7,
-					"file": "assets/scripts/controllers/states/vysvedceniCtrl.js",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 594,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								409,
-								409
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 5,
-					"type": "text"
-				},
-				{
-					"buffer": 8,
-					"file": "assets/scripts/controllers/states/znamkyCtrl.js",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 4865,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								1896,
-								1896
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true
+							"syntax": "Packages/Text/Plain text.tmLanguage"
 						},
 						"translation.x": 0.0,
 						"translation.y": 0.0,
@@ -1221,12 +1027,11 @@
 					"type": "text"
 				},
 				{
-					"buffer": 9,
-					"file": "assets/scripts/controllers/states/optionsCtrl.js",
+					"buffer": 3,
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 1076,
+						"buffer_size": 0,
 						"regions":
 						{
 						},
@@ -1239,43 +1044,71 @@
 						],
 						"settings":
 						{
-							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
-							"translate_tabs_to_spaces": false
+							"syntax": "Packages/JavaScript/JSON.tmLanguage"
 						},
-						"translation.x": -0.0,
-						"translation.y": 39.0,
+						"translation.x": 0.0,
+						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 4,
+					"stack_index": 3,
 					"type": "text"
 				},
 				{
-					"buffer": 10,
-					"file": "assets/scripts/services/Options.js",
+					"buffer": 4,
+					"file": ".bowerrc",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 2592,
+						"buffer_size": 39,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								968,
-								968
+								20,
+								20
 							]
 						],
 						"settings":
 						{
-							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
-							"translate_tabs_to_spaces": false
+							"syntax": "Packages/Text/Plain text.tmLanguage"
 						},
 						"translation.x": 0.0,
-						"translation.y": 507.0,
+						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 3,
+					"stack_index": 5,
+					"type": "text"
+				},
+				{
+					"buffer": 5,
+					"file": "src/package.json",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 773,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								722,
+								722
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JSON.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 117.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 4,
 					"type": "text"
 				}
 			]
@@ -1314,7 +1147,7 @@
 	"menu_visible": true,
 	"output.exec":
 	{
-		"height": 177.0
+		"height": 290.0
 	},
 	"output.find_results":
 	{
@@ -1327,7 +1160,7 @@
 	"project": "project.sublime-project",
 	"replace":
 	{
-		"height": 62.0
+		"height": 38.0
 	},
 	"save_all_on_build": true,
 	"select_file":
@@ -1336,8 +1169,128 @@
 		"selected_items":
 		[
 			[
+				"giti",
+				".gitignore"
+			],
+			[
+				"packa",
+				"package.json"
+			],
+			[
+				"grunt",
+				"Gruntfile.js"
+			],
+			[
+				"newus",
+				"newuser.html"
+			],
+			[
+				"sidebar",
+				"assets\\scripts\\controllers\\sidebarCtrl.js"
+			],
+			[
+				"defau",
+				"assets\\scripts\\defaults.js"
+			],
+			[
+				"parser",
+				"assets\\scripts\\services\\Parser.js"
+			],
+			[
+				"pack",
+				"package.json"
+			],
+			[
+				"main",
+				"main.html"
+			],
+			[
+				"gitig",
+				".gitignore"
+			],
+			[
+				"main.js",
+				"assets\\scripts\\main.js"
+			],
+			[
+				"options",
+				"assets\\scripts\\services\\Options.js"
+			],
+			[
+				"newuser",
+				"newuser.html"
+			],
+			[
 				"opti",
 				"assets\\scripts\\services\\Options.js"
+			],
+			[
+				"gru",
+				"Gruntfile.js"
+			],
+			[
+				"default",
+				"assets\\scripts\\defaults.js"
+			],
+			[
+				"znamky",
+				"assets\\scripts\\controllers\\states\\znamkyCtrl.js"
+			],
+			[
+				"main.less",
+				"assets\\less\\main.less"
+			],
+			[
+				"vyuka",
+				"assets\\less\\vyuka.less"
+			],
+			[
+				"package",
+				"package.json"
+			],
+			[
+				"toolbar",
+				"assets\\less\\toolbar.less"
+			],
+			[
+				"main.ht",
+				"main.html"
+			],
+			[
+				"page.js",
+				"assets\\scripts\\services\\Page.js"
+			],
+			[
+				"page",
+				"assets\\scripts\\services\\Page.js"
+			],
+			[
+				"main.le",
+				"assets\\less\\main.less"
+			],
+			[
+				"suplova",
+				"assets\\scripts\\controllers\\states\\suplovaniCtrl.js"
+			],
+			[
+				"planc",
+				"assets\\scripts\\controllers\\states\\planCtrl.js"
+			],
+			[
+				"user",
+				"assets\\scripts\\controllers\\userCtrl.js"
+			],
+			[
+				"utils",
+				"assets\\scripts\\services\\Utils.js"
+			],
+			[
+				"vyukac",
+				"assets\\scripts\\controllers\\states\\vyukaCtrl.js"
+			],
+			[
+				"sideb",
+				"assets\\scripts\\controllers\\sidebarCtrl.js"
 			],
 			[
 				"op",
@@ -1348,14 +1301,6 @@
 				"assets\\css\\main.css"
 			],
 			[
-				"main.js",
-				"assets\\scripts\\main.js"
-			],
-			[
-				"page",
-				"assets\\scripts\\services\\Page.js"
-			],
-			[
 				"planctr",
 				"assets\\scripts\\controllers\\states\\planCtrl.js"
 			],
@@ -1364,28 +1309,12 @@
 				"assets\\scripts\\services\\Utils.js"
 			],
 			[
-				"sidebar",
-				"assets\\scripts\\controllers\\sidebarCtrl.js"
-			],
-			[
 				"tool",
 				"assets\\less\\toolbar.less"
 			],
 			[
-				"pack",
-				"package.json"
-			],
-			[
 				"side",
 				"assets\\templates\\sidebar.html"
-			],
-			[
-				"main",
-				"assets\\less\\main.less"
-			],
-			[
-				"parser",
-				"assets\\scripts\\services\\Parser.js"
 			],
 			[
 				"ukoly",
@@ -1404,16 +1333,8 @@
 				"assets\\templates\\rozvrh.html"
 			],
 			[
-				"main.less",
-				"assets\\less\\main.less"
-			],
-			[
 				"optionsctr",
 				"assets\\scripts\\controllers\\states\\optionsCtrl.js"
-			],
-			[
-				"options",
-				"assets\\scripts\\services\\Options.js"
 			],
 			[
 				"progre",
@@ -1432,16 +1353,8 @@
 				"assets\\scripts\\defaults.js"
 			],
 			[
-				"newuser",
-				"newuser.html"
-			],
-			[
 				"planctrl",
 				"assets\\scripts\\controllers\\states\\planCtrl.js"
-			],
-			[
-				"znamky",
-				"assets\\scripts\\controllers\\states\\znamkyCtrl.js"
 			],
 			[
 				"rozvrh.js",
@@ -1468,16 +1381,8 @@
 				"assets\\less\\suplovani.less"
 			],
 			[
-				"packa",
-				"package.json"
-			],
-			[
 				"si",
 				"assets\\scripts\\controllers\\sidebarCtrl.js"
-			],
-			[
-				"utils",
-				"assets\\scripts\\services\\Utils.js"
 			],
 			[
 				"users",
@@ -1544,10 +1449,6 @@
 				"assets\\templates\\core\\nav.html"
 			],
 			[
-				"newus",
-				"newuser.html"
-			],
-			[
 				"nav",
 				"assets\\templates\\core\\nav.html"
 			],
@@ -1558,10 +1459,6 @@
 			[
 				"windo",
 				"assets\\scripts\\services\\Window.js"
-			],
-			[
-				"user",
-				"assets\\scripts\\controllers\\userCtrl.js"
 			],
 			[
 				"windw",
@@ -1664,10 +1561,6 @@
 				"assets\\scripts\\controllers\\states\\znamkyCtrl.js"
 			],
 			[
-				"main.ht",
-				"main.html"
-			],
-			[
 				"ctrl",
 				"assets\\scripts\\controllers\\states\\planCtrl.js"
 			],
@@ -1678,10 +1571,6 @@
 			[
 				"znamkyctrl",
 				"assets\\scripts\\controllers\\states\\znamkyCtrl.js"
-			],
-			[
-				"main.le",
-				"assets\\less\\main.less"
 			],
 			[
 				"http",
@@ -1712,19 +1601,11 @@
 				"assets\\scripts\\controllers\\states\\ukolyCtrl.js"
 			],
 			[
-				"vyuka",
-				"assets\\less\\vyuka.less"
-			],
-			[
 				"absence.less",
 				"assets\\less\\absence.less"
 			],
 			[
 				"vyukact",
-				"assets\\scripts\\controllers\\states\\vyukaCtrl.js"
-			],
-			[
-				"vyukac",
 				"assets\\scripts\\controllers\\states\\vyukaCtrl.js"
 			],
 			[

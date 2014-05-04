@@ -1,6 +1,7 @@
-app.factory("Parser", ["$http", "$rootScope", "$q", "Database", "Users", "Progress", function($http, $rootScope, $q, Database, Users, Progress) {    
+app.factory("Parser", ["$http", "$rootScope", "$q", "Database", "Users", "Progress", function($http, $rootScope, $q, Database, Users, Progress) {   
 
-    var host = "duong.cz";
+   
+
     var domain = "http://"+host;
     var caches = {
         "znamky": "klasifikace-body.html",

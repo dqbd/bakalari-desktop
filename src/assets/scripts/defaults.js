@@ -13,6 +13,8 @@ var new_win = {
     "show": false
 };
 
+var host = "duong.cz";
+
 var pages = [
     { "name": "znamky", "title": "Známky", "show": true }, 
     { "name": "rozvrh","title": "Rozvrh", "show": true }, 

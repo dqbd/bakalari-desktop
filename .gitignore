@@ -2,9 +2,10 @@ nw.exe
 nw.pak
 project.sublime-project
 project.sublime-workspace
-/*.s3db
+*.s3db
+!data.s3db
 .bowerrc
-/*.dll
-/*.log
+*.dll
+*.log
 *.ai
-/node_modules/*
+node_modules/*
