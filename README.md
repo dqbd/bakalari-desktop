@@ -5,7 +5,6 @@
 Pro kompilaci je nutné mít nainstalované tyto aplikace
 
 * `nodejs` a `npm`
-* `grunt` 
 * `python` 2.7.x, **nikoliv** 3.x.x
 
 * Unix:
@@ -17,6 +16,7 @@ Pro kompilaci je nutné mít nainstalované tyto aplikace
 ###Jak zkompilovat
 Nejprve stáhni celý tento git. Poté v příkazovém řádku s CWD u složky zadej  
 ```
+$ npm install grunt -g
 $ npm install
 $ grunt init
 ```

@@ -5,7 +5,12 @@ project.sublime-workspace
 *.s3db
 !data.s3db
 .bowerrc
+node_modules
+temp/*
+builds/*
+nw
 *.dll
 *.log
 *.ai
-node_modules/*
+*.so
+*.app
