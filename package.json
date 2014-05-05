@@ -21,7 +21,8 @@
     "lodash": "~2.4.1",
     "grunt-zip": "~0.13.0",
     "progress": "~1.1.5",
-    "adm-zip": "~0.4.4"
+    "adm-zip": "~0.4.4",
+    "tar-fs": "~0.3.2"
   },
   "author": "David Duong",
   "license": "BSD"

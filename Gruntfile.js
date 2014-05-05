@@ -12,6 +12,9 @@ module.exports = function(grunt) {
 	var q = require("q");
 	var admzip = require("adm-zip");
 
+	var zlib = require("zlib");
+	var tar = require("tar-fs");
+
 	grunt.loadNpmTasks('grunt-contrib-compress');
 	grunt.loadNpmTasks('grunt-shell');
 	grunt.loadNpmTasks('grunt-contrib-clean');
@@ -42,11 +45,11 @@ module.exports = function(grunt) {
 	var file_list = ["src/**", "!src/builds/**", "!src/node_modules/**", "!src/bower.json", "!src/*.s3db", "!src/*.sublime-project", "!src/*.sublime-workspace", "!src/*.log", "!src/assets/less/**",
 		"src/node_modules/sqlite3/LICENSE", "src/node_modules/sqlite3/package.json", "src/node_modules/sqlite3/sqlite3.js", "src/node_modules/sqlite3/lib/**", "src/node_modules/sqlite3/node_modules/**"]
 		.map(function(item) { return item.replace(/\//g, path.sep); });
-
-	console.log(file_list);
 	
 	var nw_file;
 	var options = platform_options[_.findIndex(platform_options, {type: process.platform})];
+
+	// var options = platform_options[2];
 
 	grunt.initConfig({
 		pkg: grunt.file.readJSON('package.json'),
@@ -106,18 +109,40 @@ module.exports = function(grunt) {
 			srv.on("end", function() {
 				grunt.log.writeln("Staženo, rozbaluji"["blue"]);
 
-				var zip = new admzip(nw_file);
+				if(path.extname(nw_file) === ".zip") {
 
-				zip.getEntries().forEach(function(entry) {
-					if(options.files.indexOf(entry.name) > -1) {
-						zip.extractEntryTo(entry.entryName, "src", true, true);
-					}
-				});
+					var zip = new admzip(nw_file);
 
-				done(true);
+					zip.getEntries().forEach(function(entry) {
+						if(options.files.indexOf(entry.name) > -1) {
+							zip.extractEntryTo(entry.entryName, "src", true, true);
+						}
+					});
+
+					done(true);
+
+				} else if (path.extname(nw_file) === ".gz") {
+					fs.createReadStream(nw_file)
+						.pipe(zlib.createGunzip())
+						.pipe(tar.extract("temp"))
+						.on('finish', function() {
+							var basename = path.basename(nw_file, '.tar.gz');
+
+							fs.readdir(path.join("temp", basename), function(err, files) {
+								_.intersection(files, options.files).forEach(function(file) {
+									fs.renameSync(path.join("temp", basename, file), 
+												  path.join("src", file));
+								});
+
+								done(true);
+							});
+					});
+				}
+
+				
 			});
 		});
-		
+
 		srv.pipe(out);
 	});
 
@@ -134,7 +159,7 @@ module.exports = function(grunt) {
 		}
 	});
 
-	grunt.registerTask("init", ["nw-download", "shell", "clean"]);
+	grunt.registerTask("init", ["nw-download", "clean"]);
 
 	grunt.registerTask('default', ['verify-structure', 'compress']);
 

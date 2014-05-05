@@ -5,6 +5,7 @@
 Pro kompilaci je nutné mít nainstalované tyto aplikace
 
 * `nodejs` a `npm`
+* `grunt` 
 * `python` 2.7.x, **nikoliv** 3.x.x
 
 * Unix:
@@ -20,3 +21,5 @@ $ npm install
 $ grunt init
 ```
 Následně by měla ve složce builds být aplikace zabalená v ZIP archivu.
+####Problémy při kompilaci
+Je dost možné, že 
