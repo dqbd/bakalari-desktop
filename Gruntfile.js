@@ -159,8 +159,7 @@ module.exports = function(grunt) {
 		}
 	});
 
-	grunt.registerTask("init", ["nw-download", "clean"]);
-
+	grunt.registerTask("init", ["nw-download", "shell", "clean"]);
 	grunt.registerTask('default', ['verify-structure', 'compress']);
 
 };
