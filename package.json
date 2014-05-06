@@ -11,18 +11,21 @@
     "url": "https://Delold@bitbucket.org/Delold/skolardesktop.git"
   },
   "devDependencies": {
-    "grunt": "~0.4.4",
-    "grunt-contrib-compress": "~0.8.0",
-    "grunt-shell": "~0.7.0",
     "q": "~1.0.1",
-    "grunt-contrib-copy": "~0.5.0",
-    "grunt-contrib-clean": "~0.5.0",
     "request": "~2.34.0",
     "lodash": "~2.4.1",
-    "grunt-zip": "~0.13.0",
     "progress": "~1.1.5",
-    "adm-zip": "~0.4.4",
-    "tar-fs": "~0.3.2"
+    "tar-fs": "~0.3.2",
+    "zip": "~1.2.0",
+    "grunt": "~0.4.4",
+    "grunt-contrib-less": "~0.11.0",
+    "grunt-contrib-copy": "~0.5.0",
+    "grunt-contrib-clean": "~0.5.0",
+    "grunt-contrib-watch": "~0.6.1",
+    "grunt-contrib-uglify": "~0.4.0",
+    "grunt-contrib-compress": "~0.8.0",
+    "grunt-usemin": "~2.1.1",
+    "grunt-shell": "~0.7.0"
   },
   "author": "David Duong",
   "license": "BSD"
