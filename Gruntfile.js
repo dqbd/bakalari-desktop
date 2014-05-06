@@ -87,15 +87,15 @@ module.exports = function(grunt) {
 		}, 
 		watch: {
 			less: {
-				files: ["src/assets/less/*.less"],
+				files: [path.join("src", "assets","less","*.less")],
 				tasks: ["less:development"]
 			}
 		},
 		less: {
 			development: {
 				files: {
-					"src/assets/css/main.css": "src/assets/less/main.less",
-					"src/assets/css/newuser.css": "src/assets/less/newuser.less"
+					path.join("src","assets","css","main.css"): path.join("src","assets","less","main.less"),
+					path.join("src","assets","css","newuser.css"): path.join("src","assets","less","newuser.less")
 				}
 			},
 			production: {
@@ -104,8 +104,8 @@ module.exports = function(grunt) {
 					compress: true
 				},
 				files: {
-					"src/assets/css/main.css": "src/assets/less/main.less",
-					"src/assets/css/newuser.css": "src/assets/less/newuser.less"
+					path.join("src","assets","css","main.css"): path.join("src","assets","less","main.less"),
+					path.join("src","assets","css","newuser.css"): path.join("src","assets","less","newuser.less")
 				}
 			}
 		},
@@ -115,13 +115,13 @@ module.exports = function(grunt) {
 			}
 		},
 		useminPrepare: {
-			html: ['src/main.html', 'src/newuser.html'],
+			html: [path.join('src','main.html'), path.join('src','newuser.html')],
 		    options: {
 	      		dest: 'dist'
 		    }
 		},
 		usemin: {
-		  	html: ['dist/main.html', 'dist/newuser.html']
+		  	html: [path.join('dist','main.html'), path.join('dist','newuser.html')]
 	  	}
 
 	});
