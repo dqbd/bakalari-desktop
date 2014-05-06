@@ -4,12 +4,44 @@
 		"selected_items":
 		[
 			[
-				"$rot",
-				"$rootScope	AngularJS"
+				"usemi",
+				"useminPrepare"
 			],
 			[
 				"file",
-				"filename"
+				"file_list"
+			],
+			[
+				"ver",
+				"verify-structure"
+			],
+			[
+				"pat",
+				"platform_options"
+			],
+			[
+				"zip",
+				"zipReader"
+			],
+			[
+				"nw",
+				"nw_file"
+			],
+			[
+				"down",
+				"download-nw"
+			],
+			[
+				"pla",
+				"platform_options"
+			],
+			[
+				"re",
+				"require"
+			],
+			[
+				"$rot",
+				"$rootScope	AngularJS"
 			],
 			[
 				"overfl",
@@ -34,10 +66,6 @@
 			[
 				"stat",
 				"statusHandler"
-			],
-			[
-				"re",
-				"response"
 			],
 			[
 				"s",
@@ -372,54 +400,11 @@
 	"buffers":
 	[
 		{
-			"contents": "module.exports = function(grunt) {\n\n	var date = new Date();\n\n	var settings = {\n		filename: (\"0\"+date.getDate()).slice(-2) + \n				  (\"0\"+(date.getMonth()+1)).slice(-2) + \n				  date.getFullYear().toString() + \n				  (\"0\"+date.getHours()).slice(-2) + \n				  (\"0\"+date.getMinutes()).slice(-2) + \n				  (\"0\"+date.getSeconds()).slice(-2)\n	};\n\n	// Project configuration.\n	grunt.initConfig({\n		pkg: grunt.file.readJSON('package.json'),\n		compress: {\n			zip: {\n				options: {\n					archive: './builds/'+settings.filename+'.zip',\n					mode: \"zip\"\n				},\n				files: [\n					{\n						src: [ \"**\", \"!builds/**\", \"!node_modules/**\", \"!bower.json\", \"!*.s3db\", \"!*.sublime-project\", \"!*.sublime-workspace\", \"!*.log\", \"!Gruntfile.js\", \"!assets/less/**\", \"!temp/**\",\n							\"node_modules/sqlite3/LICENSE\", \"node_modules/sqlite3/package.json\", \"node_modules/sqlite3/sqlite3.js\", \"node_modules/sqlite3/lib/**\", \"node_modules/sqlite3/node_modules/**\"\n						]\n					}\n				]\n			}\n		},\n		shell: {\n			install: {\n				command: \"npm install --build-from-source --runtime=node-webkit --target_arch=ia32 --target=0.8.5 --python=C:\\Python27\\python.exe\"\n			}\n		},\n		clean: [\"temp\"],\n		copy: {\n			totemp: {\n				files: [{\n					expand: true,\n					dest: \"temp\",\n					src: [ \"**\", \"!builds/**\", \"!node_modules/**\", \"!bower.json\", \"!*.s3db\", \"!*.sublime-project\", \"!*.sublime-workspace\", \"!*.log\", \"!Gruntfile.js\", \"!assets/less/**\",\n						\"node_modules/sqlite3/LICENSE\", \"node_modules/sqlite3/package.json\", \"node_modules/sqlite3/sqlite3.js\", \"node_modules/sqlite3/lib/**\", \"node_modules/sqlite3/node_modules/**\"]\n				}]\n			}\n		}\n	});\n\n	// Load the plugin that provides the \"uglify\" task.\n	grunt.loadNpmTasks('grunt-contrib-compress');\n	grunt.loadNpmTasks('grunt-shell');\n	grunt.loadNpmTasks('grunt-contrib-clean');\n	grunt.loadNpmTasks('grunt-contrib-copy');\n\n	grunt.registerTask(\"verify-structure\", \"tries, if everything is alright\", function() {\n		var file = grunt.file.read(\"assets/scripts/defaults.js\", {encoding:\"UTF8\"});\n\n		grunt.log.writeln();\n		grunt.log.writeln(\"Verze balíčku: \" + grunt.config.get(\"pkg.version\")[\"green\"]);\n		grunt.log.writeln(\"Název souboru: \" + (settings.filename+\".zip\")[\"green\"]);\n		grunt.log.writeln();\n\n		if(file.match(/var\\s+host\\s*=\\s*\"duong\\.cz\"/) == null) {\n			grunt.fail.warn(\"Není nastaven správě host na server\");\n		}\n	});\n\n	grunt.registerTask(\"install-dep\", [\"shell\"]);\n	grunt.registerTask(\"copy-to-temp\", [\"clean\", \"copy\"]);\n\n	// Default task(s).\n	grunt.registerTask('default', ['verify-structure', 'compress']);\n\n};",
 			"file": "Gruntfile.js",
-			"file_size": 2598,
-			"file_write_time": 130436599717269728,
 			"settings":
 			{
-				"buffer_size": 2518,
+				"buffer_size": 6738,
 				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "package.json",
-			"settings":
-			{
-				"buffer_size": 515,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": ".gitignore",
-			"settings":
-			{
-				"buffer_size": 114,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"contents": "",
-			"settings":
-			{
-				"buffer_size": 0,
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": ".bowerrc",
-			"settings":
-			{
-				"buffer_size": 39,
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "src/package.json",
-			"settings":
-			{
-				"buffer_size": 773,
-				"line_ending": "Unix"
 			}
 		}
 	],
@@ -627,6 +612,49 @@
 	},
 	"file_history":
 	[
+		"/C/Xampp/htdocs/Skolar/SkolarDesktop/SkolarDesktop/src/main.html",
+		"/C/Xampp/htdocs/Skolar/SkolarDesktop/SkolarDesktop/src/assets/less/main.less",
+		"/C/Xampp/htdocs/Skolar/SkolarDesktop/SkolarDesktop/src/assets/less/newuser.less",
+		"/C/Xampp/htdocs/Skolar/SkolarDesktop/SkolarDesktop/src/newuser.html",
+		"/C/Xampp/htdocs/Skolar/SkolarDesktop/SkolarDesktop/.gitignore",
+		"/C/Users/David/AppData/Roaming/Sublime Text 3/Packages/User/node-webkit.sublime-build",
+		"/C/Users/David/AppData/Roaming/Sublime Text 3/Packages/User/grunt.sublime-build",
+		"/C/Xampp/htdocs/Skolar/SkolarDesktop/SkolarDesktop/dist/main.html",
+		"/C/Xampp/htdocs/Skolar/SkolarDesktop/SkolarDesktop/dist/assets/main.js",
+		"/C/Xampp/htdocs/Skolar/SkolarDesktop/SkolarDesktop/dist/newuser.html",
+		"/C/Xampp/htdocs/Skolar/SkolarDesktop/SkolarDesktop/src/assets/scripts/main.js",
+		"/C/Xampp/htdocs/Skolar/SkolarDesktop/SkolarDesktop/node_modules/grunt-contrib-watch/node_modules/tiny-lr-fork/node_modules/noptify/util/extend.js",
+		"/C/Xampp/htdocs/Skolar/SkolarDesktop/SkolarDesktop/node_modules/grunt-contrib-watch/node_modules/gaze/node_modules/globule/node_modules/glob/examples/usr-local.js",
+		"/C/Xampp/htdocs/Skolar/SkolarDesktop/SkolarDesktop/node_modules/grunt/node_modules/minimatch/test/extglob-ending-with-state-char.js",
+		"/C/Xampp/htdocs/Skolar/SkolarDesktop/SkolarDesktop/node_modules/grunt-contrib-less/node_modules/less/test/css/extend-exact.css",
+		"/C/Xampp/htdocs/Skolar/SkolarDesktop/SkolarDesktop/node_modules/request/node_modules/hawk/example/usage.js",
+		"/C/Xampp/htdocs/Skolar/SkolarDesktop/SkolarDesktop/package.json",
+		"/C/Xampp/htdocs/Skolar/SkolarDesktop/SkolarDesktop/node_modules/grunt-usemin/index.html",
+		"/C/Xampp/htdocs/Skolar/SkolarDesktop/SkolarDesktop/node_modules/grunt-contrib-less/node_modules/less/test/sourcemaps/index.html",
+		"/C/Xampp/htdocs/Skolar/SkolarDesktop/SkolarDesktop/node_modules/grunt/node_modules/js-yaml/node_modules/argparse/node_modules/underscore/index.html",
+		"/C/Xampp/htdocs/Skolar/SkolarDesktop/SkolarDesktop/node_modules/grunt-contrib-watch/node_modules/tiny-lr-fork/node_modules/qs/test/browser/index.html",
+		"/C/Xampp/htdocs/Skolar/SkolarDesktop/SkolarDesktop/src/node_modules/sqlite3/node_modules/node-pre-gyp/lib/util/nw-pre-gyp/index.html",
+		"/C/Xampp/htdocs/Skolar/SkolarDesktop/SkolarDesktop/node_modules/grunt/node_modules/js-yaml/node_modules/argparse/node_modules/underscore.string/test/test_underscore/index.html",
+		"/C/Xampp/htdocs/Skolar/SkolarDesktop/SkolarDesktop/node_modules/grunt-contrib-less/node_modules/less/test/less/errors/import-no-semi.less",
+		"/C/Xampp/htdocs/Skolar/SkolarDesktop/SkolarDesktop/src/node_modules/sqlite3/build/Release/obj/global_intermediate/sqlite-autoconf-3080403/tea/pkgIndex.tcl.in",
+		"/C/Xampp/htdocs/Skolar/SkolarDesktop/SkolarDesktop/node_modules/request/node_modules/form-data/node_modules/combined-stream/test/integration/test-delayed-streams.js",
+		"/C/Xampp/htdocs/Skolar/SkolarDesktop/SkolarDesktop/node_modules/request/node_modules/form-data/node_modules/combined-stream/test/integration/test-data-size.js",
+		"/C/Xampp/htdocs/Skolar/SkolarDesktop/SkolarDesktop/node_modules/grunt-contrib-cssmin/node_modules/maxmin/node_modules/gzip-size/node_modules/browserify-zlib/node_modules/pako/dist/pako_inflate.js",
+		"/C/Xampp/htdocs/Skolar/SkolarDesktop/SkolarDesktop/dist/js/app.js",
+		"/C/Xampp/htdocs/Skolar/SkolarDesktop/SkolarDesktop/node_modules/grunt-zip/node_modules/grunt-retro/test/expected/expand_dirs_string.txt",
+		"/C/Xampp/htdocs/Skolar/SkolarDesktop/SkolarDesktop/node_modules/grunt-contrib-less/node_modules/less/lib/less/tree/dimension.js",
+		"/C/Xampp/htdocs/Skolar/SkolarDesktop/SkolarDesktop/src/debug.log",
+		"/C/Xampp/htdocs/Skolar/SkolarDesktop/SkolarDesktop/node_modules/grunt-contrib-less/node_modules/less/test/css/mixins-important.css",
+		"/C/Xampp/htdocs/Skolar/SkolarDesktop/SkolarDesktop/node_modules/grunt-contrib-uglify/node_modules/uglify-js/lib/mozilla-ast.js",
+		"/C/Xampp/htdocs/Skolar/SkolarDesktop/SkolarDesktop/node_modules/progress/Makefile",
+		"/C/Xampp/htdocs/Skolar/SkolarDesktop/SkolarDesktop/src/assets/css/newuser.css",
+		"/C/Xampp/htdocs/Skolar/SkolarDesktop/SkolarDesktop/node_modules/grunt-contrib-less/node_modules/less/test/less/no-js-errors/no-js-errors.less",
+		"/C/Xampp/htdocs/Skolar/SkolarDesktop/SkolarDesktop/src/package.json",
+		"/C/Xampp/htdocs/Skolar/SkolarDesktop/SkolarDesktop/README.md",
+		"/C/Xampp/htdocs/Skolar/SkolarDesktop/SkolarDesktop/node_modules/grunt/node_modules/colors/ReadMe.md",
+		"/C/Xampp/htdocs/Skolar/SkolarDesktop/SkolarDesktop/.bowerrc",
+		"/C/Xampp/htdocs/Skolar/SkolarDesktop/SkolarDesktop/Gruntfile.js",
+		"/C/Xampp/htdocs/Skolar/SkolarDesktop/SkolarDesktop/src/node_modules/sqlite3/binding.gyp",
 		"/C/Xampp/htdocs/Skolar/SkolarDesktop/SkolarDesktop/node_modules/grunt/node_modules/grunt-legacy-util/index.js",
 		"/C/Xampp/htdocs/Skolar/SkolarDesktop/SkolarDesktop/assets/less/sidebar.less",
 		"/C/Xampp/htdocs/Skolar/SkolarDesktop/SkolarDesktop/newuser.html",
@@ -639,12 +667,9 @@
 		"/C/Xampp/htdocs/Skolar/SkolarDesktop/SkolarDesktop/assets/scripts/newuser.js",
 		"/C/Xampp/htdocs/Skolar/SkolarDesktop/SkolarDesktop/assets/scripts/controllers/sidebarCtrl.js",
 		"/C/Xampp/htdocs/Skolar/SkolarDesktop/SkolarDesktop/assets/templates/sidebar.html",
-		"/C/Xampp/htdocs/Skolar/SkolarDesktop/SkolarDesktop/package.json",
-		"/C/Xampp/htdocs/Skolar/SkolarDesktop/SkolarDesktop/.gitignore",
 		"/C/Xampp/htdocs/Skolar/SkolarDesktop/SkolarDesktop/main.html",
 		"/C/Xampp/htdocs/Skolar/SkolarDesktop/SkolarDesktop/assets/scripts/services/Options.js",
 		"/C/Xampp/htdocs/Skolar/SkolarDesktop/SkolarDesktop/assets/scripts/main.js",
-		"/C/Xampp/htdocs/Skolar/SkolarDesktop/SkolarDesktop/Gruntfile.js",
 		"/C/Xampp/htdocs/Skolar/Testers/980306r",
 		"/C/Xampp/htdocs/Skolar/SkolarDesktop/SkolarDesktop/assets/scripts/controllers/states/optionsCtrl.js",
 		"/C/Xampp/htdocs/Skolar/SkolarDesktop/SkolarDesktop/assets/less/options.less",
@@ -708,53 +733,13 @@
 		"/C/Xampp/htdocs/Skolar/SkolarDesktop/SkolarDesktop/node_modules/sqlite3/lib/index.js",
 		"/C/Xampp/htdocs/Skolar/SkolarDesktop/SkolarDesktop/assets/scripts/services/Window.js",
 		"/C/Xampp/htdocs/Skolar/SkolarDesktop/SkolarDesktop/assets/fonts/Roboto/Roboto-Regular-webfont.svg",
-		"/C/Xampp/htdocs/Skolar/SkolarDesktop/SkolarDesktop/.bowerrc",
 		"/C/Xampp/htdocs/Skolar/SkolarDesktop/SkolarDesktop/bower.json",
 		"/C/Xampp/htdocs/Skolar/SkolarDesktop/SkolarDesktop/assets/img/svg/komens.svg",
 		"/C/Xampp/htdocs/Skolar/SkolarDesktop/SkolarDesktop/assets/templates/plan.html",
 		"/C/Xampp/htdocs/Skolar/SkolarDesktop/SkolarDesktop/assets/img/svg/plan.svg",
 		"/C/Xampp/htdocs/Skolar/SkolarDesktop/SkolarDesktop/assets/components/angles/angles.js",
 		"/C/Xampp/htdocs/Skolar/SkolarDesktop/SkolarDesktop/node_modules/sqlite3/LICENSE",
-		"/C/Xampp/htdocs/Skolar/SkolarDesktop/SkolarDesktop/assets/scripts/services/Error.js",
-		"/C/Xampp/htdocs/Skolar/SkolarDesktop/SkolarDesktop/assets/templates/core/nav.html",
-		"/C/Xampp/htdocs/Skolar/SkolarDesktop/SkolarDesktop/data.1.s3db",
-		"/C/Xampp/htdocs/Skolar/SkolarDesktop/SkolarDesktop/assets/components/angular/min/angular.min.js",
-		"/C/Xampp/htdocs/Skolar/SkolarDesktop/SkolarDesktop/assets/img/svg/logo.svg",
-		"/C/Xampp/htdocs/Skolar/SkolarDesktop/SkolarDesktop/assets/templates/absence.html",
-		"/C/Xampp/htdocs/Skolar/SkolarDesktop/SkolarDesktop/assets/img/svg/predmety.svg",
-		"/C/Xampp/htdocs/Skolar/SkolarDesktop/SkolarDesktop/assets/templates/predmety.html",
-		"/C/Xampp/htdocs/Skolar/Testers/nguye33zu3",
-		"/C/Xampp/htdocs/Skolar/SkolarDesktop/SkolarDesktop/assets/scripts/services/Database.js",
-		"/C/Xampp/htdocs/Skolar/SkolarDesktop/SkolarDesktop/data.s3db",
-		"/C/Xampp/htdocs/Skolar/SkolarDesktop/SkolarDesktop/assets/less/absence.less",
-		"/C/Xampp/htdocs/Skolar/SkolarDesktop/SkolarDesktop/node_modules/sqlite3/node_modules/node-pre-gyp/node_modules/tar/lib/buffer-entry.js",
-		"/C/Xampp/htdocs/Skolar/SkolarDesktop/SkolarDesktop/assets/components/mustache/test/_files/bug_11_eating_whitespace.js",
-		"/C/Xampp/htdocs/Skolar/SkolarDesktop/SkolarDesktop/assets/scripts/services/Environment.js",
-		"/C/Xampp/htdocs/Skolar/SkolarDesktop/SkolarDesktop/assets/components/mustache/test/_files/reuse_of_enumerables.js",
-		"/C/Xampp/htdocs/Skolar/SkolarDesktop/SkolarDesktop/assets/scripts/services/Http.js",
-		"/C/Xampp/htdocs/Skolar/SkolarDesktop/SkolarDesktop/assets/img/svg/absence.svg",
-		"/C/node-webkit/nw-sublime.bat",
-		"/C/Xampp/htdocs/Skolar/SkolarDesktop/SkolarDesktop/assets/components/jquery/src/offset.js",
-		"/C/Xampp/htdocs/Skolar/SkolarDesktop/SkolarDesktop/node_modules/sqlite3/build/Release/obj/global_intermediate/sqlite-autoconf-3080200/aclocal.m4",
-		"/C/Xampp/htdocs/Skolar/SkolarDesktop/SkolarDesktop/assets/components/jquery/src/css/addGetHookIf.js",
-		"/C/Xampp/htdocs/Skolar/SkolarDesktop/SkolarDesktop/assets/components/angular-google-maps/.gitignore",
-		"/C/Xampp/htdocs/Skolar/SkolarDesktop/SkolarDesktop/node_modules/sqlite3/build/Release/obj/global_intermediate/sqlite-autoconf-3080200/tea/pkgIndex.tcl.in",
-		"/C/Xampp/htdocs/Skolar/SkolarDesktop/SkolarDesktop/assets/components/jquery/src/css/hiddenVisibleSelectors.js",
-		"/C/Xampp/htdocs/Skolar/SkolarDesktop/SkolarDesktop/node_modules/sqlite3/node_modules/node-pre-gyp/node_modules/tar/lib/entry.js",
-		"/C/Xampp/htdocs/Skolar/SkolarDesktop/SkolarDesktop/assets/components/angular-google-maps/lib/markerclusterer.js",
-		"/C/Xampp/htdocs/Skolar/SkolarDesktop/SkolarDesktop/assets/less/2e0d7855-c7be-4323-b42e-4582fc1b3dca.dmp",
-		"/C/Xampp/htdocs/Skolar/SkolarDesktop/SkolarDesktop/914c5471-6a7a-4a2d-8958-9d82e63bbc9c.dmp",
-		"/C/Xampp/htdocs/Skolar/SkolarDesktop/SkolarDesktop/assets/scripts/039c239d-a86c-41fd-a4c1-43e6121eb4c1.dmp",
-		"/C/Xampp/htdocs/Skolar/SkolarDesktop/SkolarDesktop/node_modules/sqlite3/node_modules/node-pre-gyp/node_modules/aws-sdk/scripts/coverage",
-		"/C/Xampp/htdocs/Skolar/SkolarDesktop/SkolarDesktop/assets/components/jquery/src/traversing.js",
-		"/C/Xampp/htdocs/Skolar/SkolarDesktop/SkolarDesktop/assets/components/jquery/src/css/var/cssExpand.js",
-		"/C/Xampp/htdocs/Skolar/SkolarDesktop/SkolarDesktop/node_modules/sqlite3/node_modules/node-pre-gyp/node_modules/aws-sdk/node_modules/xml2js/node_modules/sax/test/trailing-attribute-no-value.js",
-		"/C/Xampp/htdocs/Skolar/SkolarDesktop/SkolarDesktop/assets/components/jquery/src/attributes/val.js",
-		"/C/Xampp/htdocs/Skolar/SkolarDesktop/SkolarDesktop/build/config.gypi",
-		"/C/Xampp/htdocs/Skolar/SkolarDesktop/SkolarDesktop/node_modules/sqlite3/node_modules/node-pre-gyp/node_modules/aws-sdk/lib/credentials/web_identity_credentials.js",
-		"/C/Xampp/htdocs/Skolar/SkolarDesktop/SkolarDesktop/node_modules/sqlite3/test/null_error.test.js",
-		"/C/Xampp/htdocs/Skolar/SkolarDesktop/SkolarDesktop/node_modules/sqlite3/node_modules/node-pre-gyp/node_modules/mkdirp/test/umask_sync.js",
-		"/C/Xampp/htdocs/Skolar/SkolarDesktop/SkolarDesktop/node_modules/sqlite3/node_modules/node-pre-gyp/node_modules/aws-sdk/test/util.spec.coffee"
+		"/C/Xampp/htdocs/Skolar/SkolarDesktop/SkolarDesktop/assets/scripts/services/Error.js"
 	],
 	"find":
 	{
@@ -780,6 +765,49 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"user",
+			"src",
+			"\"!src/assets/less/**\",",
+			"concat",
+			"development",
+			"main",
+			"less",
+			"');\n",
+			"platform_options",
+			"options",
+			"pkg",
+			"code",
+			"normalize",
+			"sep",
+			"name",
+			"temp",
+			"green",
+			"path",
+			"unzip",
+			"require",
+			"nw_file",
+			";",
+			"var ",
+			"/",
+			"path",
+			"path.sep",
+			"interface",
+			"				  ",
+			"gallery",
+			"nw-file",
+			"shell",
+			"file",
+			"dl",
+			"ProgressBar",
+			"data",
+			"response",
+			"end",
+			"version",
+			"%VERSION%",
+			"nwsnapshot",
+			"platform",
+			"true",
+			"tasks",
 			"copy",
 			"newuser",
 			"host",
@@ -864,50 +892,7 @@
 			"pages",
 			"args",
 			"$broadcast",
-			"rozvrh",
-			"Parser",
-			"load = function(force) {\n        Pa",
-			"Parser",
-			"Progress",
-			"Parser",
-			"d",
-			"Progress",
-			"Utils",
-			"$state",
-			"d",
-			"Parser",
-			"Utils",
-			"Parser",
-			"Progress",
-			"r",
-			"Options",
-			"Progress",
-			"Parser",
-			"Options",
-			"response",
-			"error",
-			"message",
-			"error",
-			"Parser",
-			"data",
-			"Parser",
-			"arguments",
-			"100px",
-			"changing",
-			"Database",
-			"rootscope.loaded",
-			"this.hideLoading",
-			"Progress.hideLoading",
-			"$rootScope.loaded = true;",
-			"$rootScope.loaded = false;",
-			"hideLoading",
-			"this.hideLoading()",
-			"Progress",
-			"parse",
-			"purple",
-			"normal",
-			"color",
-			"background"
+			"rozvrh"
 		],
 		"highlight": true,
 		"in_selection": false,
@@ -937,7 +922,7 @@
 	"groups":
 	[
 		{
-			"selected": 2,
+			"selected": 0,
 			"sheets":
 			[
 				{
@@ -946,169 +931,27 @@
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 2518,
+						"buffer_size": 6738,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								1128,
-								1128
+								3348,
+								3348
 							]
 						],
 						"settings":
 						{
-							"syntax": "Packages/JavaScript/JavaScript.tmLanguage"
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
+							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 351.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 2,
-					"type": "text"
-				},
-				{
-					"buffer": 1,
-					"file": "package.json",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 515,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								258,
-								258
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/JavaScript/JSON.tmLanguage",
-							"tab_size": 2,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 1,
-					"type": "text"
-				},
-				{
-					"buffer": 2,
-					"file": ".gitignore",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 114,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								100,
-								100
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/Text/Plain text.tmLanguage"
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
+						"translation.y": 985.0,
 						"zoom_level": 1.0
 					},
 					"stack_index": 0,
-					"type": "text"
-				},
-				{
-					"buffer": 3,
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 0,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								0,
-								0
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/JavaScript/JSON.tmLanguage"
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 3,
-					"type": "text"
-				},
-				{
-					"buffer": 4,
-					"file": ".bowerrc",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 39,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								20,
-								20
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/Text/Plain text.tmLanguage"
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 5,
-					"type": "text"
-				},
-				{
-					"buffer": 5,
-					"file": "src/package.json",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 773,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								722,
-								722
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/JavaScript/JSON.tmLanguage",
-							"tab_size": 2,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 117.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 4,
 					"type": "text"
 				}
 			]
@@ -1147,7 +990,7 @@
 	"menu_visible": true,
 	"output.exec":
 	{
-		"height": 290.0
+		"height": 64.0
 	},
 	"output.find_results":
 	{
@@ -1168,6 +1011,38 @@
 		"height": 0.0,
 		"selected_items":
 		[
+			[
+				"newuser",
+				"src\\newuser.html"
+			],
+			[
+				"main.js",
+				"src\\assets\\scripts\\main.js"
+			],
+			[
+				"main",
+				"src\\main.html"
+			],
+			[
+				"main.",
+				"src\\main.html"
+			],
+			[
+				"main.less",
+				"src\\assets\\less\\main.less"
+			],
+			[
+				"package",
+				"package.json"
+			],
+			[
+				"readme",
+				"README.md"
+			],
+			[
+				"read",
+				"README.md"
+			],
 			[
 				"giti",
 				".gitignore"
@@ -1201,24 +1076,12 @@
 				"package.json"
 			],
 			[
-				"main",
-				"main.html"
-			],
-			[
 				"gitig",
 				".gitignore"
 			],
 			[
-				"main.js",
-				"assets\\scripts\\main.js"
-			],
-			[
 				"options",
 				"assets\\scripts\\services\\Options.js"
-			],
-			[
-				"newuser",
-				"newuser.html"
 			],
 			[
 				"opti",
@@ -1237,16 +1100,8 @@
 				"assets\\scripts\\controllers\\states\\znamkyCtrl.js"
 			],
 			[
-				"main.less",
-				"assets\\less\\main.less"
-			],
-			[
 				"vyuka",
 				"assets\\less\\vyuka.less"
-			],
-			[
-				"package",
-				"package.json"
 			],
 			[
 				"toolbar",
@@ -1387,10 +1242,6 @@
 			[
 				"users",
 				"assets\\scripts\\services\\Users.js"
-			],
-			[
-				"main.",
-				"assets\\scripts\\main.js"
 			],
 			[
 				"plan",
@@ -1653,7 +1504,7 @@
 	"show_minimap": false,
 	"show_open_files": false,
 	"show_tabs": true,
-	"side_bar_visible": false,
+	"side_bar_visible": true,
 	"side_bar_width": 199.0,
 	"status_bar_visible": true,
 	"template_settings":

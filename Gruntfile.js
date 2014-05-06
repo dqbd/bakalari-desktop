@@ -18,6 +18,15 @@ module.exports = function(grunt) {
 	grunt.loadNpmTasks('grunt-contrib-clean');
 	grunt.loadNpmTasks('grunt-contrib-copy');
 
+	grunt.loadNpmTasks('grunt-contrib-concat');
+	grunt.loadNpmTasks('grunt-contrib-concat');
+	grunt.loadNpmTasks('grunt-contrib-uglify');
+	grunt.loadNpmTasks('grunt-usemin');
+
+	grunt.loadNpmTasks('grunt-contrib-watch');
+	grunt.loadNpmTasks('grunt-contrib-less');
+	
+
 	var settings = {
 		filename: ("0"+date.getDate()).slice(-2) + ("0"+(date.getMonth()+1)).slice(-2) + date.getFullYear().toString() + ("0"+date.getHours()).slice(-2) + ("0"+date.getMinutes()).slice(-2) + ("0"+date.getSeconds()).slice(-2),
 		download_url: 'http://dl.node-webkit.org/',
@@ -37,29 +46,10 @@ module.exports = function(grunt) {
 			'files': ['nw', 'nw.pak', 'libffmpegsumo.so'],
 			'exclude': ['nwsnapshot']
 		}],
-		file_list: ["src/**", "!src/builds/**", "!src/node_modules/**", "!src/bower.json", "!src/*.s3db", "!src/*.sublime-project", "!src/*.sublime-workspace", "!src/*.log", "!src/assets/less/**",
-					"src/node_modules/sqlite3/LICENSE", "src/node_modules/sqlite3/package.json", "src/node_modules/sqlite3/sqlite3.js", "src/node_modules/sqlite3/lib/**", "src/node_modules/sqlite3/node_modules/**"]
+		file_list: ["**", "!node_modules/**", "!bower.json", "!*.s3db", "!*.sublime-project", "!*.sublime-workspace", "!*.log", "!assets/less/**", "!assets/scripts/**", "!assets/components/**", 
+					"node_modules/sqlite3/LICENSE", "node_modules/sqlite3/package.json", "node_modules/sqlite3/sqlite3.js", "node_modules/sqlite3/lib/**", "node_modules/sqlite3/node_modules/**"]
 					.map(function(item) { return item.replace(/\//g, path.sep); })
 	};
-
-	var platform_options = [{
-		'url': "v<%= version %>/node-webkit-v<%= version %>-win-ia32.zip",
-		'type': 'win32',
-		'files': ['ffmpegsumo.dll', 'icudt.dll', 'libEGL.dll', 'libGLESv2.dll', 'nw.exe', 'nw.pak'],
-		'exclude': ['nwsnapshot.exe']
-	}, {
-		'url': "v<%= version %>/node-webkit-v<%= version %>-osx-ia32.zip",
-		'type': 'darwin',
-		'files': ['node-webkit.app'],
-		'exclude': ['nwsnapshot']
-	}, {
-		'url': "v<%= version %>/node-webkit-v<%= version %>-linux-ia32.tar.gz",
-		'type': 'linux',
-		'files': ['nw', 'nw.pak', 'libffmpegsumo.so'],
-		'exclude': ['nwsnapshot']
-	}];
-	
-	
 
 	grunt.initConfig({
 		pkg: grunt.file.readJSON('package.json'),
@@ -70,7 +60,11 @@ module.exports = function(grunt) {
 					archive: path.join('.', 'builds', settings.filename+'.zip'),
 					mode: "zip"
 				},
-				files: [{ src: settings.file_list }]
+				files: [{ 
+					expand: true,
+					cwd: "dist"+path.sep,
+					src: ["**"] 
+				}]
 			}
 		},
 		shell: {
@@ -82,16 +76,61 @@ module.exports = function(grunt) {
 				}
 			}
 		},
-		clean: ["temp"+path.sep+"*.*"],
+		clean: {
+			temp: ["temp"+path.sep+"*.*"],
+			other: [".tmp"+path.sep+"*.*"],
+			dist: ["dist"+path.sep+"*.*"],
+			folders: ["temp"+path.sep, "dist"+path.sep, ".tmp"+path.sep]
+		},
 		unzip: {
 			temp: nw_file,
-		}
+		}, 
+		watch: {
+			less: {
+				files: ["src/assets/less/*.less"],
+				tasks: ["less:development"]
+			}
+		},
+		less: {
+			development: {
+				files: {
+					"src/assets/css/main.css": "src/assets/less/main.less",
+					"src/assets/css/newuser.css": "src/assets/less/newuser.less"
+				}
+			},
+			production: {
+				options: {
+					cleancss: true,
+					compress: true
+				},
+				files: {
+					"src/assets/css/main.css": "src/assets/less/main.less",
+					"src/assets/css/newuser.css": "src/assets/less/newuser.less"
+				}
+			}
+		},
+		copy: {
+			src: {
+				files: [{expand:true, src: settings.file_list, cwd:"src"+path.sep, dest: "dist" }]
+			}
+		},
+		useminPrepare: {
+			html: ['src/main.html', 'src/newuser.html'],
+		    options: {
+	      		dest: 'dist'
+		    }
+		},
+		usemin: {
+		  	html: ['dist/main.html', 'dist/newuser.html']
+	  	}
+
 	});
 	
 
 	grunt.registerTask("nw-download", "Downloads and extracts node-webkit", function() {
 		var done 	= this.async();
 		var dest 	= "src";
+		var temp 	= "temp";
 		var options = settings.platform_options[_.findIndex(settings.platform_options, {type: process.platform})];
 		
 		var url 	= grunt.template.process(options.url, {data: {"version": version}});
@@ -100,6 +139,11 @@ module.exports = function(grunt) {
 		if (!fs.existsSync(dest)) {
 			fs.mkdirSync(dest);
 		}
+
+		if (!fs.existsSync(temp)) {
+			fs.mkdirSync(temp);
+		}
+
 
 		var out = fs.createWriteStream(nw_file);
 		
@@ -148,16 +192,16 @@ module.exports = function(grunt) {
 				} else {
 					fs.createReadStream(nw_file)
 						.pipe(zlib.createGunzip())
-						.pipe(tar.extract("temp"))
+						.pipe(tar.extract(temp))
 						.on('finish', function() {
 							var basename = path.basename(nw_file, '.tar.gz');
 
-							fs.readdir(path.join("temp", basename), function(err, files) {
+							fs.readdir(path.join(temp, basename), function(err, files) {
 								_.intersection(files, options.files).forEach(function(file) {
 
 									console.log("Kopíruji soubor: "["grey"]+path.basename(file)["green"]);
 
-									fs.renameSync(path.join("temp", basename, file), 
+									fs.renameSync(path.join(temp, basename, file), 
 												  path.join(dest, file));
 								});
 
@@ -183,7 +227,10 @@ module.exports = function(grunt) {
 		}
 	});
 
-	grunt.registerTask("init", ["nw-download", "shell", "clean"]);
-	grunt.registerTask('dist', ['verify-structure', 'compress']);
+	grunt.registerTask("init", ["nw-download", "shell", "less:development", "flush"]);
+	grunt.registerTask('dist', ['less:production', 'clean:dist', 'copy', 'useminPrepare', 'concat', 'uglify', 'usemin']);
+	grunt.registerTask("flush", ["clean:dist", "clean:temp", "clean:other", "clean:folders"]);
+
+	grunt.registerTask('publish', ['verify-structure', 'dist', 'compress', 'flush'])
 	grunt.registerTask('default', ['verify-structure']);
 };

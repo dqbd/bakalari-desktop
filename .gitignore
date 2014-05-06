@@ -8,9 +8,12 @@ project.sublime-workspace
 node_modules
 temp/*
 builds/*
+dist/*
+.tmp/*
 nw
 *.dll
 *.log
 *.ai
 *.so
 *.app
+src/assets/css/*

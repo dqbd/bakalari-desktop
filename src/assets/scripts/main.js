@@ -142,7 +142,7 @@ app.filter('range', function() {
     };
 });
 
-app.directive('ngRightClick', function($parse) {
+app.directive('ngRightClick', ["$parse", function($parse) {
     return function(scope, element, attrs) {
         var fn = $parse(attrs.ngRightClick);
         element.bind('contextmenu', function(event) {
@@ -152,4 +152,4 @@ app.directive('ngRightClick', function($parse) {
             });
         });
     };
-});
+}]);
