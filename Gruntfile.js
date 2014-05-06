@@ -131,41 +131,18 @@ module.exports = function(grunt) {
 		var done 	= this.async();
 		var dest 	= "src";
 		var temp 	= "temp";
+		var attempt = 0;
 		var options = settings.platform_options[_.findIndex(settings.platform_options, {type: process.platform})];
 		
 		var url 	= grunt.template.process(options.url, {data: {"version": version}});
 			nw_file = path.join("temp", url.split("/").slice(-1).toString());
 
-		if (!fs.existsSync(dest)) {
-			fs.mkdirSync(dest);
-		}
+		var callback = function() {
+			grunt.log.writeln("Staženo, rozbaluji"["green"]);
 
-		if (!fs.existsSync(temp)) {
-			fs.mkdirSync(temp);
-		}
+			attempt++;
 
-
-		var out = fs.createWriteStream(nw_file);
-		
-		var srv = request(settings.download_url + url);
-
-		srv.on("response", function(res) {
-			var len = parseInt(res.headers['content-length'], 10);
-
-			var bar = new progressbar('Stahuji'["magenta"]+' [:bar] :percent :etas', {
-				complete: '=',
-				incomplete: ' ',
-				width: 30,
-				total: len
-			});
-
-			srv.on("data", function(chunk) {
-				bar.tick(chunk.length);
-			});
-
-			srv.on("end", function() {
-				grunt.log.writeln("Staženo, rozbaluji"["green"]);
-
+			try {
 				if(path.extname(nw_file) === ".zip") {
 					var zipReader = zip.Reader(fs.readFileSync(nw_file));
 
@@ -188,7 +165,6 @@ module.exports = function(grunt) {
 					});
 
 					done(true);
-
 				} else {
 					fs.createReadStream(nw_file)
 						.pipe(zlib.createGunzip())
@@ -209,10 +185,56 @@ module.exports = function(grunt) {
 							});
 						});
 				}	
-			});
-		});
+			} catch (err) {
 
-		srv.pipe(out);
+				if(attempt > 3) {
+					grunt.fail.fatal("Nemohu stáhnout binární soubory nw");
+				} else {
+					grunt.log.writeln(("Došlo k chybě při rozbalování ("+err.toString()+"), "+attempt+". pokus na stažení: ")["red"]);
+					download(callback);
+				}
+				
+			}
+		}
+
+		var download = function(callback) {
+			var out = fs.createWriteStream(nw_file);
+				srv = request(settings.download_url + url);
+
+			srv.on("response", function(res) {
+				var len = parseInt(res.headers['content-length'], 10),
+					bar = new progressbar('Stahuji'["magenta"]+' [:bar] :percent :etas', {
+						complete: '=',
+						incomplete: ' ',
+						width: 30,
+						total: len
+					});
+
+				srv.on("data", function(chunk) {
+					bar.tick(chunk.length);
+				});
+
+				srv.on("end", function() {
+					callback();
+				});
+			});
+
+			srv.pipe(out);
+		}
+
+		if (!fs.existsSync(dest)) {
+			fs.mkdirSync(dest);
+		}
+
+		if (!fs.existsSync(temp)) {
+			fs.mkdirSync(temp);
+		}
+
+		if(!fs.existsSync(nw_file)) {
+			download(callback);
+		} else {
+			callback();
+		}
 	});
 
 	grunt.registerTask("verify-structure", "Checks, if the server address is set correctly", function() {
