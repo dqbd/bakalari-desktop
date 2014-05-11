@@ -5,12 +5,9 @@ var new_win = {
     "toolbar":false,
     "width": 800,
     "height": 500,
-    "min_width": 800,
-    "min_height": 500,
-    "max_width": 800,
-    "max_height": 500,
     "focus": true,
-    "show": false
+    "show": false,
+    "resizable": false
 };
 
 var host = "duong.cz";

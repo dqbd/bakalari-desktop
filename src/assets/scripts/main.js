@@ -1,8 +1,6 @@
 var app = angular.module("app", ["ui.router", "angles"]);
 
 app.config(["$urlRouterProvider", "$stateProvider", "$httpProvider", "$compileProvider", function($urlRouterProvider, $stateProvider, $httpProvider, $compileProvider) {
-    // $urlRouterProvider.otherwise("/znamky");
-
     pages.forEach(function(item) {
         $stateProvider.state(item.name, {
             url: "/"+item.name,

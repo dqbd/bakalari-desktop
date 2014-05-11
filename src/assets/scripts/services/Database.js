@@ -1,6 +1,8 @@
 app.factory('Database', ['$rootScope', '$q', "Window", function($rootScope, $q, Window) {
 	var sqlite = require("sqlite3").verbose();
 	var fs = require("fs");
+	var path = require("path");
+
 
 	var db_promise = $q.defer();
 
@@ -20,10 +22,12 @@ app.factory('Database', ['$rootScope', '$q', "Window", function($rootScope, $q, 
 
 	//inicializovat
 	getDatabaseVersion().then(function(version) {
-		var db = new sqlite.Database("data." + version +".s3db", sqlite.OPEN_READWRITE, function(error) {
+		var location = path.join(Window.nw.App.dataPath, "data." + version +".s3db");
+
+		var db = new sqlite.Database(location, sqlite.OPEN_READWRITE, function(error) {
 			if(error != null) {
 				var rs = fs.createReadStream('assets/init/data.s3db');
-				var ws = fs.createWriteStream("data." + version +".s3db");
+				var ws = fs.createWriteStream(location);
 
 				rs.on("error", function() {
 					Window.getWindow().close(true);
@@ -35,7 +39,7 @@ app.factory('Database', ['$rootScope', '$q', "Window", function($rootScope, $q, 
 
 				ws.on("close", function() {
 					db_promise.resolve(
-						new sqlite.Database("data." + version +".s3db")
+						new sqlite.Database(location)
 					);
 				});
 
