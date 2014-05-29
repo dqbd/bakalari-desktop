@@ -13,19 +13,9 @@ module.exports = function(grunt) {
 		tar 		= require("tar-fs"),
 		zip 		= require("zip");
 
-	grunt.loadNpmTasks('grunt-contrib-compress');
-	grunt.loadNpmTasks('grunt-shell');
-	grunt.loadNpmTasks('grunt-contrib-clean');
-	grunt.loadNpmTasks('grunt-contrib-copy');
-
-	grunt.loadNpmTasks('grunt-contrib-concat');
-	grunt.loadNpmTasks('grunt-contrib-concat');
-	grunt.loadNpmTasks('grunt-contrib-uglify');
-	grunt.loadNpmTasks('grunt-usemin');
-
-	grunt.loadNpmTasks('grunt-contrib-watch');
-	grunt.loadNpmTasks('grunt-contrib-less');
-	
+	require('jit-grunt')(grunt, {
+		"useminPrepare": "grunt-usemin"
+	});
 
 	var settings = {
 		filename: ("0"+date.getDate()).slice(-2) + ("0"+(date.getMonth()+1)).slice(-2) + date.getFullYear().toString() + ("0"+date.getHours()).slice(-2) + ("0"+date.getMinutes()).slice(-2) + ("0"+date.getSeconds()).slice(-2),
@@ -46,24 +36,46 @@ module.exports = function(grunt) {
 			'files': ['nw', 'nw.pak', 'libffmpegsumo.so'],
 			'exclude': ['nwsnapshot']
 		}],
-		file_list: ["**", "!node_modules/**", "!bower.json", "!*.s3db", "!*.sublime-project", "!*.sublime-workspace", "!*.log", "!assets/less/**", "!assets/scripts/**", "!assets/components/**", 
+		file_list: ["**", "!node_modules/**", "!bower.json", "!*.s3db", "!*.sublime-project", "!*.sublime-workspace", "!*.log", "!assets/less/**", "!assets/scripts/**", "!assets/components/**", "!.bowerrc", 
 					"node_modules/sqlite3/LICENSE", "node_modules/sqlite3/package.json", "node_modules/sqlite3/sqlite3.js", "node_modules/sqlite3/lib/**", "node_modules/sqlite3/node_modules/**"]
 					.map(function(item) { return item.replace(/\//g, path.sep); })
 	};
 
 	grunt.initConfig({
 		pkg: grunt.file.readJSON('package.json'),
-		src_pkg: grunt.file.readJSON(path.join('src', 'package.json')),
+		src_pkg: grunt.file.readJSON(path.join('app', 'package.json')),
 		compress: {
-			zip: {
+			webkit: {
 				options: {
-					archive: path.join('.', 'builds', settings.filename+'.zip'),
-					mode: "zip"
+					archive: path.join('.', 'builds', 'engine.tar.gz'),
+					mode: "tgz"
 				},
 				files: [{ 
 					expand: true,
-					cwd: "dist"+path.sep,
+					cwd: "webkit"+path.sep,
 					src: ["**"] 
+				}]
+			},
+			app: {
+				options: {
+					archive: path.join('.', 'builds', 'app.tar.gz'),
+					mode: "tgz"
+				},
+				files: [{
+					expand: true,
+					cwd: "dist"+path.sep,
+					src: ["**"]
+				}]
+			},
+			updater: {
+				options: {
+					archive: path.join('.', 'builds', 'app.tar.gz'),
+					mode: "tgz"
+				},
+				files: [{
+					expand: true,
+					cwd: "dist"+path.sep,
+					src: ["**"]
 				}]
 			}
 		},
@@ -72,7 +84,7 @@ module.exports = function(grunt) {
 				command: "npm install --build-from-source --runtime=node-webkit --target_arch=ia32 --target="+version,
 				options: {
 					stderr: true,
-					execOptions: { cwd: 'src' }
+					execOptions: { cwd: 'app' }
 				}
 			}
 		},
@@ -87,15 +99,19 @@ module.exports = function(grunt) {
 		}, 
 		watch: {
 			less: {
-				files: ["src/assets/less/*.less"],
-				tasks: ["less:development"]
+				files: ["app/assets/less/*.less"],
+				tasks: ["newer:less:development"]
+			},
+			installer: {
+				files: ["installer/assets/*.less"],
+				tasks: ["less:installer"]
 			}
 		},
 		less: {
 			development: {
 				files: {
-					"src/assets/css/main.css": "src/assets/less/main.less",
-					"src/assets/css/newuser.css": "src/assets/less/newuser.less"
+					"app/assets/css/main.css": "app/assets/less/main.less",
+					"app/assets/css/newuser.css": "app/assets/less/newuser.less"
 				}
 			},
 			production: {
@@ -104,18 +120,23 @@ module.exports = function(grunt) {
 					compress: true
 				},
 				files: {
-					"src/assets/css/main.css": "src/assets/less/main.less",
-					"src/assets/css/newuser.css": "src/assets/less/newuser.less"
+					"app/assets/css/main.css": "app/assets/less/main.less",
+					"app/assets/css/newuser.css": "app/assets/less/newuser.less"
+				}
+			},
+			installer: {
+				files: {
+					"installer/assets/main.css" : "installer/assets/main.less"
 				}
 			}
 		},
 		copy: {
 			src: {
-				files: [{expand:true, src: settings.file_list, cwd:"src"+path.sep, dest: "dist" }]
+				files: [{expand:true, src: settings.file_list, cwd:"app"+path.sep, dest: "dist" }]
 			}
 		},
 		useminPrepare: {
-			html: ['src/main.html', 'src/newuser.html'],
+			html: ['app/main.html', 'app/newuser.html'],
 		    options: {
 	      		dest: 'dist'
 		    }
@@ -129,7 +150,7 @@ module.exports = function(grunt) {
 
 	grunt.registerTask("nw-download", "Downloads and extracts node-webkit", function() {
 		var done 	= this.async();
-		var dest 	= "src";
+		var dest 	= "app";
 		var temp 	= "temp";
 		var attempt = 0;
 		var options = settings.platform_options[_.findIndex(settings.platform_options, {type: process.platform})];
@@ -238,7 +259,7 @@ module.exports = function(grunt) {
 	});
 
 	grunt.registerTask("verify-structure", "Checks, if the server address is set correctly", function() {
-		var file = grunt.file.read(path.join("src", "assets", "scripts", "defaults.js"), {encoding:"UTF8"});
+		var file = grunt.file.read(path.join("app", "assets", "scripts", "defaults.js"), {encoding:"UTF8"});
 
 		grunt.log.writeln();
 		grunt.log.writeln("Verze balíčku: "["cyan"] + grunt.config.get("src_pkg.version")["green"]);

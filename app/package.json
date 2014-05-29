@@ -1,0 +1,42 @@
+{
+  "name": "skolar",
+  "description": "Notifikace známek, suplování a dalších věcí ze školy",
+  "version": "0.2.0",
+  "main": "app://skolar/main.html",
+  "author": {
+    "name": "David Duong",
+    "email": "david@duong.cz"
+  },
+  "keywords": [
+    "škola",
+    "bakaláři",
+    "známky",
+    "rozvrh"
+  ],
+  "database-version": 1,
+  "updater-version": 1,
+  "licenses": {
+    "type": "MIT"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://Delold@bitbucket.org/Delold/skolardesktop.git"
+  },
+  "bugs": {
+    "url": "http://github.com/YOUR_LOGIN/SkolarDesktop/issues"
+  },
+  "window": {
+    "toolbar": true,
+    "icon": "./assets/img/logo-hat.png",
+    "frame": false,
+    "height": 600,
+    "width": 800,
+    "min_height": 300,
+    "min_width": 800,
+    "show": false
+  },
+  "dependencies": {
+    "sqlite3": "~2.2.3",
+    "nedb": "~0.10.5"
+  }
+}

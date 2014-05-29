@@ -4,7 +4,6 @@ project.sublime-project
 project.sublime-workspace
 *.s3db
 !data.s3db
-.bowerrc
 node_modules
 temp/*
 builds/*
@@ -16,4 +15,4 @@ nw
 *.ai
 *.so
 *.app
-src/assets/css/*
+app/assets/css/*

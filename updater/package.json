@@ -1,0 +1,34 @@
+{
+  "name": "skolar",
+  "description": "Aktualizátor pro aplikaci skolar",
+  "version": "0.2.0",
+  "main": "./updater.html",
+  "author": {
+    "name": "David Duong",
+    "email": "david@duong.cz"
+  },
+  "keywords": [
+    "škola",
+    "bakaláři",
+    "známky",
+    "rozvrh"
+  ],
+  "licenses": {
+    "type": "MIT"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://Delold@bitbucket.org/Delold/skolardesktop.git"
+  },
+  "bugs": {
+    "url": "http://github.com/YOUR_LOGIN/SkolarDesktop/issues"
+  },
+  "window": {
+    "toolbar": false,
+    "show": true
+  },
+  "dependencies": {
+    "tar-fs": "~0.3.2",
+    "q": "~1.0.1"
+  }
+}

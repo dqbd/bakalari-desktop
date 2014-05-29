@@ -1,0 +1,15 @@
+<div id="ukoly">
+
+	<div class="day" ng-repeat="(date, day) in data">
+		<h2>{{formatDate(date)}}</h2>
+		<div class="subjects">
+			<div class="row" ng-repeat="n in [getRowNumber(day.length)] | range">
+				<div class="subject" ng-repeat="subject in getRowItems(day, n)">
+					<h3><span class="icon" ng-style="assignIcon(subject.name)"></span>{{subject.name}}</h3>
+					<ul><li ng-repeat="topic in subject.tasks track by $index">{{topic}}</li></ul>
+				</div>
+			</div>
+		</div>
+	</div>
+
+</div>

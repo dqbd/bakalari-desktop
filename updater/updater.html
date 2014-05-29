@@ -1,0 +1,75 @@
+<h1 style="font-size: 104pt;">Aktualizuji</h1>
+<script>
+var nw 		= require("nw.gui"),
+	fs 		= require("fs"),
+	tar 	= require("tar-fs"),
+	zlib 	= require("zlib"),
+	Q 		= require("q"),
+	path 	= require("path");
+
+function init() {
+	var dest = path.join(nw.App.dataPath, "App");
+
+	if(!fs.existsSync(dest)) {
+		fs.mkdirSync(dest);
+	}
+
+	Q.all([extractApp(dest), extractEngine(dest)]).spread(function(app, eng) {
+		window.process.exit(5);
+	}, function(app, eng) {
+		window.process.exit(69);
+	});
+}
+
+function extractApp(app) {
+	var deferred = Q.defer();
+
+	var stream = fs.createReadStream("app.tar.gz");
+	
+	stream.on("error", function(error) {
+		deferred.reject(error);
+	});
+
+	stream.pipe(zlib.createGunzip())
+	.pipe(tar.extract(app))
+	.on("finish", function() {
+		try {
+			fs.unlinkSync("app.tar.gz");
+			deferred.resolve(true);
+		} catch (e) {
+			deferred.reject(e);
+		}
+	});
+
+	return deferred.promise;
+}
+
+function extractEngine(app) {
+
+	var deferred = Q.defer();
+
+	var stream = fs.createReadStream("engine.tar.gz");
+
+	stream.on("error", function(error) {
+		deferred.reject(error);
+	});
+
+	stream.pipe(zlib.createGunzip())
+	.pipe(tar.extract(app))
+	.on("finish", function() {
+
+		try {
+			fs.unlinkSync("engine.tar.gz");
+			deferred.resolve(true);
+		} catch (e) {
+			deferred.reject(e);
+		}
+		
+	});
+
+	return deferred.promise;
+	
+}
+
+init();
+</script>

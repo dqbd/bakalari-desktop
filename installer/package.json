@@ -1,0 +1,29 @@
+{
+    "name": "skolar",
+    "description": "Aktualizátor a spouštěč",
+    "version": "0.0.1",
+    "main": "./bootstrap.html",
+    "author": {
+        "name": "Delold",
+        "email": "david@duong.cz"
+    },
+    "keywords": ["škola", "bakaláři"],
+    "chromium-args":"--enable-threaded-compositing",
+    "licenses": {
+        "type": "none"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git://github.com/YOUR_LOGIN/SkolarDesktop.git"
+    },
+    "bugs": {
+        "url": "http://github.com/YOUR_LOGIN/SkolarDesktop/issues"
+    },
+    "window": {
+        "show": true,
+        "toolbar": false,
+        "resizable": true,
+        "width": 700,
+        "height": 505
+    }
+}

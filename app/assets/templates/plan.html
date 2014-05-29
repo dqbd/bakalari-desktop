@@ -1,0 +1,17 @@
+<div id="plan">
+	<div class="day" ng-repeat="(date, events) in data">
+		<h2>{{formatDate(date)}}</h2>
+		<div class="events">
+			<div class="row" ng-repeat="n in [getRowNumber(events.length)] | range">
+				<div class="event" ng-repeat="event in getRowItems(events, n)">
+					<h3>{{event.name}}</h3>
+					<div ng-if="event.class"><strong>Třídy: </strong>{{event.class.join(", ")}}</div>
+					<div ng-if="event.teacher"><strong>Učitelé: </strong>{{event.teacher.join(", ")}}</div>
+					<div ng-if="event.time.time"><strong>Čas: </strong>{{event.time.time.join(" - ")}}</div>
+					<div ng-if="event.place"><strong>Místo: </strong>{{event.place}}</div>
+					<p ng-if="event.detail">{{event.detail}}</p>
+				</div>
+			</div> 
+		</div>
+	</div>
+</div>

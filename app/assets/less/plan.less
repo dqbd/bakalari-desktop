@@ -1,0 +1,65 @@
+#plan {
+	
+	.events { 
+		margin: 0; padding: 0; 
+		width: 100%;
+	}
+
+	.events .row {
+		width: 100%;
+		display: flex;
+	}
+
+	.event {
+		.card;
+		flex: 1; 
+		min-width: 33%;
+		max-width: 33%;
+
+		margin-right: 10px;
+		padding: 15px;
+		
+		font-size: 14px;
+
+		box-sizing: border-box;
+
+
+		h3 { margin-top: 0px; }
+
+		h3:last-child { margin: 0px; }
+		p { margin-bottom: 0px; }
+
+		div { margin-bottom: 5px; }
+		div:last-of-type { margin-bottom: 0px; }
+
+		&:last-of-type { margin-bottom: 18px; }
+	}
+
+	.day {
+		margin-bottom: 20px;
+		
+		h2 { 
+			width: 100%; 
+			margin-top: 0px; 
+			font-size: 24px;
+			font-weight: normal;
+			margin-bottom: 10px;
+		}
+
+		&:last-child { margin-bottom: 0; }
+	}
+
+
+	@media screen and (max-width: @window-max-width) {
+
+		.events .row {
+			display: block;
+		}
+
+		.event {
+			min-width: none;
+			max-width: none;
+		}
+	}
+
+}

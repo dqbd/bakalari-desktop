@@ -1,0 +1,120 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<link rel="stylesheet" href="./assets/css/newuser.css">
+	<title>Nový uživatel</title>
+</head>
+<body ng-app="app.newuser" ng-class="{'init': loaded}">
+
+	<div ng-controller="pageCtrl">
+		<div class="intro" ng-show="visible('')">
+			<div class="logo">
+				<img src="assets/img/logo-hat.png">
+			</div>
+			<div class="info">
+				<h1>
+					<img src="assets/img/logo-large.png">
+				</h1>
+				<p>Žákovská kniha v novém hávu</p>
+
+				<div class="buttons">
+					<a href="#map">Vybrat školu</a>
+					<a href="#adduser">Manuálně vložit adresu</a>
+				</div>
+			</div>
+		</div>
+		<div class="editor" ng-controller="editorCtrl" ng-show="visible('map')">
+			<div class="status">
+				<a href="#"></a><h2>Výběr školy</h2>
+				<div class="buttons">
+					de
+				</div>
+			</div>
+			<div class="container">
+				<div class="sidebar">
+					<div ng-repeat="school in activeMarkers" class="school" ng-class="{'active' : isCurrent(school)}" ng-click="setActive(school)">
+						<span class="name">{{school.name}}</span>
+						<span class="address">{{school.address}}</span>
+						<div class="controls">
+							<a href="#adduser" ng-click="setSchool(school)">Pokračovat</a>
+						</div>
+					</div>
+				</div>
+				<div class="map">
+					<google-map ng-if="map" center="map.center" options="map.options" draggable="true" zoom="map.zoom" control="map.control" bounds="map.bounds" events="map.events">
+						<markers models="map.markers" coords="'self'" click="'click'"></markers>
+					</google-map>
+				</div>
+			</div>
+		</div>
+		<div class="editor" ng-controller="userCtrl" ng-show="visible('adduser')">
+			<div class="status">
+				<a href="#map"></a><h2>Přidat uživatelský účet</h2>
+			</div>
+			<div class="container">
+				<form ng-submit="send()" ng-class="{'loading': loading}">
+					
+					<div class="column">
+						<strong class="label">Škola</strong>
+						<div class="input">
+							<input type="text" ng-model="url" ng-show="school == null" required>
+							<div class="school" ng-show="school != null" ng-click="remove()">
+								<span class="name">{{school.name}}</span>
+								<span class="address">{{school.address}}</span>
+
+								<span class="url">{{school.url}}</span>
+							</div>
+						</div>
+					</div>
+					<div class="column">
+						<strong class="label">Uživ. jméno</strong>
+						<div class="input">
+							<input type="text" ng-model="user" required>
+						</div>
+					</div>
+					<div class="column">
+						<strong class="label">Heslo</strong>
+						<div class="input">
+							<input type="password" ng-model="pass" required>
+						</div>
+					</div>
+					
+					<div class="error" ng-if="error">{{error}}</div>	
+					
+					<button type="submit" class="button">Odeslat</button>
+
+					<div class="loading">
+						<div class="bouncer">
+	                        <div class="bounce1"></div>
+	                        <div class="bounce2"></div>
+	                        <div class="bounce3"></div>
+	                    </div>
+                    </div>
+				</form>
+			</div>
+		</div>
+	</div>
+	<script src='https://maps.googleapis.com/maps/api/js?sensor=false'></script>
+
+
+	<!-- build:js ./assets/newuser.js -->
+    <script src="./assets/components/angular/angular.js"></script>
+    
+	<script src='./assets/components/underscore/underscore-min.js'></script>
+	<script src='./assets/components/geolib/dist/geolib.min.js'></script>
+	<script src='./assets/components/angular-google-maps/dist/angular-google-maps.min.js'></script>
+
+	<script src='./assets/scripts/defaults.js'></script>
+	<script src='./assets/scripts/newuser.js'></script>
+	<script src='./assets/scripts/services/Database.js'></script>
+	<script src='./assets/scripts/services/Options.js'></script>
+	<script src='./assets/scripts/services/Progress.js'></script>
+	<script src='./assets/scripts/services/Utils.js'></script>
+	<script src='./assets/scripts/services/Parser.js'></script>
+	<script src='./assets/scripts/services/Window.js'></script>
+	<script src='./assets/scripts/services/Users.js'></script>
+	<!-- endbuild -->
+	
+</body>
+</html>

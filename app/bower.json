@@ -1,0 +1,34 @@
+{
+  "name": "skolar",
+  "version": "0.2.0",
+  "authors": [
+    "David Duong <david@duong.cz>"
+  ],
+  "description": "Notifikace známek, suplování a dalších věcí ze školy",
+  "main": "main.html",
+  "keywords": [
+    "škola",
+    "bakaláři",
+    "známky",
+    "rozvrh"
+  ],
+  "license": "MIT",
+  "homepage": "http://duong.cz/skolar",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angular": "~1.2.16",
+    "underscore": "~1.5.*",
+    "angular-google-maps": "~1.1.0",
+    "angular-ui-router": "~0.2.10",
+    "angles": "*",
+    "geolib": "~2.0.9",
+    "angular-animate": "~1.2.16"
+  }
+}

@@ -1,0 +1,19 @@
+<h1>Školář</h1>
+<ul>
+    <li ng-repeat="page in pages | filter:filterShown()">
+		<a ui-sref="{{page.name}}" ui-sref-active="active">
+			<img src="./assets/img/{{page.name}}.png" alt="">
+			<span>{{page.title}}</span>
+		</a>
+	</li>
+</ul>
+<div class="control">
+	<a class="refresh" ng-click="refresh()">Načíst znova</a>
+	<a ui-sref="options" ui-sref-active="active" class="settings">Nastavení</a>
+	<div class="layers" ng-show="views.length > 0">
+		<span>Možnosti zobrazení</span>
+		<div class="views">
+			<div class="inside"><a ng-repeat="(index, view) in views" ng-click="viewClick(index)">{{capitalize(view.label)}}</a></div>
+		</div>
+	</div>
+</div>

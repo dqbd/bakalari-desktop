@@ -1,0 +1,96 @@
+<!doctype html>
+<html lang="en" ng-app="app">
+    <head>
+        <meta charset="UTF-8">
+        <title>{{window_title}}</title>
+        <link rel="stylesheet" href="./assets/css/main.css">
+    </head>
+    <body ng-class="{loading: !loaded}">
+        <div class="window"></div>
+        <div class="container">
+            <nav ng-include="'./assets/templates/sidebar.html'" ng-controller="sidebarCtrl" ng-class="bg_class"></nav>
+            <div class="rest">
+                <div class="toolbar">
+                    <div class="user" ng-controller="userCtrl">
+                        <div class="avatar" ng-if="currentUser" ng-style="color(currentUser.name)"></div>
+                        <div class="text">
+                            <strong>{{currentUser.name}}</strong><span>{{currentUser.title}}</span>
+                        </div>
+                        <div class="userlist">
+                            <div class="inside">
+                                <div class="user" ng-repeat="user in users" ng-click="changeUser(user.id)" ng-right-click="showMenu($event, user.id)">
+                                    <div class="avatar" ng-style="color(user.name)"></div>
+                                    <div class="text">
+                                        <strong>{{user.name}}</strong>
+                                        <span>{{user.title}}</span>
+                                    </div>
+                                </div>
+                                <a class="adduser" ng-click="showAddUser()">Přidat uživatele</a>
+                            </div>
+                        </div>
+                    </div>
+                    <ul class="buttons" ng-controller="windowCtrl">
+                        <li><a class="close" ng-click="close()">Zavřít</a></li>
+                        <li><a ng-class="classes" ng-click="max()">Max/Obnovit</a></li>
+                        <li><a class="min" ng-click="min()">Minimalizovat</a></li>
+                    </ul>
+                
+                </div>
+                
+                <div class="content">
+                    <div id="data" ng-show="loaded && !error.show" ui-view></div>
+                    <div class="loading" ng-show="!loaded && !error.show">
+                        <div class="bouncer">
+                            <div class="bounce1"></div>
+                            <div class="bounce2"></div>
+                            <div class="bounce3"></div>
+                        </div>
+                    </div>
+                    <div class="error" ng-show="error.show">
+                        <img src="./assets/img/{{error.type}}.png">
+                        <h1>{{error.text}}</h1>
+                        <p>{{error.stacktrace}}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- build:js ./assets/main.js -->
+        <script src='./assets/components/underscore/underscore-min.js'></script>
+        <script src="./assets/components/angular/angular.js"></script>
+        <script src="./assets/components/angular-animate/angular-animate.min.js"></script>
+        <script src="./assets/components/angular-ui-router/release/angular-ui-router.js"></script>
+        <script src="./assets/components/nnnick-chartjs/Chart.min.js"></script>
+        <script src="./assets/components/angles/angles.js"></script>
+
+        <script src="./assets/scripts/defaults.js"></script>
+        
+        <script src="./assets/scripts/main.js"></script>
+        <script src="./assets/scripts/services/Updater.js"></script>
+        <script src="./assets/scripts/services/Database.js"></script>
+        <script src="./assets/scripts/services/Users.js"></script>
+        <script src="./assets/scripts/services/Notifications.js"></script>
+        <script src="./assets/scripts/services/Window.js"></script>
+        <script src="./assets/scripts/services/Page.js"></script>
+        <script src="./assets/scripts/services/Options.js"></script>
+        <script src="./assets/scripts/services/Progress.js"></script>
+        <script src="./assets/scripts/services/Parser.js"></script>
+        
+        <script src="./assets/scripts/services/Utils.js"></script>
+        
+        <script src="./assets/scripts/controllers/userCtrl.js"></script>
+        <script src="./assets/scripts/controllers/windowCtrl.js"></script>
+        <script src="./assets/scripts/controllers/sidebarCtrl.js"></script>
+
+        <script src="./assets/scripts/controllers/states/znamkyCtrl.js"></script>
+        <script src="./assets/scripts/controllers/states/rozvrhCtrl.js"></script>
+        <script src="./assets/scripts/controllers/states/suplovaniCtrl.js"></script>
+        <script src="./assets/scripts/controllers/states/planCtrl.js"></script>
+        <script src="./assets/scripts/controllers/states/vyukaCtrl.js"></script>
+        <script src="./assets/scripts/controllers/states/predmetyCtrl.js"></script>
+        <script src="./assets/scripts/controllers/states/absenceCtrl.js"></script>
+        <script src="./assets/scripts/controllers/states/ukolyCtrl.js"></script>
+        <script src="./assets/scripts/controllers/states/optionsCtrl.js"></script>
+        <!-- endbuild -->        
+    </body>
+</html>
