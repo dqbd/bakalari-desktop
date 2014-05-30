@@ -106,21 +106,32 @@ app.run(["$rootScope", "$q", "Users", "Window", "Progress", "Notifications", fun
         if(current == null) {
             Users.getFirstID().then(function(fid) {
                 if(fid == null) {
-                    var popup = Window.getWindow("newuser.html", new_win);
-                    popup.requestAttention(true);
+                    var popup = Window.getWindow("newuser.html#/adduser", new_win),
+                        grace = false;
+
+                    var callback = function(added) {
+                        popup.close();
+
+                        Users.insertUser(added).then(function(id) { //added
+                            Users.setCurrentUser(id);
+                            $rootScope.$emit("user");
+
+                            Window.getWindow().show();
+                        }, function(e) { //error!
+                            Window.getWindow().close();
+                        })
+                    }                    
+
+                    Window.listen("loaded", function(win) {
+                        grace = true;
+                        win.window.callback = callback;
+                    }, popup);
 
                     Window.listen("closed", function(window) {
-                        Users.getUsers().then(function(data) {
-                            if(data.length <= 0) { //still no user, ok.. closing
-                                Window.getWindow().close();
-                            } else { //new user, get it.
-                                Users.setCurrentUser(_.min(_.pluck(data, 'id')));
-                                $rootScope.$emit("user");
-
-                                Window.getWindow().show();
-                            }
-                        });
+                        if(!grace) Window.getWindow().close();
                     }, popup);
+
+                    popup.requestAttention(true);
                 } else { //hey, there is a user!
                     Users.setCurrentUser(fid);
                     $rootScope.$emit("user");
@@ -133,7 +144,7 @@ app.run(["$rootScope", "$q", "Users", "Window", "Progress", "Notifications", fun
         }
     });
 
-    Notifications.display("booze", "meh")
+    // Notifications.display("booze", "meh")
 
     Window.listen("close", function(window) {
         Notifications.close(true);

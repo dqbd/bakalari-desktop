@@ -33,18 +33,6 @@ app.factory("Parser", ["$http", "$rootScope", "$q", "Database", "Users", "Progre
         return page + JSON.stringify(_.sortBy(_.values(_.extend(user, arg)), "length").join(""));
     }
 
-    this.writeIntoCache = function(page, user, arg, data) {
-        Database.perform(function(db) {            
-            var dataset = [JSON.stringify(data), new Date().getTime(), user.id, parent.constructHash(page,user,arg)];
-
-            db.run("UPDATE 'data' SET response = ?, updated = ? WHERE uid = ? AND request = ?", dataset, function(err) {
-                if(err != null || this.changes <= 0) {
-                    db.run("INSERT INTO 'data' (response, updated, uid, request) VALUES (?, ?, ?, ?)", dataset);
-                }        
-            });
-        });
-    }
-
     this.isConnected = function(revert) {
         var deferred = $q.defer();
         require('dns').lookup("www.google.com", function(err) {
@@ -59,6 +47,7 @@ app.factory("Parser", ["$http", "$rootScope", "$q", "Database", "Users", "Progre
         var deferred = $q.defer();
 
         var callback = function(err, result) {
+            console.log(result);
             if(result == null || result.response == null || result.response.length <= 0 || force == true) {
                 deferred.reject(result);
             } else {
@@ -70,19 +59,30 @@ app.factory("Parser", ["$http", "$rootScope", "$q", "Database", "Users", "Progre
             if(user == null) {
                 deferred.reject(false);
             } else {
-                Database.perform(function(db) {
+                Database.perform("cache", function(db) {
+                    var time = new Date().getTime() - (60 * 60 * 1000);
+
                     if(connected == true) {
-                        db.get("SELECT * FROM 'data' WHERE request = ? AND uid = ? AND updated >= ?", 
-                            [parent.constructHash(page, user, arg), user.id, new Date().getTime() - (60 * 60 * 1000)], callback);
+                        db.findOne({"request": parent.constructHash(page, user, arg), "uid": user._id, "updated": {$gte: time}}, callback);
                     } else {
-                        db.get("SELECT * FROM 'data' WHERE request = ? AND uid = ?", 
-                            [parent.constructHash(page, user, arg), user.id], callback);
+                        db.findOne({"request": parent.constructHash(page, user, arg), "uid": user._id}, callback);
                     }
                 });
             }
         });
 
         return deferred.promise;
+    }
+
+    this.writeIntoCache = function(page, user, arg, data) {
+        Database.perform("cache", function(db) {            
+            var dataset = _.object(
+                ["uid", "request", "response", "updated"],
+                [user._id, parent.constructHash(page,user,arg), JSON.stringify(data), new Date().getTime()]
+            );
+
+            db.update(_.pick(dataset, ["uid", "request"]), dataset, {"upsert": true});
+        });
     }
     
     this.get = function(page, arg, force) {

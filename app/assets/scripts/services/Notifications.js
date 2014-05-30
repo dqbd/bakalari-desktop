@@ -6,11 +6,10 @@ app.factory('Notifications', ['Window', 'Utils', "$timeout", function(Window, Ut
 
 	Window.listen("loaded", function() {
 		loaded = true;
-		console.log(notify_window.window.helper)
 	}, notify_window);
 
 
-	notify_window.setShowInTaskbar(false);
+	// notify_window.setShowInTaskbar(false);
 
 	this.exec = function(callback) {
 		if(loaded) {
@@ -25,22 +24,17 @@ app.factory('Notifications', ['Window', 'Utils', "$timeout", function(Window, Ut
 		}
 	}
 
-	this.display = function(title, text) {
+	this.display = function(title, text, color) {
 		parent.exec(function(local) {
 			parent.show();
 
-			local.helper.append(title, text);
+			local.helper.append(title, text, color);
 			console.log(local.helper.list());
 		});
 	}
 
 	this.show = function() {
 		parent.moveWindow();
-
-		// $timeout(function() {
-		// 	parent.hide();
-		// }, 4000);
-
 		notify_window.show();
 	}
 
@@ -54,8 +48,8 @@ app.factory('Notifications', ['Window', 'Utils', "$timeout", function(Window, Ut
 	}
 
 	this.moveWindow = function() {
-		var x = screen.availLeft + screen.availWidth - (notify_win.width+10);
-		var y = screen.availTop;
+		var x = screen.availLeft + screen.availWidth - (notify_win.width+5);
+		var y = (process.platform == "win32") ? screen.availHeight - notify_win.height - 5 : screen.availTop; 
 
 		notify_window.moveTo(x,y);
 	}

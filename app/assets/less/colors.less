@@ -6,7 +6,7 @@
 
 	@class: ~"@{name}";
 
-	@color : extract(@colors, @index);
+	@color: extract(@colors, @index);
 
 	nav.@{class} { 
 		background-color: @color; 
@@ -16,9 +16,9 @@
 		ul li a:after { border-left-color: @color; }
 
 		.control { background: darken(@color, 2%); }
-	}
+	}	
 
-	#options .colors .color.@{class} {
+	#options .colors .color.@{class}, .icon.color.@{class} {
 		background: @color; 
 	}
 	

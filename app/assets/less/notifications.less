@@ -1,0 +1,60 @@
+@import "colors.less";
+
+body {
+	background-color: extract(@colors, 1);
+	width: 100%;
+	height: 100%;
+
+	margin: 0;
+	padding: 0;
+
+	overflow: hidden;
+
+	font-size: 14px;
+
+	
+	font-family: Arial;
+
+	color: #ccc;
+
+	> * { 
+		float: left 
+	}
+
+	&:after {
+		display: block;
+		clear: both;
+		content: "";
+		position: absolute;
+		width: 100%;
+		bottom: 0px;
+		height: 3px;
+
+		background: extract(@colors, 5);
+	}
+}
+
+h1 {
+	font-size: 14px;
+}
+
+.content {
+	box-sizing: border-box;
+	padding: 11px 13px;
+
+
+
+	> * {
+		padding: 0;
+		margin: 0;
+	}
+
+	
+
+}
+
+.icon {
+	width: 60px;
+	height: 60px;
+	background-color: extract(@colors, 5);
+}

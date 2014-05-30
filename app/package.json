@@ -28,7 +28,7 @@
   "window": {
     "toolbar": true,
     "icon": "./assets/img/logo-hat.png",
-    "frame": false,
+    "frame": true,
     "height": 600,
     "width": 800,
     "min_height": 300,
@@ -36,7 +36,6 @@
     "show": false
   },
   "dependencies": {
-    "sqlite3": "~2.2.3",
     "nedb": "~0.10.5"
   }
 }

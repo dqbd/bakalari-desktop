@@ -5,7 +5,7 @@ app.factory('Users', ['Database', '$q', '$rootScope', function(Database, $q, $ro
 	}
 
 	this.getCurrentUserID = function() {
-		return parseInt(localStorage.currentUser);
+		return localStorage.currentUser;
 	}
 
 	this.setCurrentUser = function(id) {
@@ -15,9 +15,10 @@ app.factory('Users', ['Database', '$q', '$rootScope', function(Database, $q, $ro
 	this.getFirstID = function() {
 		var deferred = $q.defer();
 
-		Database.perform(function(db) {
-			db.get("SELECT MIN(id) AS min FROM 'users'", function(err, result) {
-				deferred.resolve(result.min);
+		Database.perform("users", function(db) {
+			db.findOne({}, function(err, result) {
+
+				deferred.resolve((result != null) ? result._id : null);
 			});
 		});
 
@@ -27,10 +28,14 @@ app.factory('Users', ['Database', '$q', '$rootScope', function(Database, $q, $ro
 	this.getUser = function(id) {
 		var deferred = $q.defer();
 
-		Database.perform(function(db) {
-			db.get("SELECT id, user, pass, url, name, title FROM 'users' WHERE id = ?", id, function(err, result) {
+		Database.perform("users", function(db) {
+
+			db.findOne({"_id": id}, function(err, result) {
 				deferred.resolve(result);
 			});
+			// db.get("SELECT id, user, pass, url, name, title FROM 'users' WHERE id = ?", id, function(err, result) {
+			// 	deferred.resolve(result);
+			// });
 		});	
 
 		return deferred.promise;
@@ -40,31 +45,33 @@ app.factory('Users', ['Database', '$q', '$rootScope', function(Database, $q, $ro
 		var deferred = $q.defer();
 
 		Database.perform(function(db) {
-			db.run("DELETE FROM 'users' WHERE id = ?", id, function(err) {
-				deferred.resolve(this.changes);
+			db.remove({"_id": id}, {}, function(err, removed) {
+				deferred.resolve(removed);
 			});
 		});	
 
 		return deferred.promise;
 	}
 
-	this.insertUser = function(user, callback) {
+	this.insertUser = function(user) {
 		var deferred = $q.defer();
-		var query = user.user + "', '" + user.pass + "', '" + user.url + "', '" + user.name + "', '" +user.title;
 
+		user = _.omit(user, "id");
 
-		Database.perform(function(db) {
+		Database.perform("users", function(db) {
+			db.insert(user, function(err, result) {
 
-            db.run("INSERT INTO 'users' (user, pass, url, name, title) VALUES ('"+query+"')", function(err) {
-            	$rootScope.$apply(function() {
+				$rootScope.$apply(function() {
+					if(err != null) {
+						console.log(err);
+						deferred.reject(err);
+					} else {
+						deferred.resolve(result._id);
+					}
 
-            		if(err != null) {
-            			deferred.reject(err);
-            		} else {
-            			deferred.resolve(this.lastID);
-            		}
-        		});
-            });
+				});
+
+			});
         });
 
         return deferred.promise;
@@ -73,8 +80,8 @@ app.factory('Users', ['Database', '$q', '$rootScope', function(Database, $q, $ro
 	this.getUsers = function() {
 		var deferred = $q.defer();
 
-		Database.perform(function(db) {
-			db.all("SELECT * FROM 'users'", function(err, result) {
+		Database.perform('users', function(db) {
+			db.find({}, function(err, result) {
 				if(err != null) { 
 					deferred.reject(err); 
 				} else {

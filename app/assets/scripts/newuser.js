@@ -1,5 +1,9 @@
 var app = angular.module("app.newuser", ['google-maps']);
 
+var callback = function() {
+	alert("meee");
+};
+
 app.config(["$httpProvider", function($httpProvider) {
 	$httpProvider.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded;charset=utf-8';
     
@@ -180,7 +184,7 @@ app.controller('editorCtrl', ['$scope', "$rootScope", "$http", "$timeout", "$q",
 }]);
 
 
-app.controller('userCtrl', ["$scope", "$rootScope", "$location", "Parser", "Users", "Window", function($scope, $rootScope, $location, Parser, Users, Window){
+app.controller('userCtrl', ["$scope", "$rootScope", "$location", "Parser", "Window", function($scope, $rootScope, $location, Parser, Users, Window){
 	$scope.url = "";
 	$scope.user = "";
 	$scope.pass = "";
@@ -212,18 +216,24 @@ app.controller('userCtrl', ["$scope", "$rootScope", "$location", "Parser", "User
 	$scope.send = function() {
 		$scope.loading = true;
 
-		Parser.getOnline("login", $scope.user, $scope.pass, $scope.url, null).then(function(data) {
-			
-			if(data.data.status == "ok") {
-				Users.insertUser(Users.createObject(null, $scope.user, $scope.pass, $scope.url, data.data.data.name, data.data.data.type)).then(function() {
-					Window.getWindow().close();
-				});
-				
-			} else {
-				$scope.error = (data.data.data && data.data.data.short) ? data.data.data.short : data.data.message;
+		callback(_.object(
+			["user", "pass", "url", "name", "title"], 
+			["971031r", "dfiypam4", "http://intranet.wigym.cz:6040/bakaweb/", "David Duong", "rodič"])
+		);
 
-				$scope.loading = false;
-			}
-		});
+
+		// Parser.getOnline("login", $scope.user, $scope.pass, $scope.url, null).then(function(data) {
+			
+		// 	if(data.data.status == "ok") {
+		// 		Users.insertUser().then(function() {
+		// 			Window.getWindow().close();
+		// 		});
+		// 		callback(_.object(["id", "user", "pass", "url", "name", "title"], [null, $scope.user, $scope.pass, $scope.url, data.data.data.name, data.data.data.type]));
+		// 	} else {
+		// 		$scope.error = (data.data.data && data.data.data.short) ? data.data.data.short : data.data.message;
+
+		// 		$scope.loading = false;
+		// 	}
+		// });
 	};
 }]);

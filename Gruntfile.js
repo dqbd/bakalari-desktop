@@ -36,8 +36,8 @@ module.exports = function(grunt) {
 			'files': ['nw', 'nw.pak', 'libffmpegsumo.so'],
 			'exclude': ['nwsnapshot']
 		}],
-		file_list: ["**", "!node_modules/**", "!bower.json", "!*.s3db", "!*.sublime-project", "!*.sublime-workspace", "!*.log", "!assets/less/**", "!assets/scripts/**", "!assets/components/**", "!.bowerrc", 
-					"node_modules/sqlite3/LICENSE", "node_modules/sqlite3/package.json", "node_modules/sqlite3/sqlite3.js", "node_modules/sqlite3/lib/**", "node_modules/sqlite3/node_modules/**"]
+		file_list: ["**", "!node_modules/**", "!bower.json", "!*.sublime-project", "!*.sublime-workspace", "!*.log", "!assets/less/**", "!assets/scripts/**", "!assets/components/**", "!.bowerrc", 
+					"node_modules/nedb/index.js", "node_modules/nedb/package.json", "node_modules/nedb/lib/**", "node_modules/nedb/node_modules/**"]
 					.map(function(item) { return item.replace(/\//g, path.sep); })
 	};
 

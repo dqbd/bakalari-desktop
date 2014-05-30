@@ -117,6 +117,10 @@ app.factory("Utils", function() {
         }
     }
 
+    this.getOS = function() {
+        
+    }
+
 	return this;
 });
 

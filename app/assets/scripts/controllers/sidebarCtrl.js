@@ -32,17 +32,7 @@ app.controller("sidebarCtrl", ["$scope", "$rootScope", "$state", "$q", "Options"
     }
 
 
-    $scope.receiveOptions = function() {
-		Options.getOption(Options.sidebarHiddenTag).then(function(data) {
-	    	$scope.hidden = (data) ? data : [];
-
-	    	$scope.init();
-	    });
-
-        Options.getOption(Options.sidebarBackgroundTag).then(function(data) {
-            $scope.bg_class = (data) ? data : "default";
-        });
-    }
+    
 
     $scope.capitalize = function(txt) {
         return Utils.capitalize(txt, false, true);
@@ -65,10 +55,21 @@ app.controller("sidebarCtrl", ["$scope", "$rootScope", "$state", "$q", "Options"
     $rootScope.$on("sidebar-views", function(event, pages) {
         $scope.views = pages;
     });
+
+    $scope.receiveOptions = function() {
+        Options.getOption(Options.sidebarBackgroundTag, Options.sidebarHiddenTag).then(function(data) {
+            $scope.bg_class = (data[Options.sidebarBackgroundTag]) ? data[Options.sidebarBackgroundTag] : "default";
+            $scope.hidden = (data[Options.sidebarHiddenTag]) ? data[Options.sidebarHiddenTag] : [];
+
+            $scope.init();
+        });
+    }
     
     Options.registerObserver(function(data) {
+        console.log(data);
+
         if(data[Options.sidebarHiddenTag]) {
-    	   $scope.hidden = data[Options.sidebarHiddenTag];
+            $scope.hidden = data[Options.sidebarHiddenTag];
         }
 
         if(data[Options.sidebarBackgroundTag]) {
