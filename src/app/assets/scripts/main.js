@@ -1,7 +1,9 @@
-var app = angular.module("app", ["ui.router", "angles", "ngAnimate"]);
+document.onkeydown = function(e) { if(e.keyCode == 123) require("nw.gui").Window.get().showDevTools(); }
+
+var app = angular.module("app", ["ui.router", "angles"]);
 
 app.config(["$urlRouterProvider", "$stateProvider", "$httpProvider", "$compileProvider", function($urlRouterProvider, $stateProvider, $httpProvider, $compileProvider) {
-    pages.forEach(function(item) {
+    GLOBALS.pages.forEach(function(item) {
         $stateProvider.state(item.name, {
             url: "/"+item.name,
             templateUrl: "assets/templates/"+item.name+".html",
@@ -93,7 +95,7 @@ app.run(["$rootScope", "$q", "Users", "Window", "Progress", "Notifications", fun
             $rootScope.canceler.resolve();
         }
 
-        $rootScope.window_title = _.findWhere(pages, {"name": toState.name}).title + " - Školář";
+        $rootScope.window_title = _.findWhere(GLOBALS.pages, {"name": toState.name}).title + " - Školář";
         
         $rootScope.canceler = $q.defer();
 
@@ -106,7 +108,7 @@ app.run(["$rootScope", "$q", "Users", "Window", "Progress", "Notifications", fun
         if(current == null) {
             Users.getFirstID().then(function(fid) {
                 if(fid == null) {
-                    var popup = Window.getWindow("newuser.html#/adduser", new_win),
+                    var popup = Window.getWindow("newuser.html#/adduser", GLOBALS.adduser_win),
                         grace = false;
 
                     var callback = function(added) {
@@ -143,8 +145,6 @@ app.run(["$rootScope", "$q", "Users", "Window", "Progress", "Notifications", fun
             Window.getWindow().show();
         }
     });
-
-    // Notifications.display("booze", "meh")
 
     Window.listen("close", function(window) {
         Notifications.close(true);

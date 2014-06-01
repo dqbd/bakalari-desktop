@@ -6,19 +6,24 @@ app.controller("userCtrl", ["$scope", "$rootScope", "$q", "Utils", "Users", "Win
 
 	$rootScope.$on("user", function() {
 		$scope.checkState();
-	})
-			
+	});
+
+
 	$scope.checkState = function() {
 		$q.all({"current":Users.getCurrentUser(), "users": Users.getUsers()}).then(function(result) {
 			$scope.currentUser = result.current;
+
 			$scope.users = result.users;
 		});
 	}
 
 	$scope.changeUser = function(id) {
-		Users.setCurrentUser(id);
 
-		$rootScope.$emit("user");		
+		if(Users.getCurrentUserID() != id) {
+			Users.setCurrentUser(id);
+
+			$rootScope.$emit("user");	
+		}
 	};
 
 	$scope.showMenu = function($event, id) {
@@ -58,15 +63,31 @@ app.controller("userCtrl", ["$scope", "$rootScope", "$q", "Utils", "Users", "Win
 
 
 	$scope.showAddUser = function(callback) {
-		callback = (callback) ? callback : function(user) {
-			Window.listen("closed", function(window) {
-	            $rootScope.$emit("user");
-	        }, Window.getWindow("newuser.html#/adduser?url="+user.url, new_win));
-		};
+		// var popup = 
+		// callback = (callback) ? callback : function(user) {
+		// 	Window.listen("closed", function(window) {
+	 //            $rootScope.$emit("user");
+	 //        }, Window.getWindow("newuser.html#/adduser?url="+user.url, new_win));
+		// };
+
 
 		Users.getCurrentUser().then(function(user) {
-			callback(user);
-		})
+			var popup = Window.getWindow("newuser.html#/adduser", GLOBALS.adduser_win);
+			Window.listen("loaded", function(win) {
+
+				win.window.callback = function(added) {
+					win.close();
+
+					Users.insertUser(added).then(function(id) { //added
+                        Users.setCurrentUser(id);
+                        $rootScope.$emit("user");
+                    });
+				}
+
+			}, popup);
+
+			
+		});
 	}
  
 	$scope.color = Utils.subjectToColor;

@@ -1,15 +1,19 @@
 app.factory('Notifications', ['Window', 'Utils', "$timeout", function(Window, Utils, $timeout){
 
-	var notify_window = Window.getWindow("notification.html", notify_win);
+	var notify_window = Window.getWindow("notifications.html", GLOBALS.notify_win);
 	var parent = this;
 	var loaded = false;
 
 	Window.listen("loaded", function() {
 		loaded = true;
+
+		notify_window.window.document.onclick = function() {
+			parent.hide();
+		}
 	}, notify_window);
 
 
-	// notify_window.setShowInTaskbar(false);
+	notify_window.setShowInTaskbar(false);
 
 	this.exec = function(callback) {
 		if(loaded) {
@@ -28,8 +32,9 @@ app.factory('Notifications', ['Window', 'Utils', "$timeout", function(Window, Ut
 		parent.exec(function(local) {
 			parent.show();
 
-			local.helper.append(title, text, color);
-			console.log(local.helper.list());
+			setTimeout(parent.hide, 3000);
+
+			// local.helper.append(title, text, color);
 		});
 	}
 
@@ -48,8 +53,8 @@ app.factory('Notifications', ['Window', 'Utils', "$timeout", function(Window, Ut
 	}
 
 	this.moveWindow = function() {
-		var x = screen.availLeft + screen.availWidth - (notify_win.width+5);
-		var y = (process.platform == "win32") ? screen.availHeight - notify_win.height - 5 : screen.availTop; 
+		var x = screen.availLeft + screen.availWidth - (GLOBALS.notify_win.width+5);
+		var y = (process.platform == "win32") ? screen.availHeight - GLOBALS.notify_win.height - 5 : screen.availTop; 
 
 		notify_window.moveTo(x,y);
 	}

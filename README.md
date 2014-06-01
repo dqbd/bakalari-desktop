@@ -4,7 +4,7 @@
 ###Požadavky
 Pro kompilaci je nutné mít nainstalované tyto aplikace
 
-* `nodejs` a `npm`
+* `nodejs` a `npm` (ten je s nodejs zabudovaný)
 * `python` 2.7.x, **nikoliv** 3.x.x
 
 * Unix:
@@ -16,14 +16,13 @@ Pro kompilaci je nutné mít nainstalované tyto aplikace
 ###Jak zkompilovat
 Nejprve stáhni celý tento git. Poté v příkazovém řádku s CWD u složky zadej  
 ```
-$ npm install grunt -g
+$ npm install grunt nw-gyp -g
 $ npm install
 $ grunt init
+$ grunt start
 ```
-Spustitelná aplikace se následně nachází ve složce `src`. Pokud chceš připravit balík na publikaci k updateru, zadej do konzole
+###Příprava k publikaci
 ```
-$ grunt
+$ grunt publish
 ```
-Aplikace bude zabalená v .ZIP archivu ve složce `builds`.
-####Problémy při kompilaci
-Je dost možné, že 
+Veškeré soubory se budou nacházet ve složce `builds`

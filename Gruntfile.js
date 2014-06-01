@@ -1,11 +1,12 @@
 module.exports = function(grunt) {
 	var date 		= new Date(),
-		version 	= "0.8.5",
+		version 	= "0.9.2",
 		nw_file 	= "";
 
 	var request 	= require("request"),
 		_ 			= require('lodash'),
 		fs 			= require("fs"),
+		mkdirp		= require("mkdirp"),
 		progressbar = require("progress"),
 		path 		= require("path"),
 		q 			= require("q"),
@@ -18,7 +19,7 @@ module.exports = function(grunt) {
 	});
 
 	var settings = {
-		filename: ("0"+date.getDate()).slice(-2) + ("0"+(date.getMonth()+1)).slice(-2) + date.getFullYear().toString() + ("0"+date.getHours()).slice(-2) + ("0"+date.getMinutes()).slice(-2) + ("0"+date.getSeconds()).slice(-2),
+		build_folder: ("0"+date.getDate()).slice(-2) + "." + ("0"+(date.getMonth()+1)).slice(-2) + "." + date.getFullYear().toString() + " - " + ("0"+(date.getHours()+1)).slice(-2) + "." + ("0"+(date.getMinutes()+1)).slice(-2) + "."+("0"+(date.getSeconds()+1)).slice(-2),
 		download_url: 'http://dl.node-webkit.org/',
 		platform_options: [{
 			'url': "v<%= version %>/node-webkit-v<%= version %>-win-ia32.zip",
@@ -36,82 +37,93 @@ module.exports = function(grunt) {
 			'files': ['nw', 'nw.pak', 'libffmpegsumo.so'],
 			'exclude': ['nwsnapshot']
 		}],
-		file_list: ["**", "!node_modules/**", "!bower.json", "!*.sublime-project", "!*.sublime-workspace", "!*.log", "!assets/less/**", "!assets/scripts/**", "!assets/components/**", "!.bowerrc", 
+		file_list: ["**", "!node_modules/**", "!bower.json", "!*.sublime-project", "!*.sublime-workspace", "!*.log", "!assets/less/**", "!assets/scripts/**", "!assets/components/**", "!.bowerrc",
 					"node_modules/nedb/index.js", "node_modules/nedb/package.json", "node_modules/nedb/lib/**", "node_modules/nedb/node_modules/**"]
 					.map(function(item) { return item.replace(/\//g, path.sep); })
 	};
 
 	grunt.initConfig({
 		pkg: grunt.file.readJSON('package.json'),
-		src_pkg: grunt.file.readJSON(path.join('app', 'package.json')),
+		src_pkg: grunt.file.readJSON(path.join('src', 'app', 'package.json')),
 		compress: {
-			webkit: {
-				options: {
-					archive: path.join('.', 'builds', 'engine.tar.gz'),
-					mode: "tgz"
-				},
-				files: [{ 
-					expand: true,
-					cwd: "webkit"+path.sep,
-					src: ["**"] 
-				}]
-			},
 			app: {
 				options: {
-					archive: path.join('.', 'builds', 'app.tar.gz'),
+					archive: path.join('.', 'builds', settings.build_folder, 'app.tar.gz'),
 					mode: "tgz"
 				},
 				files: [{
 					expand: true,
-					cwd: "dist"+path.sep,
+					cwd: path.join("dist", "app"),
+					src: ["**"]
+				}]
+			},
+			webkit: {
+				options: {
+					archive: path.join('.', 'builds', settings.build_folder, 'engine.tar.gz'),
+					mode: "tgz"
+				},
+				files: [{ 
+					expand: true,
+					cwd: path.join("dist", "webkit"),
+					src: ["**"] 
+				}]
+			},
+			installer: {
+				options: {
+					archive: path.join('.', 'builds', settings.build_folder, 'installer.tar.gz'),
+					mode: "tgz"
+				},
+				files: [{
+					expand: true,
+					cwd: path.join("src", "installer"),
 					src: ["**"]
 				}]
 			},
 			updater: {
 				options: {
-					archive: path.join('.', 'builds', 'app.tar.gz'),
+					archive: path.join('.', 'builds', settings.build_folder, 'updater.tar.gz'),
 					mode: "tgz"
 				},
 				files: [{
 					expand: true,
-					cwd: "dist"+path.sep,
+					cwd: path.join("src", "updater"),
 					src: ["**"]
 				}]
 			}
 		},
 		shell: {
-			install: {
-				command: "npm install --build-from-source --runtime=node-webkit --target_arch=ia32 --target="+version,
+			start: {
+				command: "run.bat" + " " + path.resolve(".", "src", "app") + " " + path.resolve(".", "dist", "webkit"),
 				options: {
 					stderr: true,
-					execOptions: { cwd: 'app' }
+					execOptions: {
+						cwd: path.join("tools", "build-system")
+					}
 				}
-			}
+			},
+			app: { command: "npm install", options: {stderr: true, execOptions: { cwd: path.join('src','app') }}},
+			installer: { command: "npm install", options: {stderr: true, execOptions: { cwd: path.join('src','installer') }}},
+			updater: { command: "npm install", options: {stderr: true, execOptions: { cwd: path.join('src','updater') }}}
 		},
 		clean: {
 			temp: ["temp"+path.sep+"*.*"],
 			other: [".tmp"+path.sep+"*.*"],
-			dist: ["dist"+path.sep+"*.*"],
-			folders: ["temp"+path.sep, "dist"+path.sep, ".tmp"+path.sep]
+			app: [path.join("dist", "app", "*")],
+			webkit: [path.join("dist", "webkit", "*")],
+			folders: ["temp"+path.sep, ".tmp"+path.sep]
 		},
-		unzip: {
-			temp: nw_file,
-		}, 
 		watch: {
 			less: {
-				files: ["app/assets/less/*.less"],
+				files: ["src/app/assets/less/*.less"],
 				tasks: ["newer:less:development"]
-			},
-			installer: {
-				files: ["installer/assets/*.less"],
-				tasks: ["less:installer"]
 			}
 		},
 		less: {
 			development: {
 				files: {
-					"app/assets/css/main.css": "app/assets/less/main.less",
-					"app/assets/css/newuser.css": "app/assets/less/newuser.less"
+					"src/app/assets/css/main.css": "src/app/assets/less/main.less",
+					"src/app/assets/css/newuser.css": "src/app/assets/less/newuser.less",
+					"src/app/assets/css/notifications.css": "src/app/assets/less/notifications.less"
 				}
 			},
 			production: {
@@ -120,29 +132,25 @@ module.exports = function(grunt) {
 					compress: true
 				},
 				files: {
-					"app/assets/css/main.css": "app/assets/less/main.less",
-					"app/assets/css/newuser.css": "app/assets/less/newuser.less"
-				}
-			},
-			installer: {
-				files: {
-					"installer/assets/main.css" : "installer/assets/main.less"
+					"dist/app/assets/css/main.css": "dist/app/assets/less/main.less",
+					"dist/app/assets/css/newuser.css": "dist/app/assets/less/newuser.less",
+					"dist/app/assets/css/notifications.css": "dist/app/assets/less/notifications.less"
 				}
 			}
 		},
 		copy: {
-			src: {
-				files: [{expand:true, src: settings.file_list, cwd:"app"+path.sep, dest: "dist" }]
+			app: {
+				files: [{expand:true, src: settings.file_list, cwd: path.join("src", "app"), dest: path.join("dist", "app") }]
 			}
 		},
 		useminPrepare: {
-			html: ['app/main.html', 'app/newuser.html'],
+			html: ['src/app/main.html', 'src/app/newuser.html', 'src/app/notifications.html'],
 		    options: {
-	      		dest: 'dist'
+	      		dest: 'dist/app'
 		    }
 		},
 		usemin: {
-		  	html: ['dist/main.html', 'dist/newuser.html']
+		  	html: ['dist/app/main.html', 'dist/app/newuser.html', 'dist/app/notifications.html']
 	  	}
 
 	});
@@ -150,7 +158,7 @@ module.exports = function(grunt) {
 
 	grunt.registerTask("nw-download", "Downloads and extracts node-webkit", function() {
 		var done 	= this.async();
-		var dest 	= "app";
+		var dest 	= path.join("dist","webkit");
 		var temp 	= "temp";
 		var attempt = 0;
 		var options = settings.platform_options[_.findIndex(settings.platform_options, {type: process.platform})];
@@ -244,7 +252,7 @@ module.exports = function(grunt) {
 		}
 
 		if (!fs.existsSync(dest)) {
-			fs.mkdirSync(dest);
+			mkdirp.sync(dest);
 		}
 
 		if (!fs.existsSync(temp)) {
@@ -259,21 +267,31 @@ module.exports = function(grunt) {
 	});
 
 	grunt.registerTask("verify-structure", "Checks, if the server address is set correctly", function() {
-		var file = grunt.file.read(path.join("app", "assets", "scripts", "defaults.js"), {encoding:"UTF8"});
+		var file = grunt.file.read(path.join("src", "app", "assets", "scripts", "defaults.js"), {encoding:"UTF8"});
+
+		//Člověk by si říkal, co tu k čertu dělá eval. Já mám celkem solidní důvěru ve svém kódu.
+		var globals = eval('('+file.match(/var globals\s*?=\s*?([\s\S]*?);$/mi)[1]+')');
 
 		grunt.log.writeln();
 		grunt.log.writeln("Verze balíčku: "["cyan"] + grunt.config.get("src_pkg.version")["green"]);
-		grunt.log.writeln("Název souboru: "["cyan"] + (settings.filename+".zip")["green"]);
 
-		if(file.match(/var\s+host\s*=\s*"duong\.cz"/) == null) {
+		
+		if(globals.host != "duong.cz") {
 			grunt.fail.warn("Není nastaven správě host na server");
 		}
 	});
 
-	grunt.registerTask("init", ["nw-download", "shell", "less:development", "flush"]);
-	grunt.registerTask('dist', ['less:production', 'clean:dist', 'copy', 'useminPrepare', 'concat', 'uglify', 'usemin']);
-	grunt.registerTask("flush", ["clean:dist", "clean:temp", "clean:other", "clean:folders"]);
+	grunt.registerTask("install-dep", ["shell:app", "shell:installer", "shell:updater"]);
+	grunt.registerTask("init", ["clean:webkit", "nw-download", "install-dep", "less:development", "flush"]);
 
-	grunt.registerTask('publish', ['verify-structure', 'dist', 'compress', 'flush'])
+	grunt.registerTask("compress-all", ["compress:app", "compress:webkit", "compress:updater", "compress:installer"]);
+
+	grunt.registerTask("start", ["shell:start"]);
+
+
+	grunt.registerTask('dist', ['clean:app', 'copy', 'less:production', 'useminPrepare', 'concat', 'uglify', 'usemin']);
+	grunt.registerTask("flush", ["clean:temp", "clean:other", "clean:folders"]);
+
+	grunt.registerTask('publish', ['verify-structure', 'dist', 'compress-all', 'flush']);
 	grunt.registerTask('default', ['verify-structure']);
 };

@@ -1,7 +1,6 @@
 nw.exe
 nw.pak
 project.sublime-project
-project.sublime-workspace
 *.s3db
 !data.s3db
 node_modules

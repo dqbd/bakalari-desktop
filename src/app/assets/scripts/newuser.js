@@ -1,8 +1,5 @@
 var app = angular.module("app.newuser", ['google-maps']);
-
-var callback = function() {
-	alert("meee");
-};
+var callback = params = {};
 
 app.config(["$httpProvider", function($httpProvider) {
 	$httpProvider.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded;charset=utf-8';
@@ -216,24 +213,21 @@ app.controller('userCtrl', ["$scope", "$rootScope", "$location", "Parser", "Wind
 	$scope.send = function() {
 		$scope.loading = true;
 
-		callback(_.object(
-			["user", "pass", "url", "name", "title"], 
-			["971031r", "dfiypam4", "http://intranet.wigym.cz:6040/bakaweb/", "David Duong", "rodič"])
-		);
+		// callback(_.object(
+		// 	["user", "pass", "url", "name", "title"], 
+		// 	["971031r", "dfiypam4", "http://intranet.wigym.cz:6040/bakaweb/", "David Duong", "rodič"])
+		// );
 
 
-		// Parser.getOnline("login", $scope.user, $scope.pass, $scope.url, null).then(function(data) {
+		Parser.getOnline("login", $scope.user, $scope.pass, $scope.url, null).then(function(data) {
 			
-		// 	if(data.data.status == "ok") {
-		// 		Users.insertUser().then(function() {
-		// 			Window.getWindow().close();
-		// 		});
-		// 		callback(_.object(["id", "user", "pass", "url", "name", "title"], [null, $scope.user, $scope.pass, $scope.url, data.data.data.name, data.data.data.type]));
-		// 	} else {
-		// 		$scope.error = (data.data.data && data.data.data.short) ? data.data.data.short : data.data.message;
+			if(data.data.status == "ok") {
+				callback(_.object(["user", "pass", "url", "name", "title"], [$scope.user, $scope.pass, $scope.url, data.data.data.name, data.data.data.type]));
+			} else {
+				$scope.error = (data.data.data && data.data.data.short) ? data.data.data.short : data.data.message;
 
-		// 		$scope.loading = false;
-		// 	}
-		// });
+				$scope.loading = false;
+			}
+		});
 	};
 }]);

@@ -1,6 +1,6 @@
 app.controller("sidebarCtrl", ["$scope", "$rootScope", "$state", "$q", "Options", "Utils", function($scope, $rootScope, $state, $q, Options, Utils) {
-	$rootScope.pages = pages;
-    $rootScope.colors = colors;
+	$rootScope.pages = GLOBALS.pages;
+    $rootScope.colors = GLOBALS.colors;
 
  	$scope.hidden = [];
     $scope.bg_class = "default";
@@ -66,8 +66,6 @@ app.controller("sidebarCtrl", ["$scope", "$rootScope", "$state", "$q", "Options"
     }
     
     Options.registerObserver(function(data) {
-        console.log(data);
-
         if(data[Options.sidebarHiddenTag]) {
             $scope.hidden = data[Options.sidebarHiddenTag];
         }

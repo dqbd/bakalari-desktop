@@ -1,6 +1,6 @@
 app.factory("Parser", ["$http", "$rootScope", "$q", "Database", "Users", "Progress", function($http, $rootScope, $q, Database, Users, Progress) {   
 
-    var domain = "http://"+host;
+    var domain = "http://"+GLOBALS.host;
     var caches = {
         "znamky": "klasifikace-body.html",
         "rozvrh": "rozvrh-novy-maturity.html",
@@ -47,7 +47,6 @@ app.factory("Parser", ["$http", "$rootScope", "$q", "Database", "Users", "Progre
         var deferred = $q.defer();
 
         var callback = function(err, result) {
-            console.log(result);
             if(result == null || result.response == null || result.response.length <= 0 || force == true) {
                 deferred.reject(result);
             } else {
@@ -90,10 +89,9 @@ app.factory("Parser", ["$http", "$rootScope", "$q", "Database", "Users", "Progre
         Progress.hideError();
 
         // return parent.getDebug(page).then(function(data) {
-        //     // console.log(data.data);
-            
         //     return data.data;
         // });
+        // 
 
         return $q.all({"user": Users.getCurrentUser(), "connected": this.isConnected()}).then(function(status) {
             var user = status.user, deferred = $q.defer();
@@ -102,21 +100,20 @@ app.factory("Parser", ["$http", "$rootScope", "$q", "Database", "Users", "Progre
                 function(data) { //máme cache 
                     deferred.resolve(_.extend(data, {"cached": true}));
                 }, function(data) { //nemáme cache 
+                    var input = {"user": user, "args": arg};
+
                     if(data != false) {
                         if(status.connected == false) { //nemá smysl stahovat, vyhoď rovnou chybu
                             deferred.reject({"status":"error", "code": "no-connection"});
                         } else { //hm... zkusme to stáhnout
-                            parent.getOnline(page, user.user, user.pass, user.url, arg).then(function(data) {
-                                parent.writeIntoCache(page, user, arg, data.data);
-                                return data;
-                            }).then(function(data) { //data
-                                deferred.resolve(_.extend(data.data, {"cached": false}));
-                            }, function(error) { //serverová chyba
-                                deferred.reject({"status": "error", "code": "server-error", "data": error});
+                            parent.getOnline(page, user.user, user.pass, user.url, arg).then(function(data) { //data
+                                deferred.resolve(_.extend(data.data, {"cached": false, "input": input}));
+                            }, function(error) { //chyba při načítání
+                                deferred.reject({"status": "error", "code": "server-error", "data": error, "input": input});
                             });
                         }
                     } else {
-                        deferred.reject({"status":"error", "code": "not-login"});
+                        deferred.reject({"status":"error", "code": "not-login", "input": input});
                     }
                 }
             );    

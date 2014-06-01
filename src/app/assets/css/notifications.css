@@ -1,0 +1,184 @@
+nav.pink {
+  background-color: #ff5fa0;
+}
+nav.pink h1 {
+  background-color: #ff79af;
+}
+nav.pink ul li a:after {
+  border-left-color: #ff5fa0;
+}
+nav.pink .control {
+  background: #ff559a;
+}
+#options .colors .color.pink,
+.icon.color.pink {
+  background: #ff5fa0;
+}
+nav.night {
+  background-color: #2c3e50;
+}
+nav.night h1 {
+  background-color: #354b60;
+}
+nav.night ul li a:after {
+  border-left-color: #2c3e50;
+}
+nav.night .control {
+  background: #283949;
+}
+#options .colors .color.night,
+.icon.color.night {
+  background: #2c3e50;
+}
+nav.yellow {
+  background-color: #e67e22;
+}
+nav.yellow h1 {
+  background-color: #e98b39;
+}
+nav.yellow ul li a:after {
+  border-left-color: #e67e22;
+}
+nav.yellow .control {
+  background: #e4791a;
+}
+#options .colors .color.yellow,
+.icon.color.yellow {
+  background: #e67e22;
+}
+nav.gray {
+  background-color: #7f8c8d;
+}
+nav.gray h1 {
+  background-color: #8c9899;
+}
+nav.gray ul li a:after {
+  border-left-color: #7f8c8d;
+}
+nav.gray .control {
+  background: #7a8788;
+}
+#options .colors .color.gray,
+.icon.color.gray {
+  background: #7f8c8d;
+}
+nav.purple {
+  background-color: #8e44ad;
+}
+nav.purple h1 {
+  background-color: #9b50ba;
+}
+nav.purple ul li a:after {
+  border-left-color: #8e44ad;
+}
+nav.purple .control {
+  background: #8841a6;
+}
+#options .colors .color.purple,
+.icon.color.purple {
+  background: #8e44ad;
+}
+nav.red {
+  background-color: #c0392b;
+}
+nav.red h1 {
+  background-color: #d14233;
+}
+nav.red ul li a:after {
+  border-left-color: #c0392b;
+}
+nav.red .control {
+  background: #b83729;
+}
+#options .colors .color.red,
+.icon.color.red {
+  background: #c0392b;
+}
+nav.green {
+  background-color: #27ae60;
+}
+nav.green h1 {
+  background-color: #2cc36b;
+}
+nav.green ul li a:after {
+  border-left-color: #27ae60;
+}
+nav.green .control {
+  background: #25a65b;
+}
+#options .colors .color.green,
+.icon.color.green {
+  background: #27ae60;
+}
+nav.blue {
+  background-color: #2980b9;
+}
+nav.blue h1 {
+  background-color: #2e8ece;
+}
+nav.blue ul li a:after {
+  border-left-color: #2980b9;
+}
+nav.blue .control {
+  background: #277ab1;
+}
+#options .colors .color.blue,
+.icon.color.blue {
+  background: #2980b9;
+}
+nav.default {
+  background-color: #3c3f41;
+}
+nav.default h1 {
+  background-color: #484c4e;
+}
+nav.default ul li a:after {
+  border-left-color: #3c3f41;
+}
+nav.default .control {
+  background: #373a3c;
+}
+#options .colors .color.default,
+.icon.color.default {
+  background: #3c3f41;
+}
+body {
+  background-color: #3c3f41;
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  font-size: 14px;
+  font-family: Arial;
+  color: #ccc;
+}
+body > * {
+  float: left;
+}
+body:after {
+  display: block;
+  clear: both;
+  content: "";
+  position: absolute;
+  width: 100%;
+  bottom: 0px;
+  height: 3px;
+  background: #8e44ad;
+}
+h1 {
+  font-size: 14px;
+}
+.content {
+  box-sizing: border-box;
+  padding: 11px 13px;
+}
+.content > * {
+  padding: 0;
+  margin: 0;
+}
+.icon {
+  width: 60px;
+  height: 60px;
+  background-color: #8e44ad;
+}

@@ -19,9 +19,6 @@ app.factory("Page", ["$rootScope", "$q", "Parser", "Progress", function($rootSco
 	}
 
 	this.statusHandler = function(response, page) {
-
-		// console.log(response);
-		
 		var deferred = $q.defer();
 
 		if(response.status == "ok") {
@@ -31,8 +28,11 @@ app.factory("Page", ["$rootScope", "$q", "Parser", "Progress", function($rootSco
 				Progress.hideAll();
 			}
 
+			if(response.cached == false) {
+				Parser.writeIntoCache(page, response.input.user, response.input.args, response);
+			}
+
 			parent.broadcastViews(page, response.data.views);
-			
 			deferred.resolve(response.data);
 		} else {
 			if(response.message == "Neexistující požadavek") {
@@ -40,7 +40,10 @@ app.factory("Page", ["$rootScope", "$q", "Parser", "Progress", function($rootSco
 			} else  {
 				var msg = (response.message != null) ? response.message : ((response.code in parent.codeString) ? parent.codeString[response.code] : "");
 
-				Progress.showError("Chyba na straně serveru", "error", msg);
+				if((response.data != null && response.data.status == 0 && response.data.data == null && response.code == "server-error") == false) {
+					Progress.showError("Chyba na straně serveru", "error", msg);
+				}
+				
 			} 
 			deferred.reject();
 		} 

@@ -26,13 +26,13 @@
     "url": "http://github.com/YOUR_LOGIN/SkolarDesktop/issues"
   },
   "window": {
-    "toolbar": true,
+    "toolbar": false,
     "icon": "./assets/img/logo-hat.png",
-    "frame": true,
-    "height": 600,
+    "frame": false,
     "width": 800,
-    "min_height": 300,
+    "height": 600,
     "min_width": 800,
+    "min_height": 300,
     "show": false
   },
   "dependencies": {

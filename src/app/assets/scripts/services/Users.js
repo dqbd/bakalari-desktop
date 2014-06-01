@@ -44,7 +44,7 @@ app.factory('Users', ['Database', '$q', '$rootScope', function(Database, $q, $ro
 	this.removeUser = function(id) {
 		var deferred = $q.defer();
 
-		Database.perform(function(db) {
+		Database.perform("users", function(db) {
 			db.remove({"_id": id}, {}, function(err, removed) {
 				deferred.resolve(removed);
 			});
