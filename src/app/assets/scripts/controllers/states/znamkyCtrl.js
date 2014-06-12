@@ -1,30 +1,15 @@
-app.controller("znamkyCtrl", ["$scope", "$rootScope", "Page", "Utils", function($scope, $rootScope, Page, Utils) {
-    
-    var viewstate = {}, reload_listener = $rootScope.$on("reload", function(event, arg) {
-        arg = (arg) ? arg : {};
+app.controller("znamkyCtrl", ["$scope", "$rootScope", "Utils", "Page", function($scope, $rootScope, Utils, Page) {
 
-        viewstate = (arg.view != null) ? 
-            ((arg.view != false) ? {"view": arg.view} : {}) : 
-            ((!_.isEmpty(viewstate)) ? viewstate : {});
-
-        $scope.load(arg.force, viewstate);
+    Page.registerPage("znamky", function(data) {
+        $scope.shown = [];
+        $scope.data = $scope.sortData(data);  
     });
 
-    $scope.$on('$destroy', function() { 
-        viewstate = {};
-        reload_listener(); 
-    });
-
-    $scope.load = function(force, arg) {
-        Page.get("znamky", force, arg).then(function(data) {
-            $scope.shown = [];
-            $scope.data = $scope.sortData(data);      
-        });
-    };
-
+    $scope.shown = [];
 
     $scope.sortData = function(data) {
         var list = [];
+
 
         data.predmety.forEach(function(item, index) {
             var marks = $scope.sortMarks(data.znamky[index]);
@@ -65,10 +50,6 @@ app.controller("znamkyCtrl", ["$scope", "$rootScope", "Page", "Utils", function(
         return marks;
 
     }
-    
-    $scope.load(false, viewstate);
-
-    $scope.shown = [];
     
     $scope.toggleItem = function(index) {
     	var key = $scope.shown.indexOf(index);

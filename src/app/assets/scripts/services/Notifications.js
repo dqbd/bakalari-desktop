@@ -12,9 +12,6 @@ app.factory('Notifications', ['Window', 'Utils', "$timeout", function(Window, Ut
 		}
 	}, notify_window);
 
-
-	notify_window.setShowInTaskbar(false);
-
 	this.exec = function(callback) {
 		if(loaded) {
 			callback(notify_window.window);

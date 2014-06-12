@@ -14,4 +14,4 @@ nw
 *.ai
 *.so
 *.app
-app/assets/css/*
+src/app/assets/css/*

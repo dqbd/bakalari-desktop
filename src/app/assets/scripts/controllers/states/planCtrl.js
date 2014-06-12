@@ -1,26 +1,8 @@
 app.controller("planCtrl", ["$scope", "$rootScope", "Page", "Utils", function($scope, $rootScope, Page, Utils) {
     
-    var viewstate = {}, reload_listener = $rootScope.$on("reload", function(event, arg) {
-        arg = (arg) ? arg : {};
-
-        viewstate = (arg.view != null) ? 
-            ((arg.view != false) ? {"view": arg.view} : {}) : 
-            ((!_.isEmpty(viewstate)) ? viewstate : {});
-
-        $scope.load(arg.force, viewstate);
-    });
-
-    $scope.$on('$destroy', function() { 
-        reload_listener(); 
-        viewstate = {};
-    });
-
-    $scope.load = function(force, arg) {
-        Page.get("akce", force, arg).then(function(data) {
-            $scope.data = $scope.sortToDay(data);
-        });
-    }
-    
+    Page.registerPage("plan", function(data) {
+        $scope.data = $scope.sortToDay(data);    
+    });    
 
     $scope.sortToDay = function(data) {
     	var result = {};
@@ -44,6 +26,4 @@ app.controller("planCtrl", ["$scope", "$rootScope", "Page", "Utils", function($s
     }
 
     $scope.formatDate = Utils.formatDate;
-    
-    $scope.load(false, viewstate);
 }]);

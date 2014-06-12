@@ -46,8 +46,8 @@
                             <div class="bounce3"></div>
                         </div>
                     </div>
-                    <div class="error" ng-show="error.show">
-                        <img src="./assets/img/{{error.type}}.png">
+                    <div class="error" ng-if="error.show">
+                        <img ng-src="./assets/img/{{error.type}}.png">
                         <h1>{{error.text}}</h1>
                         <p>{{error.stacktrace}}</p>
                     </div>

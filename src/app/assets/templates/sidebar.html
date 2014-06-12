@@ -2,7 +2,7 @@
 <ul>
     <li ng-repeat="page in pages | filter:filterShown()">
 		<a ui-sref="{{page.name}}" ui-sref-active="active">
-			<img src="./assets/img/{{page.name}}.png" alt="">
+			<img ng-src="./assets/img/{{page.name}}.png" alt="">
 			<span>{{page.title}}</span>
 		</a>
 	</li>

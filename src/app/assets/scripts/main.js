@@ -1,8 +1,11 @@
 document.onkeydown = function(e) { if(e.keyCode == 123) require("nw.gui").Window.get().showDevTools(); }
 
+function render() { requestAnimationFrame(render); }; render();
+
 var app = angular.module("app", ["ui.router", "angles"]);
 
 app.config(["$urlRouterProvider", "$stateProvider", "$httpProvider", "$compileProvider", function($urlRouterProvider, $stateProvider, $httpProvider, $compileProvider) {
+
     GLOBALS.pages.forEach(function(item) {
         $stateProvider.state(item.name, {
             url: "/"+item.name,
@@ -85,20 +88,15 @@ app.directive('ngRightClick', ["$parse", function($parse) {
     };
 }]);
 
-app.run(["$rootScope", "$q", "Users", "Window", "Progress", "Notifications", function($rootScope, $q, Users, Window, Progress, Notifications) {
+app.run(["$rootScope", "$q", "Users", "Window", "Progress", "Notifications", "Page", function($rootScope, $q, Users, Window, Progress, Notifications, Page) {
     Window.getWindow().hide();
 
     $rootScope.window_title = "Školář";
 
     $rootScope.$on("$stateChangeStart", function(event, toState, toParams, fromState, fromParams) {
-        if(typeof $rootScope.canceler !== "undefined") {
-            $rootScope.canceler.resolve();
-        }
+        Page.removePage(fromState.name);
 
         $rootScope.window_title = _.findWhere(GLOBALS.pages, {"name": toState.name}).title + " - Školář";
-        
-        $rootScope.canceler = $q.defer();
-
         $rootScope.$emit("sidebar-views", []);
         
         Progress.showLoading();

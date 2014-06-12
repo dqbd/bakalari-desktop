@@ -1,6 +1,6 @@
 module.exports = function(grunt) {
 	var date 		= new Date(),
-		version 	= "0.9.2",
+		version 	= "0.8.6",
 		nw_file 	= "";
 
 	var request 	= require("request"),

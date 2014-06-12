@@ -4,6 +4,78 @@
 		"selected_items":
 		[
 			[
+				"call",
+				"callback"
+			],
+			[
+				"from",
+				"fromState"
+			],
+			[
+				"fr",
+				"fromState"
+			],
+			[
+				"rozvrh",
+				"rozvrh"
+			],
+			[
+				"is",
+				"isFunction"
+			],
+			[
+				"sideb",
+				"sidebarCache"
+			],
+			[
+				"sid",
+				"sidebarCache"
+			],
+			[
+				"viw",
+				"viewstate"
+			],
+			[
+				"side",
+				"sidebarCache"
+			],
+			[
+				"def",
+				"defaultCallbacks"
+			],
+			[
+				"de",
+				"defaultCallbacks"
+			],
+			[
+				"not",
+				"notifyHandler"
+			],
+			[
+				"error",
+				"errorHandler"
+			],
+			[
+				"suc",
+				"successHandler"
+			],
+			[
+				"ca",
+				"callback"
+			],
+			[
+				"e",
+				"executeCallbacks"
+			],
+			[
+				"err",
+				"errorHandler"
+			],
+			[
+				"font-",
+				"font-weight"
+			],
+			[
 				"compress",
 				"compress-all"
 			],
@@ -32,16 +104,8 @@
 				"database"
 			],
 			[
-				"sid",
-				"sidebarHiddenTag"
-			],
-			[
 				"re",
 				"removed"
-			],
-			[
-				"not",
-				"notify_win"
 			],
 			[
 				"noti",
@@ -54,10 +118,6 @@
 			[
 				"marg",
 				"margin-top"
-			],
-			[
-				"font-",
-				"font-style"
 			],
 			[
 				"con",
@@ -176,10 +236,6 @@
 				"callback"
 			],
 			[
-				"call",
-				"callbacks"
-			],
-			[
 				"cal",
 				"callback"
 			],
@@ -232,10 +288,6 @@
 				"sidebar-bg"
 			],
 			[
-				"is",
-				"isPointSystem"
-			],
-			[
 				"isPoi",
 				"isPointSystem"
 			],
@@ -274,10 +326,6 @@
 			[
 				"c",
 				"connected"
-			],
-			[
-				"de",
-				"deferred"
 			],
 			[
 				"defer",
@@ -468,100 +516,26 @@
 	"buffers":
 	[
 		{
-			"file": ".gitignore",
+			"file": "src/app/assets/scripts/services/Page.js",
 			"settings":
 			{
-				"buffer_size": 146,
-				"line_ending": "Unix"
+				"buffer_size": 4402,
+				"line_ending": "Windows"
 			}
 		},
 		{
 			"file": "src/app/assets/scripts/services/Parser.js",
 			"settings":
 			{
-				"buffer_size": 4774,
+				"buffer_size": 5574,
 				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "Gruntfile.js",
-			"settings":
-			{
-				"buffer_size": 8855,
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "tools/build-system/run.bat",
-			"settings":
-			{
-				"buffer_size": 69,
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "src/installer/bootstrap.html",
-			"settings":
-			{
-				"buffer_size": 774,
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "/C/Users/David/AppData/Roaming/Sublime Text 3/Packages/User/node-webkit.sublime-build",
-			"settings":
-			{
-				"buffer_size": 117,
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"contents": "{\n  \"data\": {\n    \"status\": \"ok\",\n    \"data\": {\n      \"predmety\": [\n        \"Matematika\",\n        \"Anglický jazyk\",\n        \"Informatika a výp. technika\",\n        \"Chemie\",\n        \"Zeměpis\",\n        \"Německý jazyk\",\n        \"Dějepis\",\n        \"Biologie\",\n        \"Základy společenských věd\",\n        \"Český jazyk a literatura\",\n        \"Fyzika\"\n      ],\n      \"znamky\": [\n        [\n          {\n            \"mark\": \"1\",\n            \"caption\": \"Lomený výraz příklad\",\n            \"date\": \"18.2.14\",\n            \"note\": \"Lomený výraz\",\n            \"weight\": \"1\"\n          },\n          {\n            \"mark\": \"1\",\n            \"caption\": \"Lomený výraz příklad 2\",\n            \"date\": \"5.2.14\",\n            \"note\": \"Lomený výraz\",\n            \"weight\": \"1\"\n          },\n          {\n            \"mark\": \"2\",\n            \"caption\": \"Planimetrie 1\",\n            \"date\": \"21.2.14\",\n            \"note\": \"Trojúhelníkz, shodnosti\",\n            \"weight\": \"1\"\n          },\n          {\n            \"mark\": \"1\",\n            \"caption\": \"Podobnost\",\n            \"date\": \"28.2.14\",\n            \"note\": \"Podobnost trojúhelníků, výpočty, důkazy s využitím podobnosti\",\n            \"weight\": \"1\"\n          },\n          {\n            \"mark\": \"N\",\n            \"caption\": \"Mnohoúhelníky, kružnice\",\n            \"date\": \"14.3.14\",\n            \"note\": \"Mnohoúhelníky, vnitřní úhly, úhly v kružnici\",\n            \"weight\": \"1\"\n          },\n          {\n            \"mark\": \"1\",\n            \"caption\": \"EV, PV, výpočty\",\n            \"date\": \"1.4.14\",\n            \"note\": \"Eukleidovy věty, Pythagorova věta, mocnost bodu ke kružnici, výpočty\",\n            \"weight\": \"1\"\n          },\n          {\n            \"mark\": \"1\",\n            \"caption\": \"Aktivita příklad\",\n            \"date\": \"1.4.14\",\n            \"note\": \"Obsah obdélníku\",\n            \"weight\": \"1\"\n          },\n          {\n            \"mark\": \"N\",\n            \"caption\": \"3.\",\n            \"date\": \"9.4.14\",\n            \"note\": \"čtvrtletní práce, planimetrie, lomený výraz, výpočty v planimetrii\",\n            \"weight\": \"1\"\n          },\n          {\n            \"mark\": \"1\",\n            \"caption\": \"Konstrukce 1\",\n            \"date\": \"6.5.14\",\n            \"note\": \"Oblouk, trojúhelník\",\n            \"weight\": \"1\"\n          },\n          {\n            \"mark\": \"1\",\n            \"caption\": \"Konstrukce 2\",\n            \"date\": \"2.5.14\",\n            \"note\": \"Trojúhelník 2\",\n            \"weight\": \"1\"\n          },\n          {\n            \"mark\": \"2\",\n            \"caption\": \"Konstrukce 3\",\n            \"date\": \"12.5.14\",\n            \"note\": \"Konstrukce výrazů, konstrukce kružnic, množiny bodů dané vlastnosti\",\n            \"weight\": \"1\"\n          },\n          {\n            \"mark\": \"1\",\n            \"caption\": \"Oprava a náhrada sl. 16\",\n            \"date\": \"20.5.14\",\n            \"note\": \"Konstrukce 3\",\n            \"weight\": \"1\"\n          }\n        ],\n        [\n          {\n            \"mark\": \"2\",\n            \"caption\": \"Písemné opakování\",\n            \"date\": \"28.2.14\",\n            \"note\": \"Lekce 2\",\n            \"weight\": \"1\"\n          },\n          {\n            \"mark\": \"1\",\n            \"caption\": \"Slovní zásoba\",\n            \"date\": \"28.2.14\",\n            \"note\": \"Lekce 3\",\n            \"weight\": \"1\"\n          },\n          {\n            \"mark\": \"1\",\n            \"caption\": \"Ústní opakování\",\n            \"date\": \"7.4.14\",\n            \"note\": \"\",\n            \"weight\": \"1\"\n          },\n          {\n            \"mark\": \"3\",\n            \"caption\": \"Písemné opakování gramati\",\n            \"date\": \"7.4.14\",\n            \"note\": \"Lekce 3\",\n            \"weight\": \"1\"\n          }\n        ],\n        [\n          {\n            \"mark\": \"1\",\n            \"caption\": \"Grafika - test\",\n            \"date\": \"24.2.14\",\n            \"note\": \"\",\n            \"weight\": \"1\"\n          },\n          {\n            \"mark\": \"1\",\n            \"caption\": \"úpravy fotografií\",\n            \"date\": \"13.3.14\",\n            \"note\": \"\",\n            \"weight\": \"1\"\n          },\n          {\n            \"mark\": \"1\",\n            \"caption\": \"úpravy fotografií - test\",\n            \"date\": \"13.3.14\",\n            \"note\": \"\",\n            \"weight\": \"1\"\n          },\n          {\n            \"mark\": \"1\",\n            \"caption\": \"Mapa - práce s vrstvami\",\n            \"date\": \"3.4.14\",\n            \"note\": \"Skvělé!\",\n            \"weight\": \"1\"\n          },\n          {\n            \"mark\": \"1\",\n            \"caption\": \"Test excel - part1\",\n            \"date\": \"15.5.14\",\n            \"note\": \"\",\n            \"weight\": \"1\"\n          },\n          {\n            \"mark\": \"1\",\n            \"caption\": \"Test excel - part2\",\n            \"date\": \"15.5.14\",\n            \"note\": \"\",\n            \"weight\": \"1\"\n          }\n        ],\n        [\n          {\n            \"mark\": \"1\",\n            \"caption\": \"Test\",\n            \"date\": \"4.2.14\",\n            \"note\": \"Vyčíslování redoxních rovnic\",\n            \"weight\": \"1\"\n          },\n          {\n            \"mark\": \"1\",\n            \"caption\": \"Test\",\n            \"date\": \"18.2.14\",\n            \"note\": \"Kyslík, voda, peroxid vodíku\",\n            \"weight\": \"1\"\n          },\n          {\n            \"mark\": \"1\",\n            \"caption\": \"Test\",\n            \"date\": \"3.3.14\",\n            \"note\": \"Vodík\",\n            \"weight\": \"1\"\n          },\n          {\n            \"mark\": \"1\",\n            \"caption\": \"Test\",\n            \"date\": \"1.4.14\",\n            \"note\": \"Halogeny\",\n            \"weight\": \"1\"\n          },\n          {\n            \"mark\": \"1\",\n            \"caption\": \"Test\",\n            \"date\": \"6.5.14\",\n            \"note\": \"Výpočty koncentrací roztoků\",\n            \"weight\": \"1\"\n          },\n          {\n            \"mark\": \"1\",\n            \"caption\": \"Test\",\n            \"date\": \"29.5.14\",\n            \"note\": \"Síra a její sloučeniny\",\n            \"weight\": \"1\"\n          }\n        ],\n        [\n          {\n            \"mark\": \"2\",\n            \"caption\": \"Test\",\n            \"date\": \"6.3.14\",\n            \"note\": \"Litosféra\",\n            \"weight\": \"1\"\n          },\n          {\n            \"mark\": \"2\",\n            \"caption\": \"Test\",\n            \"date\": \"20.3.14\",\n            \"note\": \"Atmosféra 1\",\n            \"weight\": \"1\"\n          },\n          {\n            \"mark\": \"1\",\n            \"caption\": \"Test\",\n            \"date\": \"25.3.14\",\n            \"note\": \"Atmosféra 2\",\n            \"weight\": \"1\"\n          },\n          {\n            \"mark\": \"3\",\n            \"caption\": \"Test\",\n            \"date\": \"14.5.14\",\n            \"note\": \"Hydrosféra 1\",\n            \"weight\": \"1\"\n          },\n          {\n            \"mark\": \"1\",\n            \"caption\": \"Test\",\n            \"date\": \"14.5.14\",\n            \"note\": \"Hydrosféra 2\",\n            \"weight\": \"1\"\n          }\n        ],\n        [\n          {\n            \"mark\": \"1\",\n            \"caption\": \"\",\n            \"date\": \"29.1.14\",\n            \"note\": \"\",\n            \"weight\": \"1\"\n          },\n          {\n            \"mark\": \"2\",\n            \"caption\": \"\",\n            \"date\": \"29.1.14\",\n            \"note\": \"\",\n            \"weight\": \"1\"\n          },\n          {\n            \"mark\": \"2\",\n            \"caption\": \"\",\n            \"date\": \"21.2.14\",\n            \"note\": \"\",\n            \"weight\": \"1\"\n          },\n          {\n            \"mark\": \"2\",\n            \"caption\": \"\",\n            \"date\": \"28.2.14\",\n            \"note\": \"\",\n            \"weight\": \"1\"\n          },\n          {\n            \"mark\": \"3\",\n            \"caption\": \"\",\n            \"date\": \"7.3.14\",\n            \"note\": \"\",\n            \"weight\": \"1\"\n          },\n          {\n            \"mark\": \"1\",\n            \"caption\": \"\",\n            \"date\": \"10.3.14\",\n            \"note\": \"\",\n            \"weight\": \"1\"\n          },\n          {\n            \"mark\": \"1\",\n            \"caption\": \"\",\n            \"date\": \"10.3.14\",\n            \"note\": \"\",\n            \"weight\": \"1\"\n          },\n          {\n            \"mark\": \"1\",\n            \"caption\": \"\",\n            \"date\": \"31.3.14\",\n            \"note\": \"\",\n            \"weight\": \"1\"\n          },\n          {\n            \"mark\": \"1\",\n            \"caption\": \"\",\n            \"date\": \"14.4.14\",\n            \"note\": \"\",\n            \"weight\": \"1\"\n          },\n          {\n            \"mark\": \"1\",\n            \"caption\": \"\",\n            \"date\": \"2.5.14\",\n            \"note\": \"\",\n            \"weight\": \"1\"\n          },\n          {\n            \"mark\": \"1\",\n            \"caption\": \"\",\n            \"date\": \"5.5.14\",\n            \"note\": \"\",\n            \"weight\": \"1\"\n          },\n          {\n            \"mark\": \"1\",\n            \"caption\": \"\",\n            \"date\": \"7.5.14\",\n            \"note\": \"\",\n            \"weight\": \"1\"\n          },\n          {\n            \"mark\": \"2\",\n            \"caption\": \"\",\n            \"date\": \"14.5.14\",\n            \"note\": \"\",\n            \"weight\": \"1\"\n          },\n          {\n            \"mark\": \"1\",\n            \"caption\": \"\",\n            \"date\": \"21.5.14\",\n            \"note\": \"\",\n            \"weight\": \"1\"\n          },\n          {\n            \"mark\": \"1\",\n            \"caption\": \"\",\n            \"date\": \"28.5.14\",\n            \"note\": \"\",\n            \"weight\": \"1\"\n          },\n          {\n            \"mark\": \"2\",\n            \"caption\": \"\",\n            \"date\": \"30.5.14\",\n            \"note\": \"\",\n            \"weight\": \"1\"\n          }\n        ],\n        [\n          {\n            \"mark\": \"1\",\n            \"caption\": \"Test\",\n            \"date\": \"7.4.14\",\n            \"note\": \"Hellenismusw a počátky Říma\",\n            \"weight\": \"1\"\n          },\n          {\n            \"mark\": \"1\",\n            \"caption\": \"Starověký Řím\",\n            \"date\": \"13.5.14\",\n            \"note\": \"Test\",\n            \"weight\": \"1\"\n          }\n        ],\n        [\n          {\n            \"mark\": \"1\",\n            \"caption\": \"1\",\n            \"date\": \"5.2.14\",\n            \"note\": \"Nebuněční\",\n            \"weight\": \"1\"\n          },\n          {\n            \"mark\": \"1\",\n            \"caption\": \"2\",\n            \"date\": \"3.3.14\",\n            \"note\": \"Bakterie\",\n            \"weight\": \"1\"\n          },\n          {\n            \"mark\": \"1\",\n            \"caption\": \"3\",\n            \"date\": \"3.3.14\",\n            \"note\": \"Sinice a Archea\",\n            \"weight\": \"1\"\n          },\n          {\n            \"mark\": \"1\",\n            \"caption\": \"4\",\n            \"date\": \"19.3.14\",\n            \"note\": \"Pletiva I.\",\n            \"weight\": \"1\"\n          },\n          {\n            \"mark\": \"1\",\n            \"caption\": \"5\",\n            \"date\": \"24.3.14\",\n            \"note\": \"Pletiva II.\",\n            \"weight\": \"1\"\n          },\n          {\n            \"mark\": \"1\",\n            \"caption\": \"6\",\n            \"date\": \"7.4.14\",\n            \"note\": \"Kořen, stonek\",\n            \"weight\": \"1\"\n          },\n          {\n            \"mark\": \"1\",\n            \"caption\": \"7\",\n            \"date\": \"14.4.14\",\n            \"note\": \"List\",\n            \"weight\": \"1\"\n          },\n          {\n            \"mark\": \"1\",\n            \"caption\": \"8\",\n            \"date\": \"14.4.14\",\n            \"note\": \"Květ, květenství\",\n            \"weight\": \"1\"\n          },\n          {\n            \"mark\": \"1\",\n            \"caption\": \"9\",\n            \"date\": \"28.4.14\",\n            \"note\": \"Plod, chorie\",\n            \"weight\": \"1\"\n          },\n          {\n            \"mark\": \"3\",\n            \"caption\": \"10\",\n            \"date\": \"14.5.14\",\n            \"note\": \"Růst, vývin a rozmnožování rostlin\",\n            \"weight\": \"1\"\n          }\n        ],\n        [\n          {\n            \"mark\": \"1\",\n            \"caption\": \"Test\",\n            \"date\": \"25.2.14\",\n            \"note\": \"Myšlení - efektivní učení bez\",\n            \"weight\": \"1\"\n          },\n          {\n            \"mark\": \"1\",\n            \"caption\": \"Test\",\n            \"date\": \"26.3.14\",\n            \"note\": \"Efektivní učení - vývoj osobnosti dle Freuda bez\",\n            \"weight\": \"1\"\n          },\n          {\n            \"mark\": \"?\",\n            \"caption\": \"Test\",\n            \"date\": \"21.5.14\",\n            \"note\": \"Vývoj osobnosti dle Freuda - dějiny sociologie bez - středa 21.5.\",\n            \"weight\": \"1\"\n          }\n        ],\n        [\n          {\n            \"mark\": \"2\",\n            \"caption\": \"Test\",\n            \"date\": \"21.2.14\",\n            \"note\": \"Doba písemnictví staroslověnského a latinského\",\n            \"weight\": \"1\"\n          },\n          {\n            \"mark\": \"1\",\n            \"caption\": \"Test\",\n            \"date\": \"10.3.14\",\n            \"note\": \"Vznik česky psané literatury a její rozvoj ve 14. století\",\n            \"weight\": \"1\"\n          },\n          {\n            \"mark\": \"N\",\n            \"caption\": \"Test\",\n            \"date\": \"17.3.14\",\n            \"note\": \"Literatura v době husitské\",\n            \"weight\": \"1\"\n          },\n          {\n            \"mark\": \"1\",\n            \"caption\": \"Test\",\n            \"date\": \"16.5.14\",\n            \"note\": \"Světová renesanční literatura - 1. část\",\n            \"weight\": \"1\"\n          },\n          {\n            \"mark\": \"1\",\n            \"caption\": \"Test\",\n            \"date\": \"19.5.14\",\n            \"note\": \"Zvuková stránka jazyka\",\n            \"weight\": \"1\"\n          },\n          {\n            \"mark\": \"1\",\n            \"caption\": \"Test\",\n            \"date\": \"27.5.14\",\n            \"note\": \"Světová renesanční literatura, 2. část\",\n            \"weight\": \"1\"\n          }\n        ],\n        [\n          {\n            \"mark\": \"1\",\n            \"caption\": \"Písemná práce\",\n            \"date\": \"25.2.14\",\n            \"note\": \"Dynamika - příklady\",\n            \"weight\": \"1\"\n          },\n          {\n            \"mark\": \"1\",\n            \"caption\": \"Písemná práce\",\n            \"date\": \"18.3.14\",\n            \"note\": \"Práce, výkon, energie\",\n            \"weight\": \"1\"\n          },\n          {\n            \"mark\": \"1\",\n            \"caption\": \"Písemná práce\",\n            \"date\": \"15.4.14\",\n            \"note\": \"Gravitační pole\",\n            \"weight\": \"1\"\n          },\n          {\n            \"mark\": \"1\",\n            \"caption\": \"Písemná práce\",\n            \"date\": \"13.5.14\",\n            \"note\": \"Pohyby těles v grav. poli\",\n            \"weight\": \"1\"\n          }\n        ]\n      ]\n    }\n  },\n  \"status\": 200,\n  \"headers\": {},\n  \"config\": {\n    \"method\": \"POST\",\n    \"transformRequest\": [\n      {}\n    ],\n    \"transformResponse\": [\n      {}\n    ],\n    \"timeout\": {\n      \"then\": {},\n      \"catch\": {},\n      \"finally\": {}\n    },\n    \"url\": \"http://duong.cz/BakaParser/znamky\",\n    \"data\": {\n      \"url\": \"http://intranet.wigym.cz:6040/bakaweb/\",\n      \"user\": \"971031r\",\n      \"pass\": \"dfiypam4\"\n    },\n    \"headers\": {\n      \"Accept\": \"application/json, text/plain, */*\",\n      \"Content-Type\": \"application/x-www-form-urlencoded;charset=utf-8\"\n    }\n  },\n  \"statusText\": \"OK\"\n}",
-			"settings":
-			{
-				"buffer_size": 14614,
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "src/app/assets/scripts/controllers/states/absenceCtrl.js",
-			"settings":
-			{
-				"buffer_size": 2175,
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"contents": "Searching 107 files for \"Parser\"\n\nC:\\Xampp\\htdocs\\Skolar\\SkolarDesktop\\SkolarDesktop\\src\\app\\main.html:\n   73          <script src=\"./assets/scripts/services/Options.js\"></script>\n   74          <script src=\"./assets/scripts/services/Progress.js\"></script>\n   75:         <script src=\"./assets/scripts/services/Parser.js\"></script>\n   76          <script src=\"./assets/scripts/services/Notifications.js\"></script>\n   77          <script src=\"./assets/scripts/services/Daemon.js\"></script>\n\nC:\\Xampp\\htdocs\\Skolar\\SkolarDesktop\\SkolarDesktop\\src\\app\\newuser.html:\n  113  	<script src='./assets/scripts/services/Users.js'></script>\n  114  	<script src='./assets/scripts/services/Utils.js'></script>\n  115: 	<script src='./assets/scripts/services/Parser.js'></script>\n  116  	<script src='./assets/scripts/services/Window.js'></script>\n  117  	<!-- endbuild -->\n\nC:\\Xampp\\htdocs\\Skolar\\SkolarDesktop\\SkolarDesktop\\src\\app\\assets\\scripts\\newuser.js:\n   64  \n   65  \n   66: app.controller('editorCtrl', ['$scope', \"$rootScope\", \"$http\", \"$timeout\", \"$q\", \"Parser\", function($scope, $rootScope, $http, $timeout, $q, Parser){\n   67  	$scope.canceler = $scope.currentSchool = $scope.activeMarkers;\n   68  	$scope.markers = [];\n   ..\n  103  \n  104  	$scope.downloadMarkers = function(polygon) {\n  105: 		Parser.accessServer(\"map\", {\n  106  			\"topleft\": _.values(polygon[0]).join(),\n  107  			\"bottomright\": _.values(polygon[2]).join()\n  ...\n  182  \n  183  \n  184: app.controller('userCtrl', [\"$scope\", \"$rootScope\", \"$location\", \"Parser\", \"Window\", function($scope, $rootScope, $location, Parser, Users, Window){\n  185  	$scope.url = \"\";\n  186  	$scope.user = \"\";\n  ...\n  220  \n  221  \n  222: 		Parser.getOnline(\"login\", $scope.user, $scope.pass, $scope.url, null).then(function(data) {\n  223  			\n  224  			if(data.data.status == \"ok\") {\n\nC:\\Xampp\\htdocs\\Skolar\\SkolarDesktop\\SkolarDesktop\\src\\app\\assets\\scripts\\services\\Page.js:\n    1: app.factory(\"Page\", [\"$rootScope\", \"$q\", \"Parser\", \"Progress\", function($rootScope, $q, Parser, Progress) {    \n    2  \n    3  	var parent = this;\n    .\n   16  		}\n   17  \n   18: 		return Parser.get(page, (arg) ? arg : {}, force).then(callback, callback);\n   19  	}\n   20  \n\nC:\\Xampp\\htdocs\\Skolar\\SkolarDesktop\\SkolarDesktop\\src\\app\\assets\\scripts\\services\\Parser.js:\n    1: app.factory(\"Parser\", [\"$http\", \"$rootScope\", \"$q\", \"Database\", \"Users\", \"Progress\", function($http, $rootScope, $q, Database, Users, Progress) {   \n    2  \n    3      var domain = \"http://\"+GLOBALS.host;\n    .\n   17  \n   18      this.accessServer = function(page, args) { \n   19:        return $http.post(domain+\"/BakaParser/\"+page, args, {timeout: $rootScope.canceler.promise});\n   20      };\n   21  \n\nC:\\Xampp\\htdocs\\Skolar\\SkolarDesktop\\SkolarDesktop\\src\\app\\assets\\scripts\\services\\Updater.js:\n    1: app.factory(\"Updater\", [\"$rootScope\", \"Utils\", \"Parser\", function($rootScope, Utils, Parser) {\n    2  \n    3  	var fs 		= require(\"fs\"),\n    .\n   11  		var version = Utils.getPackageValue(\"updater-version\");\n   12  \n   13: 		Parser.accessServer(\"update\", {\"version\": version}).then(function(data) {\n   14  			\n   15  		});\n\nC:\\Xampp\\htdocs\\Skolar\\SkolarDesktop\\SkolarDesktop\\src\\installer\\assets\\bootstrap.js:\n   10  var promise = require(\"promise\");\n   11  \n   12: var server = \"http://duong.cz/BakaParser/\";\n   13  \n   14  var path = require(\"path\");\n\n17 matches across 7 files\n",
-			"settings":
-			{
-				"buffer_size": 3393,
-				"line_ending": "Windows",
-				"name": "Find Results",
-				"scratch": true
-			}
-		},
-		{
-			"file": "src/app/main.html",
-			"settings":
-			{
-				"buffer_size": 5203,
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"contents": "{\n  \"status\": \"ok\",\n  \"data\": {\n    \"predmety\": [\n      \"Matematika\",\n      \"Anglický jazyk\",\n      \"Informatika a výp. technika\",\n      \"Chemie\",\n      \"Zeměpis\",\n      \"Německý jazyk\",\n      \"Dějepis\",\n      \"Biologie\",\n      \"Základy společenských věd\",\n      \"Český jazyk a literatura\",\n      \"Fyzika\"\n    ],\n    \"znamky\": [\n      [\n        {\n          \"mark\": \"1\",\n          \"caption\": \"Lomený výraz příklad\",\n          \"date\": \"18.2.14\",\n          \"note\": \"Lomený výraz\",\n          \"weight\": \"1\"\n        },\n        {\n          \"mark\": \"1\",\n          \"caption\": \"Lomený výraz příklad 2\",\n          \"date\": \"5.2.14\",\n          \"note\": \"Lomený výraz\",\n          \"weight\": \"1\"\n        },\n        {\n          \"mark\": \"2\",\n          \"caption\": \"Planimetrie 1\",\n          \"date\": \"21.2.14\",\n          \"note\": \"Trojúhelníkz, shodnosti\",\n          \"weight\": \"1\"\n        },\n        {\n          \"mark\": \"1\",\n          \"caption\": \"Podobnost\",\n          \"date\": \"28.2.14\",\n          \"note\": \"Podobnost trojúhelníků, výpočty, důkazy s využitím podobnosti\",\n          \"weight\": \"1\"\n        },\n        {\n          \"mark\": \"N\",\n          \"caption\": \"Mnohoúhelníky, kružnice\",\n          \"date\": \"14.3.14\",\n          \"note\": \"Mnohoúhelníky, vnitřní úhly, úhly v kružnici\",\n          \"weight\": \"1\"\n        },\n        {\n          \"mark\": \"1\",\n          \"caption\": \"EV, PV, výpočty\",\n          \"date\": \"1.4.14\",\n          \"note\": \"Eukleidovy věty, Pythagorova věta, mocnost bodu ke kružnici, výpočty\",\n          \"weight\": \"1\"\n        },\n        {\n          \"mark\": \"1\",\n          \"caption\": \"Aktivita příklad\",\n          \"date\": \"1.4.14\",\n          \"note\": \"Obsah obdélníku\",\n          \"weight\": \"1\"\n        },\n        {\n          \"mark\": \"N\",\n          \"caption\": \"3.\",\n          \"date\": \"9.4.14\",\n          \"note\": \"čtvrtletní práce, planimetrie, lomený výraz, výpočty v planimetrii\",\n          \"weight\": \"1\"\n        },\n        {\n          \"mark\": \"1\",\n          \"caption\": \"Konstrukce 1\",\n          \"date\": \"6.5.14\",\n          \"note\": \"Oblouk, trojúhelník\",\n          \"weight\": \"1\"\n        },\n        {\n          \"mark\": \"1\",\n          \"caption\": \"Konstrukce 2\",\n          \"date\": \"2.5.14\",\n          \"note\": \"Trojúhelník 2\",\n          \"weight\": \"1\"\n        },\n        {\n          \"mark\": \"2\",\n          \"caption\": \"Konstrukce 3\",\n          \"date\": \"12.5.14\",\n          \"note\": \"Konstrukce výrazů, konstrukce kružnic, množiny bodů dané vlastnosti\",\n          \"weight\": \"1\"\n        },\n        {\n          \"mark\": \"1\",\n          \"caption\": \"Oprava a náhrada sl. 16\",\n          \"date\": \"20.5.14\",\n          \"note\": \"Konstrukce 3\",\n          \"weight\": \"1\"\n        }\n      ],\n      [\n        {\n          \"mark\": \"2\",\n          \"caption\": \"Písemné opakování\",\n          \"date\": \"28.2.14\",\n          \"note\": \"Lekce 2\",\n          \"weight\": \"1\"\n        },\n        {\n          \"mark\": \"1\",\n          \"caption\": \"Slovní zásoba\",\n          \"date\": \"28.2.14\",\n          \"note\": \"Lekce 3\",\n          \"weight\": \"1\"\n        },\n        {\n          \"mark\": \"1\",\n          \"caption\": \"Ústní opakování\",\n          \"date\": \"7.4.14\",\n          \"note\": \"\",\n          \"weight\": \"1\"\n        },\n        {\n          \"mark\": \"3\",\n          \"caption\": \"Písemné opakování gramati\",\n          \"date\": \"7.4.14\",\n          \"note\": \"Lekce 3\",\n          \"weight\": \"1\"\n        }\n      ],\n      [\n        {\n          \"mark\": \"1\",\n          \"caption\": \"Grafika - test\",\n          \"date\": \"24.2.14\",\n          \"note\": \"\",\n          \"weight\": \"1\"\n        },\n        {\n          \"mark\": \"1\",\n          \"caption\": \"úpravy fotografií\",\n          \"date\": \"13.3.14\",\n          \"note\": \"\",\n          \"weight\": \"1\"\n        },\n        {\n          \"mark\": \"1\",\n          \"caption\": \"úpravy fotografií - test\",\n          \"date\": \"13.3.14\",\n          \"note\": \"\",\n          \"weight\": \"1\"\n        },\n        {\n          \"mark\": \"1\",\n          \"caption\": \"Mapa - práce s vrstvami\",\n          \"date\": \"3.4.14\",\n          \"note\": \"Skvělé!\",\n          \"weight\": \"1\"\n        },\n        {\n          \"mark\": \"1\",\n          \"caption\": \"Test excel - part1\",\n          \"date\": \"15.5.14\",\n          \"note\": \"\",\n          \"weight\": \"1\"\n        },\n        {\n          \"mark\": \"1\",\n          \"caption\": \"Test excel - part2\",\n          \"date\": \"15.5.14\",\n          \"note\": \"\",\n          \"weight\": \"1\"\n        }\n      ],\n      [\n        {\n          \"mark\": \"1\",\n          \"caption\": \"Test\",\n          \"date\": \"4.2.14\",\n          \"note\": \"Vyčíslování redoxních rovnic\",\n          \"weight\": \"1\"\n        },\n        {\n          \"mark\": \"1\",\n          \"caption\": \"Test\",\n          \"date\": \"18.2.14\",\n          \"note\": \"Kyslík, voda, peroxid vodíku\",\n          \"weight\": \"1\"\n        },\n        {\n          \"mark\": \"1\",\n          \"caption\": \"Test\",\n          \"date\": \"3.3.14\",\n          \"note\": \"Vodík\",\n          \"weight\": \"1\"\n        },\n        {\n          \"mark\": \"1\",\n          \"caption\": \"Test\",\n          \"date\": \"1.4.14\",\n          \"note\": \"Halogeny\",\n          \"weight\": \"1\"\n        },\n        {\n          \"mark\": \"1\",\n          \"caption\": \"Test\",\n          \"date\": \"6.5.14\",\n          \"note\": \"Výpočty koncentrací roztoků\",\n          \"weight\": \"1\"\n        },\n        {\n          \"mark\": \"1\",\n          \"caption\": \"Test\",\n          \"date\": \"29.5.14\",\n          \"note\": \"Síra a její sloučeniny\",\n          \"weight\": \"1\"\n        }\n      ],\n      [\n        {\n          \"mark\": \"2\",\n          \"caption\": \"Test\",\n          \"date\": \"6.3.14\",\n          \"note\": \"Litosféra\",\n          \"weight\": \"1\"\n        },\n        {\n          \"mark\": \"2\",\n          \"caption\": \"Test\",\n          \"date\": \"20.3.14\",\n          \"note\": \"Atmosféra 1\",\n          \"weight\": \"1\"\n        },\n        {\n          \"mark\": \"1\",\n          \"caption\": \"Test\",\n          \"date\": \"25.3.14\",\n          \"note\": \"Atmosféra 2\",\n          \"weight\": \"1\"\n        },\n        {\n          \"mark\": \"3\",\n          \"caption\": \"Test\",\n          \"date\": \"14.5.14\",\n          \"note\": \"Hydrosféra 1\",\n          \"weight\": \"1\"\n        },\n        {\n          \"mark\": \"1\",\n          \"caption\": \"Test\",\n          \"date\": \"14.5.14\",\n          \"note\": \"Hydrosféra 2\",\n          \"weight\": \"1\"\n        }\n      ],\n      [\n        {\n          \"mark\": \"1\",\n          \"caption\": \"\",\n          \"date\": \"29.1.14\",\n          \"note\": \"\",\n          \"weight\": \"1\"\n        },\n        {\n          \"mark\": \"2\",\n          \"caption\": \"\",\n          \"date\": \"29.1.14\",\n          \"note\": \"\",\n          \"weight\": \"1\"\n        },\n        {\n          \"mark\": \"2\",\n          \"caption\": \"\",\n          \"date\": \"21.2.14\",\n          \"note\": \"\",\n          \"weight\": \"1\"\n        },\n        {\n          \"mark\": \"2\",\n          \"caption\": \"\",\n          \"date\": \"28.2.14\",\n          \"note\": \"\",\n          \"weight\": \"1\"\n        },\n        {\n          \"mark\": \"3\",\n          \"caption\": \"\",\n          \"date\": \"7.3.14\",\n          \"note\": \"\",\n          \"weight\": \"1\"\n        },\n        {\n          \"mark\": \"1\",\n          \"caption\": \"\",\n          \"date\": \"10.3.14\",\n          \"note\": \"\",\n          \"weight\": \"1\"\n        },\n        {\n          \"mark\": \"1\",\n          \"caption\": \"\",\n          \"date\": \"10.3.14\",\n          \"note\": \"\",\n          \"weight\": \"1\"\n        },\n        {\n          \"mark\": \"1\",\n          \"caption\": \"\",\n          \"date\": \"31.3.14\",\n          \"note\": \"\",\n          \"weight\": \"1\"\n        },\n        {\n          \"mark\": \"1\",\n          \"caption\": \"\",\n          \"date\": \"14.4.14\",\n          \"note\": \"\",\n          \"weight\": \"1\"\n        },\n        {\n          \"mark\": \"1\",\n          \"caption\": \"\",\n          \"date\": \"2.5.14\",\n          \"note\": \"\",\n          \"weight\": \"1\"\n        },\n        {\n          \"mark\": \"1\",\n          \"caption\": \"\",\n          \"date\": \"5.5.14\",\n          \"note\": \"\",\n          \"weight\": \"1\"\n        },\n        {\n          \"mark\": \"1\",\n          \"caption\": \"\",\n          \"date\": \"7.5.14\",\n          \"note\": \"\",\n          \"weight\": \"1\"\n        },\n        {\n          \"mark\": \"2\",\n          \"caption\": \"\",\n          \"date\": \"14.5.14\",\n          \"note\": \"\",\n          \"weight\": \"1\"\n        },\n        {\n          \"mark\": \"1\",\n          \"caption\": \"\",\n          \"date\": \"21.5.14\",\n          \"note\": \"\",\n          \"weight\": \"1\"\n        },\n        {\n          \"mark\": \"1\",\n          \"caption\": \"\",\n          \"date\": \"28.5.14\",\n          \"note\": \"\",\n          \"weight\": \"1\"\n        },\n        {\n          \"mark\": \"2\",\n          \"caption\": \"\",\n          \"date\": \"30.5.14\",\n          \"note\": \"\",\n          \"weight\": \"1\"\n        }\n      ],\n      [\n        {\n          \"mark\": \"1\",\n          \"caption\": \"Test\",\n          \"date\": \"7.4.14\",\n          \"note\": \"Hellenismusw a počátky Říma\",\n          \"weight\": \"1\"\n        },\n        {\n          \"mark\": \"1\",\n          \"caption\": \"Starověký Řím\",\n          \"date\": \"13.5.14\",\n          \"note\": \"Test\",\n          \"weight\": \"1\"\n        }\n      ],\n      [\n        {\n          \"mark\": \"1\",\n          \"caption\": \"1\",\n          \"date\": \"5.2.14\",\n          \"note\": \"Nebuněční\",\n          \"weight\": \"1\"\n        },\n        {\n          \"mark\": \"1\",\n          \"caption\": \"2\",\n          \"date\": \"3.3.14\",\n          \"note\": \"Bakterie\",\n          \"weight\": \"1\"\n        },\n        {\n          \"mark\": \"1\",\n          \"caption\": \"3\",\n          \"date\": \"3.3.14\",\n          \"note\": \"Sinice a Archea\",\n          \"weight\": \"1\"\n        },\n        {\n          \"mark\": \"1\",\n          \"caption\": \"4\",\n          \"date\": \"19.3.14\",\n          \"note\": \"Pletiva I.\",\n          \"weight\": \"1\"\n        },\n        {\n          \"mark\": \"1\",\n          \"caption\": \"5\",\n          \"date\": \"24.3.14\",\n          \"note\": \"Pletiva II.\",\n          \"weight\": \"1\"\n        },\n        {\n          \"mark\": \"1\",\n          \"caption\": \"6\",\n          \"date\": \"7.4.14\",\n          \"note\": \"Kořen, stonek\",\n          \"weight\": \"1\"\n        },\n        {\n          \"mark\": \"1\",\n          \"caption\": \"7\",\n          \"date\": \"14.4.14\",\n          \"note\": \"List\",\n          \"weight\": \"1\"\n        },\n        {\n          \"mark\": \"1\",\n          \"caption\": \"8\",\n          \"date\": \"14.4.14\",\n          \"note\": \"Květ, květenství\",\n          \"weight\": \"1\"\n        },\n        {\n          \"mark\": \"1\",\n          \"caption\": \"9\",\n          \"date\": \"28.4.14\",\n          \"note\": \"Plod, chorie\",\n          \"weight\": \"1\"\n        },\n        {\n          \"mark\": \"3\",\n          \"caption\": \"10\",\n          \"date\": \"14.5.14\",\n          \"note\": \"Růst, vývin a rozmnožování rostlin\",\n          \"weight\": \"1\"\n        }\n      ],\n      [\n        {\n          \"mark\": \"1\",\n          \"caption\": \"Test\",\n          \"date\": \"25.2.14\",\n          \"note\": \"Myšlení - efektivní učení bez\",\n          \"weight\": \"1\"\n        },\n        {\n          \"mark\": \"1\",\n          \"caption\": \"Test\",\n          \"date\": \"26.3.14\",\n          \"note\": \"Efektivní učení - vývoj osobnosti dle Freuda bez\",\n          \"weight\": \"1\"\n        },\n        {\n          \"mark\": \"?\",\n          \"caption\": \"Test\",\n          \"date\": \"21.5.14\",\n          \"note\": \"Vývoj osobnosti dle Freuda - dějiny sociologie bez - středa 21.5.\",\n          \"weight\": \"1\"\n        }\n      ],\n      [\n        {\n          \"mark\": \"2\",\n          \"caption\": \"Test\",\n          \"date\": \"21.2.14\",\n          \"note\": \"Doba písemnictví staroslověnského a latinského\",\n          \"weight\": \"1\"\n        },\n        {\n          \"mark\": \"1\",\n          \"caption\": \"Test\",\n          \"date\": \"10.3.14\",\n          \"note\": \"Vznik česky psané literatury a její rozvoj ve 14. století\",\n          \"weight\": \"1\"\n        },\n        {\n          \"mark\": \"N\",\n          \"caption\": \"Test\",\n          \"date\": \"17.3.14\",\n          \"note\": \"Literatura v době husitské\",\n          \"weight\": \"1\"\n        },\n        {\n          \"mark\": \"1\",\n          \"caption\": \"Test\",\n          \"date\": \"16.5.14\",\n          \"note\": \"Světová renesanční literatura - 1. část\",\n          \"weight\": \"1\"\n        },\n        {\n          \"mark\": \"1\",\n          \"caption\": \"Test\",\n          \"date\": \"19.5.14\",\n          \"note\": \"Zvuková stránka jazyka\",\n          \"weight\": \"1\"\n        },\n        {\n          \"mark\": \"1\",\n          \"caption\": \"Test\",\n          \"date\": \"27.5.14\",\n          \"note\": \"Světová renesanční literatura, 2. část\",\n          \"weight\": \"1\"\n        }\n      ],\n      [\n        {\n          \"mark\": \"1\",\n          \"caption\": \"Písemná práce\",\n          \"date\": \"25.2.14\",\n          \"note\": \"Dynamika - příklady\",\n          \"weight\": \"1\"\n        },\n        {\n          \"mark\": \"1\",\n          \"caption\": \"Písemná práce\",\n          \"date\": \"18.3.14\",\n          \"note\": \"Práce, výkon, energie\",\n          \"weight\": \"1\"\n        },\n        {\n          \"mark\": \"1\",\n          \"caption\": \"Písemná práce\",\n          \"date\": \"15.4.14\",\n          \"note\": \"Gravitační pole\",\n          \"weight\": \"1\"\n        },\n        {\n          \"mark\": \"1\",\n          \"caption\": \"Písemná práce\",\n          \"date\": \"13.5.14\",\n          \"note\": \"Pohyby těles v grav. poli\",\n          \"weight\": \"1\"\n        }\n      ]\n    ]\n  },\n  \"cached\": false,\n  \"user\": {\n    \"user\": \"971031r\",\n    \"pass\": \"dfiypam4\",\n    \"url\": \"http://intranet.wigym.cz:6040/bakaweb/\",\n    \"name\": \"Duong Tat Dat, 5.A\",\n    \"title\": \"rodič\",\n    \"_id\": \"IvLGo52ZhuageFqD\"\n  }\n}",
-			"settings":
-			{
-				"buffer_size": 13119,
-				"line_ending": "Windows"
 			}
 		}
 	],
 	"build_system": "node-webkit local",
 	"command_palette":
 	{
-		"height": 104.0,
+		"height": 392.0,
 		"selected_items":
 		[
 			[
@@ -786,26 +760,74 @@
 	},
 	"file_history":
 	[
-		"/C/Xampp/htdocs/Skolar/SkolarDesktop/SkolarDesktop/project.sublime-workspace",
-		"/C/Xampp/htdocs/Skolar/SkolarDesktop/SkolarDesktop/project.sublime-project",
-		"/C/node-webkit/nw-sublime.bat",
+		"/C/Xampp/htdocs/Skolar/SkolarDesktop/SkolarDesktop/src/app/assets/scripts/controllers/states/znamkyCtrl.js",
+		"/C/Xampp/htdocs/Skolar/SkolarDesktop/SkolarDesktop/src/app/assets/scripts/controllers/states/vyukaCtrl.js",
+		"/C/Xampp/htdocs/Skolar/SkolarDesktop/SkolarDesktop/src/app/assets/scripts/controllers/states/vysvedceniCtrl.js",
 		"/C/Xampp/htdocs/Skolar/SkolarDesktop/SkolarDesktop/src/app/assets/scripts/services/Page.js",
-		"/C/Users/David/AppData/Roaming/Sublime Text 3/Packages/User/node-webkit.sublime-build",
+		"/C/Xampp/htdocs/Skolar/SkolarDesktop/SkolarDesktop/src/app/assets/scripts/controllers/states/ukolyCtrl.js",
+		"/C/Xampp/htdocs/Skolar/SkolarDesktop/SkolarDesktop/src/app/assets/scripts/controllers/states/suplovaniCtrl.js",
+		"/C/Xampp/htdocs/Skolar/SkolarDesktop/SkolarDesktop/src/app/assets/scripts/controllers/states/predmetyCtrl.js",
+		"/C/Xampp/htdocs/Skolar/SkolarDesktop/SkolarDesktop/src/app/assets/scripts/controllers/states/planCtrl.js",
+		"/C/Xampp/htdocs/Skolar/SkolarDesktop/SkolarDesktop/src/app/assets/scripts/controllers/states/absenceCtrl.js",
+		"/C/Xampp/htdocs/Skolar/SkolarDesktop/SkolarDesktop/src/app/assets/scripts/main.js",
+		"/C/Xampp/htdocs/Skolar/SkolarDesktop/SkolarDesktop/src/app/assets/scripts/controllers/sidebarCtrl.js",
+		"/C/Xampp/htdocs/Skolar/SkolarDesktop/SkolarDesktop/src/app/assets/scripts/controllers/states/rozvrhCtrl.js",
+		"/C/Xampp/htdocs/Skolar/SkolarDesktop/SkolarDesktop/src/app/assets/scripts/services/Parser.js",
 		"/C/Xampp/htdocs/Skolar/SkolarDesktop/SkolarDesktop/src/app/assets/less/absence.less",
+		"/C/Xampp/htdocs/Skolar/SkolarDesktop/SkolarDesktop/src/app/assets/scripts/defaults.js",
+		"/C/Xampp/htdocs/Skolar/SkolarDesktop/SkolarDesktop/src/app/main.html",
+		"/C/Xampp/htdocs/Skolar/SkolarDesktop/SkolarDesktop/src/app/newuser.html",
 		"/C/Xampp/htdocs/Skolar/SkolarDesktop/SkolarDesktop/src/app/package.json",
+		"/C/Xampp/htdocs/Skolar/SkolarDesktop/SkolarDesktop/src/app/assets/components/lodash/dist/lodash.js",
+		"/C/Xampp/htdocs/Skolar/SkolarDesktop/SkolarDesktop/src/app/assets/components/angular-google-maps/bower.json",
+		"/C/Xampp/htdocs/Skolar/SkolarDesktop/SkolarDesktop/README.md",
+		"/C/Xampp/htdocs/Skolar/SkolarDesktop/SkolarDesktop/src/app/assets/less/vyuka.less",
+		"/C/Xampp/htdocs/Skolar/SkolarDesktop/SkolarDesktop/Gruntfile.js",
+		"/C/Xampp/htdocs/BakaParser/tests/rozvrh-novy-maturity.html",
+		"/C/Xampp/htdocs/Skolar/SkolarDesktop/SkolarDesktop/src/app/assets/templates/rozvrh.html",
+		"/C/Xampp/htdocs/Skolar/SkolarDesktop/SkolarDesktop/src/app/assets/less/rozvrh.less",
+		"/C/Xampp/htdocs/Skolar/SkolarDesktop/SkolarDesktop/src/app/assets/scripts/services/Progress.js",
+		"/C/Xampp/htdocs/Skolar/SkolarDesktop/SkolarDesktop/src/app/assets/templates/znamky.html",
+		"/C/Xampp/htdocs/Skolar/SkolarDesktop/SkolarDesktop/src/app/assets/less/znamky.less",
+		"/C/Xampp/htdocs/Skolar/SkolarDesktop/SkolarDesktop/src/app/assets/templates/sidebar.html",
+		"/C/Xampp/htdocs/Skolar/SkolarDesktop/SkolarDesktop/src/app/assets/scripts/services/Window.js",
+		"/C/Xampp/htdocs/Skolar/SkolarDesktop/SkolarDesktop/src/app/assets/scripts/services/Users.js",
+		"/C/Xampp/htdocs/Skolar/SkolarDesktop/SkolarDesktop/src/app/assets/scripts/services/Utils.js",
+		"/C/Xampp/htdocs/Skolar/SkolarDesktop/SkolarDesktop/src/app/assets/scripts/controllers/userCtrl.js",
+		"/C/Xampp/htdocs/Skolar/SkolarDesktop/SkolarDesktop/src/Updater/updater.html",
+		"/C/Xampp/htdocs/Skolar/SkolarDesktop/SkolarDesktop/src/app/assets/less/options.less",
+		"/C/Xampp/htdocs/Skolar/SkolarDesktop/SkolarDesktop/src/app/assets/fonts/Roboto/Roboto-Light-webfont.svg",
+		"/C/Xampp/htdocs/Skolar/SkolarDesktop/SkolarDesktop/project.sublime-project",
+		"/C/Xampp/htdocs/Skolar/SkolarDesktop/SkolarDesktop/src/app/assets/components/lodash/bower.json",
+		"/C/Xampp/htdocs/Skolar/SkolarDesktop/SkolarDesktop/src/app/assets/components/angular-google-maps/.bower.json",
+		"/C/Xampp/htdocs/Skolar/SkolarDesktop/SkolarDesktop/src/app/assets/components/lodash/dist/lodash.underscore.js",
+		"/C/Xampp/htdocs/Skolar/SkolarDesktop/SkolarDesktop/src/app/assets/components/lodash/dist/lodash.min.js",
+		"/C/Xampp/htdocs/Skolar/SkolarDesktop/SkolarDesktop/src/app/assets/components/angular-google-maps/package.json",
+		"/C/Xampp/htdocs/Skolar/SkolarDesktop/SkolarDesktop/src/app/assets/templates/options.html",
+		"/C/Xampp/htdocs/Skolar/SkolarDesktop/SkolarDesktop/src/app/assets/less/predmety.less",
+		"/C/Xampp/htdocs/Skolar/SkolarDesktop/SkolarDesktop/src/app/assets/less/fonts.less",
+		"/C/Xampp/htdocs/Skolar/SkolarDesktop/SkolarDesktop/src/app/assets/less/newuser.less",
+		"/C/Xampp/htdocs/Skolar/SkolarDesktop/SkolarDesktop/src/app/assets/less/main.less",
+		"/C/Xampp/htdocs/Skolar/SkolarDesktop/SkolarDesktop/src/app/assets/less/sidebar.less",
+		"/C/Xampp/htdocs/Skolar/SkolarDesktop/SkolarDesktop/src/installer/assets/style.css",
+		"/C/Program Files (x86)/Enigma Virtual Box/languages/Swedish.lang",
+		"/C/Xampp/htdocs/Skolar/SkolarDesktop/SkolarDesktop/src/installer/assets/main.less",
+		"/C/Xampp/htdocs/Skolar/SkolarDesktop/SkolarDesktop/.gitignore",
+		"/C/Xampp/htdocs/Skolar/SkolarDesktop/SkolarDesktop/package.json",
+		"/C/Xampp/htdocs/Skolar/SkolarDesktop/SkolarDesktop/tools/build-system/run.bat",
+		"/C/Xampp/htdocs/Skolar/SkolarDesktop/SkolarDesktop/src/installer/bootstrap.html",
+		"/C/Xampp/htdocs/Skolar/SkolarDesktop/SkolarDesktop/src/app/assets/less/suplovani.less",
+		"/C/Users/David/AppData/Roaming/Sublime Text 3/Packages/User/node-webkit.sublime-build",
+		"/C/Xampp/htdocs/Skolar/SkolarDesktop/SkolarDesktop/project.sublime-workspace",
+		"/C/node-webkit/nw-sublime.bat",
 		"/C/Users/David/AppData/Roaming/Sublime Text 3/Settings/SideBarEnhancements.json",
 		"/C/Xampp/htdocs/Skolar/SkolarDesktop/SkolarDesktop/src/app/assets/scripts/services/Notifications.js",
 		"/C/Xampp/htdocs/Skolar/SkolarDesktop/SkolarDesktop/src/app/assets/scripts/services/Daemon.js",
-		"/C/Xampp/htdocs/Skolar/SkolarDesktop/SkolarDesktop/src/app/assets/scripts/services/Parser.js",
 		"/C/Xampp/htdocs/Skolar/SkolarDesktop/SkolarDesktop/src/app/assets/scripts/services/Updater.js",
 		"/C/Xampp/htdocs/Skolar/SkolarDesktop/SkolarDesktop/src/app/notifications.html",
 		"/C/Xampp/htdocs/Skolar/SkolarDesktop/SkolarDesktop/src/app/assets/scripts/notifications.js",
-		"/C/Xampp/htdocs/Skolar/SkolarDesktop/SkolarDesktop/src/app/assets/scripts/main.js",
-		"/C/Xampp/htdocs/Skolar/SkolarDesktop/SkolarDesktop/src/app/main.html",
-		"/C/Xampp/htdocs/Skolar/SkolarDesktop/SkolarDesktop/src/app/assets/scripts/defaults.js",
 		"/C/Xampp/htdocs/Skolar/SkolarDesktop/SkolarDesktop/node_modules/grunt/node_modules/coffee-script/lib/coffee-script/parser.js",
 		"/C/Xampp/htdocs/Skolar/SkolarDesktop/SkolarDesktop/node_modules/request/node_modules/http-signature/lib/parser.js",
-		"/C/Xampp/htdocs/Skolar/SkolarDesktop/SkolarDesktop/package.json",
 		"/C/Xampp/htdocs/Skolar/SkolarDesktop/SkolarDesktop/node_modules/grunt-contrib-uglify/node_modules/uglify-js/lib/parse.js",
 		"/C/Xampp/htdocs/Skolar/SkolarDesktop/SkolarDesktop/node_modules/grunt/node_modules/glob/test/pause-resume.js",
 		"/C/Xampp/htdocs/Skolar/SkolarDesktop/SkolarDesktop/dist/app/notifications.html",
@@ -817,8 +839,6 @@
 		"/C/Xampp/htdocs/Skolar/SkolarDesktop/SkolarDesktop/node_modules/grunt-contrib-uglify/node_modules/uglify-js/lib/mozilla-ast.js",
 		"/C/Xampp/htdocs/Skolar/SkolarDesktop/SkolarDesktop/node_modules/.bin/mkdirp",
 		"/C/Users/David/AppData/roam",
-		"/C/Xampp/htdocs/Skolar/SkolarDesktop/SkolarDesktop/Gruntfile.js",
-		"/C/Xampp/htdocs/Skolar/SkolarDesktop/SkolarDesktop/src/app/newuser.html",
 		"/C/Xampp/htdocs/Skolar/SkolarDesktop/SkolarDesktop/dist/app/assets/css/notifications.css",
 		"/C/Xampp/htdocs/Skolar/SkolarDesktop/SkolarDesktop/node_modules/grunt/node_modules/exit/test/fixtures/create-files.sh",
 		"/C/Xampp/htdocs/Skolar/SkolarDesktop/SkolarDesktop/node_modules/grunt-contrib-less/node_modules/less/test/css/no-output.css",
@@ -867,53 +887,7 @@
 		"/C/Xampp/htdocs/Skolar/SkolarDesktop/SkolarDesktop/installer/node_modules/request/lib/optional.js",
 		"/C/Xampp/htdocs/Skolar/SkolarDesktop/SkolarDesktop/app/assets/less/colors.less",
 		"/C/Xampp/htdocs/Skolar/SkolarDesktop/SkolarDesktop/app/assets/templates/options.html",
-		"/C/Xampp/htdocs/Skolar/SkolarDesktop/SkolarDesktop/node_modules/grunt/node_modules/glob/examples/usr-local.js",
-		"/C/Xampp/htdocs/Skolar/SkolarDesktop/SkolarDesktop/node_modules/tar-fs/node_modules/mkdirp/test/umask_sync.js",
-		"/C/Xampp/htdocs/Skolar/SkolarDesktop/SkolarDesktop/node_modules/grunt-usemin/tasks/usemin.js",
-		"/C/Xampp/htdocs/Skolar/SkolarDesktop/SkolarDesktop/app/assets/less/notifications.less",
-		"/C/Xampp/htdocs/Skolar/SkolarDesktop/SkolarDesktop/app/assets/templates/ukoly.html",
-		"/C/Xampp/htdocs/Skolar/SkolarDesktop/SkolarDesktop/app/assets/less/main.less",
-		"/C/Xampp/htdocs/Skolar/SkolarDesktop/SkolarDesktop/app/assets/css/main.css",
-		"/C/Xampp/htdocs/Skolar/SkolarDesktop/SkolarDesktop/node_modules/grunt-contrib-less/node_modules/less/test/css/mixins-important.css",
-		"/C/Xampp/htdocs/Skolar/SkolarDesktop/SkolarDesktop/.gitignore",
-		"/C/Xampp/htdocs/Skolar/SkolarDesktop/SkolarDesktop/app/assets/scripts/services/Utils.js",
-		"/C/Xampp/htdocs/Skolar/SkolarDesktop/SkolarDesktop/app/notification.html",
-		"/C/Xampp/htdocs/Skolar/SkolarDesktop/SkolarDesktop/node_modules/request/node_modules/node-uuid/benchmark/benchmark-native.c",
-		"/C/Xampp/htdocs/Skolar/SkolarDesktop/SkolarDesktop/node_modules/grunt-contrib-less/node_modules/less/test/less/errors/color-func-invalid-color.less",
-		"/C/Xampp/htdocs/Skolar/SkolarDesktop/SkolarDesktop/node_modules/grunt-contrib-clean/docs/clean-options.md",
-		"/C/Xampp/htdocs/Skolar/SkolarDesktop/SkolarDesktop/node_modules/grunt-contrib-clean/CHANGELOG",
-		"/C/Xampp/htdocs/Skolar/SkolarDesktop/SkolarDesktop/app/assets/scripts/services/Window.js",
-		"/C/Xampp/htdocs/Skolar/SkolarDesktop/SkolarDesktop/app/assets/templates/suplovani.html",
-		"/C/Xampp/htdocs/Skolar/SkolarDesktop/SkolarDesktop/app/assets/components/angular-google-maps/example/assets/scripts/controllers/issue-157-ng-click.js",
-		"/C/Xampp/htdocs/Skolar/SkolarDesktop/SkolarDesktop/app/node_modules/sqlite3/build/Release/obj/node_sqlite3/node_sqlite3.tlog/link.read.1.tlog",
-		"/C/Xampp/htdocs/Skolar/SkolarDesktop/SkolarDesktop/app/assets/components/angular-google-maps/src/coffee/directives/api/utils/linked.coffee",
-		"/C/Xampp/htdocs/Skolar/SkolarDesktop/SkolarDesktop/app/assets/components/angular-ui-router/release/angular-ui-router.js",
-		"/C/Xampp/htdocs/Skolar/SkolarDesktop/SkolarDesktop/app/assets/components/nnnick-chartjs/samples/radar.html",
-		"/C/Xampp/htdocs/Skolar/SkolarDesktop/SkolarDesktop/node_modules/grunt/node_modules/.bin/cake",
-		"/C/Xampp/htdocs/Skolar/SkolarDesktop/SkolarDesktop/app/node_modules/sqlite3/build/Release/obj/action_after_build/action_a.8DCB79BF.tlog/action_after_build.lastbuildstate",
-		"/C/Xampp/htdocs/Skolar/SkolarDesktop/SkolarDesktop/app/node_modules/sqlite3/build/Release/obj/action_after_build/action_a.8DCB79BF.tlog/custombuild.read.1.tlog",
-		"/C/Xampp/htdocs/Skolar/SkolarDesktop/SkolarDesktop/node_modules/request/node_modules/http-signature/node_modules/ctype/tst/ctype/tst.char.js",
-		"/C/Xampp/htdocs/Glossarium/Scraper/scrap_data.js",
-		"/C/Xampp/htdocs/Glossarium/Scraper/scrape_urls.json",
-		"/C/Xampp/htdocs/Glossarium/Scraper/scrape_data.json",
-		"/C/Xampp/htdocs/Glossarium/Scraper/data/scrape_data.json",
-		"/C/Xampp/htdocs/Glossarium/Scraper/run.bat",
-		"/C/Users/David/AppData/Local/Temp/Rar$DRa0.735/package.json",
-		"/C/Xampp/htdocs/Skolar/SkolarDesktop/SkolarDesktop/node_modules/grunt-contrib-less/node_modules/less/test/css/mixins-named-args.css",
-		"/C/Xampp/htdocs/Skolar/SkolarDesktop/SkolarDesktop/node_modules/grunt-contrib-less/node_modules/less/test/less/errors/at-rules-undefined-var.less",
-		"/C/Users/David/AppData/Local/Temp/fz3temp-1/.htaccess",
-		"/C/Xampp/htdocs/BakaParser/test.php",
-		"/C/Xampp/htdocs/.htaccess",
-		"/C/Xampp/htdocs/BakaParser/.htaccess",
-		"/C/Users/David/AppData/Local/Temp/fz3temp-1/builds.json",
-		"/C/Xampp/htdocs/Skolar/SkolarDesktop/SkolarDesktop/app/assets/less/absence.less",
-		"/C/Users/David/AppData/Local/Temp/fz3temp-1/config.php",
-		"/C/Users/David/AppData/Local/Temp/fz3temp-1/index.php",
-		"/C/Xampp/htdocs/Skolar/SkolarDesktop/SkolarDesktop/node_modules/grunt-contrib-less/node_modules/less/.grunt/grunt-contrib-jasmine/phantom-polyfill.js",
-		"/C/Xampp/htdocs/Skolar/SkolarDesktop/SkolarDesktop/node_modules/grunt-contrib-less/node_modules/less/.grunt/grunt-contrib-jasmine/jasmine-html.js",
-		"/C/Xampp/htdocs/Skolar/SkolarDesktop/SkolarDesktop/node_modules/grunt-contrib-less/node_modules/less/.grunt/grunt-contrib-jasmine/jasmine-helper.js",
-		"/C/Xampp/htdocs/Skolar/SkolarDesktop/SkolarDesktop/app/assets/less/rozvrh.less",
-		"/C/Xampp/htdocs/Skolar/SkolarDesktop/SkolarDesktop/app/assets/templates/rozvrh.html"
+		"/C/Xampp/htdocs/Skolar/SkolarDesktop/SkolarDesktop/node_modules/grunt/node_modules/glob/examples/usr-local.js"
 	],
 	"find":
 	{
@@ -921,9 +895,12 @@
 	},
 	"find_in_files":
 	{
-		"height": 159.0,
+		"height": 263.0,
 		"where_history":
 		[
+			"-*.css,-*.svg,-fonts.less",
+			"-*.css,-*.svg",
+			"-*.css",
 			"",
 			"C:\\Xampp\\htdocs\\Skolar\\SkolarDesktop\\SkolarDesktop\\src\\app\\assets\\scripts\\,*.js",
 			"C:\\Xampp\\htdocs\\Skolar\\SkolarDesktop\\SkolarDesktop\\app\\assets\\scripts\\,*.js",
@@ -950,6 +927,62 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"broadcastViews",
+			"statusHandler",
+			"$rootScope",
+			"isUndefined",
+			"outside",
+			"LOading",
+			"outside",
+			"response",
+			"implementations",
+			"tasks",
+			"callbacks",
+			"tasks",
+			"var viewstate = {}, reload_listener = $rootScope.$on(\"reload\", function(event, arg) {\n        arg = (arg) ? arg : {};\n\n        viewstate = (arg.view != null) ? \n            ((arg.view != false) ? {\"view\": arg.view} : {}) : \n            ((!_.isEmpty(viewstate)) ? viewstate : {});\n\n        $scope.load(arg.force, viewstate);\n    });\n\n    $scope.$on('$destroy', function() { \n        reload_listener(); \n        viewstate = {};\n    });",
+			"success",
+			"successcallback",
+			"$scope.load(false, viewstate);",
+			"znamky",
+			"progress",
+			"$stateParams",
+			"\n            ",
+			"tasks",
+			"$stateProvider",
+			"isEmpty",
+			"target",
+			"fromState",
+			"viewstate",
+			"toState",
+			"znamky",
+			"isEmpty",
+			"sidebar-views",
+			"argumentCache",
+			"sidebarCache",
+			"\"reload\"",
+			"response",
+			"shown",
+			"error",
+			"errorHandler",
+			"newuser",
+			"defaultCallbacks",
+			"errorHandler",
+			"successHandler",
+			"notifyHandler",
+			"sidebarHandler",
+			"this",
+			"notifySidebar",
+			"notifyError",
+			"errorHandler",
+			"backgrounds",
+			"title",
+			"response",
+			"Progress",
+			"false",
+			".png",
+			"Roboto",
+			"app",
+			"src",
 			"build-folder",
 			"updater",
 			"filename",
@@ -1021,63 +1054,7 @@
 			"Database",
 			"this",
 			"window",
-			"callback",
-			"false",
-			"Nové",
-			"false",
-			"true",
-			"false",
-			"Users",
-			"Notifications",
-			"width",
-			"Window",
-			"    ",
-			"absolute",
-			"hidden",
-			"└",
-			"─┬ ",
-			"│ ",
-			"├ ",
-			"│ ─┬ ",
-			"│ └",
-			"├─┬ ",
-			"│ ├ ",
-			"│ ├─┬ ",
-			" ├─┬ ",
-			"──",
-			"localhost",
-			"			",
-			"\n			",
-			"			",
-			"name",
-			"localhost",
-			"=\"\"></",
-			"options",
-			"map",
-			"shit",
-			"				",
-			"				</",
-			"div",
-			"						",
-			"$scope.data",
-			"markers",
-			"$scope.markers",
-			"localhost",
-			"clear",
-			"response",
-			"args",
-			"chromium",
-			"Roboto",
-			"event",
-			"name",
-			"number",
-			"ukoly",
-			"events",
-			"Instalace",
-			"lighten",
-			"E8E8E8",
-			"34495e",
-			"green"
+			"callback"
 		],
 		"highlight": true,
 		"in_selection": false,
@@ -1085,6 +1062,7 @@
 		"regex": false,
 		"replace_history":
 		[
+			"",
 			"5",
 			"    $scope.load(arg.force, args);",
 			"if(arg.user != true) {\n    $scope.load(arg.force, args);\n}",
@@ -1108,35 +1086,36 @@
 	"groups":
 	[
 		{
-			"selected": 2,
+			"selected": 0,
 			"sheets":
 			[
 				{
 					"buffer": 0,
-					"file": ".gitignore",
+					"file": "src/app/assets/scripts/services/Page.js",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 146,
+						"buffer_size": 4402,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								101,
-								101
+								540,
+								540
 							]
 						],
 						"settings":
 						{
-							"syntax": "Packages/Text/Plain text.tmLanguage"
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
+							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 1,
+					"stack_index": 0,
 					"type": "text"
 				},
 				{
@@ -1145,15 +1124,15 @@
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 4774,
+						"buffer_size": 5574,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								3263,
-								3263
+								5320,
+								5320
 							]
 						],
 						"settings":
@@ -1163,348 +1142,10 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 1092.0,
+						"translation.y": 1139.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 2,
-					"type": "text"
-				},
-				{
-					"buffer": 2,
-					"file": "Gruntfile.js",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 8855,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								729,
-								729
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 1755.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 0,
-					"type": "text"
-				},
-				{
-					"buffer": 3,
-					"file": "tools/build-system/run.bat",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 69,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								0,
-								0
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/Batch File/Batch File.tmLanguage"
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 3,
-					"type": "text"
-				},
-				{
-					"buffer": 4,
-					"file": "src/installer/bootstrap.html",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 774,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								0,
-								0
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/HTML/HTML.tmLanguage",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 5,
-					"type": "text"
-				},
-				{
-					"buffer": 5,
-					"file": "/C/Users/David/AppData/Roaming/Sublime Text 3/Packages/User/node-webkit.sublime-build",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 117,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								114,
-								62
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/JavaScript/JSON.tmLanguage"
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 4,
-					"type": "text"
-				},
-				{
-					"buffer": 6,
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 14614,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								14069,
-								14069
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/JavaScript/JSON.tmLanguage"
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 7,
-					"type": "text"
-				},
-				{
-					"buffer": 7,
-					"file": "src/app/assets/scripts/controllers/states/absenceCtrl.js",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 2175,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								555,
-								555
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 507.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 6,
-					"type": "text"
-				},
-				{
-					"buffer": 8,
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 3393,
-						"regions":
-						{
-							"match":
-							{
-								"flags": 112,
-								"regions":
-								[
-									[
-										311,
-										317
-									],
-									[
-										744,
-										750
-									],
-									[
-										1051,
-										1057
-									],
-									[
-										1110,
-										1116
-									],
-									[
-										1295,
-										1301
-									],
-									[
-										1522,
-										1528
-									],
-									[
-										1581,
-										1587
-									],
-									[
-										1687,
-										1693
-									],
-									[
-										1973,
-										1979
-									],
-									[
-										2019,
-										2025
-									],
-									[
-										2119,
-										2125
-									],
-									[
-										2320,
-										2326
-									],
-									[
-										2626,
-										2632
-									],
-									[
-										2861,
-										2867
-									],
-									[
-										2898,
-										2904
-									],
-									[
-										3038,
-										3044
-									],
-									[
-										3313,
-										3319
-									]
-								],
-								"scope": ""
-							}
-						},
-						"selection":
-						[
-							[
-								313,
-								313
-							]
-						],
-						"settings":
-						{
-							"detect_indentation": false,
-							"line_numbers": false,
-							"output_tag": 1,
-							"result_base_dir": "",
-							"result_file_regex": "^([A-Za-z\\\\/<].*):$",
-							"result_line_regex": "^ +([0-9]+):",
-							"scroll_past_end": true,
-							"syntax": "Packages/Default/Find Results.hidden-tmLanguage"
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 10,
-					"type": "text"
-				},
-				{
-					"buffer": 9,
-					"file": "src/app/main.html",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 5203,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								3935,
-								3941
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/HTML/HTML.tmLanguage",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 810.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 9,
-					"type": "text"
-				},
-				{
-					"buffer": 10,
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 13119,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								20,
-								32
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/JavaScript/JSON.tmLanguage"
-						},
-						"translation.x": -0.0,
-						"translation.y": 6903.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 8,
+					"stack_index": 1,
 					"type": "text"
 				}
 			]
@@ -1565,12 +1206,112 @@
 		"selected_items":
 		[
 			[
-				"absence",
-				"App\\assets\\less\\absence.less"
-			],
-			[
 				"parser",
 				"App\\assets\\scripts\\services\\Parser.js"
+			],
+			[
+				"sideba",
+				"App\\assets\\scripts\\controllers\\sidebarCtrl.js"
+			],
+			[
+				"main.js",
+				"App\\assets\\scripts\\main.js"
+			],
+			[
+				"page",
+				"App\\assets\\scripts\\services\\Page.js"
+			],
+			[
+				"main",
+				"App\\assets\\scripts\\main.js"
+			],
+			[
+				"rozvr",
+				"App\\assets\\scripts\\controllers\\states\\rozvrhCtrl.js"
+			],
+			[
+				"vyukac",
+				"App\\assets\\scripts\\controllers\\states\\vyukaCtrl.js"
+			],
+			[
+				"de",
+				"App\\assets\\scripts\\defaults.js"
+			],
+			[
+				"def",
+				"App\\assets\\scripts\\defaults.js"
+			],
+			[
+				"rozvrh",
+				"App\\assets\\scripts\\controllers\\states\\rozvrhCtrl.js"
+			],
+			[
+				"sidebar",
+				"App\\assets\\scripts\\controllers\\sidebarCtrl.js"
+			],
+			[
+				"progress",
+				"App\\assets\\scripts\\services\\Progress.js"
+			],
+			[
+				"znamky",
+				"App\\assets\\scripts\\controllers\\states\\znamkyCtrl.js"
+			],
+			[
+				"package",
+				"App\\package.json"
+			],
+			[
+				"packa",
+				"App\\package.json"
+			],
+			[
+				"users",
+				"App\\assets\\scripts\\services\\Users.js"
+			],
+			[
+				"new",
+				"App\\newuser.html"
+			],
+			[
+				"prog",
+				"App\\assets\\scripts\\services\\Progress.js"
+			],
+			[
+				"progres",
+				"App\\assets\\scripts\\services\\Progress.js"
+			],
+			[
+				"defa",
+				"App\\assets\\scripts\\defaults.js"
+			],
+			[
+				"newuser",
+				"App\\newuser.html"
+			],
+			[
+				"main.htm",
+				"App\\main.html"
+			],
+			[
+				"main.html",
+				"App\\main.html"
+			],
+			[
+				"main.less",
+				"App\\assets\\less\\main.less"
+			],
+			[
+				"read",
+				"Base\\README.md"
+			],
+			[
+				"sublime",
+				"Base\\project.sublime-project"
+			],
+			[
+				"absence",
+				"App\\assets\\less\\absence.less"
 			],
 			[
 				"da",
@@ -1593,20 +1334,12 @@
 				"src\\app\\assets\\scripts\\services\\Notifications.js"
 			],
 			[
-				"main.js",
-				"src\\app\\assets\\scripts\\main.js"
-			],
-			[
 				"notificat",
 				"src\\app\\assets\\scripts\\services\\Notifications.js"
 			],
 			[
 				"defaults",
 				"src\\app\\assets\\scripts\\defaults.js"
-			],
-			[
-				"package",
-				"app\\package.json"
 			],
 			[
 				"grun",
@@ -1617,20 +1350,8 @@
 				"app\\assets\\scripts\\defaults.js"
 			],
 			[
-				"page",
-				"app\\assets\\scripts\\services\\Page.js"
-			],
-			[
-				"users",
-				"app\\assets\\scripts\\services\\Users.js"
-			],
-			[
 				"main.ht",
 				"app\\main.html"
-			],
-			[
-				"newuser",
-				"app\\assets\\scripts\\newuser.js"
 			],
 			[
 				"main.",
@@ -1657,10 +1378,6 @@
 				"app\\assets\\less\\sidebar.less"
 			],
 			[
-				"sidebar",
-				"app\\assets\\scripts\\controllers\\sidebarCtrl.js"
-			],
-			[
 				"data",
 				"app\\assets\\scripts\\services\\Database.js"
 			],
@@ -1683,18 +1400,6 @@
 			[
 				"userct",
 				"app\\assets\\scripts\\controllers\\userCtrl.js"
-			],
-			[
-				"main",
-				"app\\assets\\scripts\\main.js"
-			],
-			[
-				"defa",
-				"app\\assets\\scripts\\defaults.js"
-			],
-			[
-				"main.less",
-				"app\\assets\\less\\main.less"
 			],
 			[
 				"colors",
@@ -1725,14 +1430,6 @@
 				"app\\assets\\scripts\\services\\Window.js"
 			],
 			[
-				"sideba",
-				"app\\assets\\less\\sidebar.less"
-			],
-			[
-				"packa",
-				"app\\package.json"
-			],
-			[
 				"opti",
 				"app\\assets\\less\\options.less"
 			],
@@ -1743,10 +1440,6 @@
 			[
 				"main.les",
 				"app\\assets\\less\\main.less"
-			],
-			[
-				"rozvr",
-				"app\\assets\\less\\rozvrh.less"
 			],
 			[
 				"bower.json",
@@ -1779,10 +1472,6 @@
 			[
 				".bo",
 				".bowerrc"
-			],
-			[
-				"rozvrh",
-				"app\\assets\\templates\\rozvrh.html"
 			],
 			[
 				"planc",
@@ -1841,10 +1530,6 @@
 				"Gruntfile.js"
 			],
 			[
-				"main.html",
-				"app\\main.html"
-			],
-			[
 				"style.cs",
 				"installer\\assets\\style.css"
 			],
@@ -1897,10 +1582,6 @@
 				"README.md"
 			],
 			[
-				"read",
-				"README.md"
-			],
-			[
 				"giti",
 				".gitignore"
 			],
@@ -1915,10 +1596,6 @@
 			[
 				"gru",
 				"Gruntfile.js"
-			],
-			[
-				"znamky",
-				"assets\\scripts\\controllers\\states\\znamkyCtrl.js"
 			],
 			[
 				"toolbar",
@@ -1939,10 +1616,6 @@
 			[
 				"user",
 				"assets\\scripts\\controllers\\userCtrl.js"
-			],
-			[
-				"vyukac",
-				"assets\\scripts\\controllers\\states\\vyukaCtrl.js"
 			],
 			[
 				"sideb",
@@ -2043,38 +1716,6 @@
 			[
 				"error",
 				"assets\\scripts\\services\\Error.js"
-			],
-			[
-				"znamk",
-				"assets\\templates\\znamky.html"
-			],
-			[
-				"ma",
-				"main.html"
-			],
-			[
-				"wind",
-				"assets\\scripts\\controllers\\windowCtrl.js"
-			],
-			[
-				"nav.",
-				"assets\\templates\\core\\nav.html"
-			],
-			[
-				"nav",
-				"assets\\templates\\core\\nav.html"
-			],
-			[
-				"windo",
-				"assets\\scripts\\services\\Window.js"
-			],
-			[
-				"windw",
-				"assets\\scripts\\controllers\\windowCtrl.js"
-			],
-			[
-				"abse",
-				"assets\\scripts\\controllers\\states\\absenceCtrl.js"
 			]
 		],
 		"width": 0.0
@@ -2101,7 +1742,7 @@
 	"show_minimap": false,
 	"show_open_files": false,
 	"show_tabs": true,
-	"side_bar_visible": true,
+	"side_bar_visible": false,
 	"side_bar_width": 257.0,
 	"status_bar_visible": true,
 	"template_settings":

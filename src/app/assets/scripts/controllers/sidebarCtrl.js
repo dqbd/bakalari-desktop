@@ -1,4 +1,4 @@
-app.controller("sidebarCtrl", ["$scope", "$rootScope", "$state", "$q", "Options", "Utils", function($scope, $rootScope, $state, $q, Options, Utils) {
+app.controller("sidebarCtrl", ["$scope", "$rootScope", "$state", "Page", "$q", "Options", "Utils", function($scope, $rootScope, $state, Page, $q, Options, Utils) {
 	$rootScope.pages = GLOBALS.pages;
     $rootScope.colors = GLOBALS.colors;
 
@@ -7,9 +7,7 @@ app.controller("sidebarCtrl", ["$scope", "$rootScope", "$state", "$q", "Options"
 
     $scope.views = [];
 
-	$scope.refresh = function() {
-        $rootScope.$emit("reload", {force: true});
-    };
+	$scope.refresh = Page.refreshPage;
 
     $scope.filterShown = function() {
     	return function(item) {
@@ -31,21 +29,12 @@ app.controller("sidebarCtrl", ["$scope", "$rootScope", "$state", "$q", "Options"
         }
     }
 
-
-    
-
     $scope.capitalize = function(txt) {
         return Utils.capitalize(txt, false, true);
     };
 
     $scope.viewClick = function(index) {
-        if(typeof $rootScope.canceler !== "undefined") {
-            $rootScope.canceler.resolve();
-        }
-        
-        $rootScope.canceler = $q.defer();
-
-        $rootScope.$emit("reload", {"view": (index <= 0) ? false : $scope.views[index].value});
+        Page.downloadView($scope.views[index].value);
     }
     
     $rootScope.$on("user", function(event, arg) {
@@ -55,6 +44,7 @@ app.controller("sidebarCtrl", ["$scope", "$rootScope", "$state", "$q", "Options"
     $rootScope.$on("sidebar-views", function(event, pages) {
         $scope.views = pages;
     });
+
 
     $scope.receiveOptions = function() {
         Options.getOption(Options.sidebarBackgroundTag, Options.sidebarHiddenTag).then(function(data) {

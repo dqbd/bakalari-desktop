@@ -1,4 +1,4 @@
-app.factory("Parser", ["$http", "$rootScope", "$q", "Database", "Users", "Progress", function($http, $rootScope, $q, Database, Users, Progress) {   
+app.factory("Parser", ["$http", "$rootScope", "$q", "Database", "Users", function($http, $rootScope, $q, Database, Users) {   
 
     var domain = "http://"+GLOBALS.host;
     var caches = {
@@ -16,7 +16,7 @@ app.factory("Parser", ["$http", "$rootScope", "$q", "Database", "Users", "Progre
     var parent = this;
 
     this.accessServer = function(page, args) { 
-       return $http.post(domain+"/BakaParser/"+page, args, {timeout: $rootScope.canceler.promise});
+       return $http.post(domain+"/BakaParser/"+page, args);
     };
 
     this.getOnline = function(page, user, pass, url, arg) {
@@ -85,19 +85,19 @@ app.factory("Parser", ["$http", "$rootScope", "$q", "Database", "Users", "Progre
     }
     
     this.get = function(page, arg, force) {
-
-        Progress.hideError();
+        arg = (_.isEmpty(arg)) ? {} : arg;
 
         // return parent.getDebug(page).then(function(data) {
-        //     return data.data;
+        //     return _.extend(data.data, {"cached": false, "input": arg});
         // });
-        // 
+        
 
         return $q.all({"user": Users.getCurrentUser(), "connected": this.isConnected()}).then(function(status) {
             var user = status.user, deferred = $q.defer();
 
             parent.hasCache(page, user, arg, force).then(
                 function(data) { //máme cache 
+                    console.log("accessing");
                     deferred.resolve(_.extend(data, {"cached": true}));
                 }, function(data) { //nemáme cache 
                     var input = {"user": user, "args": arg};
@@ -107,7 +107,18 @@ app.factory("Parser", ["$http", "$rootScope", "$q", "Database", "Users", "Progre
                             deferred.reject({"status":"error", "code": "no-connection"});
                         } else { //hm... zkusme to stáhnout
                             parent.getOnline(page, user.user, user.pass, user.url, arg).then(function(data) { //data
-                                deferred.resolve(_.extend(data.data, {"cached": false, "input": input}));
+                                if(_.isEmpty(data.data) || _.isEmpty(data.data.data) || _.isEmpty(data.data.data[page])) { //čisté data?
+                                    deferred.reject({"status": "fail", "code": "empty-return", "data":data.data, "input": input});
+                                } else {
+                                    var result = _.extend(data.data, {"cached": false, "input": input});
+
+                                    if(result.status == "ok") {
+                                        deferred.resolve(result);
+                                    } else {
+                                        deferred.reject(result)
+                                    }
+                                }
+                                
                             }, function(error) { //chyba při načítání
                                 deferred.reject({"status": "error", "code": "server-error", "data": error, "input": input});
                             });

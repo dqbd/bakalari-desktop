@@ -1,26 +1,9 @@
 app.controller("absenceCtrl", ["$scope", "$rootScope", "Page", "Utils", function($scope, $rootScope, Page, Utils) {
 
-    var viewstate = {}, reload_listener = $rootScope.$on("reload", function(event, arg) {
-        arg = (arg) ? arg : {};
-
-        viewstate = (arg.view != null) ? 
-            ((arg.view != false) ? {"view": arg.view} : {}) : 
-            ((!_.isEmpty(viewstate)) ? viewstate : {});
-
-        $scope.load(arg.force, viewstate);
+    Page.registerPage("absence", function(data) {
+        $scope.data = $scope.sortByMissing(data);
+        $scope.charts = $scope.generateCharts($scope.data);
     });
-
-    $scope.$on('$destroy', function() { 
-        reload_listener(); 
-        viewstate = {};
-    });
-
-    $scope.load = function(force, arg) {
-        Page.get("absence", force, arg).then(function(data) {
-            $scope.data = $scope.sortByMissing(data);
-            $scope.charts = $scope.generateCharts($scope.data);
-        });
-    }
 
     $scope.generateCharts = function(data) {
         var missing = [];
@@ -64,6 +47,4 @@ app.controller("absenceCtrl", ["$scope", "$rootScope", "Page", "Utils", function
     }
 
     $scope.stringToColor = Utils.subjectToColor;
-
-    $scope.load(false, viewstate);
 }]);

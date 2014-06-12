@@ -1,26 +1,10 @@
 app.controller("predmetyCtrl", ["$scope", "$rootScope", "Page", "Utils", function($scope, $rootScope, Page, Utils) {
     
-    var viewstate = {}, reload_listener = $rootScope.$on("reload", function(event, arg) {
-        arg = (arg) ? arg : {};
-
-        viewstate = (arg.view != null) ? 
-            ((arg.view != false) ? {"view": arg.view} : {}) : 
-            ((!_.isEmpty(viewstate)) ? viewstate : {});
-
-        $scope.load(arg.force, viewstate);
+    Page.registerPage("predmety", function(data) {
+        $scope.data = data;
+        $scope.shown = [];
+        $scope.data["predmety"] = Utils.sortCzech($scope.data["predmety"], 0);
     });
-
-    $scope.$on('$destroy', function() { 
-        reload_listener(); 
-        viewstate = {};
-    });
-
-    $scope.load = function(force, arg) {
-        Page.get("predmety", force, arg).then(function(data) {
-            $scope.data = data;
-            $scope.data["predmety"] = Utils.sortCzech($scope.data["predmety"], 0);
-        });
-    }
 
     $scope.shown = [];
 
@@ -40,7 +24,5 @@ app.controller("predmetyCtrl", ["$scope", "$rootScope", "Page", "Utils", functio
     $scope.isVisible = function(index) {
     	return ($scope.shown.indexOf(index) > -1) && ($scope.data.hlavicka.length > 2);
     }
-
-    $scope.load(false, viewstate);
 
 }]);

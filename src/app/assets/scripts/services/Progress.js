@@ -2,10 +2,16 @@ app.factory("Progress", ["$rootScope", function($rootScope) {
 
 	this.showLoading = function() {
 		$rootScope.loaded = false;
+
+		this.hideError();
 	}
 	
 	this.hideLoading = function() {
 		$rootScope.loaded = true;
+	}
+
+	this.showPartialLoading = function() {
+		//TOOD
 	}
 
 	this.hideError = function() {
@@ -13,7 +19,7 @@ app.factory("Progress", ["$rootScope", function($rootScope) {
 	}
 
 	this.showError = function(string, type, stacktrace) {
-		this.hideLoading();
+		
 
 		var base_url = location.protocol + "//" + location.hostname;
 
@@ -22,7 +28,7 @@ app.factory("Progress", ["$rootScope", function($rootScope) {
 		}
 
 		$rootScope.error = {show: true, type: type, text: string, stacktrace: stacktrace};
-		$rootScope.loaded = true;
+		this.hideLoading();
 	}
 
 	this.hideAll = function() {
