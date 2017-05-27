@@ -1,7 +1,7 @@
-#Školář-Desktop
+# Školář-Desktop
 **_Žákovská knížka, která vypadá hezky_**
 
-###Požadavky
+### Požadavky
 Pro kompilaci je nutné mít nainstalované tyto aplikace
 
 * `nodejs` a `npm`
@@ -13,7 +13,7 @@ Pro kompilaci je nutné mít nainstalované tyto aplikace
 * Windows
     * Microsoft Visual Studio C++ 2010 (< Windows 8), 2012 u Windows 8 a výš
     
-###Jak zkompilovat
+### Jak zkompilovat
 Nejprve stáhni celý tento git. Poté v příkazovém řádku s CWD u složky zadej  
 ```
 $ npm install grunt -g
@@ -25,5 +25,3 @@ Spustitelná aplikace se následně nachází ve složce `src`. Pokud chceš př
 $ grunt
 ```
 Aplikace bude zabalená v .ZIP archivu ve složce `builds`.
-####Problémy při kompilaci
-Je dost možné, že 
