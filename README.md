@@ -1,5 +1,8 @@
 # Školář-Desktop
 **_Alternative UI for school grades system Bakaláři_**
+This project is now defunct, most of the interface of Bakaláři has changed. 
+
+![Screenshot of the App](screenshot.gif)
 
 ### Requirements for compilation
 
