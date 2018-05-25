@@ -1,27 +1,25 @@
 # Školář-Desktop
-**_Žákovská knížka, která vypadá hezky_**
+**_Alternative UI for school grades system Bakaláři_**
 
-### Požadavky
-Pro kompilaci je nutné mít nainstalované tyto aplikace
+### Requirements for compilation
 
 * `nodejs` a `npm`
-* `python` 2.7.x, **nikoliv** 3.x.x
+* `python` 2.7.x
 
 * Unix:
     * `make` 
-    * GCC toolchain pro C++/C, nejlépe `gcc`
+    * GCC toolchain for C++/C, `gcc` preferably
 * Windows
-    * Microsoft Visual Studio C++ 2010 (< Windows 8), 2012 u Windows 8 a výš
+    * Microsoft Visual Studio C++ 2010
     
-### Jak zkompilovat
-Nejprve stáhni celý tento git. Poté v příkazovém řádku s CWD u složky zadej  
+### How to compile 
 ```
 $ npm install grunt -g
 $ npm install
 $ grunt init
 ```
-Spustitelná aplikace se následně nachází ve složce `src`. Pokud chceš připravit balík na publikaci k updateru, zadej do konzole
+App will be found in `src`. For publishing type:
 ```
 $ grunt
 ```
-Aplikace bude zabalená v .ZIP archivu ve složce `builds`.
+App will be packaged in directory `builds`.
